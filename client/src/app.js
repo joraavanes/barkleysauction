@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Container, Button} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends React.Component{
     handleWelcome = e => {
@@ -14,7 +15,7 @@ class App extends React.Component{
             <Container onClick={this.handleWelcome}>
                 <h2>Welcome to Barkley's Store</h2>
                 <input type="hidden" name="year" id="year" value={new Date().valueOf()}/>
-                <Button color="info">click on me</Button>
+                <Button color="success">click on me</Button>
             </Container>
         );
     }
