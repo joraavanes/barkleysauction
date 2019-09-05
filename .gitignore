@@ -1,3 +1,4 @@
-/node_modules/
-/client/node_modules/
-/client/public
+/client/dist/
+/node_modules
+/client/node_modules
+/yarn.lock
