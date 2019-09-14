@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlMinifier = require('html-minifier');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -40,6 +40,7 @@ module.exports = {
         watchContentBase: true
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Barkley\'s Store',
             filename: '../index.html',

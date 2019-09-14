@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app/server.js",
-    "serve": "nodemon app/server.js"
+    "serve": "start http://localhost:3000 & nodemon app/server.js"
   },
   "engines": {
     "node": "11.10.0"
