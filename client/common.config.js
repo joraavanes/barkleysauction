@@ -1,14 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
         main: './src/app.js'
-    },
-    output:{
-        path: path.join(__dirname, 'dist/js'),
-        filename: '[name].[contentHash].bundle.js'
     },
     module:{
         rules:[
@@ -32,13 +28,6 @@ module.exports = {
             }
         ]
     },
-    mode: 'development',
-    devServer:{
-        contentBase: path.join(__dirname, 'public'),
-        port:4000,
-        open: true,
-        watchContentBase: true
-    },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
@@ -48,4 +37,4 @@ module.exports = {
             excludeChunks: ['adminApp']
         })
     ]
-}
+};

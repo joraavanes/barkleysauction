@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server --watch",
-    "build": "webpack --watch"
+    "dev": "webpack --config dev.config --watch",
+    "build": "webpack --config prod.config"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +33,7 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.2"
   }
 }
