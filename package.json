@@ -4,7 +4,7 @@
   "description": "Where you feel like shopping",
   "main": "index.js",
   "scripts": {
-    "start": "cd /client && npm run build & node app/server.js",
+    "start": "node app/server.js",
     "server": "start http://localhost:3000 & nodemon app/server.js",
     "client":"npm run dev --prefix client",
     "dev": "concurrently \"npm run client\" \"npm run server\""
