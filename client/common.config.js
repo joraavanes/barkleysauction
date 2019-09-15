@@ -16,7 +16,7 @@ module.exports = {
                 test: /\.scss$|\.css$/,
                 use: ['style-loader','css-loader','sass-loader']
             },{
-                test: /\.(jpg|png|gif|svg|ttf|woff|eot)/,
+                test: /\.(jpg|png|gif|svg|ttf|woff|eot)$/,
                 use: {
                     loader:'file-loader',
                     options:{
@@ -31,7 +31,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Barkley\'s Store',
+            title: 'Barkley\'s Store | Where you feel like shopping today',
             filename: '../index.html',
             template: './src/index.html',
             excludeChunks: ['adminApp']

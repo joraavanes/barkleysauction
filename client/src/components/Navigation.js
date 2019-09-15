@@ -19,10 +19,10 @@ export default class Navigation extends React.Component{
                     <Col>                    
                         <Navbar color="light" light expand="md">
                             <NavbarBrand href="/">Barkley's</NavbarBrand>
-                            <NavbarToggler onClick={this.toggle} />
                             <div className="spinner-grow" role="status">
-                                <span class="sr-only">Loading...</span>
+                                <span className="sr-only">Loading...</span>
                             </div>
+                            <NavbarToggler onClick={this.toggle} />
                             <Collapse isOpen={this.state.isOpen} navbar>
                                 <Nav className="ml-auto" navbar>
                                 <NavItem>

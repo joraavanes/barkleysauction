@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node app/server.js",
-    "serve": "start http://localhost:3000 & nodemon app/server.js"
+    "server": "start http://localhost:3000 & nodemon app/server.js",
+    "client":"npm run dev --prefix client",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "engines": {
     "node": "11.10.0"
@@ -16,5 +18,8 @@
     "express": "^4.17.1",
     "mongodb": "^3.3.2",
     "mongoose": "^5.6.11"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2"
   }
 }
