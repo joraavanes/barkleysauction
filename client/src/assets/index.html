@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
     <link rel="icon" href="<%= require('./images/icon.png') %>">
     <style>
-      body{
+      .loader-container{
           font-family: Georgia, 'Times New Roman', Times, serif;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-direction: column;
-          min-height: 100vh;
+          min-height:90vh;
       }
       .loader{
           height: 50px;
@@ -50,9 +50,11 @@
   </head>
   <body>
     <main id="app">
-      <div class="loader">
-        <div class="circle"></div>
-        <div class="circle"></div>
+      <div class="loader-container">
+        <div class="loader">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
       </div>
     </main>
   </body>
