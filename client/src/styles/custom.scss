@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import './mixins.scss';
 
 *{font-family: 'Josefin Sans', sans-serif;}
 
-$bg-light:'#666';
-
+body{
+    display: block;
+    justify-content:unset;
+    align-items:unset;
+}
 .row{margin-left:0;margin-right:0;}
 .container-fluid,.col{padding-left:0;padding-right:0;}
 .navbar.bg-light{box-shadow: 5px 0 10px 3px #ccc;}
