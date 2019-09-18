@@ -6,14 +6,35 @@ const productSearchStyle = {
 }
 
 export default class SearchProduct extends Component {
+
+    handleHeader = e => {
+        let target = e.target;
+        let value = target.value;
+        this.props.handleHeader(value);
+    }
+
+    handleCopyText = e => {
+        alert('text copied');
+    }
+
+    handleSubmit = e => e.preventDefault();
+
     render() {
         return (
             <Container fluid={true}>
                 <Row>
                     <Col sm={{ size: 10, offset: 1}}>
-                        <Form>
+                        <Form onSubmit={this.handleSubmit}>
                             <FormGroup style={productSearchStyle}>
-                                <input type="text" className="form-control" name="productSearch" id="productSearch" placeholder="Find your product here. iPhone, Jacket.etc."/>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="productSearch" 
+                                    id="productSearch" 
+                                    placeholder="Find your product here. iPhone, Jacket.etc."
+                                    onChange={this.handleHeader}
+                                    onCopy={this.handleCopyText}
+                                />
                             </FormGroup>
                         </Form>
                     </Col>

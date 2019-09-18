@@ -7,5 +7,13 @@ module.exports = webpackMerge(common, {
         path: path.join(__dirname, 'dist/js'),
         filename: '[name].js'
     },
+    module:{
+        rules:[
+            {
+                test: /\.scss$|\.css$/,
+                use: ['style-loader','css-loader','sass-loader']
+            }
+        ]
+    },
     mode: 'development'
 });
