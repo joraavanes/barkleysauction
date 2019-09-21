@@ -12,6 +12,7 @@ import './styles/custom.scss'
 const router = (
     <Router>
             <Navigation/>
+            <div className='mask'></div>
             <Switch>
                 <Route 
                     path="/"
