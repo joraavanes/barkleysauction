@@ -16,7 +16,8 @@ const router = (
             <Switch>
                 <Route 
                     path="/"
-                    render={() => <App products={products}/>}
+                    // render={() => <App products={products}/>}
+                    component={App}
                     exact={true}/>
                 <Route path="/items/:id" component={ViewItem}/>
             </Switch>

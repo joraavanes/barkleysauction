@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Container, Button, Row, Col} from 'reactstrap'
+import axios from 'axios'
 import SearchProduct from './SearchProduct'
 import Items from './Items'
 
 // import {products} from './mock/mock'
-
 // import img from './assets/mac.jpg'
 
 class App extends React.Component{
     state = {
         pageTitle: 'Welcome to Barkley\'s Store',
-        filteredItems: this.props.products
+        filteredItems: []
     };
 
     handleHeader = headerTitle => {
@@ -26,6 +26,16 @@ class App extends React.Component{
 
         headerTitle  = headerTitle !== '' ? headerTitle: 'Welcome to Barkley\'s Store';
         this.setState(() => ({pageTitle: headerTitle}));
+    }
+
+    componentDidMount = () => {
+        axios.get('http://localhost:3000/mock/products')
+            .then(res => {
+                if(res.data){
+                    this.setState(() => ({filteredItems: res.data}));
+                }
+            })
+            .catch(err => console.log(err));
     }
 
     render(){
