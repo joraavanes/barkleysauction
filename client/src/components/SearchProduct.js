@@ -32,6 +32,7 @@ export default class SearchProduct extends Component {
                                     name="productSearch" 
                                     id="productSearch" 
                                     placeholder="Find your product here. iPhone, Jacket.etc."
+                                    autoComplete="off"
                                     onChange={this.handleHeader}
                                     onCopy={this.handleCopyText}
                                 />

@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Switch, Route, Link } from 'react-router-dom'
 import App from './components/app'
 import Navigation from './components/Navigation'
 import ViewItem from './components/ViewItem'
+import LoginModal from './components/LoginModal'
 import {products} from './mock/mock'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -13,6 +14,7 @@ const router = (
     <Router>
             <Navigation/>
             <div className='mask'></div>
+            <LoginModal/>
             <Switch>
                 <Route 
                     path="/"

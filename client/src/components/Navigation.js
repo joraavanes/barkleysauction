@@ -1,6 +1,6 @@
 import React from 'react'
-import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
-import {NavLink as RouterLink} from 'react-router-dom'
+import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import {NavLink} from 'react-router-dom'
 
 export default class Navigation extends React.Component{
     state = {
@@ -19,7 +19,8 @@ export default class Navigation extends React.Component{
                 <Row>
                     <Col>                    
                         <Navbar color="light" light expand="md">
-                            <NavbarBrand href="/">Barkley's</NavbarBrand>
+                            {/* <NavbarBrand href="/">Barkley's</NavbarBrand> */}
+                            <NavLink to="/" className="navbar-brand">Barkley's</NavLink>
                             <div className="spinner-grow" role="status">
                                 <span className="sr-only">Loading...</span>
                             </div>
@@ -27,13 +28,13 @@ export default class Navigation extends React.Component{
                             <Collapse isOpen={this.state.isOpen} navbar>
                                 <Nav className="ml-auto" navbar>
                                     <NavItem>
-                                        <RouterLink to="/" className="nav-link">Home</RouterLink>
+                                        <NavLink to="/" className="nav-link" exact={true}>Home</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink href="/Auction/">Auction</NavLink>
+                                        <NavLink to="/Auction" className="nav-link">Auction</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink href="/Offers">Offers</NavLink>
+                                        <NavLink to="/Offers" className="nav-link">Offers</NavLink>
                                     </NavItem>
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
@@ -47,6 +48,9 @@ export default class Navigation extends React.Component{
                                             Theme
                                         </DropdownItem>
                                         <DropdownItem divider />
+                                        <DropdownItem>
+                                            Login
+                                        </DropdownItem>
                                         <DropdownItem>
                                             Logout
                                         </DropdownItem>

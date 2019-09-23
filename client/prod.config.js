@@ -3,6 +3,7 @@ const webpackMerge = require('webpack-merge');
 const common = require('./common.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = webpackMerge(common, {
     output:{
@@ -23,6 +24,7 @@ module.exports = webpackMerge(common, {
     },
     plugins:[
         new TerserWebpackPlugin(),
+        new OptimizeCssAssetsPlugin(),
         new MiniCssExtractPlugin({
         filename: '../css/[name].[hash].css'
     })],
