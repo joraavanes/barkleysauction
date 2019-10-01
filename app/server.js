@@ -25,7 +25,8 @@ app.get('/', (req,res)=>{
 app.use('/mock', mockRouter);
 
 app.all('*', (req, res) => {
-    res.status(404).send('The page you are looking for didn\'t exist');
+    // res.status(404).send('The page you are looking for didn\'t exist');
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 app.listen(port, () => {

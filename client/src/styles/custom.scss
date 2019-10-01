@@ -35,7 +35,13 @@ input[type=text],input[type=password]{border-radius:20px;}
 //     }
 // }
 
-.form-control.search{z-index: 100;position: relative;transition: box-shadow .5s ease-in-out;}
-.form-control.search:hover{
-    box-shadow: 0 10px 10px -5px;
+.form-control.search{
+    z-index: 100;
+    position: relative;
+    transition: all .5s ease-in-out;
+
+    &:hover,&:focus{
+        box-shadow: 0 10px 10px 2px #ccc;
+        border-color:#eeeeee;
+    }
 }

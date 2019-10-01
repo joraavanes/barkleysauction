@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node app/server.js",
-    "server":"nodemon app/server.js",
+    "server": "nodemon app/server.js",
     "server:open": "start http://localhost:3000 & nodemon app/server.js",
-    "client":"npm run dev --prefix client",
-    "client:run":"live-server client/dist",
+    "client": "npm run dev --prefix client",
+    "client:run": "live-server client/dist",
     "dev": "concurrently \"npm run client\" \"npm run server\" \"npm run client:run\""
   },
   "engines": {

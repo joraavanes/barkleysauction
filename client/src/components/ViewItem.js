@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class viewItem extends Component {
+export default class ViewItem extends Component {
     render() {
         return (
             <div>
