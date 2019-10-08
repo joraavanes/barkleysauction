@@ -15,18 +15,24 @@ module.exports = webpackMerge(common, {
             {
                 test: /\.css$|\.scss$/,
                 use:[
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
+                    'style-loader',
                     'css-loader',
                     'sass-loader'
                 ]
             }
         ]
     },
+    optimization:{
+        minimizer:[
+            new TerserWebpackPlugin(),
+            new OptimizeCssAssetsPlugin()
+        ]
+    },
     plugins:[
-        new TerserWebpackPlugin(),
-        new OptimizeCssAssetsPlugin(),
         new MiniCssExtractPlugin({
-        filename: '../css/[name].[hash].css'
-    })],
+            filename: '../css/[name].[hash].css'
+        })
+    ],
     mode: 'production'
 });
