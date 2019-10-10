@@ -14,7 +14,8 @@ module.exports = webpackMerge(common, {
             {
                 test: /\.css$|\.scss$/,
                 use:[
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
+                    'style-loader',
                     'css-loader',
                     'sass-loader'
                 ]
