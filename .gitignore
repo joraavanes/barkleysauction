@@ -1,4 +1,4 @@
-/client/dist/
+# /client/dist/
 /node_modules
 /client/node_modules
 /yarn.lock
