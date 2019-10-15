@@ -22,7 +22,7 @@ app.get('/', (req,res)=>{
 });
 
 // Server routes
-app.use('/mock', mockRouter);
+app.use('/items', mockRouter);
 
 app.all('*', (req, res) => {
     // res.status(404).send('The page you are looking for didn\'t exist');

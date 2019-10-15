@@ -16,7 +16,7 @@ const Item = (props) => {
                         <i className="fas fa-pound-sign xs-margin"></i>
                         {props.price.toLocaleString()}
                     </p>
-                    <NavLink to={`/items/${props.name}`} className="btn btn-primary">See detail</NavLink>
+                    <NavLink to={`/items/${props.name}/${props.id}`} className="btn btn-primary">See detail</NavLink>
                 </div>
             </div>
         </div>

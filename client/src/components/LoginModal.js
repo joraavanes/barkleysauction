@@ -21,14 +21,16 @@ export default class LoginModal extends Component {
                     <form>
                         <ModalBody>
                                 <p>
+                                    <label htmlFor="email">Email</label>
                                     <input type="text" name="email" id="email" className="form-control" autoComplete="off"/>
                                 </p>
                                 <p>
+                                    <label htmlFor="password">Password</label>
                                     <input type="password" name="password" id="password" className="form-control" autoComplete="off"/>
                                 </p>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                            <Button color="primary" onClick={this.toggle}>Login</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </form>

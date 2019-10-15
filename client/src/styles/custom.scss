@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+// @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import './mixins.scss';
 
 *{font-family: 'Josefin Sans', sans-serif;}
@@ -14,6 +15,7 @@ input[type=text],input[type=password]{border-radius:20px;}
         right:5px;
     }
 }
+.fa, .fas{font-size: 14px;}
 
 .spinner-grow{animation: unset;}
 .spinner-grow.active{animation: spinner-grow .75s linear infinite;}
@@ -41,7 +43,16 @@ input[type=text],input[type=password]{border-radius:20px;}
     transition: all .5s ease-in-out;
 
     &:hover,&:focus{
-        box-shadow: 0 10px 10px 2px #ccc;
-        border-color:#eeeeee;
+        box-shadow: 0 10px 10px 2px rgb(240, 240, 240);
+        border-color:rgb(240, 240, 240);
     }
 }
+
+.bid-title{
+    span{
+        margin-left:10px;
+        font-size:14px;
+    }
+}
+
+.avatar-img{width: 32px;height:32px;background-color:#ccc;border-radius:50%;}

@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {connect} from 'react-redux'
 import {Container, Button, Row, Col} from 'reactstrap'
 import axios from 'axios'
+import {getItems,clearItems} from '../redux/actions/itemActions'
 import SearchProduct from './SearchProduct'
 import Items from './Items'
 
 // import {products} from './mock/mock'
-// import img from './assets/mac.jpg'
+// import img from '../media/avatar.png'
 
 class App extends React.Component{
     state = {
@@ -29,13 +31,18 @@ class App extends React.Component{
     }
 
     componentDidMount = () => {
-        axios.get('http://localhost:3000/mock/products')
-            .then(res => {
-                if(res.data){
-                    this.setState(() => ({filteredItems: res.data}));
-                }
-            })
-            .catch(err => console.log(err));
+        // axios.get('http://localhost:3000/mock/products')
+        //     .then(res => {
+        //         if(res.data){
+        //             this.setState(() => ({filteredItems: res.data}));
+        //         }
+        //     })
+        //     .catch(err => console.log(err));
+        this.props.getItems();
+    }
+
+    componentWillUnmount(){
+        this.props.clearItems();
     }
 
     render(){
@@ -51,13 +58,17 @@ class App extends React.Component{
                         </Col>
                     </Row>
                 </Container>
-                <Items products={this.state.filteredItems}/>
+                <Items products={this.props.products}/>
             </React.Fragment>
         );
     }
 }
 
-
+const mapStateToProps = state => {
+    return{
+        products: state.items.items
+    }
+};
 
 // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
-export default App;
+export default connect(mapStateToProps,{getItems,clearItems})(App);

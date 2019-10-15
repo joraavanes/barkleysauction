@@ -1,8 +1,9 @@
 import React from 'react'
 import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class Navigation extends React.Component{
+class Navigation extends React.Component{
     state = {
         isOpen: false
     };
@@ -15,13 +16,13 @@ export default class Navigation extends React.Component{
 
     render(){
         return (
-            <Container fluid={true}>
+            <Container fluid={true} id="navigation">
                 <Row>
                     <Col>                    
                         <Navbar color="light" light expand="md">
                             {/* <NavbarBrand href="/">Barkley's</NavbarBrand> */}
                             <NavLink to="/" className="navbar-brand">Barkley's</NavLink>
-                            <div className="spinner-grow" role="status">
+                            <div className={this.props.loading ? 'spinner-grow active' : 'spinner-grow'} role="status">
                                 <span className="sr-only">Loading...</span>
                             </div>
                             <NavbarToggler onClick={this.toggle} />
@@ -64,4 +65,10 @@ export default class Navigation extends React.Component{
             </Container>
         );
     }
-}
+};
+
+const mapStateToProps = state => ({
+    loading: state.items.loading
+});
+
+export default connect(mapStateToProps)(Navigation);
