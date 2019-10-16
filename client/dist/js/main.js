@@ -2488,7 +2488,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 // Imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap);", ""]);
 // Module
-exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\n.navbar.bg-light {\n  box-shadow: 5px 0 10px 3px #ccc; }\n\ninput[type=text], input[type=password] {\n  border-radius: 20px; }\n\n.card {\n  margin-bottom: 10px; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.spinner-grow {\n  animation: unset; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 10px 2px #f0f0f0;\n    border-color: #f0f0f0; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password] {\n  border-radius: 20px; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover {\n    background-color: #F91890;\n    border-color: #F91890; }\n\n.spinner-grow {\n  animation: unset; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #f91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n", ""]);
 
 
 /***/ }),
@@ -36111,7 +36111,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53143,9 +53143,8 @@ function (_React$Component) {
         fluid: true,
         id: "navigation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
-        color: "light",
-        light: true,
-        expand: "md"
+        expand: "md",
+        className: "bg-pink"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         to: "/",
         className: "navbar-brand"
@@ -53838,7 +53837,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]];
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_index__WEBPACK_IMPORTED_MODULE_2__["default"], {}, Object(redux__WEBPACK_IMPORTED_MODULE_0__["compose"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_index__WEBPACK_IMPORTED_MODULE_2__["default"], {}, Object(redux__WEBPACK_IMPORTED_MODULE_0__["compose"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware) // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+));
 store.subscribe(function () {
   return console.log(store.getState());
 });

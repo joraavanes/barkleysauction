@@ -19,7 +19,7 @@ class Navigation extends React.Component{
             <Container fluid={true} id="navigation">
                 <Row>
                     <Col>                    
-                        <Navbar color="light" light expand="md">
+                        <Navbar expand="md" className="bg-pink">
                             {/* <NavbarBrand href="/">Barkley's</NavbarBrand> */}
                             <NavLink to="/" className="navbar-brand">Barkley's</NavLink>
                             <div className={this.props.loading ? 'spinner-grow active' : 'spinner-grow'} role="status">
