@@ -27,7 +27,7 @@ input[type=text],input[type=password]{border-radius:20px;}
     }
 }
 
-.spinner-grow{animation: unset;}
+.spinner-grow{animation: unset;background-color:#fff;}
 .spinner-grow.active{animation: spinner-grow .75s linear infinite;}
 
 // .mask{
