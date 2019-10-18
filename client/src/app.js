@@ -1,70 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Container, Button, Row, Col} from 'reactstrap'
+import { BrowserRouter as Router,Switch, Route, Link } from 'react-router-dom'
+import {Provider} from 'react-redux'
+import store from './redux/store/store'
+import App from './components/app'
+import Auction from './components/Auction'
 import Navigation from './components/Navigation'
-import SearchProduct from './components/SearchProduct'
-import Items from './components/Items'
+import ViewItem from './components/ViewItem'
+import LoginModal from './components/LoginModal'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/custom.scss'
 
-import {products} from './mock/mock'
-
-// import img from './assets/mac.jpg'
-
-class App extends React.Component{
-    state = {
-        pageTitle: 'Welcome to Barkley\'s Store',
-        filteredItems: this.props.products
-    };
-
-    handleHeader = headerTitle => {
-        // const target = e.target;
-        
-        if(headerTitle !== ''){
-            const filteredItems = this.props.products.filter(item => item.name.includes(headerTitle));
-            this.setState(() => ({ filteredItems }));
-        }else{
-            this.setState(() => ({ filteredItems: this.props.products }));
-        }
-
-        headerTitle  = headerTitle !== '' ? headerTitle: 'Welcome to Barkley\'s Store';
-        this.setState(() => ({pageTitle: headerTitle}));
-    }
-
-    render(){
-        return(
-            <React.Fragment>
+const router = (
+    <Provider store={store}>
+        <Router>
                 <Navigation/>
-                <SearchProduct handleHeader={this.handleHeader}/>
-                <Container>
-                    <Row>
-                        {/*
-                        <Col>
-                             <form onSubmit={this.handleFormSubmit}>
-                                <div className="form=group">
-                                    <input type="text" className="form-control" id="message" name="message" onChange={this.handleHeader} onCopy={this.handleCopyText}/>
-                                </div>
-                                <p>
-                                    <Button type="submit">Send</Button>
-                                </p>
-                            </form> 
-                        </Col>*/}
-                        <Col>
-                            <h2 className="text-center">{this.state.pageTitle}</h2>
-                            {/*<input type="hidden" name="year" id="year" value={new Date().valueOf()}/> */}
-                            {/* <div style={{display: 'flex', flexDirection: 'column', alignItems:'center'}}>
-                                <Button color="success" onClick={this.handleWelcome}>click on me</Button>
-                            </div> */}
-                            {/* <img src={img}/> */}
-                        </Col>
-                    </Row>
-                </Container>
-                <Items products={this.state.filteredItems}/>
-            </React.Fragment>
-        );
-    }
-}
+                {/* <div className='mask'></div> */}
+                {/* <LoginModal/> */}
+                <Switch>
+                    <Route 
+                        path="/"
+                        // render={() => <App products={products}/>}
+                        component={App}
+                        exact={true}/>
+                    <Route path="/items" component={App} exact={true}/>
+                    <Route path="/items/:name/:id" component={ViewItem} exact={true}/>
+                    <Route path="/Auction" component={Auction}/>
+                    <Route path="*" render={() => <h2>Middle of nowhere !</h2>}/>
+                </Switch>
+        </Router>
+    </Provider>
+);
 
-
-
-ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
+ReactDOM.render(router, document.querySelector('#app'));

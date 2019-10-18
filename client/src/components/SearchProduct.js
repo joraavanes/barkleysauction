@@ -28,10 +28,11 @@ export default class SearchProduct extends Component {
                             <FormGroup style={productSearchStyle}>
                                 <input
                                     type="text"
-                                    className="form-control"
+                                    className="form-control search"
                                     name="productSearch" 
                                     id="productSearch" 
                                     placeholder="Find your product here. iPhone, Jacket.etc."
+                                    autoComplete="off"
                                     onChange={this.handleHeader}
                                     onCopy={this.handleCopyText}
                                 />

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node app/server.js",
-    "server":"node app/server.js",
+    "server": "nodemon app/server.js",
     "server:open": "start http://localhost:3000 & nodemon app/server.js",
-    "client":"npm run dev --prefix client",
-    "client:run":"live-server client/dist",
+    "client": "npm run dev --prefix client",
+    "client:run": "live-server client/dist",
     "dev": "concurrently \"npm run client\" \"npm run server\" \"npm run client:run\""
   },
   "engines": {
@@ -19,7 +19,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^3.3.2",
-    "mongoose": "^5.6.11"
+    "mongoose": "^5.6.11",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "concurrently": "^4.1.2"

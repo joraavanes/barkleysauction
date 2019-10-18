@@ -1,7 +1,9 @@
 import React from 'react'
-import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class Navigation extends React.Component{
+class Navigation extends React.Component{
     state = {
         isOpen: false
     };
@@ -14,40 +16,47 @@ export default class Navigation extends React.Component{
 
     render(){
         return (
-            <Container fluid={true}>
+            <Container fluid={true} id="navigation">
                 <Row>
                     <Col>                    
-                        <Navbar color="light" light expand="md">
-                            <NavbarBrand href="/">Barkley's</NavbarBrand>
-                            <div className="spinner-grow" role="status">
+                        <Navbar expand="md" className="bg-pink">
+                            {/* <NavbarBrand href="/">Barkley's</NavbarBrand> */}
+                            <NavLink to="/" className="navbar-brand">Barkley's</NavLink>
+                            <div className={this.props.loading ? 'spinner-grow active' : 'spinner-grow'} role="status">
                                 <span className="sr-only">Loading...</span>
                             </div>
                             <NavbarToggler onClick={this.toggle} />
                             <Collapse isOpen={this.state.isOpen} navbar>
                                 <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="/Auction/">Auction</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink href="/Offers">Offers</NavLink>
-                                </NavItem>
-                                <UncontrolledDropdown nav inNavbar>
-                                    <DropdownToggle nav caret>
-                                    Settings
-                                    </DropdownToggle>
-                                    <DropdownMenu right>
-                                    <DropdownItem>
-                                        User Settings
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        Theme
-                                    </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                        Logout
-                                    </DropdownItem>
-                                    </DropdownMenu>
-                                </UncontrolledDropdown>
+                                    <NavItem>
+                                        <NavLink to="/" className="nav-link" exact={true}>Home</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink to="/Auction" className="nav-link">Auction</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink to="/Offers" className="nav-link">Offers</NavLink>
+                                    </NavItem>
+                                    <UncontrolledDropdown nav inNavbar>
+                                        <DropdownToggle nav caret>
+                                        Settings
+                                        </DropdownToggle>
+                                        <DropdownMenu right>
+                                        <DropdownItem>
+                                            User Settings
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            Theme
+                                        </DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>
+                                            Login
+                                        </DropdownItem>
+                                        <DropdownItem>
+                                            Logout
+                                        </DropdownItem>
+                                        </DropdownMenu>
+                                    </UncontrolledDropdown>
                                 </Nav>
                             </Collapse>                            
                         </Navbar>
@@ -56,4 +65,10 @@ export default class Navigation extends React.Component{
             </Container>
         );
     }
-}
+};
+
+const mapStateToProps = state => ({
+    loading: state.items.loading
+});
+
+export default connect(mapStateToProps)(Navigation);

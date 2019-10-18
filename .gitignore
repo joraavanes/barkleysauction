@@ -1,5 +1,6 @@
-# /client/dist/
+/client/dist/
 /node_modules
 /client/node_modules
+/client/dist
 /yarn.lock
 .vscode

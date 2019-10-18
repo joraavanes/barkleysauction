@@ -7,6 +7,7 @@ module.exports = webpackMerge(common, {
         path: path.join(__dirname, 'dist/js'),
         filename: '[name].js'
     },
+    devtool:'none',
     module:{
         rules:[
             {

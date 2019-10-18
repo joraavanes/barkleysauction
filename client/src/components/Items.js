@@ -9,7 +9,7 @@ export default class Items extends Component {
                 <Row>
                     {this.props.products.map((product, index) => {
                         return(
-                            <Item product={product} key={index}/>
+                            <Item {...product} key={index}/>
                         )
                     })}
                 </Row>
