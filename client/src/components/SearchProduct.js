@@ -5,7 +5,7 @@ const productSearchStyle = {
     marginTop: 30
 }
 
-export default class SearchProduct extends Component {
+class SearchProduct extends Component {
 
     handleHeader = e => {
         let target = e.target;
@@ -44,3 +44,5 @@ export default class SearchProduct extends Component {
         )
     }
 }
+
+export default SearchProduct;
