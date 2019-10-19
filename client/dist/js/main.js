@@ -53666,29 +53666,53 @@ module.exports = __webpack_require__.p + "../images/bag.ab92c67628dc45e09b1ab60b
 
 /***/ }),
 
+/***/ "./src/redux/actions/filterActions.js":
+/*!********************************************!*\
+  !*** ./src/redux/actions/filterActions.js ***!
+  \********************************************/
+/*! exports provided: setSearchText */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSearchText", function() { return setSearchText; });
+/* harmony import */ var _types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types/types */ "./src/redux/actions/types/types.js");
+
+var setSearchText = function setSearchText(text) {
+  return {
+    type: _types_types__WEBPACK_IMPORTED_MODULE_0__["SEARCH_TEXT"],
+    text: text
+  };
+};
+
+/***/ }),
+
 /***/ "./src/redux/actions/itemActions.js":
 /*!******************************************!*\
   !*** ./src/redux/actions/itemActions.js ***!
   \******************************************/
-/*! exports provided: getItems, getItem, clearItems, itemsLoading */
+/*! exports provided: getItems, getItem, getItemsByName, clearItems, itemsLoading */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItems", function() { return getItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItem", function() { return getItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItemsByName", function() { return getItemsByName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItems", function() { return clearItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemsLoading", function() { return itemsLoading; });
 /* harmony import */ var _types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types/types */ "./src/redux/actions/types/types.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _filterActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filterActions */ "./src/redux/actions/filterActions.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var url =  false ? undefined : 'http://localhost:3000';
 var getItems = function getItems() {
   return function (dispatch) {
     dispatch(itemsLoading());
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(url, "/items")).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(url, "/items")).then(function (res) {
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"],
         loading: false,
@@ -53700,13 +53724,29 @@ var getItems = function getItems() {
 var getItem = function getItem(name, id) {
   return function (dispatch) {
     dispatch(itemsLoading());
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(url, "/items/").concat(name, "/").concat(id)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(url, "/items/").concat(name, "/").concat(id)).then(function (res) {
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEM"],
         loading: false,
         items: res.data
       });
     });
+  };
+};
+var getItemsByName = function getItemsByName(text) {
+  return function (dispatch) {
+    text = text.trim();
+
+    if (text !== '') {
+      dispatch(itemsLoading());
+      dispatch(Object(_filterActions__WEBPACK_IMPORTED_MODULE_1__["setSearchText"])(text));
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(url, "/items/").concat(text)).then(function (res) {
+        dispatch({
+          type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"],
+          items: res.data
+        });
+      });
+    }
   };
 };
 var clearItems = function clearItems() {
@@ -53727,7 +53767,7 @@ var itemsLoading = function itemsLoading() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, ADD_ITEM, EDIT_ITEM, ITEMS_LOADING, CLEAR_ITEMS, SORT_BY */
+/*! exports provided: GET_ITEMS, GET_ITEM, ADD_ITEM, EDIT_ITEM, ITEMS_LOADING, CLEAR_ITEMS, SORT_BY, SEARCH_TEXT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53739,6 +53779,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ITEMS_LOADING", function() { return ITEMS_LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ITEMS", function() { return CLEAR_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SORT_BY", function() { return SORT_BY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEARCH_TEXT", function() { return SEARCH_TEXT; });
 var GET_ITEMS = 'GET_ITEMS';
 var GET_ITEM = 'GET_ITEM';
 var ADD_ITEM = 'ADD_ITEM';
@@ -53746,6 +53787,7 @@ var EDIT_ITEM = 'EDIT_ITEM';
 var ITEMS_LOADING = 'ITEMS_LOADING';
 var CLEAR_ITEMS = 'CLEAR_ITEMS';
 var SORT_BY = 'SORT_BY';
+var SEARCH_TEXT = 'SEARCH_TEXT';
 
 /***/ }),
 
