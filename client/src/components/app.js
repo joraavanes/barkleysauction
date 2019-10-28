@@ -26,7 +26,7 @@ class App extends React.Component{
             this.setState(() => ({ filteredItems: this.props.products }));
         }
 
-        headerTitle  = headerTitle !== '' ? headerTitle: 'Welcome to Barkley\'s Store';
+        headerTitle  = headerTitle !== '' ? `Searched for: ${headerTitle}`: 'Welcome to Barkley\'s Store';
         this.setState(() => ({pageTitle: headerTitle}));
     }
 

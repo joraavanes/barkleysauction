@@ -19,6 +19,8 @@ const filterReducer = ((state = defaultFilterReducer, action)=>{
                 ...state,
                 sortBy: action.sortType
             };
+        default:
+            return state;
     }
 });
 

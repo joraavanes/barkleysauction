@@ -2488,7 +2488,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 // Imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap);", ""]);
 // Module
-exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password] {\n  border-radius: 20px; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover {\n    background-color: #F91890;\n    border-color: #F91890; }\n\n.spinner-grow {\n  animation: unset;\n  background-color: #fff; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #f91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password] {\n  border-radius: 20px; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover {\n    background-color: #F91890;\n    border-color: #F91890; }\n  .btn-primary:not(:disabled):not(.disabled):active {\n    background-color: #F91890;\n    border-color: #F91890;\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:focus {\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n\n.spinner-grow {\n  animation: unset;\n  background-color: #fff; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #f91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\nh1 span.avail-status {\n  font-size: 24px;\n  margin-left: 20px; }\n\nh1 i.fas {\n  font-size: 22px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n\n.card {\n  transition: all .5s ease-in-out; }\n  .card:hover {\n    border-color: #F91890;\n    box-shadow: 0 0 8px 1px #ccc; }\n", ""]);
 
 
 /***/ }),
@@ -36111,7 +36111,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52866,9 +52866,11 @@ var Item = function Item(props) {
       className: "card-body"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
       className: "card-title"
-    }, props.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "card-text"
-    }, "With supporting text below as a natural lead-in to additional content."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Offering: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    }, props.name), props.description.length > 80 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: ""
+    }, props.description.slice(0, 80) + ' ...') : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: ""
+    }, props.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Offering: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-pound-sign xs-margin"
     }), props.price.toLocaleString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       to: "/items/".concat(props.name, "/").concat(props.id),
@@ -53212,6 +53214,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53231,6 +53235,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -53261,6 +53267,8 @@ function (_Component) {
       var value = target.value;
 
       _this.props.handleHeader(value);
+
+      _this.props.getItemsByName(value);
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleCopyText", function (e) {
@@ -53304,7 +53312,9 @@ function (_Component) {
   return SearchProduct;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (SearchProduct);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(null, {
+  getItemsByName: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_2__["getItemsByName"]
+})(SearchProduct));
 
 /***/ }),
 
@@ -53381,24 +53391,31 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      // console.log(this.props.item.description);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
         fluid: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
         className: "col-12 col-sm-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-3"
+        className: "col-12 col-md-4 col-lg-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: _media_bag_jpg__WEBPACK_IMPORTED_MODULE_7___default.a.substr(2, _media_bag_jpg__WEBPACK_IMPORTED_MODULE_7___default.a.length + 1),
         className: "img-fluid"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-9"
-      }, this.props.items.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.items[0].name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Last bid was 235"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.items[0].price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.items[0].sold), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.items[0].img)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading ..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "col-12 col-md-8 col-lg-9"
+      }, this.props.item != null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.item.name, " -", !this.props.item.sold ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-success avail-status"
+      }, "Available") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "text-danger avail-status"
+      }, "Sold for ", this.props.item.price.toLocaleString(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-pound-sign xs-margin"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Last bid was ", this.props.item.price.toLocaleString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item.price), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item.sold), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item.img)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading ..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
         className: "card-title"
-      }, this.props.match.params.name, " -- ", this.props.match.params.id), "This is where you can see details"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.match.params.name, " -- ", this.props.match.params.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item && this.props.item.description)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-sm-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "bid-title"
-      }, "Last bids", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.items[0] && this.props.items[0].name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Last bids", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.item && this.props.item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group list-group-flush"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item"
@@ -53460,7 +53477,7 @@ function (_Component) {
 
 var mapStateToProps = function mapStateToProps(store) {
   return {
-    items: store.items.items
+    item: store.items.items[0]
   };
 };
 
@@ -53564,7 +53581,7 @@ function (_React$Component) {
         });
       }
 
-      headerTitle = headerTitle !== '' ? headerTitle : 'Welcome to Barkley\'s Store';
+      headerTitle = headerTitle !== '' ? "Searched for: ".concat(headerTitle) : 'Welcome to Barkley\'s Store';
 
       _this.setState(function () {
         return {
@@ -53746,6 +53763,8 @@ var getItemsByName = function getItemsByName(text) {
           items: res.data
         });
       });
+    } else {
+      dispatch(getItems());
     }
   };
 };
@@ -53791,6 +53810,54 @@ var SEARCH_TEXT = 'SEARCH_TEXT';
 
 /***/ }),
 
+/***/ "./src/redux/reducers/filterReducer.js":
+/*!*********************************************!*\
+  !*** ./src/redux/reducers/filterReducer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types/types */ "./src/redux/actions/types/types.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var defaultFilterReducer = {
+  startDate: undefined,
+  endDate: undefined,
+  sortBy: '',
+  searchText: ''
+};
+
+var filterReducer = function filterReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultFilterReducer;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["SEARCH_TEXT"]:
+      return _objectSpread({}, state, {
+        searchText: action.text
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["SORT_BY"]:
+      return _objectSpread({}, state, {
+        sortBy: action.sortType
+      });
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (filterReducer);
+
+/***/ }),
+
 /***/ "./src/redux/reducers/index.js":
 /*!*************************************!*\
   !*** ./src/redux/reducers/index.js ***!
@@ -53802,10 +53869,13 @@ var SEARCH_TEXT = 'SEARCH_TEXT';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _itemReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./itemReducer */ "./src/redux/reducers/itemReducer.js");
+/* harmony import */ var _filterReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filterReducer */ "./src/redux/reducers/filterReducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  items: _itemReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  items: _itemReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  filters: _filterReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),

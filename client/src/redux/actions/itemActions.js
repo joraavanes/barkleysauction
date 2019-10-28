@@ -41,6 +41,8 @@ export const getItemsByName = text => dispatch => {
                     items: res.data
                 });
             });
+    }else{
+        dispatch(getItems());
     }
 };
 

@@ -10,7 +10,16 @@ const Item = (props) => {
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{props.name}</h5>
-                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    {/* <p className="card-text">With supporting text below as a natural lead-in to additional content.</p> */}
+                    {props.description.length > 80 ? (
+                        <p className="">
+                            {props.description.slice(0, 80) + ' ...'}
+                        </p>
+                    ):(
+                        <p className="">
+                            {props.description}
+                        </p>
+                    )}
                     <p>
                         <span>Offering: </span>
                         <i className="fas fa-pound-sign xs-margin"></i>

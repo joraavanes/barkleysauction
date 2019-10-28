@@ -18,35 +18,45 @@ class ViewItem extends Component {
     }
 
     render() {
+        // console.log(this.props.item.description);
         return (
             <Container fluid={true}>
                 <Row>
                     <main className="col-12 col-sm-8">
                         <Row>
-                            <div className="col-3">
+                            <div className="col-12 col-md-4 col-lg-3">
                                 <img src={bag.substr(2,bag.length+1)} className="img-fluid"/>
                             </div>
-                            <div className="col-9">
-                                {this.props.items.length>0 ? (
+                            <div className="col-12 col-md-8 col-lg-9">
+                                {this.props.item != null ? (
                                     <React.Fragment>
-                                        <h1>{this.props.items[0].name}</h1>
-                                        <h4>Last bid was 235</h4>
-                                        <p>{this.props.items[0].price}</p>
-                                        <p>{this.props.items[0].sold}</p>
-                                        <p>{this.props.items[0].img}</p>
+                                        <h1>
+                                            {this.props.item.name} -  
+                                            {!this.props.item.sold ? 
+                                            (<span className="text-success avail-status">Available</span>) 
+                                            :
+                                            (<span className="text-danger avail-status">Sold for {this.props.item.price.toLocaleString()}<i className="fas fa-pound-sign xs-margin"></i></span>)}
+                                        </h1>
+                                        <h4>Last bid was {this.props.item.price.toLocaleString()}</h4>
+                                        <h4></h4>
+                                        <p>{this.props.item.price}</p>
+                                        <p>{this.props.item.sold}</p>
+                                        <p>{this.props.item.img}</p>
                                     </React.Fragment>
                                 ):(
                                     <div>Loading ...</div>
                                 )}
                                 <h5 className="card-title">{this.props.match.params.name} -- {this.props.match.params.id}</h5>
-
-                                This is where you can see details
+                                    
+                                <p>
+                                    {this.props.item && this.props.item.description}
+                                </p>
                             </div>
                         </Row>
                     </main>
                     <div className="col-12 col-sm-4">
                         <h2 className="bid-title">Last bids
-                            <span>for {this.props.items[0] && this.props.items[0].name}</span>
+                            <span>for {this.props.item && this.props.item.name}</span>
                         </h2>
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">
@@ -90,7 +100,7 @@ class ViewItem extends Component {
 };
 
 const mapStateToProps = store => ({
-    items: store.items.items
+    item: store.items.items[0]
 });
 
 export default connect(mapStateToProps,{getItem, clearItems})(ViewItem);
