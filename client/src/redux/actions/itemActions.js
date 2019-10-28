@@ -1,4 +1,5 @@
 import {ADD_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS} from './types/types'
+import {setSearchText} from './filterActions'
 import axios from 'axios'
 
 const url = process.env.NODE_ENV === 'production'? 'https://protected-scrubland-62320.herokuapp.com': 'http://localhost:3000'
@@ -25,6 +26,24 @@ export const getItem = (name,id) => dispatch => {
                 items: res.data
             });
         });
+};
+
+
+export const getItemsByName = text => dispatch => {
+    text = text.trim();
+    if(text !== ''){
+        dispatch(itemsLoading());
+        dispatch(setSearchText(text));
+        axios.get(`${url}/items/${text}`)
+            .then(res => {
+                dispatch({
+                    type: GET_ITEMS,
+                    items: res.data
+                });
+            });
+    }else{
+        dispatch(getItems());
+    }
 };
 
 export const clearItems = () => ({

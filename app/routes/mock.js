@@ -7,7 +7,11 @@ router.get('/', (req,res) =>{
     res.send(items);
 });
 
+<<<<<<< HEAD
 router.get('/:text', (req,res) => {
+=======
+router.get('/:text',(req,res)=>{
+>>>>>>> otherReducers
     const text = req.params.text;
     const model = items.filter(x=> x.name.includes(text));
     res.send(model);

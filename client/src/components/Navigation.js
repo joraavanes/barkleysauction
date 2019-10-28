@@ -18,7 +18,7 @@ class Navigation extends React.Component{
         return (
             <Container fluid={true} id="navigation">
                 <Row>
-                    <Col>                    
+                    <Col>
                         <Navbar expand="md" className="bg-pink">
                             {/* <NavbarBrand href="/">Barkley's</NavbarBrand> */}
                             <NavLink to="/" className="navbar-brand">Barkley's</NavLink>

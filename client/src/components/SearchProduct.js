@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import {Container,Row,Col,FormGroup, Form} from 'reactstrap'
+import {getItemsByName} from '../redux/actions/itemActions'
+import {connect} from 'react-redux'
 
 const productSearchStyle = {
     marginTop: 30
 }
 
-export default class SearchProduct extends Component {
+class SearchProduct extends Component {
 
     handleHeader = e => {
         let target = e.target;
         let value = target.value;
         this.props.handleHeader(value);
+        this.props.getItemsByName(value);
     }
 
     handleCopyText = e => {
@@ -44,3 +47,5 @@ export default class SearchProduct extends Component {
         )
     }
 }
+
+export default connect(null,{getItemsByName})(SearchProduct);

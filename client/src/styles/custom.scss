@@ -25,6 +25,14 @@ input[type=text],input[type=password]{border-radius:20px;}
         background-color:#F91890;
         border-color:#F91890;
     }
+    &:not(:disabled):not(.disabled):active{
+        background-color:#F91890;
+        border-color:#F91890;
+        box-shadow:0 0 0 0.2rem rgba(249, 24, 144, 0.2);
+    }
+    &:not(:disabled):not(.disabled):active:focus, &:focus{
+        box-shadow:0 0 0 0.2rem rgba(249, 24, 144, 0.2);
+    }
 }
 
 .spinner-grow{animation: unset;background-color:#fff;}
@@ -75,6 +83,11 @@ input[type=text],input[type=password]{border-radius:20px;}
     }
 }
 
+h1{
+    span.avail-status{font-size:24px;margin-left:20px;}
+    i.fas{font-size:22px;}
+}
+
 .list-group-flush:last-child .list-group-item{
     &:last-child{border-bottom:1px solid rgba(0, 0, 0, 0.125);}
 }
@@ -99,3 +112,11 @@ input[type=text],input[type=password]{border-radius:20px;}
 }
 
 .avatar-img{width: 32px;height:32px;background-color:#ccc;border-radius:50%;}
+
+.card{
+    transition: all .5s ease-in-out;
+    &:hover{
+        border-color:#F91890;
+        box-shadow: 0 0 8px 1px #ccc;
+    }
+}

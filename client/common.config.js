@@ -29,7 +29,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Barkley\'s Store | Where you feel like shopping today',
+            title: 'Barkley\'s Store | Where you feel like shopping',
             filename: '../index.html',
             template: './src/assets/index.html',
             excludeChunks: ['adminApp']
