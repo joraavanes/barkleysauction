@@ -37,6 +37,9 @@ class Navigation extends React.Component{
                                     <NavItem>
                                         <NavLink to="/Offers" className="nav-link">Offers</NavLink>
                                     </NavItem>
+                                    <NavItem>
+                                        <NavLink to="/#" className="nav-link">Login</NavLink>
+                                    </NavItem>
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
                                         Settings

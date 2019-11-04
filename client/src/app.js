@@ -17,7 +17,7 @@ const router = (
         <Router>
                 <Navigation/>
                 {/* <div className='mask'></div> */}
-                {/* <LoginModal/> */}
+                <LoginModal/>
                 <Switch>
                     <Route 
                         path="/"
