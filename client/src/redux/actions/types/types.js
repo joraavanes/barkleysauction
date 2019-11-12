@@ -6,3 +6,5 @@ export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const CLEAR_ITEMS = 'CLEAR_ITEMS';
 export const SORT_BY = 'SORT_BY';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
+
+export const LOGIN_MODAL_STATE = 'LOGIN_MODAL_STATE';

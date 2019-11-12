@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
+import { connect } from 'react-redux';
+import { toggleLoginModal } from '../redux/actions/pageStateActions'
 
-export default class LoginModal extends Component {
+class LoginModal extends Component {
     state = {
         modal: false
     };
 
     toggle =() =>{
-        this.setState(prevState => ({
-          modal: !prevState.modal
-        }));
-      }
+        this.props.toggleLoginModal();
+    }
 
     render() {
         return (
             <div>
-                <Button className="btn-sm" color="danger" onClick={this.toggle}>Open Modal</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                {/* <Button className="btn-sm" color="danger" onClick={this.toggle}>Open Modal</Button> */}
+                <Modal isOpen={this.props.loginState} toggle={this.toggle}>
+                    <ModalHeader toggle={this.toggle}>Login</ModalHeader>
                     <form>
                         <ModalBody>
                                 <p>
@@ -30,7 +30,7 @@ export default class LoginModal extends Component {
                                 </p>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.toggle}>Login</Button>{' '}
+                            <Button color="primary" onClick={this.toggle}>Login</Button>
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </form>
@@ -39,3 +39,9 @@ export default class LoginModal extends Component {
         )
     }
 }
+
+const mapStateToProps = store => ({
+    loginState: store.pageState.loginState
+});
+
+export default connect(mapStateToProps,{ toggleLoginModal })(LoginModal);

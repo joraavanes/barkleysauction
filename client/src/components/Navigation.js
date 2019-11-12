@@ -1,5 +1,6 @@
 import React from 'react'
 import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import { toggleLoginModal } from '../redux/actions/pageStateActions'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -8,6 +9,12 @@ class Navigation extends React.Component{
         isOpen: false
     };
 
+    // toggle login modal
+    handleLoginModal = () => {
+        this.props.toggleLoginModal();
+    }   
+
+    // toggle navigation menu in mobile screen
     toggle = () => {
         this.setState(prevState => ({
             isOpen: !prevState.isOpen
@@ -36,6 +43,9 @@ class Navigation extends React.Component{
                                     </NavItem>
                                     <NavItem>
                                         <NavLink to="/Offers" className="nav-link">Offers</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <a href="#" className="nav-link" onClick={this.handleLoginModal}>Login</a>
                                     </NavItem>
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
@@ -71,4 +81,4 @@ const mapStateToProps = state => ({
     loading: state.items.loading
 });
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps,{toggleLoginModal})(Navigation);

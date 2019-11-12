@@ -22,7 +22,7 @@ class ViewItem extends Component {
         return (
             <Container fluid={true}>
                 <Row>
-                    <main className="col-12 col-sm-8">
+                    <main className="col-12 col-sm-6 col-md-8">
                         <Row>
                             <div className="col-12 col-md-4 col-lg-3">
                                 <img src={bag.substr(2,bag.length+1)} className="img-fluid"/>
@@ -54,7 +54,7 @@ class ViewItem extends Component {
                             </div>
                         </Row>
                     </main>
-                    <div className="col-12 col-sm-4">
+                    <div className="col-12 col-sm-6 col-md-4">
                         <h2 className="bid-title">Last bids
                             <span>for {this.props.item && this.props.item.name}</span>
                         </h2>
