@@ -2,6 +2,8 @@
 // @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import './mixins.scss';
 
+$base-pink: #F91890;
+
 *{font-family: 'Josefin Sans', sans-serif;}
 
 .row{margin-left:0;margin-right:0;}
@@ -9,7 +11,7 @@
 
 input[type=text],input[type=password]{border-radius:20px;}
 .card{margin-bottom: 10px;}
-.bg-pink{background-color:#F91890;}
+.bg-pink{background-color:$base-pink;}
 .xs-margin{
     margin: {
         left:5px;
@@ -22,12 +24,12 @@ input[type=text],input[type=password]{border-radius:20px;}
     border-color:grey;
     transition:all .3s ease-in-out;
     &:hover{
-        background-color:#F91890;
-        border-color:#F91890;
+        background-color: $base-pink;
+        border-color:$base-pink;
     }
     &:not(:disabled):not(.disabled):active{
-        background-color:#F91890;
-        border-color:#F91890;
+        background-color:$base-pink;
+        border-color:$base-pink;
         box-shadow:0 0 0 0.2rem rgba(249, 24, 144, 0.2);
     }
     &:not(:disabled):not(.disabled):active:focus, &:focus{
@@ -55,7 +57,7 @@ input[type=text],input[type=password]{border-radius:20px;}
 //     }
 // }
 #navigation{
-    margin-bottom:30px;background-color: #f91890;
+    margin-bottom:30px;background-color: $base-pink;
 
     .navbar{box-shadow: 5px 0 10px 3px #ccc;}
     .navbar-brand{color:#fff;}
@@ -72,7 +74,7 @@ input[type=text],input[type=password]{border-radius:20px;}
 
     &:hover,&:focus{
         box-shadow: 0 10px 28px -16px;
-        border-color:#F91890;
+        border-color:$base-pink;
     }
 }
 
@@ -104,7 +106,7 @@ h1{
     box-shadow:0 0 0 0;
     
     &:hover{
-        border-color:#F91890;
+        border-color:$base-pink;
         box-shadow: 0 10px 20px -19px;
         z-index: 100;
         cursor:pointer;
@@ -116,7 +118,12 @@ h1{
 .card{
     transition: all .5s ease-in-out;
     &:hover{
-        border-color:#F91890;
+        border-color: $base-pink;
         box-shadow: 0 0 8px 1px #ccc;
+
+        a.btn-primary{
+            background-color:$base-pink;
+            border-color:$base-pink;
+        }
     }
 }
