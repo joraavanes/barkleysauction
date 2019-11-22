@@ -96,6 +96,8 @@ h1{
 .list-group-flush:last-child .list-group-item:last-child,
 .list-group-item{
     margin-bottom: 0;
+    padding-top:0;
+    margin-bottom: .75rem;
     border: {
         bottom:1px solid rgba(0, 0, 0, 0.125);
         top:none;
