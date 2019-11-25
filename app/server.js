@@ -10,7 +10,9 @@ const {mongoose} = require('./db/db');
 
 // Routes
 const mockRouter = require('./routes/mock');
+const userRouter = require('./routes/Users');
 const productRouter = require('./routes/Products');
+const commentRouter = require('./routes/Comments');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -28,9 +30,11 @@ app.get('/', (req,res)=>{
 
 // Server routes
 app.use('/items', mockRouter);
+app.use('/users', userRouter);
 app.use('/products', productRouter);
+app.use('/comments', commentRouter);
 
-app.all('*', (req, res) => {
+app.all('/*', (req, res) => {
     // res.status(404).send('The page you are looking for didn\'t exist');
     res.sendFile(path.join(publicPath, 'index.html'));
 });

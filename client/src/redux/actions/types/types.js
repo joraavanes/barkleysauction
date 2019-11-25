@@ -8,3 +8,6 @@ export const SORT_BY = 'SORT_BY';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
 
 export const LOGIN_MODAL_STATE = 'LOGIN_MODAL_STATE';
+
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const CLEAR_COMMENTS = 'CLEAR_COMMENTS';

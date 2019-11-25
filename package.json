@@ -18,7 +18,9 @@
   "author": "Joraav",
   "license": "ISC",
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.7",
     "uuid": "^3.3.3"
