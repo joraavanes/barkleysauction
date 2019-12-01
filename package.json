@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node app/server.js",
     "server": "nodemon app/server.js",
-    "server:open": "start http://localhost:3000 & nodemon app/server.js",
+    "server:watch": "start http://localhost:3000 & nodemon app/server.js",
     "client": "npm run dev --prefix client",
     "client:run": "live-server client/dist",
     "client:prod": "npm run build --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run server\" \"npm run client:run\""
+    "dev": "concurrently \"npm run client\" \"npm run server:watch\" \"npm run client:run\""
   },
   "engines": {
     "node": "12.13.0"
@@ -18,9 +18,10 @@
   "author": "Joraav",
   "license": "ISC",
   "dependencies": {
-    "crypto-js": "^3.1.9-1",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.7",
     "uuid": "^3.3.3"
