@@ -19,7 +19,7 @@ module.exports = {
                     loader:'file-loader',
                     options:{
                         name: '[name].[hash].[ext]',
-                        outputPath: '../images'
+                        outputPath: '../media'
                     }
                 },
                 exclude: /node_modules/

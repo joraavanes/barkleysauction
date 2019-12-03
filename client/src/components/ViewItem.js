@@ -10,7 +10,7 @@ import avatar4 from '../media/avatar-4.png'
 import bag from '../media/bag.jpg'
 
 class ViewItem extends Component {
-    
+
     componentDidMount(){
         this.props.getItem(this.props.match.params.name,this.props.match.params.id);
     }
@@ -28,7 +28,13 @@ class ViewItem extends Component {
                     <main className="col-12 col-sm-6 col-md-8">
                         <Row>
                             <div className="col-12 col-md-4 col-lg-3">
-                                <img src={bag.substr(2,bag.length+1)} className="img-fluid" alt={this.props.item ? this.props.item.name:'Product is not here!'}/>
+                                <img src={bag.substr(2)} className="img-fluid" alt={this.props.item ? this.props.item.name:'Product is not here!'}/>
+                                {/* {this.props.item !=null ? (
+
+                                    <img src={require('../media/bag.jpg').substr(2)} className="img-fluid" alt={this.props.item.name}/>
+                                ):(
+                                    <div>Loading ...</div>
+                                )} */}
                             </div>
                             <div className="col-12 col-md-8 col-lg-9">
                                 {this.props.item != null ? (
@@ -42,14 +48,11 @@ class ViewItem extends Component {
                                         </h1>
                                         <h4>Last bid was {this.props.item.price.toLocaleString()}</h4>
                                         <h4></h4>
-                                        <p>{this.props.item.price}</p>
-                                        <p>{this.props.item.sold}</p>
-                                        <p>{this.props.item.img}</p>
                                     </React.Fragment>
                                 ):(
                                     <div>Loading ...</div>
-                                    )}
-                                <h5 className="card-title">{this.props.match.params.name} -- {this.props.match.params.id}</h5>
+                                )}
+                                {/* <h5 className="card-title">{this.props.match.params.name} -- {this.props.match.params.id}</h5> */}
                                     
                                 <p>
                                     {this.props.item && this.props.item.description}
