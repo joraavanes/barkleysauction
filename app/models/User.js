@@ -74,15 +74,22 @@ UserSchema.methods.register = function(){
 UserSchema.methods.login = function(){
     var user = this;
 
-    User.findOne({email: user.email})
+    return User.findOne({email: user.email})
         .then(doc => {
-            bcryptjs.compare(user.password, doc.password, (err, result)=> {
-                if(err) return Promise.reject();
+            if(!doc) return Promise.reject();
 
-                return {result};
+            return new Promise((resolve, reject)=>{
+                bcryptjs.compare(user.password, doc.password, (err, result) => {
+                    if(err) reject();
+    
+                    if(result)
+                        resolve(doc);
+                    else
+                        reject();
+                });
             });
-        })
-        .catch('Username or password is incorrect');
+        });
+
 };  
 
 // Generates auth Jwt based on user._id and secret key, saves it to the db, then returns token
@@ -96,7 +103,7 @@ UserSchema.methods.generateAuthToken = function(){
     });
 
     return user.save()
-            .then(()=> token);            
+            .then(()=> token);
 };
 
 // (Used in the authenticate middleware) Find out if user with applied token exists or not

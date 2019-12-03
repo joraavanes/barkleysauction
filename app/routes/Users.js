@@ -19,18 +19,19 @@ router.post('/login', (req, res) => {
     const user = new User({email, password});
 
     user.login()
-        .then(token => res.header('x-auth', token))
-        .catch(() => res.status(401).send('Email or password is incorrect'));
+        .then(user=> user.generateAuthToken())
+        .then(token=> res.header('x-auth', token).send(user))
+        .catch(() => res.status(401).send({err: 'Email or password is incorrect'}));
 });
 
 router.post('/logout', authenticate, (req,res) => {
     const token = req.header('x-auth');
     User.removeToken(token)
         .then(user => res.send({msg: 'Logged out successfully', user}))
-        .catch(() => res.status(400).send('Invalid token - router'));
+        .catch(() => res.status(401).send('Invalid token'));
 });
 
-router.post('/verifyToken', authenticate, (req, res) => {
+router.get('/verifyToken', authenticate, (req, res) => {
 
     res.send(`Hello dear ${req.user.name} ${req.user.surname}. You are verified!`);
 });
