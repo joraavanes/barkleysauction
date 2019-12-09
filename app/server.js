@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet');
 
 // Adding Middlewares
 const printIp = require('./middleware/printIp');
@@ -19,6 +20,9 @@ const port = process.env.PORT || 3000;
 
 const publicPath = path.join(__dirname, '../client/dist');
 
+// Using middlewares
+app.use(helmet.hidePoweredBy({setTo: 'PHP/5.4.0'}));
+app.use(helmet());
 app.use(express.json());
 app.use(express.static(publicPath));
 app.use(cors);

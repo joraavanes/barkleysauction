@@ -47,9 +47,11 @@ class Navigation extends React.Component{
                                     <NavItem>
                                         <NavLink to="/Dashboard" className="nav-link">Dashboard</NavLink>
                                     </NavItem>
-                                    <NavItem>
-                                        <a href="#" className="nav-link" onClick={this.handleLoginModal}>Login</a>
-                                    </NavItem>
+                                    {!this.props.isAuthenticated &&
+                                        <NavItem>
+                                            <a href="#" className="nav-link" onClick={this.handleLoginModal}>Login</a>
+                                        </NavItem>
+                                    }
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
                                         Settings
@@ -80,8 +82,9 @@ class Navigation extends React.Component{
     }
 };
 
-const mapStateToProps = state => ({
-    loading: state.items.loading
+const mapStateToProps = store => ({
+    loading: store.items.loading,
+    isAuthenticated: store.auth.length !== 0
 });
 
 export default connect(mapStateToProps,{toggleLoginModal})(Navigation);

@@ -1,7 +1,8 @@
-import { LOGIN_MODAL_STATE } from '../actions/types/types'
+import { LOGIN_MODAL_STATE,TOGGLE_LOADER } from '../actions/types/types'
 
 const defaultPageStateRedcuer = {
-    loginState: false
+    loginState: false,
+    loading: false
 };
 
 const pageStateReducer = (state= defaultPageStateRedcuer, action) =>{
@@ -11,6 +12,11 @@ const pageStateReducer = (state= defaultPageStateRedcuer, action) =>{
                 ...state,
                 loginState: !state.loginState
             };
+        case TOGGLE_LOADER:
+            return{
+                ...state,
+                loading: !state.loading
+            }
         default:
             return state;
     }

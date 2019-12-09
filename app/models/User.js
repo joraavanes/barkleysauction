@@ -1,6 +1,7 @@
 const {Schema, model} = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
+const _ = require('lodash');
 
 const UserSchema = new Schema({
     email:{
@@ -41,6 +42,14 @@ const UserSchema = new Schema({
         }
     }]
 });
+
+UserSchema.methods.toJson = function(){
+    var user = this;
+    var objUser = user.toObject();
+
+    return _.pick(objUser, ['email', 'name']);
+};
+
 
 // Sets userConfirm field to true and save it to db
 UserSchema.methods.confirmUser = function(){
@@ -102,8 +111,10 @@ UserSchema.methods.generateAuthToken = function(){
         access,token
     });
 
+    console.log(user.toJson());
+
     return user.save()
-            .then(()=> token);
+            .then(()=> ({...user.toJson(),token}));
 };
 
 // (Used in the authenticate middleware) Find out if user with applied token exists or not

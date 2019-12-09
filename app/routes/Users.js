@@ -10,7 +10,7 @@ router.post('/register', (req, res) =>{
 
     user.register()
         .then(user => user.generateAuthToken())
-        .then(token => res.header('x-auth',token).send(user))
+        .then(user => res.header('x-auth',user.token).send(user))
         .catch(err => res.status(403).send(err));
 });
 
@@ -20,7 +20,7 @@ router.post('/login', (req, res) => {
 
     user.login()
         .then(user=> user.generateAuthToken())
-        .then(token=> res.header('x-auth', token).send(user))
+        .then(user => res.header('x-auth', user.token).send(user))
         .catch(() => res.status(401).send({err: 'Email or password is incorrect'}));
 });
 

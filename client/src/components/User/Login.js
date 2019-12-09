@@ -1,5 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { Container, Row, Button } from 'reactstrap'
+import { connect } from 'react-redux'
+import { login } from '../../redux/actions/authActions'
 import banner from '../../media/login-banner.png'
 
 class Login extends React.Component{
@@ -7,7 +9,19 @@ class Login extends React.Component{
         super(props);
     }
 
-    handleFormSubmit = e => e.preventDefault();
+    handleFormSubmit = e => {
+        e.preventDefault();
+
+        const email = e.target.elements.email.value;
+        const password = e.target.elements.password.value;
+        
+        this.props.login(email, password);
+    }
+
+    componentWillUpdate(){
+        console.log('Props changed.',this.props.isAuthenticated);
+        this.props.history.push('/dashboard');
+    }
 
     render(){
         return(
@@ -18,7 +32,7 @@ class Login extends React.Component{
                         <hr/>
                         <Row>
                             <div className="col-12 col-sm-6">
-                                <p>You can login though the form below. You can also login through your facebook or twitter account.</p>
+                                <p>You can login through the form below. You can also login through your facebook or twitter account.</p>
                                 <form onSubmit={this.handleFormSubmit}>
                                     <p>
                                         <input type="text" name="email" className="form-control" placeholder="Username or Email"/>
@@ -27,7 +41,10 @@ class Login extends React.Component{
                                         <input type="password" name="password" className="form-control" placeholder="Password"/>
                                     </p>
                                     <p>
-                                        <Button color="primary">Login</Button>
+                                        <Button color="primary">
+                                            {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                                             Login
+                                        </Button>
                                     </p>
                                 </form>
                             </div>
@@ -52,4 +69,9 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+const mapStateToProps = store => ({
+    loading: store.pageState.loading,
+    isAuthenticated: store.auth.length !== 0
+});
+
+export default connect(mapStateToProps,{login})(Login);

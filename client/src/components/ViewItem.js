@@ -44,10 +44,9 @@ class ViewItem extends Component {
                                             {!this.props.item.sold ? 
                                             (<span className="text-success avail-status">Available</span>) 
                                             :
-                                            (<span className="text-danger avail-status">Sold for {this.props.item.price.toLocaleString()}<i className="fas fa-pound-sign xs-margin"></i></span>)}
+                                            (<span className="text-danger avail-status">Sold for <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</span>)}
                                         </h1>
-                                        <h4>Last bid was {this.props.item.price.toLocaleString()}</h4>
-                                        <h4></h4>
+                                        <h4>Last bid was <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</h4>
                                     </React.Fragment>
                                 ):(
                                     <div>Loading ...</div>
