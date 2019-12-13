@@ -11,8 +11,6 @@ class PrivateRoute extends React.Component{
     }
 
     render(){
-        console.log(this.props.isAuthenticated);
-        // if(!this.state.isAuthenticated){
         if(!this.props.isAuthenticated){
             return(
                 <Redirect to={{

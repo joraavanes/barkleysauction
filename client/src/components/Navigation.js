@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 import { toggleLoginModal } from '../redux/actions/pageStateActions'
+import { logout } from '../redux/actions/authActions'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -13,6 +14,10 @@ class Navigation extends React.Component{
     handleLoginModal = () => {
         this.props.toggleLoginModal();
     }   
+
+    handleLogout = () => {
+        this.props.logout(this.props.tokens[0].token);
+    }
 
     // toggle navigation menu in mobile screen
     toggle = () => {
@@ -64,12 +69,15 @@ class Navigation extends React.Component{
                                             Theme
                                         </DropdownItem>
                                         <DropdownItem divider />
-                                        <DropdownItem>
-                                            Login
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            Logout
-                                        </DropdownItem>
+                                        {!this.props.isAuthenticated ? (
+                                            <DropdownItem>
+                                                Login
+                                            </DropdownItem>
+                                        ):(
+                                            <DropdownItem onClick={this.handleLogout}>
+                                                Logout
+                                            </DropdownItem>
+                                        )}
                                         </DropdownMenu>
                                     </UncontrolledDropdown>
                                 </Nav>
@@ -84,7 +92,8 @@ class Navigation extends React.Component{
 
 const mapStateToProps = store => ({
     loading: store.items.loading,
+    tokens: store.auth,
     isAuthenticated: store.auth.length !== 0
 });
 
-export default connect(mapStateToProps,{toggleLoginModal})(Navigation);
+export default connect(mapStateToProps,{toggleLoginModal, logout})(Navigation);

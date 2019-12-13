@@ -25,7 +25,7 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/logout', authenticate, (req,res) => {
-    const token = req.header('x-auth');
+    const {token} = req.body;
     User.removeToken(token)
         .then(user => res.send({msg: 'Logged out successfully', user}))
         .catch(() => res.status(401).send('Invalid token'));

@@ -111,7 +111,7 @@ UserSchema.methods.generateAuthToken = function(){
         access,token
     });
 
-    console.log(user.toJson());
+    // console.log(user.toJson());
 
     return user.save()
             .then(()=> ({...user.toJson(),token}));

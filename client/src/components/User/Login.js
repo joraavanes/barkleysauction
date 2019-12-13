@@ -19,7 +19,6 @@ class Login extends React.Component{
     }
 
     componentWillUpdate(){
-        console.log('Props changed.',this.props.isAuthenticated);
         this.props.history.push('/dashboard');
     }
 

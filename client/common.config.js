@@ -31,8 +31,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Barkley\'s Store | Where you feel like shopping',
             filename: '../index.html',
-            template: './src/assets/index.html',
-            excludeChunks: ['adminApp']
+            template: './src/assets/index.html'
         })
     ]
 };
