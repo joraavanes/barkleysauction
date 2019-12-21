@@ -11,7 +11,7 @@ router.post('/register', (req, res) =>{
     user.register()
         .then(user => user.generateAuthToken())
         .then(user => res.header('x-auth',user.token).send(user))
-        .catch(err => res.status(403).send(err));
+        .catch(err => res.status(403).send({errors: err.errors}));
 });
 
 router.post('/login', (req, res) => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Button } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../../redux/actions/authActions'
 import banner from '../../media/login-banner.png'
@@ -41,10 +42,13 @@ class Login extends React.Component{
                                     </p>
                                     <p>
                                         <Button color="primary">
-                                            {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
-                                             Login
+                                            Login
+                                            {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} 
                                         </Button>
                                     </p>
+                                    <h1 className="text-center">Or</h1>
+                                    
+                                    <NavLink to="/register" className="btn btn-primary d-block mx-auto" style={{width: '80%'}}>You can also register here :)</NavLink>
                                 </form>
                             </div>
                             <div className="col-12 col-sm-6">
@@ -57,7 +61,7 @@ class Login extends React.Component{
                                     </div>
                                 </Row>
                                 <p>
-                                Lorem ipsum dolor sit amet, quas eligendi per ut, in pri epicuri probatus. Te vel vocibus placerat scripserit, sit stet qualisque adversarium in.
+                                    Lorem ipsum dolor sit amet, quas eligendi per ut, in pri epicuri probatus. Te vel vocibus placerat scripserit, sit stet qualisque adversarium in.
                                 </p>
                             </div>
                         </Row>

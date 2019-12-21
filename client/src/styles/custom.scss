@@ -16,6 +16,7 @@ $base-pink: #F91890;
 .container-fluid,.col{padding-left:0;padding-right:0;}
 
 input[type=text],input[type=password]{border-radius:20px;}
+input[type=text].auto-complete-off,input[type=password].auto-complete-off{background-color:white;}
 .card{margin-bottom: 10px;}
 .bg-pink{background-color:$base-pink;}
 .xs-margin{

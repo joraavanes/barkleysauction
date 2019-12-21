@@ -38,7 +38,7 @@ class ViewItem extends Component {
                             </div>
                             <div className="col-12 col-md-8 col-lg-9">
                                 {this.props.item != null ? (
-                                    <React.Fragment>
+                                    <>
                                         <h1>
                                             {this.props.item.name} -  
                                             {!this.props.item.sold ? 
@@ -47,7 +47,7 @@ class ViewItem extends Component {
                                             (<span className="text-danger avail-status">Sold for <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</span>)}
                                         </h1>
                                         <h4>Last bid was <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</h4>
-                                    </React.Fragment>
+                                    </>
                                 ):(
                                     <div>Loading ...</div>
                                 )}

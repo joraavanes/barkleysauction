@@ -6,15 +6,23 @@ const _ = require('lodash');
 const UserSchema = new Schema({
     email:{
         type: String,
-        required: true,
+        required: [true, 'Email is required!'],
+        validate: {
+            validator: function(value){
+                return /[a-z]+(\.|_)?([a-z0-9]+(\.|_)?)+?[a-z0-9]+@[a-z0-9]+_?[a-z0-9]+\.[a-z]+/.test(value);
+            },
+            message: function(props){
+                return `${props.value} doesn't seem to be an email!`;
+            }
+        },
         trim: true,
         unique:true,
         minlength: 10
     },
     password:{
         type: String,
-        required: true,
-        minlength: 6
+        required: [true, 'Password is required!'],
+        minlength: [6, 'Password is too short!']
     },
     userConfirmed: {
         type: Boolean,
@@ -25,11 +33,11 @@ const UserSchema = new Schema({
     },
     name:{
         type: String,
-        required: true
+        required: [true, 'Why no name?']
     },
     surname:{
         type: String,
-        required: true
+        required: [true, 'Surname is required!'],
     },
     tokens: [{
         access:{
@@ -68,7 +76,7 @@ UserSchema.methods.register = function(){
         User.findOne({email: user.email})
             .then(doc=>{
                 if(doc){
-                    return reject('User already exists');
+                    return reject({errors: 'User already exists'});
                 }
 
                 return user.save();
@@ -76,7 +84,7 @@ UserSchema.methods.register = function(){
             .then(doc => {
                 resolve(doc);
             })
-            .catch(err => 'User registeration failed');
+            .catch(err => reject(err));
     });
 };
 

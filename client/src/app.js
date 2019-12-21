@@ -11,9 +11,11 @@ import LoginModal from './components/LoginModal'
 import PrivateRoute from './components/shared/PrivateRoute'
 import Dashboard from './components/Dashboard/Dashboard'
 import Login from './components/User/Login'
+import Register from './components/User/register'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/custom.scss'
+import register from './components/User/register'
 
 const router = (
     <Provider store={store}>
@@ -31,6 +33,7 @@ const router = (
                     <Route path="/items/:name/:id" component={ViewItem} exact={true}/>
                     <Route path="/Auction" component={Auction}/>
                     <Route path="/Login" component={Login}/>
+                    <Route path="/Register" component={Register}/>
                     <PrivateRoute path="/Dashboard">
                         <Dashboard/>
                     </PrivateRoute>

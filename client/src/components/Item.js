@@ -12,6 +12,7 @@ const Item = (props) => {
             <div className="card">
                 <NavLink to={`/items/${props.name}/${props.id}`}>
                     <img src={props.name=='toaster'?toaster:bag} className="img-fluid App__Items_Item-img"/>
+                    {/* <img src={props.img} className="img-fluid App__Items_Item-img"/> */}
                 </NavLink>
                 <div className="card-body">
                     <h5 className="card-title">{props.name}</h5>

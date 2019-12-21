@@ -33,9 +33,25 @@ export const logout = token => dispatch => {
             dispatch(toggleLoader());
         })
         .catch(err=> {
-            console.log(err);
             dispatch(toggleLoader());
         });    
+};
+
+export const register = ({name, surname, email, password}) => dispatch => {
+    dispatch(toggleLoader());
+
+    axios.post(`${url}users/register`, {name, surname, email, password})
+        .then(payload => {
+            
+            dispatch({
+                type: ADD_TOKEN,
+                token: payload.data
+            });
+            dispatch(toggleLoader());
+        })
+        .catch(err => {
+            dispatch(toggleLoader());
+        });
 };
 
 export const logUserMessage = () => ({
