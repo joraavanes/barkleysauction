@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../../redux/actions/authActions'
 import banner from '../../media/login-banner.png'
@@ -29,7 +30,7 @@ class Register extends React.Component{
             <Container fluid={true}>
                 <Row>
                     <div className="col-12 col-sm-10 offset-sm-1">
-                        <h2>Register</h2>
+                        <h1>Register</h1>
                         <hr/>
                         <Row>
                             <div className="col-12 col-md-6">
@@ -57,6 +58,8 @@ class Register extends React.Component{
                                         </button>
                                         {/* <input type="submit" className="btn btn-primary" value="Register"/> */}
                                     </p>
+                                    <h2 className="text-center">Or</h2>
+                                    <NavLink to="/login" className="btn btn-primary d-block mx-auto" style={{width: '80%'}}>Login</NavLink>
                                 </form>
                             </div>
                             <div className="col-12 col-md-6">

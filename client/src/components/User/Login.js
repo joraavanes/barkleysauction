@@ -20,7 +20,8 @@ class Login extends React.Component{
     }
 
     componentWillUpdate(){
-        this.props.history.push('/dashboard');
+        if(this.props.isAuthenticated)
+            this.props.history.push('/dashboard');
     }
 
     render(){
