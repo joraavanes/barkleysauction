@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { GET_COMMENTS, CLEAR_COMMENTS } from './types/types'
 
-const url = process.env.NODE_ENV === 'production' ? 'https://protected-scrubland-62320.herokuapp.com' : 'http://localhost:3000';
+const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
 
 export const getComments = () => dispatch => {
     axios.get(`${url}/comments`)

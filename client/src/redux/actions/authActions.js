@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ADD_TOKEN,CLEAR_TOKENS } from './types/types'
 import { toggleLoader } from './pageStateActions'
 
-const url = process.env.NODE_ENV == 'production' ? 'https://protected-scrubland-62320.herokuapp.com/' : 'http://localhost:3000/';
+const url = process.env.NODE_ENV == 'production' ? '/' : 'http://localhost:3000/';
 
 export const login = (email, password) => dispatch => {
     dispatch(toggleLoader());
