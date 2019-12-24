@@ -93,7 +93,7 @@ UserSchema.methods.login = function(){
 
     return User.findOne({email: user.email})
         .then(doc => {
-            if(!doc) return Promise.reject();
+            if(!doc) return Promise.reject({email: 'Username or password incorrect!'});
 
             return new Promise((resolve, reject)=>{
                 bcryptjs.compare(user.password, doc.password, (err, result) => {
@@ -102,7 +102,7 @@ UserSchema.methods.login = function(){
                     if(result)
                         resolve(doc);
                     else
-                        reject();
+                        reject({email: 'Username or password incorrect!'});
                 });
             });
         });

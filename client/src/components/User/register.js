@@ -36,15 +36,19 @@ class Register extends React.Component{
                             <div className="col-12 col-md-6">
                                 <p>Please fill out the form below.</p>
                                 <form onSubmit={this.handleRegisterForm}>
+                                    {this.props.nameError && <p className="text-danger no-margin-bottom">{this.props.nameError}</p>}
                                     <p>
                                         <input type="text" name="name" className="form-control auto-complete-off" placeholder="Name"/>
                                     </p>
+                                    {this.props.surnameError && <p className="text-danger no-margin-bottom">{this.props.surnameError}</p>}
                                     <p>
                                         <input type="text" name="surname" className="form-control auto-complete-off" placeholder="Surname"/>
                                     </p>
+                                    {this.props.emailError && <p className="text-danger no-margin-bottom">{this.props.emailError}</p>}
                                     <p>
                                         <input type="text" name="email" className="form-control auto-complete-off" placeholder="Email or Username" readOnly onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}/>
                                     </p>
+                                    {this.props.passwordError && <p className="text-danger no-margin-bottom">{this.props.passwordError}</p>}
                                     <p>
                                         <input type="password" className="form-control auto-complete-off" name="password" placeholder="Password" readOnly onFocus={this.handleFieldFocus} onBlur={this.handleFieldBlur}/>
                                     </p>
@@ -83,7 +87,11 @@ class Register extends React.Component{
 
 const mapStateToProps = store => ({
     loading: store.pageState.loading,
-    isAuthenticated: store.auth.length !== 0
+    isAuthenticated: store.auth.length !== 0,
+    nameError: store.error.name,
+    surnameError: store.error.surname,
+    emailError: store.error.email,
+    passwordError: store.error.password
 });
 
 export default connect(mapStateToProps,{register})(Register);

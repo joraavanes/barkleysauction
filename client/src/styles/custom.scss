@@ -10,7 +10,6 @@ $base-pink: #F91890;
     margin:0;
     box-sizing: border-box;
 }
- 
 
 .row{margin-left:0;margin-right:0;}
 .container-fluid,.col{padding-left:0;padding-right:0;}
@@ -42,6 +41,10 @@ input[type=text].auto-complete-off,input[type=password].auto-complete-off{backgr
     }
     &:not(:disabled):not(.disabled):active:focus, &:focus{
         box-shadow:0 0 0 0.2rem rgba(249, 24, 144, 0.2);
+    }
+    &:focus{
+        background-color: $base-pink;
+        border-color:$base-pink;
     }
 }
 
@@ -150,3 +153,5 @@ h1{
 .bids-loader{
     position:absolute;width: 90%;height: 100%;display: flex;align-items: center;z-index: 100;justify-content: center;box-sizing: border-box;padding: 0;margin: auto;left: 0;right: 0;top: 0;bottom: 0;
 }
+
+.no-margin-bottom{margin-bottom: 5px;}

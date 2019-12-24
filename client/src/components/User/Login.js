@@ -19,7 +19,7 @@ class Login extends React.Component{
         this.props.login(email, password);
     }
 
-    componentWillUpdate(){
+    componentDidUpdate(){
         if(this.props.isAuthenticated)
             this.props.history.push('/dashboard');
     }
@@ -35,6 +35,7 @@ class Login extends React.Component{
                             <div className="col-12 col-sm-6">
                                 <p>You can login through the form below. You can also login through your facebook or twitter account.</p>
                                 <form onSubmit={this.handleFormSubmit}>
+                                    {this.props.emailError && <p className="text-danger">{this.props.emailError}</p>}
                                     <p>
                                         <input type="text" name="email" className="form-control" placeholder="Username or Email"/>
                                     </p>
@@ -75,6 +76,7 @@ class Login extends React.Component{
 
 const mapStateToProps = store => ({
     loading: store.pageState.loading,
+    emailError: store.error.email,
     isAuthenticated: store.auth.length !== 0
 });
 

@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
     user.login()
         .then(user=> user.generateAuthToken())
         .then(user => res.header('x-auth', user.token).send(user))
-        .catch(() => res.status(401).send({err: 'Email or password is incorrect'}));
+        .catch(err => res.status(401).send({errors: err}));
 });
 
 router.post('/logout', authenticate, (req,res) => {

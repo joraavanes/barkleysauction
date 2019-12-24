@@ -17,6 +17,19 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/custom.scss'
 import register from './components/User/register'
 
+// store.dispatch({
+//     type: 'ADD_ERROR',
+//     errorType: 'email',
+//     errorValue: 'Please enter your username!'
+// });
+
+// setTimeout(() => {
+//     store.dispatch({
+//         type: 'REMOVE_ERROR',
+//         errorType: 'email'
+//     });    
+// }, 5000);
+
 const router = (
     <Provider store={store}>
         <Router>
