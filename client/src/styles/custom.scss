@@ -2,16 +2,26 @@
 // @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import './mixins.scss';
 
-$themePink: #F91890;
 
-*{font-family: 'Josefin Sans', sans-serif;}
+$base-pink: #F91890;
+
+*{
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
 
 .row{margin-left:0;margin-right:0;}
 .container-fluid,.col{padding-left:0;padding-right:0;}
 
 input[type=text],input[type=password]{border-radius:20px;}
+input[type=text].auto-complete-off,input[type=password].auto-complete-off{background-color:white;}
 .card{margin-bottom: 10px;}
-.bg-pink{background-color:$themePink;}
+
+.bg-pink{background-color:$base-pink;}
+
 .xs-margin{
     margin: {
         left:5px;
@@ -19,21 +29,27 @@ input[type=text],input[type=password]{border-radius:20px;}
     }
 }
 .fa, .fas{font-size: 14px;}
+.md-icon{font-size: 2rem;color:$base-pink;}
 .btn-primary{
     background-color:grey;
     border-color:grey;
     transition:all .3s ease-in-out;
     &:hover{
-        background-color:$themePink;
-        border-color:$themePink;
+
+        background-color: $base-pink;
+        border-color:$base-pink;
     }
     &:not(:disabled):not(.disabled):active{
-        background-color:$themePink;
-        border-color:$themePink;
+        background-color:$base-pink;
+        border-color:$base-pink;
         box-shadow:0 0 0 0.2rem rgba(249, 24, 144, 0.2);
     }
     &:not(:disabled):not(.disabled):active:focus, &:focus{
         box-shadow:0 0 0 0.2rem rgba(249, 24, 144, 0.2);
+    }
+    &:focus{
+        background-color: $base-pink;
+        border-color:$base-pink;
     }
 }
 
@@ -57,7 +73,9 @@ input[type=text],input[type=password]{border-radius:20px;}
 //     }
 // }
 #navigation{
-    margin-bottom:30px;background-color: $themePink;
+
+    margin-bottom:30px;background-color: $base-pink;
+
 
     .navbar{box-shadow: 5px 0 10px 3px #ccc;}
     .navbar-brand{color:#fff;}
@@ -74,7 +92,7 @@ input[type=text],input[type=password]{border-radius:20px;}
 
     &:hover,&:focus{
         box-shadow: 0 10px 28px -16px;
-        border-color:$themePink;
+        border-color:$base-pink;
     }
 }
 
@@ -96,6 +114,8 @@ h1{
 .list-group-flush:last-child .list-group-item:last-child,
 .list-group-item{
     margin-bottom: 0;
+    padding-top:0;
+    margin-bottom: .75rem;
     border: {
         bottom:1px solid rgba(0, 0, 0, 0.125);
         top:none;
@@ -106,7 +126,7 @@ h1{
     box-shadow:0 0 0 0;
     
     &:hover{
-        border-color:$themePink;
+        border-color:$base-pink;
         box-shadow: 0 10px 20px -19px;
         z-index: 100;
         cursor:pointer;
@@ -118,12 +138,27 @@ h1{
 .card{
     transition: all .5s ease-in-out;
     &:hover{
-        border-color:$themePink;
+        border-color: $base-pink;
         box-shadow: 0 0 8px 1px #ccc;
 
-        .btn-primary{
-            background-color:$themePink;
-            border-color: $themePink
+        a.btn-primary{
+            background-color:$base-pink;
+            border-color:$base-pink;
         }
     }
 }
+
+.App__Items_Item-img{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+#comments-wrapper{
+    padding-top: 50px;
+}
+
+.bids-loader{
+    position:absolute;width: 90%;height: 100%;display: flex;align-items: center;z-index: 100;justify-content: center;box-sizing: border-box;padding: 0;margin: auto;left: 0;right: 0;top: 0;bottom: 0;
+}
+
+.no-margin-bottom{margin-bottom: 5px;}

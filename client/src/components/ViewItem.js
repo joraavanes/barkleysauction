@@ -2,19 +2,22 @@ import React, { Component } from 'react'
 import {Container,Row,} from 'reactstrap'
 import { connect } from 'react-redux';
 import {getItem,clearItems} from '../redux/actions/itemActions'
+import { clearComments } from '../redux/actions/commentActions'
+import Comment from './Comment/Comment'
 import avatar1 from '../media/avatar-1.png'
 import avatar3 from '../media/avatar-5.png'
 import avatar4 from '../media/avatar-4.png'
 import bag from '../media/bag.jpg'
 
 class ViewItem extends Component {
-    
+
     componentDidMount(){
         this.props.getItem(this.props.match.params.name,this.props.match.params.id);
     }
 
     componentWillUnmount(){
         this.props.clearItems();
+        this.props.clearComments();
     }
 
     render() {
@@ -22,42 +25,56 @@ class ViewItem extends Component {
         return (
             <Container fluid={true}>
                 <Row>
-                    <main className="col-12 col-sm-8">
+                    <main className="col-12 col-sm-6 col-md-8">
                         <Row>
                             <div className="col-12 col-md-4 col-lg-3">
-                                <img src={bag.substr(2,bag.length+1)} className="img-fluid"/>
+                                <img src={bag.substr(2)} className="img-fluid" alt={this.props.item ? this.props.item.name:'Product is not here!'}/>
+                                {/* {this.props.item !=null ? (
+
+                                    <img src={require('../media/bag.jpg').substr(2)} className="img-fluid" alt={this.props.item.name}/>
+                                ):(
+                                    <div>Loading ...</div>
+                                )} */}
                             </div>
                             <div className="col-12 col-md-8 col-lg-9">
                                 {this.props.item != null ? (
-                                    <React.Fragment>
+                                    <>
                                         <h1>
                                             {this.props.item.name} -  
                                             {!this.props.item.sold ? 
                                             (<span className="text-success avail-status">Available</span>) 
                                             :
-                                            (<span className="text-danger avail-status">Sold for {this.props.item.price.toLocaleString()}<i className="fas fa-pound-sign xs-margin"></i></span>)}
+                                            (<span className="text-danger avail-status">Sold for <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</span>)}
                                         </h1>
-                                        <h4>Last bid was {this.props.item.price.toLocaleString()}</h4>
-                                        <h4></h4>
-                                        <p>{this.props.item.price}</p>
-                                        <p>{this.props.item.sold}</p>
-                                        <p>{this.props.item.img}</p>
-                                    </React.Fragment>
+                                        <h4>Last bid was <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</h4>
+                                    </>
                                 ):(
                                     <div>Loading ...</div>
                                 )}
-                                <h5 className="card-title">{this.props.match.params.name} -- {this.props.match.params.id}</h5>
+                                {/* <h5 className="card-title">{this.props.match.params.name} -- {this.props.match.params.id}</h5> */}
                                     
                                 <p>
                                     {this.props.item && this.props.item.description}
                                 </p>
                             </div>
                         </Row>
+                        <Row>
+                            <div className="col-12 col-sm-12 col-md-10 offset-md-1">
+                                <Comment/>
+                            </div>
+                        </Row>
                     </main>
-                    <div className="col-12 col-sm-4">
+                    <div className="col-12 col-sm-6 col-md-4">
                         <h2 className="bid-title">Last bids
                             <span>for {this.props.item && this.props.item.name}</span>
                         </h2>
+
+                        {/* <div className="bids-loader">
+                            <div role="status" className="spinner-border text-danger">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        </div> */}
+
                         <ul className="list-group list-group-flush">
                             <li className="list-group-item">
                                 <div className="media">
@@ -103,4 +120,4 @@ const mapStateToProps = store => ({
     item: store.items.items[0]
 });
 
-export default connect(mapStateToProps,{getItem, clearItems})(ViewItem);
+export default connect(mapStateToProps,{getItem, clearItems, clearComments})(ViewItem);

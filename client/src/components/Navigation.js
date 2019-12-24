@@ -1,5 +1,7 @@
 import React from 'react'
 import {Container,Row,Col,Navbar,NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import { toggleLoginModal } from '../redux/actions/pageStateActions'
+import { logout } from '../redux/actions/authActions'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -8,6 +10,16 @@ class Navigation extends React.Component{
         isOpen: false
     };
 
+    // toggle login modal
+    handleLoginModal = () => {
+        this.props.toggleLoginModal();
+    }   
+
+    handleLogout = () => {
+        this.props.logout(this.props.tokens[0].token);
+    }
+
+    // toggle navigation menu in mobile screen
     toggle = () => {
         this.setState(prevState => ({
             isOpen: !prevState.isOpen
@@ -38,8 +50,14 @@ class Navigation extends React.Component{
                                         <NavLink to="/Offers" className="nav-link">Offers</NavLink>
                                     </NavItem>
                                     <NavItem>
-                                        <NavLink to="/#" className="nav-link">Login</NavLink>
+
+                                        <NavLink to="/Dashboard" className="nav-link">Dashboard</NavLink>
                                     </NavItem>
+                                    {!this.props.isAuthenticated &&
+                                        <NavItem>
+                                            <a href="#" className="nav-link" onClick={this.handleLoginModal}>Login</a>
+                                        </NavItem>
+                                    }
                                     <UncontrolledDropdown nav inNavbar>
                                         <DropdownToggle nav caret>
                                         Settings
@@ -52,12 +70,15 @@ class Navigation extends React.Component{
                                             Theme
                                         </DropdownItem>
                                         <DropdownItem divider />
-                                        <DropdownItem>
-                                            Login
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            Logout
-                                        </DropdownItem>
+                                        {!this.props.isAuthenticated ? (
+                                            <DropdownItem>
+                                                Login
+                                            </DropdownItem>
+                                        ):(
+                                            <DropdownItem onClick={this.handleLogout}>
+                                                Logout
+                                            </DropdownItem>
+                                        )}
                                         </DropdownMenu>
                                     </UncontrolledDropdown>
                                 </Nav>
@@ -70,8 +91,10 @@ class Navigation extends React.Component{
     }
 };
 
-const mapStateToProps = state => ({
-    loading: state.items.loading
+const mapStateToProps = store => ({
+    loading: store.items.loading,
+    tokens: store.auth,
+    isAuthenticated: store.auth.length !== 0
 });
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps,{toggleLoginModal, logout})(Navigation);
