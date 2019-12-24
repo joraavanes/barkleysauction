@@ -3,6 +3,7 @@ import { Container, Row, Button } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../../redux/actions/authActions'
+import { clearErrors } from '../../redux/actions/errorActions';
 import banner from '../../media/login-banner.png'
 
 class Login extends React.Component{
@@ -18,6 +19,8 @@ class Login extends React.Component{
         
         this.props.login(email, password);
     }
+
+    componentDidMount = () => this.props.clearErrors();
 
     componentDidUpdate(){
         if(this.props.isAuthenticated)
@@ -80,4 +83,4 @@ const mapStateToProps = store => ({
     isAuthenticated: store.auth.length !== 0
 });
 
-export default connect(mapStateToProps,{login})(Login);
+export default connect(mapStateToProps,{login, clearErrors})(Login);

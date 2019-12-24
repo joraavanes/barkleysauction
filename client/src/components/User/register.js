@@ -3,6 +3,7 @@ import { Container, Row } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../../redux/actions/authActions'
+import { clearErrors } from '../../redux/actions/errorActions';
 import banner from '../../media/login-banner.png'
 
 class Register extends React.Component{
@@ -19,6 +20,8 @@ class Register extends React.Component{
 
     handleFieldBlur = e => e.target.setAttribute('readonly','readonly');
     handleFieldFocus = e => e.target.removeAttribute('readonly');
+
+    componentDidMount = () => this.props.clearErrors();
 
     componentWillUpdate = () => {
         if(this.props.isAuthenticated)
@@ -94,4 +97,4 @@ const mapStateToProps = store => ({
     passwordError: store.error.password
 });
 
-export default connect(mapStateToProps,{register})(Register);
+export default connect(mapStateToProps,{register, clearErrors})(Register);
