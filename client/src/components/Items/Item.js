@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom'
-import bag from '../media/backpack.jpg'
-import toaster from '../media/toasterWide.jpg'
+import bag from '../../media/backpack.jpg'
+import toaster from '../../media/toasterWide.jpg'
 
 const Item = (props) => {
     return (

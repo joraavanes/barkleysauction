@@ -5,7 +5,7 @@ import {Container, Button, Row, Col} from 'reactstrap'
 import axios from 'axios'
 import {getItems,clearItems} from '../redux/actions/itemActions'
 import SearchProduct from './SearchProduct'
-import Items from './Items'
+import Items from './Items/Items'
 
 // import {products} from './mock/mock'
 // import img from '../media/avatar.png'

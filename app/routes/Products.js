@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const {name, startingBid, description} = req.body;
-    let product = new Product({name, startingBid, description, uuid: uuid() });
+    let product = new Product({ uuid: uuid(), name, startingBid, description });
 
     product.save()
         .then((doc) => res.send(doc))

@@ -6,7 +6,7 @@ const url = process.env.NODE_ENV === 'production'? '': 'http://localhost:3000'
 
 export const getItems = () => dispatch => {
     dispatch(itemsLoading());
-    axios.get(`${url}/items`)
+    axios.get(`${url}/products`)
         .then(res=>{
             dispatch({
                 type:GET_ITEMS,
@@ -18,7 +18,7 @@ export const getItems = () => dispatch => {
 
 export const getItem = (name,id) => dispatch => {
     dispatch(itemsLoading());
-    axios.get(`${url}/items/${name}/${id}`)
+    axios.get(`${url}/products/${name}/${id}`)
         .then(res => {
             dispatch({
                 type: GET_ITEM,
@@ -34,7 +34,7 @@ export const getItemsByName = text => dispatch => {
     if(text !== ''){
         dispatch(itemsLoading());
         dispatch(setSearchText(text));
-        axios.get(`${url}/items/${text}`)
+        axios.get(`${url}/products/${text}`)
             .then(res => {
                 dispatch({
                     type: GET_ITEMS,

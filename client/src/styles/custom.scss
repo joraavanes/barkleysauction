@@ -2,7 +2,6 @@
 // @import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import './mixins.scss';
 
-
 $base-pink: #F91890;
 
 *{
@@ -16,7 +15,7 @@ $base-pink: #F91890;
 .row{margin-left:0;margin-right:0;}
 .container-fluid,.col{padding-left:0;padding-right:0;}
 
-input[type=text],input[type=password]{border-radius:20px;}
+input[type=text],input[type=password],input[type=number],textarea{border-radius:20px !important;}
 input[type=text].auto-complete-off,input[type=password].auto-complete-off{background-color:white;}
 .card{margin-bottom: 10px;}
 
@@ -55,7 +54,7 @@ input[type=text].auto-complete-off,input[type=password].auto-complete-off{backgr
 
 .spinner-grow{animation: unset;background-color:#fff;}
 .spinner-grow.active{animation: spinner-grow .75s linear infinite;}
-
+.spinner-border{margin-left: 7px;}
 // .mask{
 //     position:fixed;
 //     width: 100%;

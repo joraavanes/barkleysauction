@@ -60,8 +60,9 @@ export const register = ({name, surname, email, password}) => dispatch => {
             dispatch(toggleLoader());
         })
         .catch(err => {
+            // Converts errors object to array of errors
             const errorsArr = Object.entries(err.response.data.errors);
-            
+
             errorsArr.forEach(err => {
                 dispatch({
                     type: ADD_ERROR,

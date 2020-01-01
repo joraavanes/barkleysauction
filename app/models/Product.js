@@ -5,19 +5,19 @@ const ProductSchema = new Schema({
         required: true,
         type: String
     },
-    name: {
-        required: true,
+    title: {
+        required: [true, 'Please enter your product name'],
         type: String,
         trim: true
     },
     description:{
-        required: true,
+        required: [true, 'Please enter some details'],
         type: String,
-        maxlength: 2000,
-        minlength:20
+        maxlength: [2000, 'Description is so long! Please insert some gist'],
+        minlength: [20, 'It\'s so short.. add some details']
     },
     startingBid:{
-        required: true,
+        required: [true, 'Starting bid is needed to run the auction'],
         type: Number
     },
     sold:{

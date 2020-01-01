@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const compression = require('compression');
 
 // Adding Middlewares
 const printIp = require('./middleware/printIp');
@@ -23,6 +24,7 @@ const publicPath = path.join(__dirname, '../client/dist');
 // Using middlewares
 app.use(helmet.hidePoweredBy({setTo: 'PHP/5.4.0'}));
 app.use(helmet());
+app.use(compression());
 app.use(express.json());
 app.use(express.static(publicPath));
 app.use(cors);
@@ -33,9 +35,9 @@ app.get('/', (req,res)=>{
 });
 
 // Server routes
-app.use('/items', mockRouter);
+app.use('/products', mockRouter);
 app.use('/users', userRouter);
-app.use('/products', productRouter);
+app.use('/items', productRouter);
 app.use('/comments', commentRouter);
 
 app.all('/*', (req, res) => {

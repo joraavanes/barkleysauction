@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import {Container,Row,} from 'reactstrap'
 import { connect } from 'react-redux';
-import {getItem,clearItems} from '../redux/actions/itemActions'
-import { clearComments } from '../redux/actions/commentActions'
-import Comment from './Comment/Comment'
-import avatar1 from '../media/avatar-1.png'
-import avatar3 from '../media/avatar-5.png'
-import avatar4 from '../media/avatar-4.png'
-import bag from '../media/bag.jpg'
+import {getItem,clearItems} from '../../redux/actions/itemActions'
+import { clearComments } from '../../redux/actions/commentActions'
+import Comment from '../Comment/Comment'
+import avatar1 from '../../media/avatar-1.png'
+import avatar3 from '../../media/avatar-5.png'
+import avatar4 from '../../media/avatar-4.png'
+import bag from '../../media/bag.jpg'
 
 class ViewItem extends Component {
 
@@ -28,7 +28,14 @@ class ViewItem extends Component {
                     <main className="col-12 col-sm-6 col-md-8">
                         <Row>
                             <div className="col-12 col-md-4 col-lg-3">
-                                <img src={bag.substr(2)} className="img-fluid" alt={this.props.item ? this.props.item.name:'Product is not here!'}/>
+                                {this.props.item != null ? (
+                                    <img src={`/media/${this.props.item.name}.jpg`} className="img-fluid mx-auto d-block" alt={this.props.item ? this.props.item.name:'Product is not here!'}/>
+                                ): (
+                                    <span>Loading ...</span>
+                                )}
+
+                                {/* <img src={bag.substr(2)} className="img-fluid" alt={this.props.item ? this.props.item.name:'Product is not here!'}/> */}
+
                                 {/* {this.props.item !=null ? (
 
                                     <img src={require('../media/bag.jpg').substr(2)} className="img-fluid" alt={this.props.item.name}/>

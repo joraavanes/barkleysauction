@@ -71,9 +71,9 @@ class Navigation extends React.Component{
                                         </DropdownItem>
                                         <DropdownItem divider />
                                         {!this.props.isAuthenticated ? (
-                                            <DropdownItem>
+                                            <NavLink to="/Login" className="dropdown-item" role="menuitem">
                                                 Login
-                                            </DropdownItem>
+                                            </NavLink>
                                         ):(
                                             <DropdownItem onClick={this.handleLogout}>
                                                 Logout
