@@ -8,11 +8,13 @@ const ProductSchema = new Schema({
     title: {
         required: [true, 'Please enter your product name'],
         type: String,
-        trim: true
+        trim: true,
+        lowercase: true
     },
     description:{
         required: [true, 'Please enter some details'],
         type: String,
+        trim: true,
         maxlength: [2000, 'Description is so long! Please insert some gist'],
         minlength: [20, 'It\'s so short.. add some details']
     },
@@ -28,15 +30,24 @@ const ProductSchema = new Schema({
         required:false,
         type: Number
     },
-    img:{
-        required:true,
+    thumbnail:{
+        required:false,
         type: String,
         default:'-'
+    },
+    imageUrl:{
+        required: [true, 'Add some photos'],
+        type: String
     },
     wishlist:{
         required: true,
         type: Boolean,
         default: false
+    },
+    dateIssued:{
+        required: true,
+        type: Date,
+        default: new Date()
     }
 });
 

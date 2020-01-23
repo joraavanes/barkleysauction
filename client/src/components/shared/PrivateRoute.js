@@ -20,6 +20,7 @@ class PrivateRoute extends React.Component{
         } else {
             return(
                 <div>
+                    {/* {React.cloneElement(this.props.children, {history: this.props.history})} */}
                     {this.props.children}
                 </div>
             );

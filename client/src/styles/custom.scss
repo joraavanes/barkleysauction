@@ -83,6 +83,13 @@ input[type=text].auto-complete-off,input[type=password].auto-complete-off{backgr
     li.nav-item a.nav-link.active{color:#fff;}
     
     li.nav-item a{color:rgba(243, 243, 243, 0.801);}
+
+    li.nav-item a.dropdown-item{
+        color:#212529;
+    
+        &:hover{background-color:#f8f9fa;}
+        &:active{background-color:#007bff;color:#fff;}
+    }
 }
 .form-control.search{
     z-index: 100;

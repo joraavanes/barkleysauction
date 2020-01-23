@@ -76,7 +76,12 @@ UserSchema.methods.register = function(){
         User.findOne({email: user.email})
             .then(doc=>{
                 if(doc){
-                    return reject({errors: 'User already exists'});
+                    return reject({errors: {
+                            'email': {
+                                message:'User already exists'
+                            }
+                        }
+                    });
                 }
 
                 return user.save();

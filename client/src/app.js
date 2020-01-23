@@ -46,7 +46,8 @@ const router = (
                     <Route path="/items" component={App} exact={true}/>
                     <Route path="/items/:name/:id" component={ViewItem} exact={true}/>
                     <PrivateRoute path="/dashboard/items/list-an-item" exact={true}>
-                        <AddItem/>
+                        {/* <AddItem/> */}
+                        <Route component={AddItem}/>
                     </PrivateRoute>
                     <Route path="/Auction" component={Auction}/>
                     <Route path="/Login" component={Login}/>

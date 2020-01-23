@@ -35,9 +35,9 @@ app.get('/', (req,res)=>{
 });
 
 // Server routes
-app.use('/products', mockRouter);
+app.use('/products', productRouter);
 app.use('/users', userRouter);
-app.use('/items', productRouter);
+// app.use('/items', productRouter);
 app.use('/comments', commentRouter);
 
 app.all('/*', (req, res) => {

@@ -1,4 +1,4 @@
-import {GET_ITEMS,GET_ITEM,ITEMS_LOADING,CLEAR_ITEMS} from '../actions/types/types'
+import {GET_ITEMS,GET_ITEM,POST_ITEM,ITEMS_LOADING,CLEAR_ITEMS} from '../actions/types/types'
 
 const defaultItemState = {
     items:[],
@@ -18,6 +18,13 @@ export default (state = defaultItemState, action) =>{
                 ...state,
                 items: action.items,
                 loading: action.loading
+            };
+        case POST_ITEM:
+            return{
+                ...state,
+                loading: action.loading,
+                done: true,
+                items:[]
             };
         case CLEAR_ITEMS:
             return{

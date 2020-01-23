@@ -1,11 +1,12 @@
-import {ADD_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS} from './types/types'
+import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS, ADD_ERROR} from './types/types'
 import {setSearchText} from './filterActions'
+import { clearErrors } from './errorActions';
 import axios from 'axios'
 
 const url = process.env.NODE_ENV === 'production'? '': 'http://localhost:3000'
 
 export const getItems = () => dispatch => {
-    dispatch(itemsLoading());
+    dispatch(itemsLoading(true));
     axios.get(`${url}/products`)
         .then(res=>{
             dispatch({
@@ -17,7 +18,7 @@ export const getItems = () => dispatch => {
 };
 
 export const getItem = (name,id) => dispatch => {
-    dispatch(itemsLoading());
+    dispatch(itemsLoading(true));
     axios.get(`${url}/products/${name}/${id}`)
         .then(res => {
             dispatch({
@@ -32,7 +33,7 @@ export const getItem = (name,id) => dispatch => {
 export const getItemsByName = text => dispatch => {
     text = text.trim();
     if(text !== ''){
-        dispatch(itemsLoading());
+        dispatch(itemsLoading(true));
         dispatch(setSearchText(text));
         axios.get(`${url}/products/${text}`)
             .then(res => {
@@ -46,11 +47,37 @@ export const getItemsByName = text => dispatch => {
     }
 };
 
+export const postItem = ({title, startingBid, description, imageUrl, thumbnail}) => dispatch =>{
+    dispatch(itemsLoading(true));
+    
+    axios.post(`${url}/products`, {title,startingBid, description, imageUrl, thumbnail})
+        .then(data => {
+            dispatch({
+                type: POST_ITEM,
+                loading:false
+            });
+            dispatch(clearErrors());
+        })
+        .catch(err => {
+            const errorsArr = Object.entries(err.response.data.errors);
+            
+            dispatch(clearErrors());
+            errorsArr.forEach(err => {
+                dispatch({
+                    type: ADD_ERROR,
+                    errorType: err[0],
+                    errorValue: err[1].message
+                });
+            });
+            dispatch(itemsLoading(false));
+        });
+};
+
 export const clearItems = () => ({
     type: CLEAR_ITEMS
 });
 
-export const itemsLoading = () => ({
+export const itemsLoading = loading => ({
     type: ITEMS_LOADING,
-    loading: true
+    loading
 });
