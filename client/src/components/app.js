@@ -20,7 +20,7 @@ class App extends React.Component{
         // const target = e.target;
         
         if(headerTitle !== ''){
-            const filteredItems = this.props.products.filter(item => item.name.includes(headerTitle));
+            const filteredItems = this.props.products.filter(item => item.title.includes(headerTitle));
             this.setState(() => ({ filteredItems }));
         }else{
             this.setState(() => ({ filteredItems: this.props.products }));

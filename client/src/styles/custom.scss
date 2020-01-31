@@ -141,6 +141,16 @@ h1{
 
 .avatar-img{width: 32px;height:32px;background-color:#ccc;border-radius:50%;}
 
+table.table{
+    th{border-top:none;color:#fff;}
+    th:first-child{
+        border-top-left-radius: 10px;
+    }
+    th:last-child{
+        border-top-right-radius: 10px;
+    }
+}
+
 .card{
     transition: all .5s ease-in-out;
     &:hover{

@@ -2491,7 +2491,7 @@ var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css
 exports = module.exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap);"]);
 // Module
-exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password], input[type=number], textarea {\n  border-radius: 20px !important; }\n\ninput[type=text].auto-complete-off, input[type=password].auto-complete-off {\n  background-color: white; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.md-icon {\n  font-size: 2rem;\n  color: #F91890; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover {\n    background-color: #F91890;\n    border-color: #F91890; }\n  .btn-primary:not(:disabled):not(.disabled):active {\n    background-color: #F91890;\n    border-color: #F91890;\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:focus {\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:focus {\n    background-color: #F91890;\n    border-color: #F91890; }\n\n.spinner-grow {\n  animation: unset;\n  background-color: #fff; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n.spinner-border {\n  margin-left: 7px; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #F91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item a.dropdown-item {\n    color: #212529; }\n    #navigation li.nav-item a.dropdown-item:hover {\n      background-color: #f8f9fa; }\n    #navigation li.nav-item a.dropdown-item:active {\n      background-color: #007bff;\n      color: #fff; }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\nh1 span.avail-status {\n  font-size: 24px;\n  margin-left: 20px; }\n\nh1 i.fas {\n  font-size: 22px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  padding-top: 0;\n  margin-bottom: .75rem;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n\n.card {\n  transition: all .5s ease-in-out; }\n  .card:hover {\n    border-color: #F91890;\n    box-shadow: 0 0 8px 1px #ccc; }\n    .card:hover a.btn-primary {\n      background-color: #F91890;\n      border-color: #F91890; }\n\n.App__Items_Item-img {\n  border-top-right-radius: 5px;\n  border-top-left-radius: 5px; }\n\n#comments-wrapper {\n  padding-top: 50px; }\n\n.bids-loader {\n  position: absolute;\n  width: 90%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  z-index: 100;\n  justify-content: center;\n  box-sizing: border-box;\n  padding: 0;\n  margin: auto;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0; }\n\n.no-margin-bottom {\n  margin-bottom: 5px; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password], input[type=number], textarea {\n  border-radius: 20px !important; }\n\ninput[type=text].auto-complete-off, input[type=password].auto-complete-off {\n  background-color: white; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.md-icon {\n  font-size: 2rem;\n  color: #F91890; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover {\n    background-color: #F91890;\n    border-color: #F91890; }\n  .btn-primary:not(:disabled):not(.disabled):active {\n    background-color: #F91890;\n    border-color: #F91890;\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:focus {\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:focus {\n    background-color: #F91890;\n    border-color: #F91890; }\n\n.spinner-grow {\n  animation: unset;\n  background-color: #fff; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n.spinner-border {\n  margin-left: 7px; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #F91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item a.dropdown-item {\n    color: #212529; }\n    #navigation li.nav-item a.dropdown-item:hover {\n      background-color: #f8f9fa; }\n    #navigation li.nav-item a.dropdown-item:active {\n      background-color: #007bff;\n      color: #fff; }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\nh1 span.avail-status {\n  font-size: 24px;\n  margin-left: 20px; }\n\nh1 i.fas {\n  font-size: 22px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  padding-top: 0;\n  margin-bottom: .75rem;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n\ntable.table th {\n  border-top: none;\n  color: #fff; }\n\ntable.table th:first-child {\n  border-top-left-radius: 10px; }\n\ntable.table th:last-child {\n  border-top-right-radius: 10px; }\n\n.card {\n  transition: all .5s ease-in-out; }\n  .card:hover {\n    border-color: #F91890;\n    box-shadow: 0 0 8px 1px #ccc; }\n    .card:hover a.btn-primary {\n      background-color: #F91890;\n      border-color: #F91890; }\n\n.App__Items_Item-img {\n  border-top-right-radius: 5px;\n  border-top-left-radius: 5px; }\n\n#comments-wrapper {\n  padding-top: 50px; }\n\n.bids-loader {\n  position: absolute;\n  width: 90%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  z-index: 100;\n  justify-content: center;\n  box-sizing: border-box;\n  padding: 0;\n  margin: auto;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0; }\n\n.no-margin-bottom {\n  margin-bottom: 5px; }\n", ""]);
 
 
 /***/ }),
@@ -55307,7 +55307,7 @@ var router = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_re
   component: _components_app__WEBPACK_IMPORTED_MODULE_5__["default"],
   exact: true
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-  path: "/items/:name/:id",
+  path: "/items/:title/:uuid",
   component: _components_Items_ViewItem__WEBPACK_IMPORTED_MODULE_8__["default"],
   exact: true
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_shared_PrivateRoute__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -55315,6 +55315,12 @@ var router = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_re
   exact: true
 }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   component: _components_Items_AddItem__WEBPACK_IMPORTED_MODULE_9__["default"]
+})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_shared_PrivateRoute__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  path: "/dashboard/items/edit-item/:title/:uuid",
+  exact: true
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  component: _components_Items_AddItem__WEBPACK_IMPORTED_MODULE_9__["default"],
+  path: "/dashboard/items/edit-item/:title/:uuid"
 })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/Auction",
   component: _components_Auction__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -55498,6 +55504,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55508,13 +55518,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -55525,10 +55540,33 @@ var Dashboard =
 function (_React$Component) {
   _inherits(Dashboard, _React$Component);
 
-  function Dashboard(props) {
+  function Dashboard() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, Dashboard);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Dashboard)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      items: [],
+      error: undefined
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      _this.props.getItems();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
+      _this.props.clearItems();
+    });
+
+    return _this;
   }
 
   _createClass(Dashboard, [{
@@ -55539,20 +55577,61 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Here you can control the stuff!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
+        className: "col-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         to: "/Dashboard/Items/list-an-item",
         className: "btn btn-primary"
       }, "Sell your object")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-6"
-      })));
+        className: "col-8"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Products ", this.props.items.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        className: "bg-pink"
+      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        className: "bg-pink"
+      }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        className: "bg-pink"
+      }, "Starting Bid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        className: "bg-pink"
+      }, "Sold"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        className: "bg-pink"
+      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col",
+        className: "bg-pink"
+      }, "Edit / Remove"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.props.items && this.props.items.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: item._id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+          scope: "row"
+        }, index + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.startingBid), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.sold.toString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, new Date().toLocaleDateString(), " - ", new Date().toLocaleTimeString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+          className: "btn btn-warning btn-sm",
+          to: "/dashboard/items/edit-item/".concat(item.title, "/").concat(item.uuid)
+        }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+          className: "btn btn-warning btn-sm",
+          to: "/items/remove"
+        }, "Remove")));
+      }))))));
     }
   }]);
 
   return Dashboard;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
+var mapStateToProps = function mapStateToProps(store) {
+  return {
+    items: store.items.items
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, {
+  getItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_5__["getItems"],
+  clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_5__["clearItems"]
+})(Dashboard));
 
 /***/ }),
 
@@ -55571,6 +55650,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
 /* harmony import */ var _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/actions/errorActions */ "./src/redux/actions/errorActions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55622,6 +55705,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AddItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_this), "state", {});
+
     _defineProperty(_assertThisInitialized(_this), "handleAddItem", function (e) {
       e.preventDefault();
       var _e$target$elements = e.target.elements,
@@ -55640,19 +55725,55 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
-      return _this.props.clearErrors();
-    });
+    _defineProperty(_assertThisInitialized(_this), "handleEditItem", function (e) {
+      e.preventDefault();
+      console.log('Item edit fired');
+      var _this$state = _this.state,
+          _id = _this$state._id,
+          title = _this$state.title,
+          startingBid = _this$state.startingBid,
+          description = _this$state.description,
+          imageUrl = _this$state.imageUrl,
+          thumbnail = _this$state.thumbnail;
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function () {
-      console.log('add item updated');
+      _this.props.putItem({
+        _id: _id,
+        title: title,
+        startingBid: startingBid,
+        description: description,
+        imageUrl: imageUrl,
+        thumbnail: thumbnail
+      });
 
       if (_this.props.done) {
         _this.props.history.push('/dashboard');
-      } // if(this.checkNoErrors()){
-      //     this.props.history.push('/dashboard');
-      // }
+      } else {
+        console.log('this is wrong');
+      }
+    });
 
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      _this.props.clearItem();
+
+      if (_this.props.match.params.uuid) {
+        _this.props.getItem(_this.props.match.params.title, _this.props.match.params.uuid);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function () {
+      if (_this.props.done) {
+        _this.props.history.push('/dashboard');
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
+      _this.props.clearErrors();
+
+      _this.props.clearItem();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleFieldChange", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
     });
 
     return _this;
@@ -55663,10 +55784,12 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-md-12"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Listing a New Item ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, !this.props.match.params.uuid && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Listing a New Item ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         style: spanStyle
-      }, "on Barkley's")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleAddItem
+      }, "on Barkley's")), this.props.item && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Editing ", this.props.item.title, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        style: spanStyle
+      }, "on the Barkley's")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.props.match.params.uuid ? this.handleEditItem : this.handleAddItem
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, this.props.titleError && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -55676,7 +55799,9 @@ function (_Component) {
         name: "title",
         id: "title",
         className: "form-control",
-        placeholder: "Your object title"
+        placeholder: "Your object title",
+        onChange: this.handleFieldChange,
+        defaultValue: this.state.title
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, this.props.startingBidError && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -55687,7 +55812,9 @@ function (_Component) {
         id: "startingBid",
         className: "form-control",
         step: "0.01",
-        placeholder: "Starting price"
+        placeholder: "Starting price",
+        onChange: this.handleFieldChange,
+        defaultValue: this.state.startingBid
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, this.props.descriptionError && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -55697,7 +55824,9 @@ function (_Component) {
         name: "description",
         id: "description",
         placeholder: "Describe how glamorous your item is",
-        rows: "10"
+        rows: "10",
+        onChange: this.handleFieldChange,
+        defaultValue: this.state.description
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, this.props.imageUrlError && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -55707,7 +55836,9 @@ function (_Component) {
         name: "imageUrl",
         id: "imageUrl",
         className: "form-control",
-        placeholder: "Image"
+        placeholder: "Image",
+        onChange: this.handleFieldChange,
+        defaultValue: this.state.imageUrl
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, this.props.thumbnailError && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -55717,11 +55848,13 @@ function (_Component) {
         name: "thumbnail",
         id: "thumbnail",
         className: "form-control",
-        placeholder: "Image"
+        placeholder: "Image",
+        onChange: this.handleFieldChange,
+        defaultValue: this.state.thumbnail
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "btn btn-primary",
-        value: "Add"
+        value: this.props.match.params.uuid ? "Edit" : "Add"
       }))))));
     }
   }]);
@@ -55729,8 +55862,25 @@ function (_Component) {
   return AddItem;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
+_defineProperty(AddItem, "getDerivedStateFromProps", function (props, state) {
+  if (props.item && !state._id) {
+    return _objectSpread({}, state, {
+      _id: props.item._id,
+      title: props.item.title,
+      startingBid: props.item.startingBid,
+      description: props.item.description,
+      imageUrl: props.item.imageUrl,
+      thumbnail: props.item.thumbnail
+    });
+  }
+
+  ;
+  return state;
+});
+
 var mapStateToProps = function mapStateToProps(store) {
   return {
+    item: store.items.item,
     titleError: store.error.title,
     startingBidError: store.error.startingBid,
     descriptionError: store.error.description,
@@ -55742,6 +55892,9 @@ var mapStateToProps = function mapStateToProps(store) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, {
   postItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["postItem"],
+  getItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["getItem"],
+  putItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["putItem"],
+  clearItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItem"],
   clearErrors: _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"]
 })(AddItem));
 
@@ -55767,33 +55920,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Item = function Item(props) {
-  return (// <div>
-    //     <h3>{name} - {price.toLocaleString()}</h3>
-    // </div>
-    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "col-12 col-sm-6 col-md-3 col-lg-2"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-      to: "/items/".concat(props.name, "/").concat(props.id)
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: props.name == 'toaster' ? _media_toasterWide_jpg__WEBPACK_IMPORTED_MODULE_3__["default"] : _media_backpack_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
-      className: "img-fluid App__Items_Item-img"
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card-body"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-      className: "card-title"
-    }, props.name), props.description.length > 50 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: ""
-    }, props.description.slice(0, 50) + ' ...') : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: ""
-    }, props.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Offering: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fas fa-pound-sign xs-margin"
-    }), props.price.toLocaleString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-      to: "/items/".concat(props.name, "/").concat(props.id),
-      className: "btn btn-primary"
-    }, "See detail"))))
-  );
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-12 col-sm-6 col-md-3 col-lg-2"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    to: "/items/".concat(props.title, "/").concat(props.uuid)
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: props.name == 'toaster' ? _media_toasterWide_jpg__WEBPACK_IMPORTED_MODULE_3__["default"] : _media_backpack_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
+    className: "img-fluid App__Items_Item-img"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "card-title"
+  }, props.title), props.description.length > 50 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: ""
+  }, props.description.slice(0, 50) + ' ...') : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: ""
+  }, props.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Offering: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-pound-sign xs-margin"
+  }), props.startingBid.toLocaleString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    to: "/items/".concat(props.title, "/").concat(props.uuid),
+    className: "btn btn-primary"
+  }, "See detail"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Item);
@@ -55932,18 +56081,17 @@ function (_Component) {
   _createClass(ViewItem, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.getItem(this.props.match.params.name, this.props.match.params.id);
+      this.props.getItem(this.props.match.params.title, this.props.match.params.uuid);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      this.props.clearItems();
+      this.props.clearItem();
       this.props.clearComments();
     }
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props.item.description);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
         fluid: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
@@ -55951,26 +56099,26 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-md-4 col-lg-3"
       }, this.props.item != null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/media/".concat(this.props.item.name, ".jpg"),
+        src: "/media/".concat(this.props.item.title, ".jpg"),
         className: "img-fluid mx-auto d-block",
-        alt: this.props.item ? this.props.item.name : 'Product is not here!'
+        alt: this.props.item ? this.props.item.title : 'Product is not here!'
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading ...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-md-8 col-lg-9"
-      }, this.props.item != null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.item.name, " -", !this.props.item.sold ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, this.props.item != null ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.item.title, " -", !this.props.item.sold ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-success avail-status"
       }, "Available") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "text-danger avail-status"
       }, "Sold for ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pound-sign xs-margin"
-      }), this.props.item.price.toLocaleString())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Last bid was ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), this.props.item.startingBid.toLocaleString())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Last bid was ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pound-sign xs-margin"
-      }), this.props.item.price.toLocaleString())) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading ..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item && this.props.item.description))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), this.props.item.startingBid.toLocaleString())) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading ..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item && this.props.item.description))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-sm-12 col-md-10 offset-md-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment_Comment__WEBPACK_IMPORTED_MODULE_5__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-sm-6 col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "bid-title"
-      }, "Last bids", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.item && this.props.item.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "Last bids", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.item && this.props.item.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group list-group-flush"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "list-group-item"
@@ -56032,13 +56180,13 @@ function (_Component) {
 
 var mapStateToProps = function mapStateToProps(store) {
   return {
-    item: store.items.items[0]
+    item: store.items.item
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, {
   getItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["getItem"],
-  clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItems"],
+  clearItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItem"],
   clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_4__["clearComments"]
 })(ViewItem));
 
@@ -56389,9 +56537,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleHeader", function (e) {
       var target = e.target;
-      var value = target.value;
-
-      _this.props.handleHeader(value);
+      var value = target.value; // this.props.handleHeader(value);
 
       _this.props.getItemsByName(value);
     });
@@ -56856,7 +57002,7 @@ function (_React$Component) {
       // const target = e.target;
       if (headerTitle !== '') {
         var filteredItems = _this.props.products.filter(function (item) {
-          return item.name.includes(headerTitle);
+          return item.title.includes(headerTitle);
         });
 
         _this.setState(function () {
@@ -57298,16 +57444,18 @@ var setSearchText = function setSearchText(text) {
 /*!******************************************!*\
   !*** ./src/redux/actions/itemActions.js ***!
   \******************************************/
-/*! exports provided: getItems, getItem, getItemsByName, postItem, clearItems, itemsLoading */
+/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, clearItems, clearItem, itemsLoading */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItems", function() { return getItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItem", function() { return getItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItems", function() { return getItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItemsByName", function() { return getItemsByName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postItem", function() { return postItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "putItem", function() { return putItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItems", function() { return clearItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItem", function() { return clearItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemsLoading", function() { return itemsLoading; });
 /* harmony import */ var _types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types/types */ "./src/redux/actions/types/types.js");
 /* harmony import */ var _filterActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filterActions */ "./src/redux/actions/filterActions.js");
@@ -57319,24 +57467,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var url =  false ? undefined : 'http://localhost:3000';
+var getItem = function getItem(title, id) {
+  return function (dispatch) {
+    dispatch(itemsLoading(true));
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products/").concat(title, "/").concat(id)).then(function (res) {
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEM"],
+        loading: false,
+        item: res.data
+      });
+    });
+  };
+};
 var getItems = function getItems() {
   return function (dispatch) {
     dispatch(itemsLoading(true));
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products")).then(function (res) {
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"],
-        loading: false,
-        items: res.data
-      });
-    });
-  };
-};
-var getItem = function getItem(name, id) {
-  return function (dispatch) {
-    dispatch(itemsLoading(true));
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products/").concat(name, "/").concat(id)).then(function (res) {
-      dispatch({
-        type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEM"],
         loading: false,
         items: res.data
       });
@@ -57395,9 +57543,28 @@ var postItem = function postItem(_ref) {
     });
   };
 };
+var putItem = function putItem(item) {
+  return function (dispatch) {
+    dispatch(itemsLoading());
+    console.log(item);
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.put("".concat(url, "/products/alter"), item).then(function (res) {
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_0__["EDIT_ITEM"],
+        loading: false
+      });
+    })["catch"](function (err) {
+      console.log(err.response);
+    });
+  };
+};
 var clearItems = function clearItems() {
   return {
     type: _types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEMS"]
+  };
+};
+var clearItem = function clearItem() {
+  return {
+    type: _types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEM"]
   };
 };
 var itemsLoading = function itemsLoading(loading) {
@@ -57441,7 +57608,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, ITEMS_LOADING, CLEAR_ITEMS, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57452,6 +57619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_ITEM", function() { return EDIT_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ITEMS_LOADING", function() { return ITEMS_LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ITEMS", function() { return CLEAR_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ITEM", function() { return CLEAR_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SORT_BY", function() { return SORT_BY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEARCH_TEXT", function() { return SEARCH_TEXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGIN_MODAL_STATE", function() { return LOGIN_MODAL_STATE; });
@@ -57471,6 +57639,7 @@ var POST_ITEM = 'POST_ITEM';
 var EDIT_ITEM = 'EDIT_ITEM';
 var ITEMS_LOADING = 'ITEMS_LOADING';
 var CLEAR_ITEMS = 'CLEAR_ITEMS';
+var CLEAR_ITEM = 'CLEAR_ITEM';
 var SORT_BY = 'SORT_BY';
 var SEARCH_TEXT = 'SEARCH_TEXT'; // pageStateLoader action types
 
@@ -57731,7 +57900,7 @@ var defaultItemState = {
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEM"]:
       return _objectSpread({}, state, {
-        items: action.items,
+        item: action.item,
         loading: action.loading
       });
 
@@ -57742,9 +57911,21 @@ var defaultItemState = {
         items: []
       });
 
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["EDIT_ITEM"]:
+      return _objectSpread({}, state, {
+        loading: action.loading,
+        done: true
+      });
+
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEMS"]:
       return _objectSpread({}, state, {
         items: []
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEM"]:
+      return _objectSpread({}, state, {
+        item: undefined,
+        done: undefined
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ITEMS_LOADING"]:

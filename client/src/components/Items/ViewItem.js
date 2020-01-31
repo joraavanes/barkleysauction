@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Container,Row,} from 'reactstrap'
 import { connect } from 'react-redux';
-import {getItem,clearItems} from '../../redux/actions/itemActions'
+import {getItem,clearItem} from '../../redux/actions/itemActions'
 import { clearComments } from '../../redux/actions/commentActions'
 import Comment from '../Comment/Comment'
 import avatar1 from '../../media/avatar-1.png'
@@ -12,16 +12,15 @@ import bag from '../../media/bag.jpg'
 class ViewItem extends Component {
 
     componentDidMount(){
-        this.props.getItem(this.props.match.params.name,this.props.match.params.id);
+        this.props.getItem(this.props.match.params.title, this.props.match.params.uuid);
     }
 
     componentWillUnmount(){
-        this.props.clearItems();
+        this.props.clearItem();
         this.props.clearComments();
     }
 
     render() {
-        // console.log(this.props.item.description);
         return (
             <Container fluid={true}>
                 <Row>
@@ -29,7 +28,7 @@ class ViewItem extends Component {
                         <Row>
                             <div className="col-12 col-md-4 col-lg-3">
                                 {this.props.item != null ? (
-                                    <img src={`/media/${this.props.item.name}.jpg`} className="img-fluid mx-auto d-block" alt={this.props.item ? this.props.item.name:'Product is not here!'}/>
+                                    <img src={`/media/${this.props.item.title}.jpg`} className="img-fluid mx-auto d-block" alt={this.props.item ? this.props.item.title:'Product is not here!'}/>
                                 ): (
                                     <span>Loading ...</span>
                                 )}
@@ -47,13 +46,13 @@ class ViewItem extends Component {
                                 {this.props.item != null ? (
                                     <>
                                         <h1>
-                                            {this.props.item.name} -  
+                                            {this.props.item.title} -  
                                             {!this.props.item.sold ? 
                                             (<span className="text-success avail-status">Available</span>) 
                                             :
-                                            (<span className="text-danger avail-status">Sold for <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</span>)}
+                                            (<span className="text-danger avail-status">Sold for <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.startingBid.toLocaleString()}</span>)}
                                         </h1>
-                                        <h4>Last bid was <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.price.toLocaleString()}</h4>
+                                        <h4>Last bid was <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.startingBid.toLocaleString()}</h4>
                                     </>
                                 ):(
                                     <div>Loading ...</div>
@@ -73,7 +72,7 @@ class ViewItem extends Component {
                     </main>
                     <div className="col-12 col-sm-6 col-md-4">
                         <h2 className="bid-title">Last bids
-                            <span>for {this.props.item && this.props.item.name}</span>
+                            <span>for {this.props.item && this.props.item.title}</span>
                         </h2>
 
                         {/* <div className="bids-loader">
@@ -124,7 +123,7 @@ class ViewItem extends Component {
 };
 
 const mapStateToProps = store => ({
-    item: store.items.items[0]
+    item: store.items.item
 });
 
-export default connect(mapStateToProps,{getItem, clearItems, clearComments})(ViewItem);
+export default connect(mapStateToProps,{getItem, clearItem, clearComments})(ViewItem);

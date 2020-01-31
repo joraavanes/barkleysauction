@@ -1,9 +1,21 @@
-import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS, ADD_ERROR} from './types/types'
+import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR} from './types/types'
 import {setSearchText} from './filterActions'
 import { clearErrors } from './errorActions';
 import axios from 'axios'
 
 const url = process.env.NODE_ENV === 'production'? '': 'http://localhost:3000'
+
+export const getItem = (title,id) => dispatch => {
+    dispatch(itemsLoading(true));
+    axios.get(`${url}/products/${title}/${id}`)
+        .then(res => {
+            dispatch({
+                type: GET_ITEM,
+                loading: false,
+                item: res.data
+            });
+        });
+};
 
 export const getItems = () => dispatch => {
     dispatch(itemsLoading(true));
@@ -16,19 +28,6 @@ export const getItems = () => dispatch => {
             });
         });
 };
-
-export const getItem = (name,id) => dispatch => {
-    dispatch(itemsLoading(true));
-    axios.get(`${url}/products/${name}/${id}`)
-        .then(res => {
-            dispatch({
-                type: GET_ITEM,
-                loading: false,
-                items: res.data
-            });
-        });
-};
-
 
 export const getItemsByName = text => dispatch => {
     text = text.trim();
@@ -73,8 +72,28 @@ export const postItem = ({title, startingBid, description, imageUrl, thumbnail})
         });
 };
 
+export const putItem = item => dispatch => {
+    dispatch(itemsLoading());
+    console.log(item);
+    
+    axios.put(`${url}/products/alter`, item)
+        .then(res => {
+            dispatch({
+                type: EDIT_ITEM,
+                loading: false
+            });
+        })
+        .catch(err => {
+            console.log(err.response);
+        });
+};
+
 export const clearItems = () => ({
     type: CLEAR_ITEMS
+});
+
+export const clearItem = () => ({
+    type: CLEAR_ITEM
 });
 
 export const itemsLoading = loading => ({

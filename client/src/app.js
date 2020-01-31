@@ -44,10 +44,12 @@ const router = (
                         component={App}
                         exact={true}/>
                     <Route path="/items" component={App} exact={true}/>
-                    <Route path="/items/:name/:id" component={ViewItem} exact={true}/>
+                    <Route path="/items/:title/:uuid" component={ViewItem} exact={true}/>
                     <PrivateRoute path="/dashboard/items/list-an-item" exact={true}>
-                        {/* <AddItem/> */}
                         <Route component={AddItem}/>
+                    </PrivateRoute>
+                    <PrivateRoute path="/dashboard/items/edit-item/:title/:uuid" exact={true}>
+                        <Route component={AddItem} path="/dashboard/items/edit-item/:title/:uuid"/>
                     </PrivateRoute>
                     <Route path="/Auction" component={Auction}/>
                     <Route path="/Login" component={Login}/>

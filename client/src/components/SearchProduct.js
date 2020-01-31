@@ -12,7 +12,7 @@ class SearchProduct extends Component {
     handleHeader = e => {
         let target = e.target;
         let value = target.value;
-        this.props.handleHeader(value);
+        // this.props.handleHeader(value);
         this.props.getItemsByName(value);
     }
 
