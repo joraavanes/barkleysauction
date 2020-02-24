@@ -9,10 +9,13 @@ import banner from '../../media/login-banner.png'
 class Login extends React.Component{
     constructor(props){
         super(props);
+        this.submitBtn = React.createRef();
     }
 
     handleFormSubmit = e => {
         e.preventDefault();
+        this.submitBtn.current.setAttribute('disabled', 'disabled');
+        // e.target.elements.submitBtn.setAttribute('disabled', 'disabled');
 
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
@@ -25,6 +28,9 @@ class Login extends React.Component{
     componentDidUpdate(){
         if(this.props.isAuthenticated)
             this.props.history.push('/dashboard');
+        
+        if(!this.props.isAuthenticated && this.props.emailError && !this.props.loading)
+            this.submitBtn.current.removeAttribute('disabled');
     }
 
     render(){
@@ -46,10 +52,14 @@ class Login extends React.Component{
                                         <input type="password" name="password" className="form-control" placeholder="Password"/>
                                     </p>
                                     <p>
-                                        <Button color="primary">
+                                        <button type="submit" className="btn btn-primary" ref={this.submitBtn}>
                                             Login
                                             {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} 
-                                        </Button>
+                                        </button>
+                                        {/* <Button color="primary" name="submitBtn">
+                                            Login
+                                            {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} 
+                                        </Button> */}
                                     </p>
                                     <h1 className="text-center">Or</h1>
                                     

@@ -33,7 +33,7 @@ input[type=text].auto-complete-off,input[type=password].auto-complete-off{backgr
     background-color:grey;
     border-color:grey;
     transition:all .3s ease-in-out;
-    &:hover{
+    &:hover, &:disabled{
 
         background-color: $base-pink;
         border-color:$base-pink;

@@ -9,10 +9,12 @@ import banner from '../../media/login-banner.png'
 class Register extends React.Component{
     constructor(props){
         super(props);
+        this.submitBtn = React.createRef();
     }
 
     handleRegisterForm = e => {
         e.preventDefault();
+        this.submitBtn.current.setAttribute('disabled','disabled');
 
         const {name: {value:name}, surname : {value: surname}, email: {value: email}, password: {value: password}} = e.target.elements;
         this.props.register({name,surname,email,password});
@@ -23,9 +25,13 @@ class Register extends React.Component{
 
     componentDidMount = () => this.props.clearErrors();
 
-    componentWillUpdate = () => {
+    componentDidUpdate = () => {
         if(this.props.isAuthenticated)
             this.props.history.push('/');
+
+        const registerError = this.props.emailError != undefined || this.props.passwordError != undefined || this.props.nameError != undefined || this.props.surnameError != undefined;
+        if(registerError && !this.props.loading && !this.props.isAuthenticated)
+            this.submitBtn.current.removeAttribute('disabled');
     }
 
     render(){
@@ -59,7 +65,7 @@ class Register extends React.Component{
                                         <input type="password" className="form-control auto-complete-off" name="confirmPassword" placeholder="Confirm Password"/>
                                     </p>
                                     <p>
-                                        <button className="btn btn-primary" type="submit">
+                                        <button className="btn btn-primary" type="submit" ref={this.submitBtn}>
                                             Register 
                                             {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} 
                                         </button>
