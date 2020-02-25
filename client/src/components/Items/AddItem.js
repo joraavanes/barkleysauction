@@ -11,7 +11,9 @@ const spanStyle = {
 const pureObjectIsEmpty = obj => obj && obj.constructor === Object && Object.keys(obj).length === 0;
 
 class AddItem extends Component {
-    state = {};
+    state = {
+        ImageUrl: null,
+    };
 
     handleAddItem = e => {
         e.preventDefault();
@@ -32,6 +34,10 @@ class AddItem extends Component {
             console.log('this is wrong');
         }
 
+    }
+
+    handleImageUrl = e => {
+        this.setState({ [e.target.name]: e.target.files[0] });        
     }
 
     static getDerivedStateFromProps = (props, state) => {
@@ -101,10 +107,12 @@ class AddItem extends Component {
                             <div className="form-group">
                                 {this.props.imageUrlError && <span className="text-danger">{this.props.imageUrlError}</span>}
                                 <input type="text" name="imageUrl" id="imageUrl" className="form-control" placeholder="Image" onChange={this.handleFieldChange} defaultValue={this.state.imageUrl}/>
+                                <input type="file" onChange={this.handleImageUrl} name="ImageUrl" id="ImageUrl"/>
                             </div>
                             <div className="form-group">
                                 {this.props.thumbnailError && <span className="text-danger">{this.props.thumbnailError}</span>}
                                 <input type="text" name="thumbnail" id="thumbnail" className="form-control" placeholder="Image" onChange={this.handleFieldChange} defaultValue={this.state.thumbnail}/>
+                                <input type="file" onChange={this.handleImageUrl} name="Thumbnail" id="Thumbnail"/>
                             </div>
                             <div>
                                 <input type="submit" className="btn btn-primary" value={this.props.match.params.uuid ? "Edit" : "Add"}/>

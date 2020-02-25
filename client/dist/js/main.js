@@ -55705,7 +55705,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AddItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {});
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      ImageUrl: null
+    });
 
     _defineProperty(_assertThisInitialized(_this), "handleAddItem", function (e) {
       e.preventDefault();
@@ -55750,6 +55752,10 @@ function (_Component) {
       } else {
         console.log('this is wrong');
       }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleImageUrl", function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.files[0]));
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
@@ -55839,6 +55845,11 @@ function (_Component) {
         placeholder: "Image",
         onChange: this.handleFieldChange,
         defaultValue: this.state.imageUrl
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleImageUrl,
+        name: "ImageUrl",
+        id: "ImageUrl"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, this.props.thumbnailError && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -55851,6 +55862,11 @@ function (_Component) {
         placeholder: "Image",
         onChange: this.handleFieldChange,
         defaultValue: this.state.thumbnail
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleImageUrl,
+        name: "Thumbnail",
+        id: "Thumbnail"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         className: "btn btn-primary",
