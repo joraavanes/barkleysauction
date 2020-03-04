@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+const { v4 } = require('uuid');
+const _ = require('lodash');
+const {ObjectID} = require('mongodb');
+const {Product} = require('../models/Product');
+const multer = require('../middleware/productFileUpload');
+const authenticate = require('../middleware/authenticate');
+const { removeFile } = require('../util/fileHelper');

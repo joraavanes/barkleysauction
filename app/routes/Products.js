@@ -57,7 +57,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/', authenticate, multer.single('imageUrl'), (req, res) => {
     const file = req.file;
-    console.log(file);
 
     let imageUrl = undefined;
     if(!file){
@@ -70,7 +69,7 @@ router.post('/', authenticate, multer.single('imageUrl'), (req, res) => {
     let product = new Product({ uuid: v4(), title, startingBid, description, imageUrl, thumbnail });
 
     product.save()
-        .then((doc) => res.send(doc))
+        .then((doc) => res.sendStatus(201))
         .catch(err => {
             removeFile(imageUrl, (error, result)=>{
 
@@ -85,17 +84,18 @@ router.put('/alter', authenticate, multer.single('imageUrl'), (req, res, next) =
         return res.send('Id is not valid');
     }
 
-    console.log('file: ', req.file);
     if(req.file){
         body.imageUrl = `/media/${req.file.filename}`;
     }
 
-    Product.findOneAndUpdate({_id:body._id},{ $set: body}, {new: true},(err, item) => {
+    Product.findOneAndUpdate({_id:body._id},{ $set: body}, {new: false},(err, item) => {
         if(err){
             return res.status(400).send('update failed');
-        }        
-        
-        res.sendStatus(200);
+        }
+
+        removeFile(item.imageUrl, (err, result) =>{
+            res.sendStatus(200);            
+        });
     });
 });
 
@@ -108,11 +108,11 @@ router.delete('/remove', authenticate, (req, res, next) => {
     Product.findOneAndDelete({_id}, (err, doc) => {
         if(err){
             return res.status(400).send('Failed to remove');
-        }
+        }9
 
         removeFile(doc.imageUrl, (err) => {
             res.status(202).send('Item removed');
-        })
+        });
     }); 
 });
 
