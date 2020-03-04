@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { ADD_TOKEN,CLEAR_TOKENS, ADD_ERROR } from './types/types'
 import { toggleLoader } from './pageStateActions'
-import { addError } from './errorActions'
+import { itemsLoading } from './itemActions'
+import { addError, clearErrors } from './errorActions'
 
 const url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000';
 
@@ -32,7 +33,7 @@ export const login = (email, password) => dispatch => {
 };
 
 export const logout = token => dispatch => {
-    dispatch(toggleLoader());
+    dispatch(itemsLoading(true));
     
     axios.post(`${url}/users/logout`,{token})
         .then(payload=>{
@@ -40,10 +41,10 @@ export const logout = token => dispatch => {
             dispatch({
                 type: CLEAR_TOKENS
             });
-            dispatch(toggleLoader());
+            dispatch(itemsLoading(false));
         })
         .catch(err=> {
-            dispatch(toggleLoader());
+            dispatch(itemsLoading(false));
         });    
 };
 
@@ -63,6 +64,7 @@ export const register = ({name, surname, email, password}) => dispatch => {
             // Converts errors object to array of errors
             const errorsArr = Object.entries(err.response.data.errors);
 
+            dispatch(clearErrors());
             errorsArr.forEach(err => {
                 dispatch({
                     type: ADD_ERROR,

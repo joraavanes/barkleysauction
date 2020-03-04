@@ -26,10 +26,11 @@
     "lodash": "^4.17.15",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.7",
-    "uuid": "^3.3.3"
+    "multer": "^1.4.2",
+    "uuid": "^7.0.1"
   },
   "devDependencies": {
-    "concurrently": "^5.0.0",
-    "nodemon": "^2.0.1"
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
   }
 }

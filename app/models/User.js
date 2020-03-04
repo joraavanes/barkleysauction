@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     password:{
         type: String,
         required: [true, 'Password is required!'],
-        minlength: [6, 'Password is too short!']
+        minlength: [6, 'Atleast 6 charachters for password is needed']
     },
     userConfirmed: {
         type: Boolean,

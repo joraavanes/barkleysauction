@@ -8,37 +8,36 @@ const spanStyle = {
     fontSize: 18
 };
 
-const pureObjectIsEmpty = obj => obj && obj.constructor === Object && Object.keys(obj).length === 0;
+// const pureObjectIsEmpty = obj => obj && obj.constructor === Object && Object.keys(obj).length === 0;
 
 class AddItem extends Component {
     state = {
-        ImageUrl: null,
+        imageUrl: null,
+        thumbnail: null
     };
 
     handleAddItem = e => {
         e.preventDefault();
 
-        const { title: { value: title }, startingBid: {value:startingBid}, description: {value: description}, imageUrl: {value: imageUrl}, thumbnail: {value:thumbnail} } = e.target.elements;
-        this.props.postItem({title, startingBid, description, imageUrl, thumbnail});
+        const { title: { value: title }, startingBid: {value:startingBid}, description: {value: description}} = e.target.elements;
+        this.props.postItem({title, startingBid, description, imageUrl: this.state.imageUrl, thumbnail: this.state.thumbnail}, this.props.auth.token);
     }
 
     handleEditItem = e => {
         e.preventDefault();
-        console.log('Item edit fired');
         const {_id,title,startingBid, description,imageUrl, thumbnail} = this.state;
-        this.props.putItem({_id,title,startingBid, description,imageUrl, thumbnail});
+        console.log(imageUrl)
+        this.props.putItem({_id,title,startingBid, description,imageUrl, thumbnail}, this.props.auth.token);
 
-        if(this.props.done){
-            this.props.history.push('/dashboard');
-        } else {
-            console.log('this is wrong');
-        }
+        // if(this.props.done){
+        //     this.props.history.push('/dashboard');
+        // } else {
+        //     console.log('error submitting edit');
+        // }
 
     }
 
-    handleImageUrl = e => {
-        this.setState({ [e.target.name]: e.target.files[0] });        
-    }
+    handleImageUrl = e => this.setState({ [e.target.name]: e.target.files[0] });
 
     static getDerivedStateFromProps = (props, state) => {
         if(props.item && !state._id){
@@ -106,13 +105,14 @@ class AddItem extends Component {
                             </div>
                             <div className="form-group">
                                 {this.props.imageUrlError && <span className="text-danger">{this.props.imageUrlError}</span>}
-                                <input type="text" name="imageUrl" id="imageUrl" className="form-control" placeholder="Image" onChange={this.handleFieldChange} defaultValue={this.state.imageUrl}/>
-                                <input type="file" onChange={this.handleImageUrl} name="ImageUrl" id="ImageUrl"/>
+                                {/* <input type="text" name="imageUrl" id="imageUrl" className="form-control" placeholder="Image" onChange={this.handleFieldChange} defaultValue={this.state.imageUrl}/> */}
+                                {this.state.imageUrl && <img src={this.state.imageUrl} className="img-fluid img-thumbnail" style={{margin: 10, width: '14%'}}/>}
+                                <input type="file" onChange={this.handleImageUrl} name="imageUrl" id="imageUrl" accept="image/jpg, image/jpeg, image/png"/>
                             </div>
                             <div className="form-group">
                                 {this.props.thumbnailError && <span className="text-danger">{this.props.thumbnailError}</span>}
                                 <input type="text" name="thumbnail" id="thumbnail" className="form-control" placeholder="Image" onChange={this.handleFieldChange} defaultValue={this.state.thumbnail}/>
-                                <input type="file" onChange={this.handleImageUrl} name="Thumbnail" id="Thumbnail"/>
+                                <input type="file" onChange={this.handleImageUrl} name="Thumbnail" id="Thumbnail" accept="image/jpg, image/png, image/jpeg"/>
                             </div>
                             <div>
                                 <input type="submit" className="btn btn-primary" value={this.props.match.params.uuid ? "Edit" : "Add"}/>
@@ -132,6 +132,7 @@ const mapStateToProps = (store) => ({
     descriptionError: store.error.description,
     imageUrlError: store.error.imageUrl,
     thumbnailError: store.error.thumbnail,
+    auth: store.auth[0],
     done: store.items.done
 });
 

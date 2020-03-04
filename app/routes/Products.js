@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const uuid = require('uuid');
+const { v4 } = require('uuid');
 const _ = require('lodash');
 const {ObjectID} = require('mongodb');
 const {Product} = require('../models/Product');
+const multer = require('../middleware/productFileUpload');
+const authenticate = require('../middleware/authenticate');
+const { removeFile } = require('../util/fileHelper');
 // const items = require('./products.json');
 
 router.get('/', (req,res) =>{
-    Product.find((err, items) => {
+    Product.find({},null, { sort: {dateIssued: -1} }, (err, items) => {
         if(!err){
             res.send(items);
         }
@@ -52,32 +55,65 @@ router.get('/:id', (req, res) => {
         .catch(() => res.send({ error: 'the product you are looking for is not found'}));
 });1
 
-router.post('/', (req, res) => {
-    const {title, startingBid, description, imageUrl, thumbnail} = req.body;
-    let product = new Product({ uuid: uuid(), title, startingBid, description, imageUrl, thumbnail });
+router.post('/', authenticate, multer.single('imageUrl'), (req, res) => {
+    const file = req.file;
+    console.log(file);
+
+    let imageUrl = undefined;
+    if(!file){
+        return res.status(400).send({errors: { imageUrl: {message: 'The product file must be an image'}}});
+    }else{
+        imageUrl = `/media/${file.filename}`;
+    }
+
+    const {title, startingBid, description, thumbnail} = req.body;
+    let product = new Product({ uuid: v4(), title, startingBid, description, imageUrl, thumbnail });
 
     product.save()
         .then((doc) => res.send(doc))
-        .catch(err => res.status(400).send({errors: err.errors}));
+        .catch(err => {
+            removeFile(imageUrl, (error, result)=>{
+
+                res.status(400).send({errors: err.errors});
+            });
+        });
 });
 
-router.put('/alter', (req, res, next) => {
+router.put('/alter', authenticate, multer.single('imageUrl'), (req, res, next) => {
     const body = _.pick(req.body, ['_id', 'title', 'startingBid', 'description', 'imageUrl', 'thumbnail'])
-    console.log(body);
     if(!ObjectID.isValid(body._id)){
         return res.send('Id is not valid');
     }
 
-    Product.findOneAndUpdate({_id:body._id},{ $set: body}, {new: true},(err, item) => {
-        console.log('error: ', err);
-        console.log('item: ', item);
+    console.log('file: ', req.file);
+    if(req.file){
+        body.imageUrl = `/media/${req.file.filename}`;
+    }
 
-        if(item){
-            res.send('update done');
-        }else{
-            res.send('Update failed');
-        }
+    Product.findOneAndUpdate({_id:body._id},{ $set: body}, {new: true},(err, item) => {
+        if(err){
+            return res.status(400).send('update failed');
+        }        
+        
+        res.sendStatus(200);
     });
+});
+
+router.delete('/remove', authenticate, (req, res, next) => {
+    const {_id} = req.body;
+    if(!ObjectID.isValid(_id)){
+        return res.status(400).send('Invalid object id');
+    }
+
+    Product.findOneAndDelete({_id}, (err, doc) => {
+        if(err){
+            return res.status(400).send('Failed to remove');
+        }
+
+        removeFile(doc.imageUrl, (err) => {
+            res.status(202).send('Item removed');
+        })
+    }); 
 });
 
 module.exports = router;

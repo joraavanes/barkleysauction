@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
+const multer = require('multer');
 
 // Adding Middlewares
 const printIp = require('./middleware/printIp');
@@ -25,6 +26,11 @@ const publicPath = path.join(__dirname, '../client/dist');
 app.use(helmet.hidePoweredBy({setTo: 'PHP/5.4.0'}));
 app.use(helmet());
 app.use(compression());
+// app.use(multer({    
+//         storage: multer.diskStorage({
+//             destination: 'client/dist/media'            
+//         }) 
+//     }).single('imageUrl'));
 app.use(express.json());
 app.use(express.static(publicPath));
 app.use(cors);

@@ -8,6 +8,7 @@ const ProductSchema = new Schema({
     title: {
         required: [true, 'Please enter your product name'],
         type: String,
+        minlength: ['5', 'Too short for title'],
         trim: true,
         lowercase: true
     },
@@ -31,9 +32,9 @@ const ProductSchema = new Schema({
         type: Number
     },
     thumbnail:{
-        required:false,
+        required: false,
         type: String,
-        default:'-'
+        default: '-'
     },
     imageUrl:{
         required: [true, 'Add some photos'],

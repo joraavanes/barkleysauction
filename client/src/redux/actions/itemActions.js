@@ -46,10 +46,18 @@ export const getItemsByName = text => dispatch => {
     }
 };
 
-export const postItem = ({title, startingBid, description, imageUrl, thumbnail}) => dispatch =>{
+export const postItem = ({title, startingBid, description, imageUrl, thumbnail}, token) => dispatch =>{
     dispatch(itemsLoading(true));
-    
-    axios.post(`${url}/products`, {title,startingBid, description, imageUrl, thumbnail})
+    console.log(token);
+
+    const fd = new FormData();
+    fd.append('title', title);
+    fd.append('startingBid', startingBid);
+    fd.append('description', description);
+    fd.append('imageUrl', imageUrl);
+    fd.append('thumbnail', thumbnail);
+
+    axios.post(`${url}/products`, fd, { headers: { 'x-auth': token} })
         .then(data => {
             dispatch({
                 type: POST_ITEM,
@@ -72,11 +80,18 @@ export const postItem = ({title, startingBid, description, imageUrl, thumbnail})
         });
 };
 
-export const putItem = item => dispatch => {
-    dispatch(itemsLoading());
-    console.log(item);
+export const putItem = ({_id, title, startingBid, description, imageUrl, thumbnail }, token) => dispatch => {
+    dispatch(itemsLoading(true));
     
-    axios.put(`${url}/products/alter`, item)
+    const fd = new FormData();
+    fd.append('_id', _id);
+    fd.append('title', title);
+    fd.append('startingBid', startingBid);
+    fd.append('description', description);
+    fd.append('imageUrl', imageUrl);
+    fd.append('thumbnail', thumbnail);
+
+    axios.put(`${url}/products/alter`, fd, { headers: { 'x-auth': token } })
         .then(res => {
             dispatch({
                 type: EDIT_ITEM,
@@ -84,7 +99,10 @@ export const putItem = item => dispatch => {
             });
         })
         .catch(err => {
-            console.log(err.response);
+            const errorsArr = Object.entries(err.response.data.errors);
+
+            dispatch(clearErrors());
+            console.error(errorsArr);
         });
 };
 
