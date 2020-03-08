@@ -99,8 +99,8 @@ router.put('/alter', authenticate, multer.single('imageUrl'), (req, res, next) =
     });
 });
 
-router.delete('/remove', authenticate, (req, res, next) => {
-    const {_id} = req.body;
+router.delete('/remove/:_id', authenticate, (req, res, next) => {
+    const {_id} = req.params;
     if(!ObjectID.isValid(_id)){
         return res.status(400).send('Invalid object id');
     }
@@ -108,7 +108,7 @@ router.delete('/remove', authenticate, (req, res, next) => {
     Product.findOneAndDelete({_id}, (err, doc) => {
         if(err){
             return res.status(400).send('Failed to remove');
-        }9
+        }
 
         removeFile(doc.imageUrl, (err) => {
             res.status(202).send('Item removed');

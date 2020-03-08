@@ -45,18 +45,23 @@ const router = (
                         exact={true}/>
                     <Route path="/items" component={App} exact={true}/>
                     <Route path="/items/:title/:uuid" component={ViewItem} exact={true}/>
+                    <PrivateRoute path="/Dashboard" exact={true}>
+                        {/* <Dashboard/> */}
+                        <Route component={Dashboard} path="/dashboard"/>
+                    </PrivateRoute>
                     <PrivateRoute path="/dashboard/items/list-an-item" exact={true}>
                         <Route component={AddItem}/>
                     </PrivateRoute>
                     <PrivateRoute path="/dashboard/items/edit-item/:title/:uuid" exact={true}>
                         <Route component={AddItem} path="/dashboard/items/edit-item/:title/:uuid"/>
                     </PrivateRoute>
+                    <PrivateRoute path="/dashboard/items/remove/:uuid" exact={true}>
+                        <Route component={Dashboard} path="/dashboard/items/remove/:uuid"/>
+                    </PrivateRoute>
                     <Route path="/Auction" component={Auction}/>
                     <Route path="/Login" component={Login}/>
                     <Route path="/Register" component={Register}/>
-                    <PrivateRoute path="/Dashboard">
-                        <Dashboard/>
-                    </PrivateRoute>
+                    
                     <Route path="*" render={() => <h2>Middle of nowhere !</h2>}/>
                 </Switch>
         </Router>

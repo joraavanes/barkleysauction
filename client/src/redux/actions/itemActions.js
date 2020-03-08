@@ -1,4 +1,4 @@
-import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR} from './types/types'
+import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR, REMOVE_ITEM} from './types/types'
 import {setSearchText} from './filterActions'
 import { clearErrors } from './errorActions';
 import axios from 'axios'
@@ -105,6 +105,27 @@ export const putItem = ({_id, title, startingBid, description, imageUrl, thumbna
             console.error(errorsArr);
         });
 };
+
+export const removeItem = (_id, token) => dispatch => {
+    dispatch(itemsLoading(true));
+
+    axios.delete(`${url}/products/remove/${_id}`, {headers: { 'x-auth': token }})
+        .then(res => {
+            dispatch({
+                type: REMOVE_ITEM,
+                loading: false
+            });
+        })
+        .catch(err=> {
+            dispatch(clearErrors());
+            dispatch({
+                type: ADD_ERROR,
+                errorType: 'Item remove error',
+                errorValue: 'Failed to remove item'
+            });
+            dispatch(clearErrors());
+        });
+} 
 
 export const clearItems = () => ({
     type: CLEAR_ITEMS

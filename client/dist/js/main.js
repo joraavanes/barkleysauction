@@ -52997,6 +52997,12 @@ var router = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_re
   component: _components_Items_ViewItem__WEBPACK_IMPORTED_MODULE_8__["default"],
   exact: true
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_shared_PrivateRoute__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  path: "/Dashboard",
+  exact: true
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  component: _components_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_12__["default"],
+  path: "/dashboard"
+})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_shared_PrivateRoute__WEBPACK_IMPORTED_MODULE_11__["default"], {
   path: "/dashboard/items/list-an-item",
   exact: true
 }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -53007,6 +53013,12 @@ var router = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_re
 }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   component: _components_Items_AddItem__WEBPACK_IMPORTED_MODULE_9__["default"],
   path: "/dashboard/items/edit-item/:title/:uuid"
+})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_shared_PrivateRoute__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  path: "/dashboard/items/remove/:uuid",
+  exact: true
+}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  component: _components_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_12__["default"],
+  path: "/dashboard/items/remove/:uuid"
 })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/Auction",
   component: _components_Auction__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -53016,9 +53028,7 @@ var router = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_re
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/Register",
   component: _components_User_register__WEBPACK_IMPORTED_MODULE_14__["default"]
-}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_shared_PrivateRoute__WEBPACK_IMPORTED_MODULE_11__["default"], {
-  path: "/Dashboard"
-}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_12__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "*",
   render: function render() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Middle of nowhere !");
@@ -53186,10 +53196,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
+/* harmony import */ var _components_Items_itemDeleteModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Items/itemDeleteModal */ "./src/components/Items/itemDeleteModal.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53235,6 +53244,9 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       items: [],
+      deleteModal: {
+        modalState: false
+      },
       error: undefined
     });
 
@@ -53246,20 +53258,64 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
       _this.props.clearItems();
     });
 
+    _defineProperty(_assertThisInitialized(_this), "toggleDeleteModal", function (e, itemRemoved) {
+      var uuid = e && e.target.dataset.uuid,
+          title = e && e.target.dataset.title;
+
+      if (!_this.state.deleteModal.uuid && !_this.state.deleteModal.title) {
+        _this.setState(function (prevState) {
+          return {
+            deleteModal: {
+              uuid: uuid,
+              title: title,
+              modalState: !prevState.deleteModal.modalState
+            }
+          };
+        });
+
+        _this.props.history.push("/dashboard/items/remove/".concat(uuid));
+      }
+
+      if (_this.state.deleteModal.uuid && _this.state.deleteModal.title) {
+        _this.setState({
+          deleteModal: {
+            modalState: false,
+            uuid: undefined,
+            title: undefined
+          }
+        });
+
+        _this.props.history.push("/dashboard");
+      }
+
+      if (itemRemoved) {
+        _this.props.clearItems();
+
+        _this.props.getItems();
+      }
+    });
+
     return _this;
   }
 
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], {
         fluid: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Items_itemDeleteModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        uuid: this.state.deleteModal.uuid,
+        title: this.state.deleteModal.title,
+        modalState: this.state.deleteModal.modalState,
+        handleModalState: this.toggleDeleteModal
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Here you can control the stuff!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        to: "/Dashboard/Items/list-an-item",
+        to: "/dashboard/Items/list-an-item",
         className: "btn btn-primary"
       }, "Sell your object")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-8"
@@ -53291,9 +53347,11 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
         }, index + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.startingBid), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.sold.toString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, new Date().toLocaleDateString(), " - ", new Date().toLocaleTimeString()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
           className: "btn btn-warning btn-sm",
           to: "/dashboard/items/edit-item/".concat(item.title, "/").concat(item.uuid)
-        }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+        }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "btn btn-warning btn-sm",
-          to: "/items/remove"
+          "data-uuid": item.uuid,
+          "data-title": item.title,
+          onClick: _this2.toggleDeleteModal
         }, "Remove")));
       }))))));
     }
@@ -53308,9 +53366,9 @@ var mapStateToProps = function mapStateToProps(store) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, {
-  getItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_5__["getItems"],
-  clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_5__["clearItems"]
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, {
+  getItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["getItems"],
+  clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["clearItems"]
 })(Dashboard));
 
 /***/ }),
@@ -53875,6 +53933,147 @@ var mapStateToProps = function mapStateToProps(store) {
   clearItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItem"],
   clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_4__["clearComments"]
 })(ViewItem));
+
+/***/ }),
+
+/***/ "./src/components/Items/itemDeleteModal.js":
+/*!*************************************************!*\
+  !*** ./src/components/Items/itemDeleteModal.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var ItemDeleteModal = /*#__PURE__*/function (_Component) {
+  _inherits(ItemDeleteModal, _Component);
+
+  function ItemDeleteModal() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, ItemDeleteModal);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ItemDeleteModal)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      uuid: undefined,
+      title: undefined
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleFormSubmit", function (e) {
+      e.preventDefault();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function () {
+      console.log('new state: ', _this.state);
+
+      if (_this.state.uuid && _this.state.title && !_this.props.itemToDelete) {
+        _this.props.getItem(_this.state.title, _this.state.uuid);
+      }
+
+      if (_this.props.done) {
+        _this.props.clearItem();
+
+        _this.props.handleModalState(null, true);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleModalState", function (e) {
+      _this.props.clearItem();
+
+      _this.props.handleModalState(e);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "submitRemove", function () {
+      _this.props.removeItem(_this.props.itemToDelete._id, _this.props.auth.token);
+    });
+
+    return _this;
+  }
+
+  _createClass(ItemDeleteModal, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+        isOpen: this.props.modalState,
+        toggle: this.props.handleModalState
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleFormSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], null, "Removing the ", this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Are you going to delete the item ", this.props.title, " - (", this.props.uuid, ")?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        color: "danger",
+        onClick: this.submitRemove
+      }, "Remove item"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], _defineProperty({
+        color: "secondary",
+        onClick: this.toggle
+      }, "onClick", this.handleModalState), "Cancel"))));
+    }
+  }]);
+
+  return ItemDeleteModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+_defineProperty(ItemDeleteModal, "getDerivedStateFromProps", function (nextProps, prevState) {
+  console.log('Next Props: ', nextProps);
+  var uuid = nextProps.uuid,
+      title = nextProps.title;
+  if (uuid && title) return {
+    uuid: uuid,
+    title: title
+  };else return {
+    uuid: undefined,
+    title: undefined
+  };
+});
+
+var mapStateToProps = function mapStateToProps(store) {
+  return {
+    itemToDelete: store.items.item,
+    done: store.items.done,
+    auth: store.auth[0]
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, {
+  getItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["getItem"],
+  removeItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["removeItem"],
+  clearItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItem"]
+})(ItemDeleteModal));
 
 /***/ }),
 
@@ -55134,7 +55333,7 @@ var setSearchText = function setSearchText(text) {
 /*!******************************************!*\
   !*** ./src/redux/actions/itemActions.js ***!
   \******************************************/
-/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, clearItems, clearItem, itemsLoading */
+/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, removeItem, clearItems, clearItem, itemsLoading */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55144,6 +55343,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getItemsByName", function() { return getItemsByName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postItem", function() { return postItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "putItem", function() { return putItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeItem", function() { return removeItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItems", function() { return clearItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItem", function() { return clearItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemsLoading", function() { return itemsLoading; });
@@ -55270,6 +55470,29 @@ var putItem = function putItem(_ref2, token) {
     });
   };
 };
+var removeItem = function removeItem(_id, token) {
+  return function (dispatch) {
+    dispatch(itemsLoading(true));
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a["delete"]("".concat(url, "/products/remove/").concat(_id), {
+      headers: {
+        'x-auth': token
+      }
+    }).then(function (res) {
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ITEM"],
+        loading: false
+      });
+    })["catch"](function (err) {
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_2__["clearErrors"])());
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_0__["ADD_ERROR"],
+        errorType: 'Item remove error',
+        errorValue: 'Failed to remove item'
+      });
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_2__["clearErrors"])());
+    });
+  };
+};
 var clearItems = function clearItems() {
   return {
     type: _types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEMS"]
@@ -55321,7 +55544,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55330,6 +55553,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ITEM", function() { return GET_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "POST_ITEM", function() { return POST_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_ITEM", function() { return EDIT_ITEM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ITEM", function() { return REMOVE_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ITEMS_LOADING", function() { return ITEMS_LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ITEMS", function() { return CLEAR_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ITEM", function() { return CLEAR_ITEM; });
@@ -55350,6 +55574,7 @@ var GET_ITEMS = 'GET_ITEMS';
 var GET_ITEM = 'GET_ITEM';
 var POST_ITEM = 'POST_ITEM';
 var EDIT_ITEM = 'EDIT_ITEM';
+var REMOVE_ITEM = 'REMOVE_ITEM';
 var ITEMS_LOADING = 'ITEMS_LOADING';
 var CLEAR_ITEMS = 'CLEAR_ITEMS';
 var CLEAR_ITEM = 'CLEAR_ITEM';
@@ -55625,6 +55850,12 @@ var defaultItemState = {
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["EDIT_ITEM"]:
+      return _objectSpread({}, state, {
+        loading: action.loading,
+        done: true
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ITEM"]:
       return _objectSpread({}, state, {
         loading: action.loading,
         done: true
