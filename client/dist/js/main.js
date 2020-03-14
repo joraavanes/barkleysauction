@@ -53675,8 +53675,8 @@ var Item = function Item(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: "/items/".concat(props.title, "/").concat(props.uuid)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: props.name == 'toaster' ? _media_toasterWide_jpg__WEBPACK_IMPORTED_MODULE_3__["default"] : _media_backpack_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
-    className: "img-fluid App__Items_Item-img"
+    src: props.imageUrl || _media_backpack_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
+    className: "img-fluid"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -54035,10 +54035,15 @@ var ItemDeleteModal = /*#__PURE__*/function (_Component) {
         toggle: this.props.handleModalState
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleFormSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], null, "Removing the ", this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Are you going to delete the item ", this.props.title, " - (", this.props.uuid, ")?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-        color: "danger",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], null, "Removing the ", this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Are you going to delete the item ", this.props.title, " - (", this.props.uuid, ")?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: this.props.loading ? "btn btn-danger disabled" : "btn btn-danger",
+        disabled: this.props.loading,
         onClick: this.submitRemove
-      }, "Remove item"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], _defineProperty({
+      }, "Remove item", this.props.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "spinner-border spinner-border-sm",
+        role: "status",
+        "aria-hidden": "true"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], _defineProperty({
         color: "secondary",
         onClick: this.toggle
       }, "onClick", this.handleModalState), "Cancel"))));
@@ -54064,6 +54069,7 @@ _defineProperty(ItemDeleteModal, "getDerivedStateFromProps", function (nextProps
 var mapStateToProps = function mapStateToProps(store) {
   return {
     itemToDelete: store.items.item,
+    loading: store.items.loading,
     done: store.items.done,
     auth: store.auth[0]
   };

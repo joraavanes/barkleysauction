@@ -93,9 +93,13 @@ router.put('/alter', authenticate, multer.single('imageUrl'), (req, res, next) =
             return res.status(400).send('update failed');
         }
 
-        removeFile(item.imageUrl, (err, result) =>{
-            res.sendStatus(200);            
-        });
+        if(req.file){
+            removeFile(item.imageUrl, (err, result) =>{
+                res.sendStatus(200);            
+            });
+        }else{
+            res.sendStatus(200);
+        }
     });
 });
 

@@ -8,7 +8,8 @@ const Item = (props) => {
         <div className="col-12 col-sm-6 col-md-3 col-lg-2">
             <div className="card">
                 <NavLink to={`/items/${props.title}/${props.uuid}`}>
-                    <img src={props.name=='toaster'?toaster:bag} className="img-fluid App__Items_Item-img"/>
+                    <img src={props.imageUrl || bag} className="img-fluid"/>
+                    {/* <img src={props.name=='toaster'?toaster:bag} className="img-fluid App__Items_Item-img"/> */}
                     {/* <img src={props.img} className="img-fluid App__Items_Item-img"/> */}
                 </NavLink>
                 <div className="card-body">

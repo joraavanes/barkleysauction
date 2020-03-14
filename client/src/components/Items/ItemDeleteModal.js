@@ -55,7 +55,10 @@ class ItemDeleteModal extends Component {
                                 </p>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="danger" onClick={this.submitRemove}>Remove item</Button>
+                        <button className={this.props.loading ? "btn btn-danger disabled" : "btn btn-danger"} disabled={this.props.loading} onClick={this.submitRemove}>
+                            Remove item
+                            {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} 
+                        </button>
                         <Button color="secondary" onClick={this.toggle} onClick={this.handleModalState}>Cancel</Button>
                     </ModalFooter>
                 </form>
@@ -66,6 +69,7 @@ class ItemDeleteModal extends Component {
 
 const mapStateToProps = store => ({
     itemToDelete: store.items.item,
+    loading: store.items.loading,
     done: store.items.done,
     auth: store.auth[0]
 });
