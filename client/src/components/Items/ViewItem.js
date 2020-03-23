@@ -27,6 +27,11 @@ class ViewItem extends Component {
                     <main className="col-12 col-sm-6 col-md-8">
                         <Row>
                             <div className="col-12 col-md-4 col-lg-3">
+                                {this.props.item === undefined && (
+                                    <div className="spinner-border text-danger" role="status">
+                                        <span className="sr-only">Loading...</span>
+                                    </div>
+                                )}
                                 <img src={this.props.item && this.props.item.imageUrl} className="img-fluid mx-auto d-block" alt={this.props.item && this.props.item.title}/>
                                 {/* {this.props.item != null ? (
                                     <img src={`/media/${this.props.item.title}.jpg`} className="img-fluid mx-auto d-block" alt={this.props.item ? this.props.item.title:'Product is not here!'}/>

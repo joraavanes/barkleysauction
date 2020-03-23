@@ -24,7 +24,7 @@ class Dashboard extends React.Component{
 
     // as it says toggles the delete modal
     // If the remove button clicked does setState with the uuid,Title of item and pushs down to deleteModal component
-    // If the item gets removed, cleans the comonent state and also redux store items then reread the items from server
+    // If the item gets removed, cleans the component state and also redux store items then reread the items from server endpoints and redux store
     toggleDeleteModal = (e, itemRemoved) => {
         const uuid = e && e.target.dataset.uuid,
                 title = e && e.target.dataset.title;
@@ -66,10 +66,10 @@ class Dashboard extends React.Component{
                     </div>
                 </Row>
                 <Row>
-                    <div className="col-4">
+                    <div className="col-12 col-sm-4">
                         <NavLink to="/dashboard/Items/list-an-item" className="btn btn-primary">Sell your object</NavLink>
                     </div>
-                    <div className="col-8">
+                    <div className="col-12 col-sm-8">
                         <h3>Products {this.props.items.length}</h3>
                         <table className="table">
                             <thead>
@@ -103,7 +103,8 @@ class Dashboard extends React.Component{
                                                         Remove
                                                 </NavLink> */}
                                                 <button
-                                                    className="btn btn-warning btn-sm" 
+                                                    style={{marginLeft: 5}}
+                                                    className="btn btn-danger btn-sm" 
                                                     data-uuid={item.uuid}
                                                     data-title={item.title}
                                                     onClick={this.toggleDeleteModal}>

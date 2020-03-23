@@ -59,7 +59,7 @@ class ItemDeleteModal extends Component {
                             Remove item
                             {this.props.loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>} 
                         </button>
-                        <Button color="secondary" onClick={this.toggle} onClick={this.handleModalState}>Cancel</Button>
+                        <Button color="secondary" onClick={this.handleModalState}>Cancel</Button>
                     </ModalFooter>
                 </form>
             </Modal>

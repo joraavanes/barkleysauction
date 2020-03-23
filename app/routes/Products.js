@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
     Product.findById(id)
         .then(product => res.send(product))
         .catch(() => res.send({ error: 'the product you are looking for is not found'}));
-});1
+});
 
 router.post('/', authenticate, multer.single('imageUrl'), (req, res) => {
     const file = req.file;

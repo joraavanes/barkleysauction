@@ -2545,7 +2545,7 @@ var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css
 exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap);"]);
 // Module
-exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password], input[type=number], textarea {\n  border-radius: 20px !important; }\n\ninput[type=text].auto-complete-off, input[type=password].auto-complete-off {\n  background-color: white; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.md-icon {\n  font-size: 2rem;\n  color: #F91890; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover, .btn-primary:disabled {\n    background-color: #F91890;\n    border-color: #F91890; }\n  .btn-primary:not(:disabled):not(.disabled):active {\n    background-color: #F91890;\n    border-color: #F91890;\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:focus {\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:focus {\n    background-color: #F91890;\n    border-color: #F91890; }\n\n.spinner-grow {\n  animation: unset;\n  background-color: #fff; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n.spinner-border {\n  margin-left: 7px; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #F91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item a.dropdown-item {\n    color: #212529; }\n    #navigation li.nav-item a.dropdown-item:hover {\n      background-color: #f8f9fa; }\n    #navigation li.nav-item a.dropdown-item:active {\n      background-color: #007bff;\n      color: #fff; }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\nh1 span.avail-status {\n  font-size: 24px;\n  margin-left: 20px; }\n\nh1 i.fas {\n  font-size: 22px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  padding-top: 0;\n  margin-bottom: .75rem;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n\ntable.table th {\n  border-top: none;\n  color: #fff; }\n\ntable.table th:first-child {\n  border-top-left-radius: 10px; }\n\ntable.table th:last-child {\n  border-top-right-radius: 10px; }\n\n.card {\n  transition: all .5s ease-in-out; }\n  .card:hover {\n    border-color: #F91890;\n    box-shadow: 0 0 8px 1px #ccc; }\n    .card:hover a.btn-primary {\n      background-color: #F91890;\n      border-color: #F91890; }\n\n.App__Items_Item-img {\n  border-top-right-radius: 5px;\n  border-top-left-radius: 5px; }\n\n#comments-wrapper {\n  padding-top: 50px; }\n\n.bids-loader {\n  position: absolute;\n  width: 90%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  z-index: 100;\n  justify-content: center;\n  box-sizing: border-box;\n  padding: 0;\n  margin: auto;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0; }\n\n.no-margin-bottom {\n  margin-bottom: 5px; }\n", ""]);
+exports.push([module.i, "* {\n  font-family: 'Josefin Sans', sans-serif;\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box; }\n\n.row {\n  margin-left: 0;\n  margin-right: 0; }\n\n.container-fluid, .col {\n  padding-left: 0;\n  padding-right: 0; }\n\ninput[type=text], input[type=password], input[type=number], textarea {\n  border-radius: 20px !important; }\n\ninput[type=text].auto-complete-off, input[type=password].auto-complete-off {\n  background-color: white; }\n\n.card {\n  margin-bottom: 10px; }\n\n.bg-pink {\n  background-color: #F91890; }\n\n.xs-margin {\n  margin-left: 5px;\n  margin-right: 5px; }\n\n.fa, .fas {\n  font-size: 14px; }\n\n.md-icon {\n  font-size: 2rem;\n  color: #F91890; }\n\n.btn-primary {\n  background-color: grey;\n  border-color: grey;\n  transition: all .3s ease-in-out; }\n  .btn-primary:hover, .btn-primary:disabled {\n    background-color: #F91890;\n    border-color: #F91890; }\n  .btn-primary:not(:disabled):not(.disabled):active {\n    background-color: #F91890;\n    border-color: #F91890;\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:focus {\n    box-shadow: 0 0 0 0.2rem rgba(249, 24, 144, 0.2); }\n  .btn-primary:focus {\n    background-color: #F91890;\n    border-color: #F91890; }\n\n.navbar-toggler-icon {\n  background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\"); }\n\n.spinner-grow {\n  animation: unset;\n  background-color: #fff; }\n\n.spinner-grow.active {\n  animation: spinner-grow .75s linear infinite; }\n\n.spinner-border {\n  margin-left: 7px; }\n\n#navigation {\n  margin-bottom: 30px;\n  background-color: #F91890; }\n  #navigation .navbar {\n    box-shadow: 5px 0 10px 3px #ccc; }\n  #navigation .navbar-brand {\n    color: #fff; }\n  #navigation .navbar-brand:hover {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item:hover a,\n  #navigation li.nav-item a.nav-link.active {\n    color: #fff; }\n  #navigation li.nav-item a {\n    color: rgba(243, 243, 243, 0.801); }\n  #navigation li.nav-item a.dropdown-item {\n    color: #212529; }\n    #navigation li.nav-item a.dropdown-item:hover {\n      background-color: #f8f9fa; }\n    #navigation li.nav-item a.dropdown-item:active {\n      background-color: #007bff;\n      color: #fff; }\n\n.form-control.search {\n  z-index: 100;\n  position: relative;\n  transition: all .5s ease-in-out; }\n  .form-control.search:hover, .form-control.search:focus {\n    box-shadow: 0 10px 28px -16px;\n    border-color: #F91890; }\n\n.bid-title span {\n  margin-left: 10px;\n  font-size: 14px; }\n\nh1 span.avail-status {\n  font-size: 24px;\n  margin-left: 20px; }\n\nh1 i.fas {\n  font-size: 22px; }\n\n.list-group-flush:last-child .list-group-item:last-child {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125); }\n\n.list-group-flush:last-child .list-group-item:last-child,\n.list-group-item {\n  margin-bottom: 0;\n  padding-top: 0;\n  margin-bottom: .75rem;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.125);\n  border-top: none;\n  border-left: none;\n  border-right: none;\n  transition: all .5s ease-in-out;\n  box-shadow: 0 0 0 0; }\n  .list-group-flush:last-child .list-group-item:last-child:hover,\n  .list-group-item:hover {\n    border-color: #F91890;\n    box-shadow: 0 10px 20px -19px;\n    z-index: 100;\n    cursor: pointer; }\n\n.avatar-img {\n  width: 32px;\n  height: 32px;\n  background-color: #ccc;\n  border-radius: 50%; }\n\ntable.table th {\n  border-top: none;\n  color: #fff; }\n\ntable.table th:first-child {\n  border-top-left-radius: 10px; }\n\ntable.table th:last-child {\n  border-top-right-radius: 10px; }\n\n.card {\n  transition: all .5s ease-in-out; }\n  .card:hover {\n    border-color: #F91890;\n    box-shadow: 0 0 8px 1px #ccc; }\n    .card:hover a.btn-primary {\n      background-color: #F91890;\n      border-color: #F91890; }\n\n.App__Items_Item-img {\n  border-top-right-radius: 5px;\n  border-top-left-radius: 5px; }\n\n.item-img {\n  border-top-right-radius: .25rem;\n  border-top-left-radius: .25rem; }\n\n#comments-wrapper {\n  padding-top: 50px; }\n\n.bids-loader {\n  position: absolute;\n  width: 90%;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  z-index: 100;\n  justify-content: center;\n  box-sizing: border-box;\n  padding: 0;\n  margin: auto;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0; }\n\n.no-margin-bottom {\n  margin-bottom: 5px; }\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5080,7 +5080,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/prop-types/node_modules/react-is/index.js");
 var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 
 var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
@@ -5681,7 +5681,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
  */
 
 if (true) {
-  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/prop-types/node_modules/react-is/index.js");
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -5716,6 +5716,216 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
+/***/ "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/node_modules/react-is/index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/index.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js");
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
@@ -5724,7 +5934,7 @@ module.exports = ReactPropTypesSecret;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.13.0
+/** @license React v16.13.1
  * react-dom.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -6170,271 +6380,6 @@ var SuspenseListComponent = 19;
 var FundamentalComponent = 20;
 var ScopeComponent = 21;
 var Block = 22;
-
-var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
-function describeComponentFrame (name, source, ownerName) {
-  var sourceInfo = '';
-
-  if (source) {
-    var path = source.fileName;
-    var fileName = path.replace(BEFORE_SLASH_RE, '');
-
-    {
-      // In DEV, include code for a common special case:
-      // prefer "folder/index.js" instead of just "index.js".
-      if (/^index\./.test(fileName)) {
-        var match = path.match(BEFORE_SLASH_RE);
-
-        if (match) {
-          var pathBeforeSlash = match[1];
-
-          if (pathBeforeSlash) {
-            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
-            fileName = folderName + '/' + fileName;
-          }
-        }
-      }
-    }
-
-    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
-  } else if (ownerName) {
-    sourceInfo = ' (created by ' + ownerName + ')';
-  }
-
-  return '\n    in ' + (name || 'Unknown') + sourceInfo;
-}
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
-var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
-var FAUX_ITERATOR_SYMBOL = '@@iterator';
-function getIteratorFn(maybeIterable) {
-  if (maybeIterable === null || typeof maybeIterable !== 'object') {
-    return null;
-  }
-
-  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
-
-  if (typeof maybeIterator === 'function') {
-    return maybeIterator;
-  }
-
-  return null;
-}
-
-var Uninitialized = -1;
-var Pending = 0;
-var Resolved = 1;
-var Rejected = 2;
-function refineResolvedLazyComponent(lazyComponent) {
-  return lazyComponent._status === Resolved ? lazyComponent._result : null;
-}
-function initializeLazyComponentType(lazyComponent) {
-  if (lazyComponent._status === Uninitialized) {
-    lazyComponent._status = Pending;
-    var ctor = lazyComponent._ctor;
-    var thenable = ctor();
-    lazyComponent._result = thenable;
-    thenable.then(function (moduleObject) {
-      if (lazyComponent._status === Pending) {
-        var defaultExport = moduleObject.default;
-
-        {
-          if (defaultExport === undefined) {
-            error('lazy: Expected the result of a dynamic import() call. ' + 'Instead received: %s\n\nYour code should look like: \n  ' + "const MyComponent = lazy(() => import('./MyComponent'))", moduleObject);
-          }
-        }
-
-        lazyComponent._status = Resolved;
-        lazyComponent._result = defaultExport;
-      }
-    }, function (error) {
-      if (lazyComponent._status === Pending) {
-        lazyComponent._status = Rejected;
-        lazyComponent._result = error;
-      }
-    });
-  }
-}
-
-function getWrappedName(outerType, innerType, wrapperName) {
-  var functionName = innerType.displayName || innerType.name || '';
-  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
-}
-
-function getComponentName(type) {
-  if (type == null) {
-    // Host root, text node or just invalid type.
-    return null;
-  }
-
-  {
-    if (typeof type.tag === 'number') {
-      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
-    }
-  }
-
-  if (typeof type === 'function') {
-    return type.displayName || type.name || null;
-  }
-
-  if (typeof type === 'string') {
-    return type;
-  }
-
-  switch (type) {
-    case REACT_FRAGMENT_TYPE:
-      return 'Fragment';
-
-    case REACT_PORTAL_TYPE:
-      return 'Portal';
-
-    case REACT_PROFILER_TYPE:
-      return "Profiler";
-
-    case REACT_STRICT_MODE_TYPE:
-      return 'StrictMode';
-
-    case REACT_SUSPENSE_TYPE:
-      return 'Suspense';
-
-    case REACT_SUSPENSE_LIST_TYPE:
-      return 'SuspenseList';
-  }
-
-  if (typeof type === 'object') {
-    switch (type.$$typeof) {
-      case REACT_CONTEXT_TYPE:
-        return 'Context.Consumer';
-
-      case REACT_PROVIDER_TYPE:
-        return 'Context.Provider';
-
-      case REACT_FORWARD_REF_TYPE:
-        return getWrappedName(type, type.render, 'ForwardRef');
-
-      case REACT_MEMO_TYPE:
-        return getComponentName(type.type);
-
-      case REACT_BLOCK_TYPE:
-        return getComponentName(type.render);
-
-      case REACT_LAZY_TYPE:
-        {
-          var thenable = type;
-          var resolvedThenable = refineResolvedLazyComponent(thenable);
-
-          if (resolvedThenable) {
-            return getComponentName(resolvedThenable);
-          }
-
-          break;
-        }
-    }
-  }
-
-  return null;
-}
-
-var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-
-function describeFiber(fiber) {
-  switch (fiber.tag) {
-    case HostRoot:
-    case HostPortal:
-    case HostText:
-    case Fragment:
-    case ContextProvider:
-    case ContextConsumer:
-      return '';
-
-    default:
-      var owner = fiber._debugOwner;
-      var source = fiber._debugSource;
-      var name = getComponentName(fiber.type);
-      var ownerName = null;
-
-      if (owner) {
-        ownerName = getComponentName(owner.type);
-      }
-
-      return describeComponentFrame(name, source, ownerName);
-  }
-}
-
-function getStackByFiberInDevAndProd(workInProgress) {
-  var info = '';
-  var node = workInProgress;
-
-  do {
-    info += describeFiber(node);
-    node = node.return;
-  } while (node);
-
-  return info;
-}
-var current = null;
-var phase = null;
-function getCurrentFiberOwnerNameInDevOrNull() {
-  {
-    if (current === null) {
-      return null;
-    }
-
-    var owner = current._debugOwner;
-
-    if (owner !== null && typeof owner !== 'undefined') {
-      return getComponentName(owner.type);
-    }
-  }
-
-  return null;
-}
-function getCurrentFiberStackInDev() {
-  {
-    if (current === null) {
-      return '';
-    } // Safe because if current fiber exists, we are reconciling,
-    // and it is guaranteed to be the work-in-progress version.
-
-
-    return getStackByFiberInDevAndProd(current);
-  }
-}
-function resetCurrentFiber() {
-  {
-    ReactDebugCurrentFrame.getCurrentStack = null;
-    current = null;
-    phase = null;
-  }
-}
-function setCurrentFiber(fiber) {
-  {
-    ReactDebugCurrentFrame.getCurrentStack = getCurrentFiberStackInDev;
-    current = fiber;
-    phase = null;
-  }
-}
-function setCurrentPhase(lifeCyclePhase) {
-  {
-    phase = lifeCyclePhase;
-  }
-}
 
 /**
  * Injectable ordering of event plugins.
@@ -7135,10 +7080,10 @@ properties[xlinkHref] = new PropertyInfoRecord('xlinkHref', STRING, false, // mu
   true);
 });
 
-var ReactDebugCurrentFrame$1 = null;
+var ReactDebugCurrentFrame = null;
 
 {
-  ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+  ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
 } // A javascript: URL can contain leading C0 control or \u0020 SPACE,
 // and any newline or tab are filtered out as if they're not part of the URL.
 // https://url.spec.whatwg.org/#url-parsing
@@ -7340,6 +7285,271 @@ function setValueForProperty(node, name, value, isCustomComponentTag) {
     } else {
       node.setAttribute(attributeName, attributeValue);
     }
+  }
+}
+
+var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
+function describeComponentFrame (name, source, ownerName) {
+  var sourceInfo = '';
+
+  if (source) {
+    var path = source.fileName;
+    var fileName = path.replace(BEFORE_SLASH_RE, '');
+
+    {
+      // In DEV, include code for a common special case:
+      // prefer "folder/index.js" instead of just "index.js".
+      if (/^index\./.test(fileName)) {
+        var match = path.match(BEFORE_SLASH_RE);
+
+        if (match) {
+          var pathBeforeSlash = match[1];
+
+          if (pathBeforeSlash) {
+            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
+            fileName = folderName + '/' + fileName;
+          }
+        }
+      }
+    }
+
+    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
+  } else if (ownerName) {
+    sourceInfo = ' (created by ' + ownerName + ')';
+  }
+
+  return '\n    in ' + (name || 'Unknown') + sourceInfo;
+}
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator';
+function getIteratorFn(maybeIterable) {
+  if (maybeIterable === null || typeof maybeIterable !== 'object') {
+    return null;
+  }
+
+  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+
+  if (typeof maybeIterator === 'function') {
+    return maybeIterator;
+  }
+
+  return null;
+}
+
+var Uninitialized = -1;
+var Pending = 0;
+var Resolved = 1;
+var Rejected = 2;
+function refineResolvedLazyComponent(lazyComponent) {
+  return lazyComponent._status === Resolved ? lazyComponent._result : null;
+}
+function initializeLazyComponentType(lazyComponent) {
+  if (lazyComponent._status === Uninitialized) {
+    lazyComponent._status = Pending;
+    var ctor = lazyComponent._ctor;
+    var thenable = ctor();
+    lazyComponent._result = thenable;
+    thenable.then(function (moduleObject) {
+      if (lazyComponent._status === Pending) {
+        var defaultExport = moduleObject.default;
+
+        {
+          if (defaultExport === undefined) {
+            error('lazy: Expected the result of a dynamic import() call. ' + 'Instead received: %s\n\nYour code should look like: \n  ' + "const MyComponent = lazy(() => import('./MyComponent'))", moduleObject);
+          }
+        }
+
+        lazyComponent._status = Resolved;
+        lazyComponent._result = defaultExport;
+      }
+    }, function (error) {
+      if (lazyComponent._status === Pending) {
+        lazyComponent._status = Rejected;
+        lazyComponent._result = error;
+      }
+    });
+  }
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var functionName = innerType.displayName || innerType.name || '';
+  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
+}
+
+function getComponentName(type) {
+  if (type == null) {
+    // Host root, text node or just invalid type.
+    return null;
+  }
+
+  {
+    if (typeof type.tag === 'number') {
+      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
+    }
+  }
+
+  if (typeof type === 'function') {
+    return type.displayName || type.name || null;
+  }
+
+  if (typeof type === 'string') {
+    return type;
+  }
+
+  switch (type) {
+    case REACT_FRAGMENT_TYPE:
+      return 'Fragment';
+
+    case REACT_PORTAL_TYPE:
+      return 'Portal';
+
+    case REACT_PROFILER_TYPE:
+      return "Profiler";
+
+    case REACT_STRICT_MODE_TYPE:
+      return 'StrictMode';
+
+    case REACT_SUSPENSE_TYPE:
+      return 'Suspense';
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return 'SuspenseList';
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        return 'Context.Consumer';
+
+      case REACT_PROVIDER_TYPE:
+        return 'Context.Provider';
+
+      case REACT_FORWARD_REF_TYPE:
+        return getWrappedName(type, type.render, 'ForwardRef');
+
+      case REACT_MEMO_TYPE:
+        return getComponentName(type.type);
+
+      case REACT_BLOCK_TYPE:
+        return getComponentName(type.render);
+
+      case REACT_LAZY_TYPE:
+        {
+          var thenable = type;
+          var resolvedThenable = refineResolvedLazyComponent(thenable);
+
+          if (resolvedThenable) {
+            return getComponentName(resolvedThenable);
+          }
+
+          break;
+        }
+    }
+  }
+
+  return null;
+}
+
+var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function describeFiber(fiber) {
+  switch (fiber.tag) {
+    case HostRoot:
+    case HostPortal:
+    case HostText:
+    case Fragment:
+    case ContextProvider:
+    case ContextConsumer:
+      return '';
+
+    default:
+      var owner = fiber._debugOwner;
+      var source = fiber._debugSource;
+      var name = getComponentName(fiber.type);
+      var ownerName = null;
+
+      if (owner) {
+        ownerName = getComponentName(owner.type);
+      }
+
+      return describeComponentFrame(name, source, ownerName);
+  }
+}
+
+function getStackByFiberInDevAndProd(workInProgress) {
+  var info = '';
+  var node = workInProgress;
+
+  do {
+    info += describeFiber(node);
+    node = node.return;
+  } while (node);
+
+  return info;
+}
+var current = null;
+var isRendering = false;
+function getCurrentFiberOwnerNameInDevOrNull() {
+  {
+    if (current === null) {
+      return null;
+    }
+
+    var owner = current._debugOwner;
+
+    if (owner !== null && typeof owner !== 'undefined') {
+      return getComponentName(owner.type);
+    }
+  }
+
+  return null;
+}
+function getCurrentFiberStackInDev() {
+  {
+    if (current === null) {
+      return '';
+    } // Safe because if current fiber exists, we are reconciling,
+    // and it is guaranteed to be the work-in-progress version.
+
+
+    return getStackByFiberInDevAndProd(current);
+  }
+}
+function resetCurrentFiber() {
+  {
+    ReactDebugCurrentFrame$1.getCurrentStack = null;
+    current = null;
+    isRendering = false;
+  }
+}
+function setCurrentFiber(fiber) {
+  {
+    ReactDebugCurrentFrame$1.getCurrentStack = getCurrentFiberStackInDev;
+    current = fiber;
+    isRendering = false;
+  }
+}
+function setIsRendering(rendering) {
+  {
+    isRendering = rendering;
   }
 }
 
@@ -11346,7 +11556,6 @@ function validateProperties$2(type, props, canUseEventSystem) {
 }
 
 var didWarnInvalidHydration = false;
-var didWarnShadyDOM = false;
 var DANGEROUSLY_SET_INNER_HTML = 'dangerouslySetInnerHTML';
 var SUPPRESS_CONTENT_EDITABLE_WARNING = 'suppressContentEditableWarning';
 var SUPPRESS_HYDRATION_WARNING = 'suppressHydrationWarning';
@@ -11666,12 +11875,6 @@ function setInitialProperties(domElement, tag, rawProps, rootContainerElement) {
 
   {
     validatePropertiesInDevelopment(tag, rawProps);
-
-    if (isCustomComponentTag && !didWarnShadyDOM && domElement.shadyRoot) {
-      error('%s is using shady DOM. Using shady DOM with React can ' + 'cause things to break subtly.', getCurrentFiberOwnerNameInDevOrNull() || 'A component');
-
-      didWarnShadyDOM = true;
-    }
   } // TODO: Make sure that we check isMounted before firing any of these events.
 
 
@@ -12025,12 +12228,6 @@ function diffHydratedProperties(domElement, tag, rawProps, parentNamespace, root
     suppressHydrationWarning = rawProps[SUPPRESS_HYDRATION_WARNING] === true;
     isCustomComponentTag = isCustomComponent(tag, rawProps);
     validatePropertiesInDevelopment(tag, rawProps);
-
-    if (isCustomComponentTag && !didWarnShadyDOM && domElement.shadyRoot) {
-      error('%s is using shady DOM. Using shady DOM with React can ' + 'cause things to break subtly.', getCurrentFiberOwnerNameInDevOrNull() || 'A component');
-
-      didWarnShadyDOM = true;
-    }
   } // TODO: Make sure that we check isMounted before firing any of these events.
 
 
@@ -16551,18 +16748,9 @@ function processChildContext(fiber, type, parentContext) {
     }
 
     var childContext;
-
-    {
-      setCurrentPhase('getChildContext');
-    }
-
     startPhaseTimer(fiber, 'getChildContext');
     childContext = instance.getChildContext();
     stopPhaseTimer();
-
-    {
-      setCurrentPhase(null);
-    }
 
     for (var contextKey in childContext) {
       if (!(contextKey in childContextTypes)) {
@@ -22487,7 +22675,6 @@ var didWarnAboutContextTypeOnFunctionComponent;
 var didWarnAboutGetDerivedStateOnFunctionComponent;
 var didWarnAboutFunctionRefs;
 var didWarnAboutReassigningProps;
-var didWarnAboutMaxDuration;
 var didWarnAboutRevealOrder;
 var didWarnAboutTailOptions;
 
@@ -22498,7 +22685,6 @@ var didWarnAboutTailOptions;
   didWarnAboutGetDerivedStateOnFunctionComponent = {};
   didWarnAboutFunctionRefs = {};
   didWarnAboutReassigningProps = false;
-  didWarnAboutMaxDuration = false;
   didWarnAboutRevealOrder = {};
   didWarnAboutTailOptions = {};
 }
@@ -22562,7 +22748,7 @@ function updateForwardRef(current, workInProgress, Component, nextProps, renderE
 
   {
     ReactCurrentOwner$1.current = workInProgress;
-    setCurrentPhase('render');
+    setIsRendering(true);
     nextChildren = renderWithHooks(current, workInProgress, render, nextProps, ref, renderExpirationTime);
 
     if ( workInProgress.mode & StrictMode) {
@@ -22572,7 +22758,7 @@ function updateForwardRef(current, workInProgress, Component, nextProps, renderE
       }
     }
 
-    setCurrentPhase(null);
+    setIsRendering(false);
   }
 
   if (current !== null && !didReceiveUpdate) {
@@ -22780,7 +22966,7 @@ function updateFunctionComponent(current, workInProgress, Component, nextProps, 
 
   {
     ReactCurrentOwner$1.current = workInProgress;
-    setCurrentPhase('render');
+    setIsRendering(true);
     nextChildren = renderWithHooks(current, workInProgress, Component, nextProps, context, renderExpirationTime);
 
     if ( workInProgress.mode & StrictMode) {
@@ -22790,7 +22976,7 @@ function updateFunctionComponent(current, workInProgress, Component, nextProps, 
       }
     }
 
-    setCurrentPhase(null);
+    setIsRendering(false);
   }
 
   if (current !== null && !didReceiveUpdate) {
@@ -22906,14 +23092,14 @@ function finishClassComponent(current, workInProgress, Component, shouldUpdate, 
     }
   } else {
     {
-      setCurrentPhase('render');
+      setIsRendering(true);
       nextChildren = instance.render();
 
       if ( workInProgress.mode & StrictMode) {
         instance.render();
       }
 
-      setCurrentPhase(null);
+      setIsRendering(false);
     }
   } // React DevTools reads this flag.
 
@@ -23227,8 +23413,10 @@ function mountIndeterminateComponent(_current, workInProgress, Component, render
       ReactStrictModeWarnings.recordLegacyContextWarning(workInProgress, null);
     }
 
+    setIsRendering(true);
     ReactCurrentOwner$1.current = workInProgress;
     value = renderWithHooks(null, workInProgress, Component, props, context, renderExpirationTime);
+    setIsRendering(false);
   } // React DevTools reads this flag.
 
 
@@ -23394,17 +23582,7 @@ function updateSuspenseComponent(current, workInProgress, renderExpirationTime) 
   }
 
   suspenseContext = setDefaultShallowSuspenseContext(suspenseContext);
-  pushSuspenseContext(workInProgress, suspenseContext);
-
-  {
-    if ('maxDuration' in nextProps) {
-      if (!didWarnAboutMaxDuration) {
-        didWarnAboutMaxDuration = true;
-
-        error('maxDuration has been removed from React. ' + 'Remove the maxDuration prop.');
-      }
-    }
-  } // This next part is a bit confusing. If the children timeout, we switch to
+  pushSuspenseContext(workInProgress, suspenseContext); // This next part is a bit confusing. If the children timeout, we switch to
   // showing the fallback children in place of the "primary" children.
   // However, we don't want to delete the primary children because then their
   // state will be lost (both the React state and the host state, e.g.
@@ -23425,7 +23603,6 @@ function updateSuspenseComponent(current, workInProgress, renderExpirationTime) 
   // Otherwise, we render the primary children directly. This requires some
   // custom reconciliation logic to preserve the state of the primary
   // children. It's essentially a very basic form of re-parenting.
-
 
   if (current === null) {
     // If we're currently hydrating, try to hydrate this boundary.
@@ -24059,9 +24236,9 @@ function updateContextConsumer(current, workInProgress, renderExpirationTime) {
 
   {
     ReactCurrentOwner$1.current = workInProgress;
-    setCurrentPhase('render');
+    setIsRendering(true);
     newChildren = render(newValue);
-    setCurrentPhase(null);
+    setIsRendering(false);
   } // React DevTools reads this flag.
 
 
@@ -26573,9 +26750,11 @@ function throwException(root, returnFiber, sourceFiber, value, renderExpirationT
       var currentSource = sourceFiber.alternate;
 
       if (currentSource) {
+        sourceFiber.updateQueue = currentSource.updateQueue;
         sourceFiber.memoizedState = currentSource.memoizedState;
         sourceFiber.expirationTime = currentSource.expirationTime;
       } else {
+        sourceFiber.updateQueue = null;
         sourceFiber.memoizedState = null;
       }
     }
@@ -28973,43 +29152,40 @@ var beginWork$1;
 }
 
 var didWarnAboutUpdateInRender = false;
-var didWarnAboutUpdateInGetChildContext = false;
+var didWarnAboutUpdateInRenderForAnotherComponent;
+
+{
+  didWarnAboutUpdateInRenderForAnotherComponent = new Set();
+}
 
 function warnAboutRenderPhaseUpdatesInDEV(fiber) {
   {
-    if ((executionContext & RenderContext) !== NoContext) {
+    if (isRendering && (executionContext & RenderContext) !== NoContext) {
       switch (fiber.tag) {
         case FunctionComponent:
         case ForwardRef:
         case SimpleMemoComponent:
           {
-            error('Cannot update a component from inside the function body of a ' + 'different component.');
+            var renderingComponentName = workInProgress && getComponentName(workInProgress.type) || 'Unknown'; // Dedupe by the rendering component because it's the one that needs to be fixed.
+
+            var dedupeKey = renderingComponentName;
+
+            if (!didWarnAboutUpdateInRenderForAnotherComponent.has(dedupeKey)) {
+              didWarnAboutUpdateInRenderForAnotherComponent.add(dedupeKey);
+              var setStateComponentName = getComponentName(fiber.type) || 'Unknown';
+
+              error('Cannot update a component (`%s`) while rendering a ' + 'different component (`%s`). To locate the bad setState() call inside `%s`, ' + 'follow the stack trace as described in https://fb.me/setstate-in-render', setStateComponentName, renderingComponentName, renderingComponentName);
+            }
 
             break;
           }
 
         case ClassComponent:
           {
-            switch (phase) {
-              case 'getChildContext':
-                if (didWarnAboutUpdateInGetChildContext) {
-                  return;
-                }
+            if (!didWarnAboutUpdateInRender) {
+              error('Cannot update during an existing state transition (such as ' + 'within `render`). Render methods should be a pure ' + 'function of props and state.');
 
-                error('setState(...): Cannot call setState() inside getChildContext()');
-
-                didWarnAboutUpdateInGetChildContext = true;
-                break;
-
-              case 'render':
-                if (didWarnAboutUpdateInRender) {
-                  return;
-                }
-
-                error('Cannot update during an existing state transition (such as ' + 'within `render`). Render methods should be a pure ' + 'function of props and state.');
-
-                didWarnAboutUpdateInRender = true;
-                break;
+              didWarnAboutUpdateInRender = true;
             }
 
             break;
@@ -30104,7 +30280,7 @@ function updateContainer(element, container, parentComponent, callback) {
   }
 
   {
-    if (phase === 'render' && current !== null && !didWarnAboutNestedUpdates) {
+    if (isRendering && current !== null && !didWarnAboutNestedUpdates) {
       didWarnAboutNestedUpdates = true;
 
       error('Render methods should be a pure function of props and state; ' + 'triggering nested component updates from render is not allowed. ' + 'If necessary, trigger nested updates in componentDidUpdate.\n\n' + 'Check the render method of %s.', getComponentName(current.type) || 'Unknown');
@@ -30680,7 +30856,7 @@ implementation) {
   };
 }
 
-var ReactVersion = '16.13.0';
+var ReactVersion = '16.13.1';
 
 setAttemptUserBlockingHydration(attemptUserBlockingHydration$1);
 setAttemptContinuousHydration(attemptContinuousHydration$1);
@@ -39263,7 +39439,7 @@ exports.classNamesShape = classNamesShape;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.13.0
+/** @license React v16.13.1
  * react.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -39283,7 +39459,7 @@ if (true) {
 var _assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 var checkPropTypes = __webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
 
-var ReactVersion = '16.13.0';
+var ReactVersion = '16.13.1';
 
 // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.
@@ -51072,7 +51248,7 @@ function resolvePathname(to, from) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v0.19.0
+/** @license React v0.19.1
  * scheduler-tracing.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -51433,7 +51609,7 @@ exports.unstable_wrap = unstable_wrap;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v0.19.0
+/** @license React v0.19.1
  * scheduler.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -53313,12 +53489,12 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Here you can control the stuff!"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-4"
+        className: "col-12 col-sm-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         to: "/dashboard/Items/list-an-item",
         className: "btn btn-primary"
       }, "Sell your object")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-8"
+        className: "col-12 col-sm-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Products ", this.props.items.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -53348,7 +53524,10 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
           className: "btn btn-warning btn-sm",
           to: "/dashboard/items/edit-item/".concat(item.title, "/").concat(item.uuid)
         }, "Edit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "btn btn-warning btn-sm",
+          style: {
+            marginLeft: 5
+          },
+          className: "btn btn-danger btn-sm",
           "data-uuid": item.uuid,
           "data-title": item.title,
           onClick: _this2.toggleDeleteModal
@@ -53676,7 +53855,7 @@ var Item = function Item(props) {
     to: "/items/".concat(props.title, "/").concat(props.uuid)
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: props.imageUrl || _media_backpack_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
-    className: "img-fluid"
+    className: "img-fluid item-img"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -53842,7 +54021,12 @@ var ViewItem = /*#__PURE__*/function (_Component) {
         className: "col-12 col-sm-6 col-md-8"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-md-4 col-lg-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, this.props.item === undefined && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spinner-border text-danger",
+        role: "status"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "sr-only"
+      }, "Loading...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.props.item && this.props.item.imageUrl,
         className: "img-fluid mx-auto d-block",
         alt: this.props.item && this.props.item.title
@@ -54043,10 +54227,10 @@ var ItemDeleteModal = /*#__PURE__*/function (_Component) {
         className: "spinner-border spinner-border-sm",
         role: "status",
         "aria-hidden": "true"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], _defineProperty({
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Button"], {
         color: "secondary",
-        onClick: this.toggle
-      }, "onClick", this.handleModalState), "Cancel"))));
+        onClick: this.handleModalState
+      }, "Cancel"))));
     }
   }]);
 
