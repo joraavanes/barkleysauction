@@ -47,9 +47,35 @@ const ProductSchema = new Schema({
     },
     dateIssued:{
         required: true,
-        type: Date,
-        default: new Date()
-    }
+        type: Number,
+        default: 0
+    },
+    comments: [{
+        uuid:{
+            required: true,
+            type: String
+        },
+        userName: {
+            required: true,
+            type: String
+        },
+        comment: {
+            required: true,
+            type: String,
+            minlength: 1,
+            maxlength: 100
+        },
+        dateIssued:{
+            type: Number,
+            required: true,
+            default: new Date().getTime()
+        },
+        published: {
+            type: Boolean,
+            required: true,
+            default: false
+        }
+    }]
 });
 
 const Product = model('Product', ProductSchema);

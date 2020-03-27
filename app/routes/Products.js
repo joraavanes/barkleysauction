@@ -66,7 +66,7 @@ router.post('/', authenticate, multer.single('imageUrl'), (req, res) => {
     }
 
     const {title, startingBid, description, thumbnail} = req.body;
-    let product = new Product({ uuid: v4(), title, startingBid, description, imageUrl, thumbnail });
+    let product = new Product({ uuid: v4(), title, startingBid, description, imageUrl, thumbnail, dateIssued: new Date().getTime() });
 
     product.save()
         .then((doc) => res.sendStatus(201))
@@ -80,6 +80,8 @@ router.post('/', authenticate, multer.single('imageUrl'), (req, res) => {
 
 router.put('/alter', authenticate, multer.single('imageUrl'), (req, res, next) => {
     const body = _.pick(req.body, ['_id', 'title', 'startingBid', 'description', 'imageUrl', 'thumbnail'])
+    body.dateIssued = new Date().getTime();
+
     if(!ObjectID.isValid(body._id)){
         return res.send('Id is not valid');
     }

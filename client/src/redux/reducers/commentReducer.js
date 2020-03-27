@@ -1,8 +1,8 @@
 import { GET_COMMENTS, CLEAR_COMMENTS } from '../actions/types/types'
 
 const defaultCommentReducer = {
-    quantity:0,
-    comments:[]
+    quantity: 0,
+    comments: undefined
 };
 
 export default function(state = defaultCommentReducer, action){
@@ -15,7 +15,7 @@ export default function(state = defaultCommentReducer, action){
         case CLEAR_COMMENTS:
             return{
                 ...state,
-                comments: []
+                comments: undefined
             };
         default:
             return state;

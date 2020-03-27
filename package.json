@@ -10,7 +10,7 @@
     "client": "npm run dev --prefix client",
     "client:run": "live-server client/dist",
     "client:prod": "npm run build --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run server:watch\" \"npm run client:run\""
+    "dev": "concurrently \"npm run client\" \"npm run server:watch\""
   },
   "engines": {
     "node": "12.13.0"

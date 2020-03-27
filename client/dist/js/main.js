@@ -53269,10 +53269,10 @@ var Auction = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./src/components/Comment/Comment.js":
-/*!*******************************************!*\
-  !*** ./src/components/Comment/Comment.js ***!
-  \*******************************************/
+/***/ "./src/components/Comment/Comments.js":
+/*!********************************************!*\
+  !*** ./src/components/Comment/Comments.js ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -53304,19 +53304,19 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Comment = /*#__PURE__*/function (_React$Component) {
-  _inherits(Comment, _React$Component);
+var Comments = /*#__PURE__*/function (_React$Component) {
+  _inherits(Comments, _React$Component);
 
-  function Comment() {
-    _classCallCheck(this, Comment);
+  function Comments() {
+    _classCallCheck(this, Comments);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Comment).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(Comments).apply(this, arguments));
   }
 
-  _createClass(Comment, [{
+  _createClass(Comments, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.getComments();
+    value: function componentDidMount() {// if(!this.props.comments)
+      //     this.props.getComments();
     }
   }, {
     key: "componentWillUnmount",
@@ -53330,7 +53330,7 @@ var Comment = /*#__PURE__*/function (_React$Component) {
         id: "comments-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-comments md-icon xs-margin"
-      }), "Comments"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), this.props.comments.length === 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "Comments"), this.props.comments && this.props.comments.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.comments.length, " people has commented") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No one has commented yet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), !this.props.comments && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spinner-border text-danger",
         role: "status"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -53338,12 +53338,12 @@ var Comment = /*#__PURE__*/function (_React$Component) {
       }, "Loading...")), this.props.comments && this.props.comments.map(function (comment, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           key: i
-        }, comment.comment);
+        }, comment.userName, " says ", comment.comment);
       }));
     }
   }]);
 
-  return Comment;
+  return Comments;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var mapStateToProps = function mapStateToProps(store) {
@@ -53355,7 +53355,7 @@ var mapStateToProps = function mapStateToProps(store) {
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
   getComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_2__["getComments"],
   clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_2__["clearComments"]
-})(Comment));
+})(Comments));
 
 /***/ }),
 
@@ -53958,11 +53958,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/itemActions */ "./src/redux/actions/itemActions.js");
 /* harmony import */ var _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/actions/commentActions */ "./src/redux/actions/commentActions.js");
-/* harmony import */ var _Comment_Comment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Comment/Comment */ "./src/components/Comment/Comment.js");
+/* harmony import */ var _Comment_Comments__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Comment/Comments */ "./src/components/Comment/Comments.js");
 /* harmony import */ var _media_avatar_1_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../media/avatar-1.png */ "./src/media/avatar-1.png");
 /* harmony import */ var _media_avatar_5_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../media/avatar-5.png */ "./src/media/avatar-5.png");
 /* harmony import */ var _media_avatar_4_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../media/avatar-4.png */ "./src/media/avatar-4.png");
-/* harmony import */ var _media_bag_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../media/bag.jpg */ "./src/media/bag.jpg");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53989,8 +53988,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
+ // import bag from '../../media/bag.jpg'
 
 var ViewItem = /*#__PURE__*/function (_Component) {
   _inherits(ViewItem, _Component);
@@ -54005,6 +54003,13 @@ var ViewItem = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getItem(this.props.match.params.title, this.props.match.params.uuid);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.item && !this.props.comments) {
+        this.props.getComments(this.props.item.comments);
+      }
     }
   }, {
     key: "componentWillUnmount",
@@ -54042,7 +54047,9 @@ var ViewItem = /*#__PURE__*/function (_Component) {
         className: "fas fa-pound-sign xs-margin"
       }), this.props.item.startingBid.toLocaleString())) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading ..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.item && this.props.item.description))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-sm-12 col-md-10 offset-md-1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment_Comment__WEBPACK_IMPORTED_MODULE_5__["default"], null)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment_Comments__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        comments: this.props.item && this.props.item.comments
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 col-sm-6 col-md-4"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "bid-title"
@@ -54108,14 +54115,16 @@ var ViewItem = /*#__PURE__*/function (_Component) {
 
 var mapStateToProps = function mapStateToProps(store) {
   return {
-    item: store.items.item
+    item: store.items.item,
+    comments: store.comments.comments
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, {
   getItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["getItem"],
   clearItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItem"],
-  clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_4__["clearComments"]
+  clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_4__["clearComments"],
+  getComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_4__["getComments"]
 })(ViewItem));
 
 /***/ }),
@@ -55284,19 +55293,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/media/bag.jpg":
-/*!***************************!*\
-  !*** ./src/media/bag.jpg ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "../media/bag.9e387bb20beac2aa3ab1cdc3620e22f0.jpg");
-
-/***/ }),
-
 /***/ "./src/media/login-banner.png":
 /*!************************************!*\
   !*** ./src/media/login-banner.png ***!
@@ -55441,8 +55437,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var url =  false ? undefined : 'http://localhost:3000';
-var getComments = function getComments() {
+var getComments = function getComments(comments) {
   return function (dispatch) {
+    if (comments) {
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_1__["GET_COMMENTS"],
+        comments: comments
+      });
+      return;
+    }
+
+    ;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(url, "/comments")).then(function (res) {
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_1__["GET_COMMENTS"],
@@ -55849,7 +55854,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var defaultCommentReducer = {
   quantity: 0,
-  comments: []
+  comments: undefined
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultCommentReducer;
@@ -55863,7 +55868,7 @@ var defaultCommentReducer = {
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_COMMENTS"]:
       return _objectSpread({}, state, {
-        comments: []
+        comments: undefined
       });
 
     default:

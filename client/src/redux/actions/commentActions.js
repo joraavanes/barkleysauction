@@ -3,7 +3,15 @@ import { GET_COMMENTS, CLEAR_COMMENTS } from './types/types'
 
 const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
 
-export const getComments = () => dispatch => {
+export const getComments = (comments) => dispatch => {
+    if(comments){
+        dispatch({
+            type: GET_COMMENTS,
+            comments
+        });
+        return;
+    };
+
     axios.get(`${url}/comments`)
         .then(res => {
             dispatch({

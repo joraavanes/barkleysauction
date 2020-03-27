@@ -2,17 +2,23 @@ import React, { Component } from 'react'
 import {Container,Row,} from 'reactstrap'
 import { connect } from 'react-redux';
 import {getItem,clearItem} from '../../redux/actions/itemActions'
-import { clearComments } from '../../redux/actions/commentActions'
-import Comment from '../Comment/Comment'
+import { clearComments, getComments } from '../../redux/actions/commentActions'
+import Comments from '../Comment/Comments'
 import avatar1 from '../../media/avatar-1.png'
 import avatar3 from '../../media/avatar-5.png'
 import avatar4 from '../../media/avatar-4.png'
-import bag from '../../media/bag.jpg'
+// import bag from '../../media/bag.jpg'
 
 class ViewItem extends Component {
 
     componentDidMount(){
         this.props.getItem(this.props.match.params.title, this.props.match.params.uuid);
+    }
+
+    componentDidUpdate(){
+        if(this.props.item && !this.props.comments){
+            this.props.getComments(this.props.item.comments);
+        }
     }
 
     componentWillUnmount(){
@@ -72,7 +78,7 @@ class ViewItem extends Component {
                         </Row>
                         <Row>
                             <div className="col-12 col-sm-12 col-md-10 offset-md-1">
-                                <Comment/>
+                                <Comments comments={this.props.item && this.props.item.comments}/>
                             </div>
                         </Row>
                     </main>
@@ -129,7 +135,8 @@ class ViewItem extends Component {
 };
 
 const mapStateToProps = store => ({
-    item: store.items.item
+    item: store.items.item,
+    comments: store.comments.comments
 });
 
-export default connect(mapStateToProps,{getItem, clearItem, clearComments})(ViewItem);
+export default connect(mapStateToProps,{getItem, clearItem, clearComments, getComments})(ViewItem);
