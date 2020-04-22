@@ -1,4 +1,5 @@
 const {Schema, model} = require('mongoose');
+const {ObjectID} = require('mongodb');
 
 const ProductSchema = new Schema({
     uuid:{
@@ -74,6 +75,10 @@ const ProductSchema = new Schema({
             type: Boolean,
             required: true,
             default: false
+        },
+        _userId: {
+            type: ObjectID,
+            required: true
         }
     }]
 });

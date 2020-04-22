@@ -12,7 +12,27 @@ module.exports = webpackMerge(common, {
         rules:[
             {
                 test: /\.scss$|\.css$/,
-                use: ['style-loader','css-loader','sass-loader']
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options:{
+                            modules: {
+                                localIdentName: "[name]_[local]___[hash:base64]",
+                                getLocalIdent: (loaderContext, localIdentName, localName, options) => {
+                                    if(loaderContext.resourcePath.includes('node_modules') || loaderContext.resourcePath.includes('custom'))
+                                        return localName;
+                                }
+                            },														
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
             }
         ]
     },

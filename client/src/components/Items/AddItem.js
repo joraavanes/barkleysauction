@@ -109,11 +109,11 @@ class AddItem extends Component {
                                 {this.state.imageUrl && <img src={this.state.imageUrl} className="img-fluid img-thumbnail" style={{margin: 10, width: '14%'}}/>}
                                 <input type="file" onChange={this.handleImageUrl} name="imageUrl" id="imageUrl" accept="image/jpg, image/jpeg, image/png"/>
                             </div>
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 {this.props.thumbnailError && <span className="text-danger">{this.props.thumbnailError}</span>}
                                 <input type="text" name="thumbnail" id="thumbnail" className="form-control" placeholder="Image" onChange={this.handleFieldChange} defaultValue={this.state.thumbnail}/>
                                 <input type="file" onChange={this.handleImageUrl} name="Thumbnail" id="Thumbnail" accept="image/jpg, image/png, image/jpeg"/>
-                            </div>
+                            </div> */}
                             <div>
                                 <input type="submit" className="btn btn-primary" value={this.props.match.params.uuid ? "Edit" : "Add"}/>
                             </div>

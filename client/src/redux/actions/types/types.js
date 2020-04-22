@@ -15,6 +15,8 @@ export const TOGGLE_LOADER = 'TOGGLE_LOADER';
 
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const CLEAR_COMMENTS = 'CLEAR_COMMENTS';
+export const POST_COMMENT = 'POST_COMMENT';
+export const TOGGLE_COMMENT_FORM = 'TOGGLE_COMMENT_FORM';
 
 export const ADD_TOKEN = 'ADD_TOKEN';
 export const REMOVE_TOKEN = 'REMOVE_TOKEN';

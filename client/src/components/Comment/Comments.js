@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
+import PostComment from './PostComment'
 import {connect} from 'react-redux'
-import { getComments, clearComments } from '../../redux/actions/commentActions'
+import { getComments, clearComments, postComment } from '../../redux/actions/commentActions'
 
 class Comments extends React.Component{
     componentDidMount(){
-        // if(!this.props.comments)
-        //     this.props.getComments();
+        if(!this.props.comments)
+            this.props.getComments(this.props.comments);
     }
 
     componentWillUnmount(){
@@ -13,6 +14,8 @@ class Comments extends React.Component{
     }
 
     render(){
+        const length = this.props.comments && this.props.comments.length;
+
         return(
             <section id="comments-wrapper">
                 <h2>
@@ -20,7 +23,7 @@ class Comments extends React.Component{
                     Comments
                 </h2>
                 {(this.props.comments && this.props.comments.length > 0) ? (
-                        <p>{this.props.comments.length} people has commented</p>
+                        <p>{this.props.comments.length} people {length > 1 ? 'have' : 'has'} commented</p>
                     ): (
                         <p>No one has commented yet</p>
                     )}
@@ -31,6 +34,7 @@ class Comments extends React.Component{
                     </div>
                 }
 
+                <PostComment/>
                 {this.props.comments && this.props.comments.map((comment, i) => {
                     return <p key={i}>{comment.userName} says {comment.comment}</p>
                 })}

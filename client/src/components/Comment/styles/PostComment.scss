@@ -1,0 +1,22 @@
+$basePink: #F91890;
+
+.commentBtn{
+    composes: btn btn-sm btn-warning from global;
+    margin-bottom:10px;
+}
+
+.btnWrapper{
+    display: flex;
+    justify-content: flex-end;
+    padding:10px 0 5px 0;
+}
+.cancelBtn{
+    composes: btn btn-sm from global;
+}
+
+.postBtn{
+    composes: btn btn-sm from global;
+    background-color: $basePink !important;
+    color: #fff !important;
+}
+
