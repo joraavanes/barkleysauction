@@ -1,0 +1,42 @@
+$favColor: #F91890;
+
+.commentContainer{
+    display: flex;
+    justify-content: space-between;
+
+    padding: 5px 0 5px;
+}
+
+.commentAvatarContainer{
+    display: flex;
+    align-items: center;
+    // width: 80%;
+    flex-grow: 35;
+}
+
+.userAvatarContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.commentText{
+    padding-left: 25px;
+    margin-bottom: 0;
+    max-width:100%;
+}
+
+.commentBtnsContainer{
+    // width:20%;
+    // flex-grow: 1;
+}
+.commentBtns{
+    composes: btn btn-sm from global;
+
+    i{
+        transition: color .4s ease-in-out;
+    }
+
+    &:hover i{
+        color: $favColor;
+    }
+}

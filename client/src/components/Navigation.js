@@ -53,7 +53,7 @@ class Navigation extends React.Component{
 
                                         <NavLink to="/Dashboard" className="nav-link">Dashboard</NavLink>
                                     </NavItem>
-                                    {!this.props.isAuthenticated &&
+                                    {!this.props.auth &&
                                         <NavItem>
                                             <a href="#" className="nav-link" onClick={this.handleLoginModal}>Login</a>
                                         </NavItem>
@@ -63,22 +63,27 @@ class Navigation extends React.Component{
                                         Settings
                                         </DropdownToggle>
                                         <DropdownMenu right>
-                                        <DropdownItem>
-                                            User Settings
-                                        </DropdownItem>
-                                        <DropdownItem>
-                                            Theme
-                                        </DropdownItem>
-                                        <DropdownItem divider />
-                                        {!this.props.isAuthenticated ? (
-                                            <NavLink to="/Login" className="dropdown-item" role="menuitem">
-                                                Login
-                                            </NavLink>
-                                        ):(
-                                            <DropdownItem onClick={this.handleLogout}>
-                                                Logout
+                                            {this.props.auth && 
+                                                <DropdownItem>
+                                                    Hi {this.props.auth.name}
+                                                </DropdownItem>
+                                            }
+                                            <DropdownItem>
+                                                User Settings
                                             </DropdownItem>
-                                        )}
+                                            <DropdownItem>
+                                                Theme
+                                            </DropdownItem>
+                                            <DropdownItem divider />
+                                            {!this.props.auth ? (
+                                                <NavLink to="/Login" className="dropdown-item" role="menuitem">
+                                                    Login
+                                                </NavLink>
+                                            ):(
+                                                <DropdownItem onClick={this.handleLogout}>
+                                                    Logout
+                                                </DropdownItem>
+                                            )}
                                         </DropdownMenu>
                                     </UncontrolledDropdown>
                                 </Nav>
@@ -94,7 +99,7 @@ class Navigation extends React.Component{
 const mapStateToProps = store => ({
     loading: store.items.loading,
     tokens: store.auth,
-    isAuthenticated: store.auth.length !== 0
+    auth: store.auth[0]
 });
 
 export default connect(mapStateToProps,{toggleLoginModal, logout})(Navigation);

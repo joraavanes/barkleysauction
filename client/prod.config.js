@@ -15,10 +15,29 @@ module.exports = webpackMerge(common, {
             {
                 test: /\.css$|\.scss$/,
                 use:[
-                    // MiniCssExtractPlugin.loader,
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
+                    // // MiniCssExtractPlugin.loader,
+                    // 'style-loader',
+                    // 'css-loader',
+                    // 'sass-loader'
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options:{
+                            modules: {
+                                localIdentName: "[name]_[local]___[hash:base64]",
+                                getLocalIdent: (loaderContext, localIdentName, localName, options) => {
+                                    if(loaderContext.resourcePath.includes('node_modules') || loaderContext.resourcePath.includes('custom'))
+                                        return localName;
+                                }
+                            },														
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
                 ]
             }
         ]
@@ -30,9 +49,9 @@ module.exports = webpackMerge(common, {
         ]
     },
     plugins:[
-        new MiniCssExtractPlugin({
-            filename: '../css/[name].[hash].css'
-        })
+        // new MiniCssExtractPlugin({
+        //     filename: '../css/[name].[hash].css'
+        // })
     ],
     mode: 'production'
 });

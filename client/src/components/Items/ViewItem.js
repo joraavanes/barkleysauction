@@ -9,6 +9,9 @@ import avatar3 from '../../media/avatar-5.png'
 import avatar4 from '../../media/avatar-4.png'
 // import bag from '../../media/bag.jpg'
 
+// styles
+import styles from './styles/LastBids.scss'
+
 class ViewItem extends Component {
 
     componentDidMount(){
@@ -82,7 +85,7 @@ class ViewItem extends Component {
                             </div>
                         </Row>
                     </main>
-                    <div className="col-12 col-sm-6 col-md-4">
+                    <div className={styles.lastBidsContainer}>
                         <h2 className="bid-title">Last bids
                             <span>for {this.props.item && this.props.item.title}</span>
                         </h2>

@@ -1,6 +1,7 @@
 import React from 'react'
-import PostComment from './PostComment'
 import {connect} from 'react-redux'
+import PostComment from './PostComment'
+import Comment from './Comment'
 import { getComments, clearComments, postComment } from '../../redux/actions/commentActions'
 
 class Comments extends React.Component{
@@ -36,7 +37,11 @@ class Comments extends React.Component{
 
                 <PostComment/>
                 {this.props.comments && this.props.comments.map((comment, i) => {
-                    return <p key={i}>{comment.userName} says {comment.comment}</p>
+                    // return (<p key={i}>
+                    //         {comment.userName} says {comment.comment}
+                    //         <button className="btn btn-sm"><i className="far fa-edit"></i></button>
+                    //     </p>);
+                    return <Comment key={i} {...comment}/>
                 })}
             </section>
         );
