@@ -28,6 +28,7 @@ $favColor: #F91890;
 .commentBtnsContainer{
     // width:20%;
     // flex-grow: 1;
+    display: flex;
 }
 .commentBtns{
     composes: btn btn-sm from global;
