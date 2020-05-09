@@ -1,9 +1,10 @@
-import { GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_LOADER } from '../actions/types/types'
+import { GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_LOADER, TOGGLE_EDIT_COMMENT_MODAL } from '../actions/types/types'
 
 const defaultCommentReducer = {
     quantity: 0,
     comments: undefined,
     formToggle: false,
+    editModal: false,
     loading: false
 };
 
@@ -26,7 +27,12 @@ export default function(state = defaultCommentReducer, action){
                 ...state,
                 formToggle: !state.formToggle,
                 done: action.done
-            }            
+            }; 
+        case TOGGLE_EDIT_COMMENT_MODAL:
+            return{
+                ...state,
+                editModal: !state.editModal
+            };
         case CLEAR_COMMENTS:
             return{
                 ...state,

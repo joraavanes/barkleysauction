@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, TOGGLE_COMMENT_FORM, TOGGLE_LOADER } from './types/types'
+import { GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, TOGGLE_COMMENT_FORM, TOGGLE_LOADER, TOGGLE_EDIT_COMMENT_MODAL } from './types/types'
 import { itemsLoading } from './itemActions'
 
 const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
@@ -52,6 +52,12 @@ export const toggleCommentForm = () => dispatch => {
     dispatch({
         type: TOGGLE_COMMENT_FORM,
         done: false
+    });
+};
+
+export const EditCommentModal = () => dispatch => {
+    dispatch({
+        type: TOGGLE_EDIT_COMMENT_MODAL
     });
 };
 

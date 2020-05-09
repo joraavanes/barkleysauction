@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PostComment from './PostComment'
+import EditCommentModal from './EditCommentModal'
 import Comment from './Comment'
 import { getComments, clearComments, postComment } from '../../redux/actions/commentActions'
 
@@ -35,6 +36,7 @@ class Comments extends React.Component{
                     </div>
                 }
 
+                <EditCommentModal/>
                 <PostComment/>
                 {this.props.comments && this.props.comments.map((comment, i) => {
                     // return (<p key={i}>

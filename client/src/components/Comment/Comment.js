@@ -1,8 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { EditCommentModal } from '../../redux/actions/commentActions'
 import styles from './styles/Comment.scss'
 import avatar from '../../media/avatar-1.png'
 
 class Comment extends React.Component{
+
+    toggleModal = () => {
+        this.props.EditCommentModal();
+    }
 
     render(){
         const {comment, userName} = this.props;
@@ -16,7 +22,7 @@ class Comment extends React.Component{
                     <p className={styles.commentText}>{comment}</p>
                 </div>
                 <div className={styles.commentBtnsContainer}>
-                    <button className={styles.commentBtns}><i className="far fa-edit"></i></button>
+                    <button className={styles.commentBtns} onClick={this.toggleModal}><i className="far fa-edit"></i></button>
                     <button className={styles.commentBtns}><i className="far fa-trash-alt"></i></button>
                 </div>
             </div>
@@ -24,4 +30,4 @@ class Comment extends React.Component{
     }
 }
 
-export default Comment;
+export default connect(undefined, {EditCommentModal})(Comment);
