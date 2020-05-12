@@ -7,7 +7,8 @@ import avatar from '../../media/avatar-1.png'
 class Comment extends React.Component{
 
     toggleModal = () => {
-        this.props.EditCommentModal();
+        const {uuid, userName, comment} = this.props;
+        this.props.EditCommentModal(uuid, userName, comment);
     }
 
     render(){

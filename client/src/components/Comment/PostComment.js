@@ -51,7 +51,7 @@ class PostComment extends React.Component{
             return(
                 <div>
                     <form onSubmit={this.postComment}>
-                        <textarea className="form-control" id="comment" rows="3" onChange={this.handleCommentChange}></textarea>
+                        <textarea className="form-control" id="comment" rows="3" autoFocus={true} onChange={this.handleCommentChange}></textarea>
                         <div className={styles.btnWrapper}>
                             <button onClick={this.toggleComment} className={styles.cancelBtn}>
                                 Cancel

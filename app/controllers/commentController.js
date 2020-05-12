@@ -43,11 +43,11 @@ exports.editComment = (req, res, next) => {
             .then(product => {
                 const commentToUpdate =  product.comments.find(comment=> comment.uuid == _commentuuid);
                 const commentIndex = product.comments.findIndex(comment => comment.uuid == _commentuuid);
-                
+    
                 commentToUpdate.userName = userName;
                 commentToUpdate.comment = comment;
-                commentToUpdate.dateIssued = new Date().getTime();
-                
+                commentToUpdate.dateIssued = new Date().getTime();                
+
                 product.comments.splice(commentIndex, 1, commentToUpdate);
 
                 return product.save();
