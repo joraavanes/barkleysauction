@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, TOGGLE_COMMENT_FORM, TOGGLE_LOADER, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT } from './types/types'
+import { GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, TOGGLE_COMMENT_FORM, TOGGLE_LOADER, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED } from './types/types'
 import { itemsLoading } from './itemActions'
 
 const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
@@ -47,11 +47,11 @@ export const postComment = (_id, userName, comment, token) => dispatch => {
         });
 };
 
-export const EditComment = (_productId, {uuid, _userId, userName, comment}) => dispatch => {
+export const EditComment = (_productId, token, {uuid, _userId, userName, comment}) => dispatch => {
     dispatch(itemsLoading(true));
     dispatch(toggleLoader(true));
 
-    axios.patch(`${url}/comments/${_productId}/${uuid}`, {userName, comment})
+    axios.patch(`${url}/comments/${_productId}/${uuid}`, {userName, comment}, {headers: { 'x-auth': token }})
         .then(res => {
             dispatch({
                 type: EDIT_COMMENT,
@@ -65,6 +65,12 @@ export const EditComment = (_productId, {uuid, _userId, userName, comment}) => d
             dispatch(itemsLoading(false));
             dispatch(toggleLoader(false));
         });
+};
+
+export const EditCommentCompleted = () => dispatch => {
+    dispatch({
+        type: EDIT_COMMENT_COMEPLETED
+    });
 };
 
 export const toggleCommentForm = () => dispatch => {

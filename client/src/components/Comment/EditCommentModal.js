@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { EditCommentModal as editCommentModal, EditComment, getComments } from '../../redux/actions/commentActions'
+import { EditCommentModal as editCommentModal, EditComment, EditCommentCompleted, getComments } from '../../redux/actions/commentActions'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 class EditCommentModal extends React.Component {
   constructor(props) {
       super(props);
       this.submitBtn = React.createRef();
+      this.cancelBtn = React.createRef();
   }
 
   toggle = () => this.props.editCommentModal(undefined, undefined);
@@ -14,17 +15,21 @@ class EditCommentModal extends React.Component {
   editFormSubmit = e => {
     e.preventDefault();
     this.submitBtn.current.setAttribute('disabled', 'disabled');
+    this.cancelBtn.current.setAttribute('disabled', 'disabled');
 
     const uuid = this.props.uuid;
     const userName = this.props.userName;
     const comment = e.target.elements.comment.value;
+    const token = this.props.auth ? this.props.auth.token : undefined;
 
-    this.props.EditComment(this.props.item._id, {uuid, userName, comment});
+    this.props.EditComment(this.props.item._id, token, {uuid, userName, comment});
   }
 
   componentDidUpdate = () => {
     if(this.props.done && !this.props.loading){
       this.submitBtn.current.removeAttribute('disabled');
+      this.cancelBtn.current.removeAttribute('disabled');
+      this.props.EditCommentCompleted();
       this.props.getComments(undefined, this.props.item._id);
     }
   }
@@ -39,7 +44,7 @@ class EditCommentModal extends React.Component {
                   <textarea className="form-control" id="comment" rows="3" defaultValue={this.props.comment}></textarea>
               </ModalBody>
               <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>{' '}
+                <button className="btn btn-secondary" onClick={this.toggle} ref={this.cancelBtn}>Cancel</button>{' '}
                 {/* <Button color="primary" onClick={this.editComment}>Update</Button> */}
                 <button className="btn btn-primary" type="submit" ref={this.submitBtn}>
                   Update
@@ -64,4 +69,4 @@ const mapStateToProps = store => ({
   loading: store.comments.loading
 });
 
-export default connect(mapStateToProps, {editCommentModal, EditComment, getComments})(EditCommentModal);
+export default connect(mapStateToProps, {editCommentModal, EditComment, EditCommentCompleted, getComments})(EditCommentModal);

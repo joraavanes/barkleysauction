@@ -14,7 +14,7 @@ exports.getComments = (req, res, next) => {
             .catch(err => res.sendStatus(400));
 };
 
-// POST: Post a comment for the product
+// POST: /comments  Post a comment for the product
 exports.postComment = (req, res, next) => {
     const {_id} = req.params;
     const {userName, comment} = req.body;
@@ -35,6 +35,7 @@ exports.postComment = (req, res, next) => {
             .catch(err => res.sendStatus(400));
 };
 
+// PATCH: /comments/:_productId/:_commentuuid
 exports.editComment = (req, res, next) => {
     const {_productId, _commentuuid} = req.params;
     const {userName, comment} = req.body;
@@ -56,6 +57,7 @@ exports.editComment = (req, res, next) => {
             .catch(err => res.sendStatus(400));
 };
 
+// DELETE: /comments/:_productId/:_commentuuid
 exports.removeComment = (req, res, next) => {
     const {_productId, _commentId: _commentuuid} = req.params;
 

@@ -3,6 +3,7 @@ import {    GET_COMMENTS,
             TOGGLE_COMMENT_FORM,
             POST_COMMENT,
             EDIT_COMMENT,
+            EDIT_COMMENT_COMEPLETED,
             TOGGLE_LOADER,
             TOGGLE_EDIT_COMMENT_MODAL } from '../actions/types/types'
 
@@ -40,6 +41,13 @@ export default function(state = defaultCommentReducer, action){
                 editModal: action.editModal,
                 commentEditData: {
                     done: action.done
+                }
+            };
+        case EDIT_COMMENT_COMEPLETED:
+            return{
+                ...state,
+                commentEditData:{
+                    done: undefined
                 }
             };
         case TOGGLE_COMMENT_FORM:

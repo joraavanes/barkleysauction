@@ -23,12 +23,20 @@ class Comment extends React.Component{
                     <p className={styles.commentText}>{comment}</p>
                 </div>
                 <div className={styles.commentBtnsContainer}>
-                    <button className={styles.commentBtns} onClick={this.toggleModal}><i className="far fa-edit"></i></button>
-                    <button className={styles.commentBtns}><i className="far fa-trash-alt"></i></button>
+                    {this.props.auth && 
+                        <>
+                            <button className={styles.commentBtns} onClick={this.toggleModal}><i className="far fa-edit"></i></button>
+                            <button className={styles.commentBtns}><i className="far fa-trash-alt"></i></button>
+                        </>
+                    }
                 </div>
             </div>
         )
     }
 }
 
-export default connect(undefined, {EditCommentModal})(Comment);
+const mapStateToProps = store => ({
+    auth: store.auth[0]
+});
+
+export default connect(mapStateToProps, {EditCommentModal})(Comment);

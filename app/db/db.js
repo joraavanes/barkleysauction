@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://barkleys:fn3FP!UW9JfqVe5@ds257698.mlab.com:57698/heroku_jlhrjp4x',{
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/barkelysstore', {
 mongoose.connect('mongodb+srv://jora:OjoEHwrKqsLhimdo@cluster0-8jnyu.mongodb.net/barkleys?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useFindAndModify: false,
