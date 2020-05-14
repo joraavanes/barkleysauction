@@ -55471,8 +55471,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _PostComment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PostComment */ "./src/components/Comment/PostComment.js");
 /* harmony import */ var _EditCommentModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditCommentModal */ "./src/components/Comment/EditCommentModal.js");
-/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Comment */ "./src/components/Comment/Comment.js");
-/* harmony import */ var _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../redux/actions/commentActions */ "./src/redux/actions/commentActions.js");
+/* harmony import */ var _RemoveCommentModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RemoveCommentModal */ "./src/components/Comment/RemoveCommentModal.js");
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Comment */ "./src/components/Comment/Comment.js");
+/* harmony import */ var _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../redux/actions/commentActions */ "./src/redux/actions/commentActions.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -55492,6 +55493,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -55532,12 +55534,12 @@ var Comments = /*#__PURE__*/function (_React$Component) {
         role: "status"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "sr-only"
-      }, "Loading...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditCommentModal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PostComment__WEBPACK_IMPORTED_MODULE_2__["default"], null), this.props.comments && this.props.comments.map(function (comment, i) {
+      }, "Loading...")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PostComment__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditCommentModal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RemoveCommentModal__WEBPACK_IMPORTED_MODULE_4__["default"], null), this.props.comments && this.props.comments.map(function (comment, i) {
         // return (<p key={i}>
         //         {comment.userName} says {comment.comment}
         //         <button className="btn btn-sm"><i className="far fa-edit"></i></button>
         //     </p>);
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment__WEBPACK_IMPORTED_MODULE_5__["default"], _extends({
           key: i
         }, comment));
       }));
@@ -55554,8 +55556,8 @@ var mapStateToProps = function mapStateToProps(store) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  getComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_5__["getComments"],
-  clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_5__["clearComments"]
+  getComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_6__["getComments"],
+  clearComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_6__["clearComments"]
 })(Comments));
 
 /***/ }),
@@ -55852,6 +55854,109 @@ var mapStateToProps = function mapStateToProps(store) {
   postComment: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_2__["postComment"],
   getComments: _redux_actions_commentActions__WEBPACK_IMPORTED_MODULE_2__["getComments"]
 })(PostComment));
+
+/***/ }),
+
+/***/ "./src/components/Comment/RemoveCommentModal.js":
+/*!******************************************************!*\
+  !*** ./src/components/Comment/RemoveCommentModal.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+var RemoveCommentModal = /*#__PURE__*/function (_React$Component) {
+  _inherits(RemoveCommentModal, _React$Component);
+
+  function RemoveCommentModal() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, RemoveCommentModal);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(RemoveCommentModal)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      modalState: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggle", function () {
+      _this.setState(function (prevState) {
+        return {
+          modalState: !prevState.modalState
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "removeFormSubmit", function (e) {
+      e.preventDefault();
+    });
+
+    return _this;
+  }
+
+  _createClass(RemoveCommentModal, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn",
+        onClick: this.toggle
+      }, "toggle remove"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+        isOpen: this.state.modalState,
+        toggle: this.toggle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalHeader"], {
+        toggle: this.toggle
+      }, "Modal title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.removeFormSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalBody"], null, "Are you going to remove the comment?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["ModalFooter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-secondary",
+        onClick: this.toggle
+      }, "Cancel"), ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        type: "submit",
+        onClick: this.toggle
+      }, "Remove")))));
+    }
+  }]);
+
+  return RemoveCommentModal;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(undefined, {})(RemoveCommentModal));
 
 /***/ }),
 
@@ -58000,7 +58105,7 @@ var register = function register(_ref) {
 /*!*********************************************!*\
   !*** ./src/redux/actions/commentActions.js ***!
   \*********************************************/
-/*! exports provided: getComments, postComment, EditComment, EditCommentCompleted, toggleCommentForm, EditCommentModal, clearComments, toggleLoader */
+/*! exports provided: getComments, postComment, EditComment, RemoveComment, EditCommentCompleted, toggleCommentForm, EditCommentModal, clearComments, toggleLoader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58008,6 +58113,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getComments", function() { return getComments; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postComment", function() { return postComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditComment", function() { return EditComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RemoveComment", function() { return RemoveComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCommentCompleted", function() { return EditCommentCompleted; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleCommentForm", function() { return toggleCommentForm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditCommentModal", function() { return EditCommentModal; });
@@ -58090,6 +58196,31 @@ var EditComment = function EditComment(_productId, token, _ref) {
         type: _types_types__WEBPACK_IMPORTED_MODULE_1__["EDIT_COMMENT"],
         editModal: false,
         done: true
+      });
+      dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch(toggleLoader(false));
+    })["catch"](function (err) {
+      dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch(toggleLoader(false));
+    });
+  };
+};
+var RemoveComment = function RemoveComment(_productId, token, _ref2) {
+  var uuid = _ref2.uuid;
+  return function (dispatch) {
+    dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
+    dispatch(toggleLoader(true));
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(url, "/comments/").concat(_productId, "/").concat(uuid), {
+      headers: {
+        'x-auth': token
+      }
+    }).then(function (res) {
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_1__["TOGGLE_REMOVE_COMMENT_MODAL"],
+        removeModal: false,
+        commentRemoveData: {
+          done: true
+        }
       });
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch(toggleLoader(false));
@@ -58411,7 +58542,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_COMMENT_FORM, TOGGLE_EDIT_COMMENT_MODAL, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_COMMENT_FORM, TOGGLE_EDIT_COMMENT_MODAL, TOGGLE_REMOVE_COMMENT_MODAL, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58435,6 +58566,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EDIT_COMMENT_COMEPLETED", function() { return EDIT_COMMENT_COMEPLETED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_COMMENT_FORM", function() { return TOGGLE_COMMENT_FORM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_EDIT_COMMENT_MODAL", function() { return TOGGLE_EDIT_COMMENT_MODAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_REMOVE_COMMENT_MODAL", function() { return TOGGLE_REMOVE_COMMENT_MODAL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TOKEN", function() { return ADD_TOKEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TOKEN", function() { return REMOVE_TOKEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_TOKENS", function() { return CLEAR_TOKENS; });
@@ -58462,6 +58594,7 @@ var EDIT_COMMENT = 'EDIT_COMMENT';
 var EDIT_COMMENT_COMEPLETED = 'EDIT_COMMENT_COMEPLETED';
 var TOGGLE_COMMENT_FORM = 'TOGGLE_COMMENT_FORM';
 var TOGGLE_EDIT_COMMENT_MODAL = 'TOGGLE_EDIT_COMMENT_MODAL';
+var TOGGLE_REMOVE_COMMENT_MODAL = 'TOGGLE_REMOVE_COMMENT_MODAL';
 var ADD_TOKEN = 'ADD_TOKEN';
 var REMOVE_TOKEN = 'REMOVE_TOKEN';
 var CLEAR_TOKENS = 'CLEAR_TOKENS';
@@ -58545,6 +58678,11 @@ var defaultCommentReducer = {
     comment: undefined,
     done: undefined
   },
+  removeModal: undefined,
+  commentRemoveData: {
+    uuid: undefined,
+    done: undefined
+  },
   loading: false
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -58592,6 +58730,14 @@ var defaultCommentReducer = {
           uuid: action.uuid,
           userName: action.userName,
           comment: action.comment
+        }
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_REMOVE_COMMENT_MODAL"]:
+      return _objectSpread({}, state, {
+        removeModal: !state.removeModal,
+        commentRemoveData: {
+          uuid: action.uuid
         }
       });
 

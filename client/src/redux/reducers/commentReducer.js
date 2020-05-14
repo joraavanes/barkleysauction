@@ -5,7 +5,8 @@ import {    GET_COMMENTS,
             EDIT_COMMENT,
             EDIT_COMMENT_COMEPLETED,
             TOGGLE_LOADER,
-            TOGGLE_EDIT_COMMENT_MODAL } from '../actions/types/types'
+            TOGGLE_EDIT_COMMENT_MODAL,
+            TOGGLE_REMOVE_COMMENT_MODAL } from '../actions/types/types'
 
 const defaultCommentReducer = {
     quantity: 0,
@@ -16,6 +17,11 @@ const defaultCommentReducer = {
         uuid: undefined,
         userName: undefined,
         comment: undefined,
+        done: undefined
+    },
+    removeModal: undefined,
+    commentRemoveData: {
+        uuid: undefined,
         done: undefined
     },
     loading: false
@@ -35,6 +41,22 @@ export default function(state = defaultCommentReducer, action){
                 loading: action.loading,
                 done: action.done
             };
+        case TOGGLE_COMMENT_FORM:
+            return{
+                ...state,
+                formToggle: !state.formToggle,
+                done: action.done
+            }; 
+        case TOGGLE_EDIT_COMMENT_MODAL:
+            return{
+                ...state,
+                editModal: !state.editModal,
+                commentEditData: {
+                    uuid: action.uuid,
+                    userName: action.userName,
+                    comment: action.comment
+                }
+            };
         case EDIT_COMMENT:
             return{
                 ...state,
@@ -50,20 +72,20 @@ export default function(state = defaultCommentReducer, action){
                     done: undefined
                 }
             };
-        case TOGGLE_COMMENT_FORM:
+        case TOGGLE_REMOVE_COMMENT_MODAL:
             return{
                 ...state,
-                formToggle: !state.formToggle,
-                done: action.done
-            }; 
-        case TOGGLE_EDIT_COMMENT_MODAL:
-            return{
-                ...state,
-                editModal: !state.editModal,
-                commentEditData: {
+                removeModal: !state.removeModal,
+                commentRemoveData: {
                     uuid: action.uuid,
-                    userName: action.userName,
-                    comment: action.comment
+                }
+            };
+        case REMOVE_COMMENT:
+            return{
+                ...state,
+                removeModal: !state.removeModal,
+                commentRemoveData: {
+                    done: action.done
                 }
             };
         case CLEAR_COMMENTS:

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { EditCommentModal as editCommentModal, EditComment, EditCommentCompleted, getComments } from '../../redux/actions/commentActions'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 class EditCommentModal extends React.Component {
   constructor(props) {
