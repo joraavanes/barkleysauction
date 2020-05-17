@@ -59,7 +59,7 @@ exports.editComment = (req, res, next) => {
 
 // DELETE: /comments/:_productId/:_commentuuid
 exports.removeComment = (req, res, next) => {
-    const {_productId, _commentId: _commentuuid} = req.params;
+    const {_productId, _commentuuid} = req.params;
 
     Product.findById(_productId)
             .then(product => {

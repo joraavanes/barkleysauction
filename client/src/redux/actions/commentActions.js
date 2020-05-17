@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, TOGGLE_COMMENT_FORM, TOGGLE_LOADER, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT } from './types/types'
+import { GET_COMMENTS, CLEAR_COMMENTS, POST_COMMENT, TOGGLE_COMMENT_FORM, TOGGLE_LOADER, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED } from './types/types'
 import { itemsLoading } from './itemActions'
 
 const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
@@ -89,9 +89,11 @@ export const RemoveCommentModal = (uuid) => dispatch => {
     });
 };
 
-export const RemoveComment = (_productId, token, {uuid}) => dispatch => {
+export const RemoveComment = (_productId, token, uuid) => dispatch => {
     dispatch(itemsLoading(true));
     dispatch(toggleLoader(true));
+
+    console.table(_productId, token, uuid);
 
     axios.delete(`${url}/comments/${_productId}/${uuid}`, { headers: { 'x-auth': token }})
         .then(res => {
@@ -107,6 +109,12 @@ export const RemoveComment = (_productId, token, {uuid}) => dispatch => {
             dispatch(itemsLoading(false));
             dispatch(toggleLoader(false));
         });
+};
+
+export const RemoveCommentCompleted = () => dispatch => {
+    dispatch({
+        type: REMOVE_COMMENT_COMEPLETED
+    });
 };
 
 export const toggleCommentForm = () => dispatch => {

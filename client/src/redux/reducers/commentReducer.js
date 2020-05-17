@@ -6,7 +6,9 @@ import {    GET_COMMENTS,
             EDIT_COMMENT_COMEPLETED,
             TOGGLE_LOADER,
             TOGGLE_EDIT_COMMENT_MODAL,
-            TOGGLE_REMOVE_COMMENT_MODAL } from '../actions/types/types'
+            TOGGLE_REMOVE_COMMENT_MODAL,
+            REMOVE_COMMENT,
+            REMOVE_COMMENT_COMEPLETED } from '../actions/types/types'
 
 const defaultCommentReducer = {
     quantity: 0,
@@ -88,6 +90,13 @@ export default function(state = defaultCommentReducer, action){
                     done: action.done
                 }
             };
+        case REMOVE_COMMENT_COMEPLETED:
+            return{
+                ...state,
+                commentRemoveData: {
+                    done: undefined
+                }
+            }
         case CLEAR_COMMENTS:
             return{
                 ...state,
