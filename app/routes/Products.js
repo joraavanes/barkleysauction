@@ -2,12 +2,16 @@ const express = require('express');
 const router = express.Router();
 const multer = require('../middleware/productFileUpload');
 const authenticate = require('../middleware/authenticate');
+const {Product} = require('../models/Product');
 // const items = require('./products.json');
 
 const productsController = require('../controllers/productController');
 
 // GET: /products
 router.get('/', productsController.getItems);
+
+// GET: /products/:title
+router.get('/:title', productsController.searchItem);
 
 // GET: /products/:title/:uuid
 router.get('/:title/:uuid', productsController.getItem);
@@ -27,14 +31,7 @@ router.delete('/remove/:_id', authenticate, productsController.deleteItem);
 //         .catch(e => res.send({}));
 // });
 
-// router.get('/:title', (req,res) => {
-//     const title = req.params.title;
-//     // const model = items.filter(x=> x.title.includes(text));
-//     Product.find({"title": { "$regex": title, "$options": "i"}}, (err, items)=>{
 
-//         res.send(items);
-//     });
-// });
 
 // router.get('/:id', (req, res) => {
 //     const id = req.params.id;

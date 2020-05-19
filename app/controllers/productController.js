@@ -17,6 +17,16 @@ exports.getItems = (req,res) =>{
     });
 };
 
+// GET: /products/:title
+exports.searchItem = (req,res) => {
+    const title = req.params.title;
+    // const model = items.filter(x=> x.title.includes(text));
+    Product.find({"title": { "$regex": title, "$options": "i"}}, (err, items)=>{
+
+        res.send(items);
+    });
+};
+
 // GET: /products/:title/:uuid
 exports.getItem = (req,res)=>{
     const {uuid,title} = req.params;
