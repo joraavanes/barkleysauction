@@ -42,6 +42,7 @@ class App extends React.Component{
     }
 
     componentWillUnmount(){
+        window.scrollTo({top: 0, behavior: 'smooth'});
         this.props.clearItems();
     }
 
