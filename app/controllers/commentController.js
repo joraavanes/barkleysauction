@@ -9,7 +9,19 @@ exports.getComments = (req, res, next) => {
     Product.findById(_id)
             .then(doc => {
                 const comments = doc.comments.sort((a, b) => b.dateIssued - a.dateIssued);
-                res.send(comments);
+
+                const refinedComments = comments.map((comment, index) => {
+                    return {
+                        comment: comment.comment,
+                        dateIssued: comment.dateIssued,
+                        published: comment.published,
+                        userName: comment.userName,
+                        uuid: comment.uuid,
+                        _id: comment._id
+                    }
+                });
+
+                res.send(refinedComments);
             })
             .catch(err => res.sendStatus(400));
 };
