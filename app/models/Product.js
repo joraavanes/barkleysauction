@@ -60,6 +60,10 @@ const ProductSchema = new Schema({
             required: true,
             type: String
         },
+        email: {
+            type: String,
+            required: false
+        },
         comment: {
             required: true,
             type: String,
@@ -78,7 +82,8 @@ const ProductSchema = new Schema({
         },
         _userId: {
             type: ObjectID,
-            required: true
+            required: true,
+            ref: 'User'
         }
     }]
 });

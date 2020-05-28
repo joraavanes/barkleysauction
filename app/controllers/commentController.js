@@ -36,6 +36,7 @@ exports.postComment = (req, res, next) => {
                 product.comments.push({
                     uuid: v4(),
                     _userId: new ObjectID(req.user._id.toString()),
+                    email: req.user.email,
                     dateIssued: new Date().valueOf(),
                     userName,
                     comment,
@@ -53,10 +54,15 @@ exports.editComment = (req, res, next) => {
     const {userName, comment} = req.body;
 
     Product.findById(_productId)
+            .populate('comments._userId')
             .then(product => {
                 const commentToUpdate =  product.comments.find(comment=> comment.uuid == _commentuuid);
                 const commentIndex = product.comments.findIndex(comment => comment.uuid == _commentuuid);
     
+                if(commentToUpdate._userId._id.toString() !== req.user._id.toString()){
+                    return Promise.reject();
+                }
+
                 commentToUpdate.userName = userName;
                 commentToUpdate.comment = comment;
                 commentToUpdate.dateIssued = new Date().getTime();                

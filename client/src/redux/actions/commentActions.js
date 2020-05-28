@@ -73,6 +73,7 @@ export const EditComment = (_productId, token, {uuid, _userId, userName, comment
         .catch(err => {
             dispatch(itemsLoading(false));
             dispatch(toggleLoader(false));
+            dispatch(EditCommentModal());
         });
 };
 
