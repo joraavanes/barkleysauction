@@ -60,6 +60,7 @@ exports.editComment = (req, res, next) => {
                 const commentToUpdate =  product.comments.find(comment=> comment.uuid == _commentuuid);
                 const commentIndex = product.comments.findIndex(comment => comment.uuid == _commentuuid);
     
+                // Checks if user owns comment, if not rejects the promise
                 if(commentToUpdate._userId._id.toString() !== req.user._id.toString()){
                     return Promise.reject();
                 }
@@ -81,9 +82,17 @@ exports.removeComment = (req, res, next) => {
     const {_productId, _commentuuid} = req.params;
 
     Product.findById(_productId)
+            .populate('comments._userId')
             .then(product => {
-                product.comments = product.comments.filter(comment => comment.uuid != _commentuuid);
-
+                
+                // Checks if user owns the comment, if so it gets filtered from the array
+                product.comments = product.comments.filter(comment => {
+                    if(comment.uuid !== _commentuuid) return comment;
+                    
+                    if(comment._userId._id.toString() !== req.user._id.toString()) return comment;
+                    
+                });
+                
                 return product.save();
             })
             .then(updatedProduct => res.sendStatus(200))
