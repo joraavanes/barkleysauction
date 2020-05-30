@@ -55422,7 +55422,8 @@ var Comment = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props2 = this.props,
           comment = _this$props2.comment,
-          userName = _this$props2.userName;
+          userName = _this$props2.userName,
+          email = _this$props2.email;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _styles_Comment_scss__WEBPACK_IMPORTED_MODULE_3___default.a.commentContainer
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -55436,7 +55437,7 @@ var Comment = /*#__PURE__*/function (_React$Component) {
         className: _styles_Comment_scss__WEBPACK_IMPORTED_MODULE_3___default.a.commentText
       }, comment)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _styles_Comment_scss__WEBPACK_IMPORTED_MODULE_3___default.a.commentBtnsContainer
-      }, this.props.auth && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, this.props.auth && this.props.auth.email === email && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: _styles_Comment_scss__WEBPACK_IMPORTED_MODULE_3___default.a.commentBtns,
         onClick: this.toggleEditModal
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -58315,8 +58316,7 @@ var EditComment = function EditComment(_productId, token, _ref) {
       dispatch(toggleLoader(false));
     })["catch"](function (err) {
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
-      dispatch(toggleLoader(false));
-      dispatch(EditCommentModal());
+      dispatch(toggleLoader(false)); // dispatch(EditCommentModal());
     });
   };
 };

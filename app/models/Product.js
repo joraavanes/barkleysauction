@@ -62,7 +62,7 @@ const ProductSchema = new Schema({
         },
         email: {
             type: String,
-            required: false
+            required: true
         },
         comment: {
             required: true,

@@ -17,7 +17,7 @@ class Comment extends React.Component{
     }
 
     render(){
-        const {comment, userName} = this.props;
+        const {comment, userName, email} = this.props;
         return(
             <div className={styles.commentContainer}>
                 <div className={styles.commentAvatarContainer}>
@@ -28,7 +28,7 @@ class Comment extends React.Component{
                     <p className={styles.commentText}>{comment}</p>
                 </div>
                 <div className={styles.commentBtnsContainer}>
-                    {this.props.auth && 
+                    {this.props.auth && this.props.auth.email === email &&
                         <>
                             <button className={styles.commentBtns} onClick={this.toggleEditModal}><i className="far fa-edit"></i></button>
                             <button className={styles.commentBtns} onClick={this.toggleRemoveModal}><i className="far fa-trash-alt"></i></button>

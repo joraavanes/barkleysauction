@@ -15,9 +15,10 @@ exports.getComments = (req, res, next) => {
                         comment: comment.comment,
                         dateIssued: comment.dateIssued,
                         published: comment.published,
+                        email: comment.email,
                         userName: comment.userName,
                         uuid: comment.uuid,
-                        _id: comment._id
+                        // _id: comment._id
                     }
                 });
 

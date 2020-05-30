@@ -35,6 +35,9 @@ exports.getItem = (req,res)=>{
             // if(!item){
             //     return res.status(404).send({err: 'The product was not found'});
             // }
+            
+            // Remove _id from comments then sends to user
+
             if(item.comments.length > 0)
                 item.comments = item.comments.sort((a, b) => b.dateIssued - a.dateIssued);
 
