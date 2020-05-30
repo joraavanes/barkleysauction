@@ -30,20 +30,24 @@ exports.searchItem = (req,res) => {
 // GET: /products/:title/:uuid
 exports.getItem = (req,res)=>{
     const {uuid,title} = req.params;
+
     Product.findOne({uuid,title})
         .then(item => {
             // if(!item){
             //     return res.status(404).send({err: 'The product was not found'});
             // }
-            
-            // Remove _id from comments then sends to user
 
+            // Remove _id from comments then sends to user
             if(item.comments.length > 0)
-                item.comments = item.comments.sort((a, b) => b.dateIssued - a.dateIssued);
+                item.comments = _.map(item.comments, comment => _.pick(comment, ['uuid', 'email', 'userName', 'comment', 'dateIssued']))
+                                .sort((a, b) => b.dateIssued - a.dateIssued);
+
+            // if(item.comments.length > 0)
+            //     item.comments = item.comments.sort((a, b) => b.dateIssued - a.dateIssued);
 
             res.send(item);
         })
-        .catch(() => res.status(404).send({err: 'The product was not found'}));
+        .catch(err => res.status(404).send({err: 'The product was not found'}));
 };
 
 // POST: /products
