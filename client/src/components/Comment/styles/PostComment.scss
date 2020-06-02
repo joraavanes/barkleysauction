@@ -20,3 +20,8 @@ $basePink: #F91890;
     color: #fff !important;
 }
 
+.exclamationIcon{
+    composes: fas fa-exclamation-circle from global;
+    padding-right: 10px;
+    font-size: 18px !important;
+}

@@ -40,7 +40,12 @@ class PostComment extends React.Component{
 
     render(){
         if(!this.props.user){
-            return(<span>Please login to comment for items</span>);
+            return(<div className="alert alert-warning" role="alert">
+                        <span>
+                            <i className={styles.exclamationIcon}></i>
+                        </span>
+                        Please login to post a comment
+                    </div>);
         }
 
         if(!this.props.formToggle){

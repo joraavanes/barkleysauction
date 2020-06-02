@@ -30,16 +30,17 @@ class Comments extends React.Component{
                     ): (
                         <p>No one has commented yet</p>
                     )}
-                <hr/>
+                <hr/>                
+
+                <PostComment/>
+                <EditCommentModal/>
+                <RemoveCommentModal/>
+                
                 {!this.props.comments && 
                     <div className="spinner-border text-danger" role="status">
                         <span className="sr-only">Loading...</span>
                     </div>
                 }
-
-                <PostComment/>
-                <EditCommentModal/>
-                <RemoveCommentModal/>
                 {this.props.comments && this.props.comments.map((comment, i) => {
                     // return (<p key={i}>
                     //         {comment.userName} says {comment.comment}
