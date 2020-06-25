@@ -14,7 +14,7 @@
     "dev": "concurrently \"npm run client\" \"npm run server:watch\" \"npm run server:open\""
   },
   "engines": {
-    "node": "12.13.0"
+    "node": "12.18.0"
   },
   "author": "Joraav",
   "license": "ISC",
