@@ -23,6 +23,11 @@ class PostComment extends React.Component{
     }
 
     handleCommentChange = e => {
+        
+        e.target.value.length != 0 ? 
+            this.commentBtn.current.removeAttribute('disabled') :
+             this.commentBtn.current.setAttribute('disabled', 'disabled');
+
         const comment = e.target.value;
         this.setState({comment});
     }
@@ -36,6 +41,10 @@ class PostComment extends React.Component{
 
     componentWillUnmount = () => {
         this.props.formToggle && this.props.toggleCommentForm();
+    }
+
+    handleKeyUpCapture = () => {
+        // console.log('handleKeyUpCapture');
     }
 
     render(){
@@ -56,12 +65,12 @@ class PostComment extends React.Component{
             return(
                 <div>
                     <form onSubmit={this.postComment}>
-                        <textarea className="form-control" id="comment" rows="3" autoFocus={true} onChange={this.handleCommentChange}></textarea>
+                        <textarea className="form-control" id="comment" rows="3" autoFocus={true} onChange={this.handleCommentChange} onKeyUpCapture={this.handleKeyUpCapture}></textarea>
                         <div className={styles.btnWrapper}>
                             <button onClick={this.toggleComment} className={styles.cancelBtn}>
                                 Cancel
                             </button>
-                            <button type="submit" className={styles.postBtn} ref={this.commentBtn}>
+                            <button type="submit" className={styles.postBtn} ref={this.commentBtn} disabled="disabled">
                                 Comment
                                 {this.props.btnLoading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
                             </button>
