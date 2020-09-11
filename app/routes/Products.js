@@ -8,7 +8,7 @@ const {Product} = require('../models/Product');
 const productsController = require('../controllers/productController');
 
 // GET: /products
-router.get('/', productsController.getItems);
+router.get('/all/:skip/:quantity', productsController.getItems);
 
 // GET: /products/:title
 router.get('/:title', productsController.searchItem);

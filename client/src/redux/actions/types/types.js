@@ -6,6 +6,8 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const CLEAR_ITEMS = 'CLEAR_ITEMS';
 export const CLEAR_ITEM = 'CLEAR_ITEM';
+export const ADD_PAGE_NUMBER = 'ADD_PAGE_NUMBER';
+export const RESET_PAGE_NUMBER = 'RESET_PAGE_NUMBER';
 export const SORT_BY = 'SORT_BY';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
 

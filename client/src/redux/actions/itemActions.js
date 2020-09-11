@@ -1,4 +1,4 @@
-import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR, REMOVE_ITEM} from './types/types'
+import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,ADD_PAGE_NUMBER,RESET_PAGE_NUMBER,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR, REMOVE_ITEM} from './types/types'
 import {setSearchText} from './filterActions'
 import { clearErrors } from './errorActions';
 import axios from 'axios'
@@ -17,9 +17,11 @@ export const getItem = (title,id) => dispatch => {
         });
 };
 
-export const getItems = () => dispatch => {
+export const getItems = skip => dispatch => {
+    skip *= 6;
+
     dispatch(itemsLoading(true));
-    axios.get(`${url}/products`)
+    axios.get(`${url}/products/all/${skip}/6`)
         .then(res=>{
             dispatch({
                 type:GET_ITEMS,
@@ -33,6 +35,7 @@ export const getItemsByName = text => dispatch => {
     text = text.trim();
     if(text !== ''){
         dispatch(itemsLoading(true));
+        dispatch(clearItems());
         dispatch(setSearchText(text));
         axios.get(`${url}/products/${text}`)
             .then(res => {
@@ -126,6 +129,14 @@ export const removeItem = (_id, token) => dispatch => {
             dispatch(clearErrors());
         });
 } 
+
+export const addPageNumber = () => ({
+    type: ADD_PAGE_NUMBER
+});
+
+export const resetPageNumber = () => ({
+    type: RESET_PAGE_NUMBER
+});
 
 export const clearItems = () => ({
     type: CLEAR_ITEMS

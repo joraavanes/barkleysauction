@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const { v4 } = require('uuid');
 const _ = require('lodash');
 const {ObjectID} = require('mongodb');
@@ -10,11 +9,18 @@ const { removeFile } = require('../util/fileHelper');
 
 // GET: /products
 exports.getItems = (req,res) =>{
-    Product.find({},null, { sort: {dateIssued: -1} }, (err, items) => {
-        if(!err){
-            res.send(items);
-        }
-    });
+    const {skip, quantity} = req.params;
+
+    Product.find()
+        .sort({dateIssued: -1})
+        .skip(parseInt(skip))
+        .limit(parseInt(quantity))
+        .then(products => {
+            res.send(products);
+        })
+        .catch(err => {
+            res.sendStatus(400);
+        });
 };
 
 // GET: /products/:title
