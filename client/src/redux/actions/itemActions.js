@@ -1,4 +1,4 @@
-import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,ADD_PAGE_NUMBER,RESET_PAGE_NUMBER,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR, REMOVE_ITEM} from './types/types'
+import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,ADD_PAGE_NUMBER,RESET_PAGE_NUMBER,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR, REMOVE_ITEM, ALL_FETCHED} from './types/types'
 import {setSearchText} from './filterActions'
 import { clearErrors } from './errorActions';
 import axios from 'axios'
@@ -129,6 +129,10 @@ export const removeItem = (_id, token) => dispatch => {
             dispatch(clearErrors());
         });
 } 
+
+export const allFetched = () => ({
+    type: ALL_FETCHED
+});
 
 export const addPageNumber = () => ({
     type: ADD_PAGE_NUMBER

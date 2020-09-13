@@ -58379,7 +58379,7 @@ var App = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleWindowScroll", function () {
       console.log('app scrolling');
 
-      if (window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight) {
+      if (window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight && _this.props.pageNumber != undefined) {
         console.log('Needs to load more');
 
         _this.props.getItems(_this.props.pageNumber);
@@ -58397,7 +58397,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "getSnapshotBeforeUpdate", function (prevProps, prevState) {
-      console.log('getSnapshotBeforeUpdate'); // if(prevProps.products.length < this.props.products.length){
+      // console.log('getSnapshotBeforeUpdate', this.props.products);
+      // if(prevProps.products.length < this.props.products.length){
       //     console.log('debounced');
       //     // window.addEventListener('scroll', this.handleWindowScroll);
       //     // window.onscroll = debounce(this.handleWindowScroll, 1000);
@@ -58406,13 +58407,24 @@ var App = /*#__PURE__*/function (_React$Component) {
       //     console.log('debounce stopped');
       //     window.removeEventListener('scroll', debounce(this.handleWindowScroll, 1000));
       // }
-
-      return null;
+      return _this.props.products.length;
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState, snapshot) {// console.log(prevProps.products);
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState, snapshot) {
+      console.log('componentDidUpdate', _this.props.loading);
+
+      if (prevProps.products.length < _this.props.products.length) {
+        console.log('NEW PRODUCTS');
+      }
+
+      if (prevProps.products.length == _this.props.products.length && !_this.props.loading) {
+        console.log(prevProps.products.length, _this.props.products.length, _this.props.loading);
+
+        _this.props.allFetched();
+      } // console.log(prevProps.products);
       // console.log(this.props.products);
       // console.log('new props');
+
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
@@ -58434,7 +58446,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         className: "text-center"
       }, _this.state.pageTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Items_Items__WEBPACK_IMPORTED_MODULE_8__["default"], {
         products: _this.props.products
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), _this.props.pageNumber != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 offset-sm-4 col-sm-4 text-center mb-2",
         style: {
           marginTop: '2rem'
@@ -58471,7 +58483,8 @@ var mapStateToProps = function mapStateToProps(state) {
   getItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_6__["getItems"],
   clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_6__["clearItems"],
   addPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_6__["addPageNumber"],
-  resetPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_6__["resetPageNumber"]
+  resetPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_6__["resetPageNumber"],
+  allFetched: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_6__["allFetched"]
 })(App));
 
 /***/ }),
@@ -58984,7 +58997,7 @@ var setSearchText = function setSearchText(text) {
 /*!******************************************!*\
   !*** ./src/redux/actions/itemActions.js ***!
   \******************************************/
-/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, removeItem, addPageNumber, resetPageNumber, clearItems, clearItem, itemsLoading */
+/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, removeItem, allFetched, addPageNumber, resetPageNumber, clearItems, clearItem, itemsLoading */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58995,6 +59008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postItem", function() { return postItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "putItem", function() { return putItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeItem", function() { return removeItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allFetched", function() { return allFetched; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPageNumber", function() { return addPageNumber; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPageNumber", function() { return resetPageNumber; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItems", function() { return clearItems; });
@@ -59148,6 +59162,11 @@ var removeItem = function removeItem(_id, token) {
     });
   };
 };
+var allFetched = function allFetched() {
+  return {
+    type: _types_types__WEBPACK_IMPORTED_MODULE_0__["ALL_FETCHED"]
+  };
+};
 var addPageNumber = function addPageNumber() {
   return {
     type: _types_types__WEBPACK_IMPORTED_MODULE_0__["ADD_PAGE_NUMBER"]
@@ -59209,7 +59228,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, SORT_BY, SEARCH_TEXT, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, SORT_BY, SEARCH_TEXT, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59226,6 +59245,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RESET_PAGE_NUMBER", function() { return RESET_PAGE_NUMBER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SORT_BY", function() { return SORT_BY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEARCH_TEXT", function() { return SEARCH_TEXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ALL_FETCHED", function() { return ALL_FETCHED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGIN_MODAL_STATE", function() { return LOGIN_MODAL_STATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_LOADER", function() { return TOGGLE_LOADER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_COMMENTS", function() { return GET_COMMENTS; });
@@ -59256,7 +59276,8 @@ var CLEAR_ITEM = 'CLEAR_ITEM';
 var ADD_PAGE_NUMBER = 'ADD_PAGE_NUMBER';
 var RESET_PAGE_NUMBER = 'RESET_PAGE_NUMBER';
 var SORT_BY = 'SORT_BY';
-var SEARCH_TEXT = 'SEARCH_TEXT'; // pageStateLoader action types
+var SEARCH_TEXT = 'SEARCH_TEXT';
+var ALL_FETCHED = 'ALL_FETCHED'; // pageStateLoader action types
 
 var LOGIN_MODAL_STATE = 'LOGIN_MODAL_STATE';
 var TOGGLE_LOADER = 'TOGGLE_LOADER';
@@ -59665,6 +59686,11 @@ var defaultItemState = {
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["RESET_PAGE_NUMBER"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         pageNumber: 0
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ALL_FETCHED"]:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        pageNumber: undefined
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ITEMS_LOADING"]:

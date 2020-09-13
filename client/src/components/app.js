@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Container, Button, Row, Col} from 'reactstrap'
 import axios from 'axios'
 import debounce from 'lodash.debounce'
-import {getItems,clearItems,addPageNumber,resetPageNumber} from '../redux/actions/itemActions'
+import {getItems,clearItems,addPageNumber,resetPageNumber,allFetched} from '../redux/actions/itemActions'
 import SearchProduct from './SearchProduct'
 import Items from './Items/Items'
 
@@ -34,7 +34,7 @@ class App extends React.Component{
 
     handleWindowScroll = () => {
         console.log('app scrolling');
-        if(window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight){
+        if(window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight && this.props.pageNumber != undefined){
             console.log('Needs to load more');
 
             this.props.getItems(this.props.pageNumber);
@@ -49,7 +49,7 @@ class App extends React.Component{
     }
 
     getSnapshotBeforeUpdate = (prevProps, prevState) => {
-        console.log('getSnapshotBeforeUpdate');
+        // console.log('getSnapshotBeforeUpdate', this.props.products);
         // if(prevProps.products.length < this.props.products.length){
         //     console.log('debounced');
         //     // window.addEventListener('scroll', this.handleWindowScroll);
@@ -59,10 +59,19 @@ class App extends React.Component{
         //     console.log('debounce stopped');
         //     window.removeEventListener('scroll', debounce(this.handleWindowScroll, 1000));
         // }
-        return null;
+        return this.props.products.length;
     }
 
     componentDidUpdate = (prevProps, prevState, snapshot) =>{
+        console.log('componentDidUpdate', this.props.loading);
+        if(prevProps.products.length < this.props.products.length){
+            console.log('NEW PRODUCTS');
+        }
+
+        if(prevProps.products.length == this.props.products.length && !this.props.loading){
+            console.log(prevProps.products.length, this.props.products.length, this.props.loading)
+            this.props.allFetched();
+        }
         // console.log(prevProps.products);
         // console.log(this.props.products);
         // console.log('new props');
@@ -89,7 +98,7 @@ class App extends React.Component{
                     </Row>
                 </Container>
                 <Items products={this.props.products}/>
-                {/* {this.props.products.length !== 0 && this.props.loading && ( */}
+                {this.props.pageNumber != undefined && (
                     <Container>
                         <Row>
                             <div className="col-12 offset-sm-4 col-sm-4 text-center mb-2" style={{marginTop: '2rem'}}>
@@ -99,7 +108,7 @@ class App extends React.Component{
                             </div>
                         </Row>
                     </Container>
-                {/* )} */}
+                )}
             </React.Fragment>
         );
     }
@@ -114,4 +123,4 @@ const mapStateToProps = state => {
 };
 
 // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
-export default connect(mapStateToProps,{getItems, clearItems, addPageNumber, resetPageNumber})(App);
+export default connect(mapStateToProps,{getItems, clearItems, addPageNumber, resetPageNumber, allFetched})(App);
