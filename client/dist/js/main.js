@@ -57682,7 +57682,7 @@ var SearchProduct = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "handleHeader", function (e) {
       var target = e.target;
-      var value = target.value; // this.props.handleHeader(value);
+      var value = target.value;
 
       _this.props.getItemsByName(value);
     });
@@ -58347,39 +58347,11 @@ var App = /*#__PURE__*/function (_React$Component) {
       pageNumber: 0
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleHeader", function (headerTitle) {
-      // const target = e.target;
-      if (headerTitle !== '') {
-        var filteredItems = _this.props.products.filter(function (item) {
-          return item.title.includes(headerTitle);
-        });
-
-        _this.setState(function () {
-          return {
-            filteredItems: filteredItems
-          };
-        });
-      } else {
-        _this.setState(function () {
-          return {
-            filteredItems: _this.props.products
-          };
-        });
-      }
-
-      headerTitle = headerTitle !== '' ? "Searched for: ".concat(headerTitle) : 'Welcome to Barkley\'s Store';
-
-      _this.setState(function () {
-        return {
-          pageTitle: headerTitle
-        };
-      });
-    });
-
     _defineProperty(_assertThisInitialized(_this), "handleWindowScroll", function () {
       console.log('app scrolling');
+      var threshold = window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight;
 
-      if (window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight && _this.props.pageNumber != undefined) {
+      if (threshold && _this.props.pageNumber != undefined) {
         console.log('Needs to load more');
 
         _this.props.getItems(_this.props.pageNumber);
@@ -58440,17 +58412,18 @@ var App = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "render", function () {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchProduct__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        handleHeader: _this.handleHeader
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "text-center"
-      }, _this.state.pageTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Items_Items__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      var _this$props = _this.props,
+          searchText = _this$props.searchText,
+          pageNumber = _this$props.pageNumber;
+      var pageTitle = _this.state.pageTitle;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchProduct__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "text-center pt-3 pb-3"
+      }, searchText !== '' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, "Searched for: ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "badge badge-warning bg-pink text-light"
+      }, searchText)) : pageTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Items_Items__WEBPACK_IMPORTED_MODULE_8__["default"], {
         products: _this.props.products
-      }), _this.props.pageNumber != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-12 offset-sm-4 col-sm-4 text-center mb-2",
-        style: {
-          marginTop: '2rem'
-        }
+      }), pageNumber != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_3__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-12 offset-sm-4 col-sm-4 text-center mt-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         role: "status",
         style: {
@@ -58474,6 +58447,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     products: state.items.items,
     pageNumber: state.items.pageNumber,
+    searchText: state.filters.searchText,
     loading: state.items.loading
   };
 }; // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
@@ -59052,11 +59026,11 @@ var getItems = function getItems(skip) {
 var getItemsByName = function getItemsByName(text) {
   return function (dispatch) {
     text = text.trim();
+    dispatch(Object(_filterActions__WEBPACK_IMPORTED_MODULE_1__["setSearchText"])(text));
 
     if (text !== '') {
       dispatch(itemsLoading(true));
       dispatch(clearItems());
-      dispatch(Object(_filterActions__WEBPACK_IMPORTED_MODULE_1__["setSearchText"])(text));
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products/").concat(text)).then(function (res) {
         dispatch({
           type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"],
@@ -59064,7 +59038,8 @@ var getItemsByName = function getItemsByName(text) {
         });
       });
     } else {
-      dispatch(getItems());
+      dispatch(clearItems());
+      dispatch(resetPageNumber()); // dispatch(getItems());
     }
   };
 };

@@ -18,23 +18,11 @@ class App extends React.Component{
         pageNumber: 0
     };
 
-    handleHeader = headerTitle => {
-        // const target = e.target;
-        
-        if(headerTitle !== ''){
-            const filteredItems = this.props.products.filter(item => item.title.includes(headerTitle));
-            this.setState(() => ({ filteredItems }));
-        }else{
-            this.setState(() => ({ filteredItems: this.props.products }));
-        }
-
-        headerTitle  = headerTitle !== '' ? `Searched for: ${headerTitle}`: 'Welcome to Barkley\'s Store';
-        this.setState(() => ({pageTitle: headerTitle}));
-    }
-
     handleWindowScroll = () => {
         console.log('app scrolling');
-        if(window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight && this.props.pageNumber != undefined){
+        const threshold = window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight;
+
+        if(threshold && this.props.pageNumber != undefined){
             console.log('Needs to load more');
 
             this.props.getItems(this.props.pageNumber);
@@ -85,23 +73,26 @@ class App extends React.Component{
     }
 
     render = () => {
+        const {searchText, pageNumber} = this.props;
+        const {pageTitle} = this.state;
+
         return(
             <React.Fragment>                
-                <SearchProduct handleHeader={this.handleHeader}/>
+                <SearchProduct/>
                 <Container>
                     <Row>
                         <Col>
-                            <h2 className="text-center">{this.state.pageTitle}</h2>
-                            {/*<input type="hidden" name="year" id="year" value={new Date().valueOf()}/> */}                            
-                            {/* <img src={img}/> */}
+                            <h2 className="text-center pt-3 pb-3">
+                                {searchText !== '' ? <>Searched for: <span className="badge badge-warning bg-pink text-light">{searchText}</span></> : pageTitle}
+                            </h2>                            
                         </Col>
                     </Row>
                 </Container>
                 <Items products={this.props.products}/>
-                {this.props.pageNumber != undefined && (
+                {pageNumber != undefined && (
                     <Container>
                         <Row>
-                            <div className="col-12 offset-sm-4 col-sm-4 text-center mb-2" style={{marginTop: '2rem'}}>
+                            <div className="col-12 offset-sm-4 col-sm-4 text-center mt-4">
                                 <div role="status" style={{width: '3rem', height: '3rem', borderWidth: '.35em'}} className="spinner-border text-danger">
                                     <span className="sr-only">Loading...</span>
                                 </div>
@@ -118,6 +109,7 @@ const mapStateToProps = state => {
     return{
         products: state.items.items,
         pageNumber: state.items.pageNumber,
+        searchText: state.filters.searchText,
         loading: state.items.loading
     }
 };

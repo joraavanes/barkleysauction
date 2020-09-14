@@ -33,10 +33,11 @@ export const getItems = skip => dispatch => {
 
 export const getItemsByName = text => dispatch => {
     text = text.trim();
+    dispatch(setSearchText(text));
+    
     if(text !== ''){
         dispatch(itemsLoading(true));
         dispatch(clearItems());
-        dispatch(setSearchText(text));
         axios.get(`${url}/products/${text}`)
             .then(res => {
                 dispatch({
@@ -45,7 +46,9 @@ export const getItemsByName = text => dispatch => {
                 });
             });
     } else {
-        dispatch(getItems());
+        dispatch(clearItems());
+        dispatch(resetPageNumber());
+        // dispatch(getItems());
     }
 };
 
