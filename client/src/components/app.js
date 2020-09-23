@@ -1,10 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
 import {Container, Button, Row, Col} from 'reactstrap'
-import axios from 'axios'
 import debounce from 'lodash.debounce'
 import {getItems,clearItems,addPageNumber,resetPageNumber,allFetched} from '../redux/actions/itemActions'
+import { clearSearchText } from '../redux/actions/filterActions'
 import SearchProduct from './SearchProduct'
 import Items from './Items/Items'
 
@@ -56,19 +55,24 @@ class App extends React.Component{
             console.log('NEW PRODUCTS');
         }
 
+        console.log(prevProps.products.length, this.props.products.length, this.props.loading)
         if(prevProps.products.length == this.props.products.length && !this.props.loading){
             console.log(prevProps.products.length, this.props.products.length, this.props.loading)
             this.props.allFetched();
         }
-        // console.log(prevProps.products);
-        // console.log(this.props.products);
-        // console.log('new props');
+
+        if(this.props.pageNumber == 0 && this.props.searchText == '' && this.props.products.length == 0){
+            this.props.resetPageNumber();
+            this.props.getItems(this.props.pageNumber);
+            this.props.addPageNumber();
+        }
     }
 
     componentWillUnmount = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
         this.props.clearItems();
         this.props.resetPageNumber();
+        this.props.clearSearchText();
         // window.removeEventListener('scroll', this.handleWindowScroll);
     }
 
@@ -115,4 +119,4 @@ const mapStateToProps = state => {
 };
 
 // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
-export default connect(mapStateToProps,{getItems, clearItems, addPageNumber, resetPageNumber, allFetched})(App);
+export default connect(mapStateToProps,{getItems, clearItems, addPageNumber, resetPageNumber, allFetched, clearSearchText})(App);

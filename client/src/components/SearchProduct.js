@@ -2,17 +2,26 @@ import React, { Component } from 'react'
 import {Container,Row,Col,FormGroup, Form} from 'reactstrap'
 import {getItemsByName} from '../redux/actions/itemActions'
 import {connect} from 'react-redux'
+import debounce from 'lodash.debounce'
 
 const productSearchStyle = {
     marginTop: 30
 }
 
 class SearchProduct extends Component {
+    searchText = React.createRef();
+
+    searchItems = value => {
+        console.log(this.searchText.current.value);
+        this.props.getItemsByName(this.searchText.current.value);
+    }
 
     handleHeader = e => {
         let target = e.target;
         let value = target.value;
-        this.props.getItemsByName(value);
+        console.log(value);
+        // this.props.getItemsByName(value);
+        const search = debounce(this.searchItems, 1000);
     }
 
     handleCopyText = e => {
@@ -31,11 +40,12 @@ class SearchProduct extends Component {
                                 <input
                                     type="text"
                                     className="form-control search"
+                                    ref={this.searchText}
                                     name="productSearch" 
                                     id="productSearch" 
                                     placeholder="Find your product here. iPhone, Jacket.etc."
                                     autoComplete="off"
-                                    onChange={this.handleHeader}
+                                    onChange={debounce(this.searchItems, 1000)}
                                     onCopy={this.handleCopyText}
                                 />
                             </FormGroup>

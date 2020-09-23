@@ -8,10 +8,10 @@
     "server:watch": "nodemon app/server.js",
     "server:open&watch": "start http://localhost:3000 & nodemon app/server.js",
     "server:open": "start http://localhost:3000",
-    "client": "npm run dev --prefix client",
+    "client": "npm run dev --prefix client -c=cyan",
     "client:run": "live-server client/dist",
     "client:prod": "npm run build --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run server:watch\" \"npm run server:open\""
+    "dev": "concurrently -n \"react,node,Browser\" -c \"bgCyan,bgGreen,bgMagenta\" \"npm run client\" \"npm run server:watch\" \"npm run server:open\""
   },
   "engines": {
     "node": "12.18.0"

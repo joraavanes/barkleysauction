@@ -10,6 +10,7 @@ export const ADD_PAGE_NUMBER = 'ADD_PAGE_NUMBER';
 export const RESET_PAGE_NUMBER = 'RESET_PAGE_NUMBER';
 export const SORT_BY = 'SORT_BY';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
+export const CLEAR_SEARCH_TEXT = 'CLEAR_SEARCH_TEXT';
 export const ALL_FETCHED = 'ALL_FETCHED';
 
 // pageStateLoader action types

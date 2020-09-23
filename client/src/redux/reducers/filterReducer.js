@@ -1,4 +1,4 @@
-import {SORT_BY,SEARCH_TEXT} from '../actions/types/types';
+import {SORT_BY,SEARCH_TEXT,CLEAR_SEARCH_TEXT} from '../actions/types/types';
 
 const defaultFilterReducer = {
     startDate: undefined,
@@ -19,6 +19,11 @@ const filterReducer = ((state = defaultFilterReducer, action)=>{
                 ...state,
                 sortBy: action.sortType
             };
+        case CLEAR_SEARCH_TEXT:
+            return{
+                ...state,
+                searchText: ''
+            }
         default:
             return state;
     }
