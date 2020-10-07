@@ -19,7 +19,6 @@ class App extends React.Component{
 
     // Checks if user sees the loading spinner, if so then again calls for new items from server
     handleWindowScroll = () => {
-        console.log('page scrolling');
         const threshold = window.innerHeight + document.documentElement.scrollTop >= (document.documentElement.offsetHeight - 48);
 
         if(threshold && this.props.pageNumber != undefined){
@@ -35,7 +34,7 @@ class App extends React.Component{
         this.props.addPageNumber();
 
         // debounce on page scroll every 1 second
-        window.onscroll = debounce(this.handleWindowScroll, 1000);
+        window.onscroll = debounce(this.handleWindowScroll, 1500);
     }
 
     getSnapshotBeforeUpdate = (prevProps, prevState) => {
@@ -71,6 +70,8 @@ class App extends React.Component{
         this.props.clearItems();
         this.props.resetPageNumber();
         this.props.clearSearchText();
+
+        window.onscroll = undefined;
         // window.removeEventListener('scroll', this.handleWindowScroll);
     }
 

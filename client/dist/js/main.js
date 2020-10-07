@@ -58357,7 +58357,6 @@ var App = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleWindowScroll", function () {
-      console.log('page scrolling');
       var threshold = window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 48;
 
       if (threshold && _this.props.pageNumber != undefined) {
@@ -58373,7 +58372,7 @@ var App = /*#__PURE__*/function (_React$Component) {
       _this.props.addPageNumber(); // debounce on page scroll every 1 second
 
 
-      window.onscroll = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(_this.handleWindowScroll, 1000);
+      window.onscroll = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(_this.handleWindowScroll, 1500);
     });
 
     _defineProperty(_assertThisInitialized(_this), "getSnapshotBeforeUpdate", function (prevProps, prevState) {
@@ -58414,8 +58413,9 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       _this.props.resetPageNumber();
 
-      _this.props.clearSearchText(); // window.removeEventListener('scroll', this.handleWindowScroll);
+      _this.props.clearSearchText();
 
+      window.onscroll = undefined; // window.removeEventListener('scroll', this.handleWindowScroll);
     });
 
     _defineProperty(_assertThisInitialized(_this), "render", function () {
