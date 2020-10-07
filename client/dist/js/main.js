@@ -58357,12 +58357,10 @@ var App = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleWindowScroll", function () {
-      console.log('app scrolling');
-      var threshold = window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight;
+      console.log('page scrolling');
+      var threshold = window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 48;
 
       if (threshold && _this.props.pageNumber != undefined) {
-        console.log('Needs to load more');
-
         _this.props.getItems(_this.props.pageNumber);
 
         _this.props.addPageNumber();
@@ -58372,7 +58370,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       _this.props.getItems(_this.props.pageNumber);
 
-      _this.props.addPageNumber();
+      _this.props.addPageNumber(); // debounce on page scroll every 1 second
+
 
       window.onscroll = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(_this.handleWindowScroll, 1000);
     });
@@ -58392,20 +58391,10 @@ var App = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState, snapshot) {
-      console.log('componentDidUpdate', _this.props.loading);
-
-      if (prevProps.products.length < _this.props.products.length) {
-        console.log('NEW PRODUCTS');
-      }
-
-      console.log(prevProps.products.length, _this.props.products.length, _this.props.loading);
-
-      if (prevProps.products.length == _this.props.products.length && !_this.props.loading) {
-        console.log(prevProps.products.length, _this.props.products.length, _this.props.loading);
-
-        _this.props.allFetched();
-      }
-
+      // if(prevProps.products.length < this.props.products.length){
+      // console.log('NEW PRODUCTS');
+      // }
+      // Checks if user removes search text to fetch items normally
       if (_this.props.pageNumber == 0 && _this.props.searchText == '' && _this.props.products.length == 0) {
         _this.props.resetPageNumber();
 
@@ -59040,6 +59029,10 @@ var getItems = function getItems(skip) {
     skip *= 6;
     dispatch(itemsLoading(true));
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products/all/").concat(skip, "/6")).then(function (res) {
+      if (res.data.length == 0) {
+        return dispatch(allFetched());
+      }
+
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"],
         loading: false,
@@ -59076,7 +59069,6 @@ var postItem = function postItem(_ref, token) {
       thumbnail = _ref.thumbnail;
   return function (dispatch) {
     dispatch(itemsLoading(true));
-    console.log(token);
     var fd = new FormData();
     fd.append('title', title);
     fd.append('startingBid', startingBid);
@@ -59697,7 +59689,8 @@ var defaultItemState = {
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ALL_FETCHED"]:
       return _objectSpread(_objectSpread({}, state), {}, {
-        pageNumber: undefined
+        pageNumber: undefined,
+        loading: false
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ITEMS_LOADING"]:

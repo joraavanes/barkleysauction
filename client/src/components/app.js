@@ -17,21 +17,24 @@ class App extends React.Component{
         pageNumber: 0
     };
 
+    // Checks if user sees the loading spinner, if so then again calls for new items from server
     handleWindowScroll = () => {
-        console.log('app scrolling');
-        const threshold = window.innerHeight + document.documentElement.scrollTop == document.documentElement.offsetHeight;
+        console.log('page scrolling');
+        const threshold = window.innerHeight + document.documentElement.scrollTop >= (document.documentElement.offsetHeight - 48);
 
         if(threshold && this.props.pageNumber != undefined){
-            console.log('Needs to load more');
 
             this.props.getItems(this.props.pageNumber);
             this.props.addPageNumber();
         }
     }
     
+    // Calls for new items from remote server then increments pageNumber
     componentDidMount = () => {
         this.props.getItems(this.props.pageNumber);
         this.props.addPageNumber();
+
+        // debounce on page scroll every 1 second
         window.onscroll = debounce(this.handleWindowScroll, 1000);
     }
 
@@ -50,17 +53,11 @@ class App extends React.Component{
     }
 
     componentDidUpdate = (prevProps, prevState, snapshot) =>{
-        console.log('componentDidUpdate', this.props.loading);
-        if(prevProps.products.length < this.props.products.length){
-            console.log('NEW PRODUCTS');
-        }
+        // if(prevProps.products.length < this.props.products.length){
+            // console.log('NEW PRODUCTS');
+        // }
 
-        console.log(prevProps.products.length, this.props.products.length, this.props.loading)
-        if(prevProps.products.length == this.props.products.length && !this.props.loading){
-            console.log(prevProps.products.length, this.props.products.length, this.props.loading)
-            this.props.allFetched();
-        }
-
+        // Checks if user removes search text to fetch items normally
         if(this.props.pageNumber == 0 && this.props.searchText == '' && this.props.products.length == 0){
             this.props.resetPageNumber();
             this.props.getItems(this.props.pageNumber);
@@ -68,6 +65,7 @@ class App extends React.Component{
         }
     }
 
+    // Removes the existing state related to items
     componentWillUnmount = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
         this.props.clearItems();

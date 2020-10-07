@@ -63,7 +63,8 @@ export default (state = defaultItemState, action) =>{
         case ALL_FETCHED:
             return {
                 ...state,
-                pageNumber: undefined
+                pageNumber: undefined,
+                loading: false
             }
         case ITEMS_LOADING:
             return{

@@ -23,6 +23,11 @@ export const getItems = skip => dispatch => {
     dispatch(itemsLoading(true));
     axios.get(`${url}/products/all/${skip}/6`)
         .then(res=>{
+
+            if(res.data.length==0){
+                return dispatch(allFetched());
+            }
+
             dispatch({
                 type:GET_ITEMS,
                 loading:false,
@@ -54,7 +59,6 @@ export const getItemsByName = text => dispatch => {
 
 export const postItem = ({title, startingBid, description, imageUrl, thumbnail}, token) => dispatch =>{
     dispatch(itemsLoading(true));
-    console.log(token);
 
     const fd = new FormData();
     fd.append('title', title);
