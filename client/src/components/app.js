@@ -22,7 +22,6 @@ class App extends React.Component{
         const threshold = window.innerHeight + document.documentElement.scrollTop >= (document.documentElement.offsetHeight - 48);
 
         if(threshold && this.props.pageNumber != undefined){
-
             this.props.getItems(this.props.pageNumber);
             this.props.addPageNumber();
         }
@@ -30,6 +29,9 @@ class App extends React.Component{
     
     // Calls for new items from remote server then increments pageNumber
     componentDidMount = () => {
+        this.props.clearItems();
+        this.props.resetPageNumber();
+
         this.props.getItems(this.props.pageNumber);
         this.props.addPageNumber();
 
@@ -53,7 +55,8 @@ class App extends React.Component{
 
     componentDidUpdate = (prevProps, prevState, snapshot) =>{
         // if(prevProps.products.length < this.props.products.length){
-            // console.log('NEW PRODUCTS');
+        //     console.log('NEW PRODUCTS');
+        //     window.onscroll = debounce(this.handleWindowScroll, 1500);
         // }
 
         // Checks if user removes search text to fetch items normally

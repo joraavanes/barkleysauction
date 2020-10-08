@@ -5,7 +5,7 @@ import Item from './Item'
 export default class Items extends Component {
     render() {
         return (
-            <Container fluid={true}>
+            <Container fluid={true} className="items-container">
                 <Row>
                     {this.props.products.map((product, index) => {
                         return(
