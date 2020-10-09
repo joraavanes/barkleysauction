@@ -58361,24 +58361,19 @@ var App = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "handleWindowScroll", function () {
       var threshold = window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 48;
 
-      if (threshold && _this.props.pageNumber != undefined) {
-        _this.props.getItems(_this.props.pageNumber);
-
-        _this.props.addPageNumber();
+      if (threshold && _this.props.lastTimestamp != 0) {
+        _this.props.getItems(_this.props.lastTimestamp);
       }
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       _this.props.clearItems();
 
-      _this.props.resetPageNumber();
+      var timestamp = new Date().valueOf();
 
-      _this.props.getItems(_this.props.pageNumber);
+      _this.props.getItems(timestamp);
 
-      _this.props.addPageNumber(); // debounce on page scroll every 1 second
-
-
-      window.onscroll = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(_this.handleWindowScroll, 1500);
+      window.onscroll = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(_this.handleWindowScroll, 800);
     });
 
     _defineProperty(_assertThisInitialized(_this), "getSnapshotBeforeUpdate", function (prevProps, prevState) {
@@ -58398,15 +58393,12 @@ var App = /*#__PURE__*/function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState, snapshot) {
       // if(prevProps.products.length < this.props.products.length){
       //     console.log('NEW PRODUCTS');
-      //     window.onscroll = debounce(this.handleWindowScroll, 1500);
       // }
-      // Checks if user removes search text to fetch items normally
-      if (_this.props.pageNumber == 0 && _this.props.searchText == '' && _this.props.products.length == 0) {
-        _this.props.resetPageNumber();
+      // Checks if user puts no text for search to refetch items again
+      if (_this.props.lastTimestamp == undefined && _this.props.searchText == '' && _this.props.products.length == 0) {
+        var timestamp = new Date().valueOf();
 
-        _this.props.getItems(_this.props.pageNumber);
-
-        _this.props.addPageNumber();
+        _this.props.getItems(timestamp);
       }
     });
 
@@ -58418,17 +58410,14 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       _this.props.clearItems();
 
-      _this.props.resetPageNumber();
-
-      _this.props.clearSearchText();
-
-      window.onscroll = undefined; // window.removeEventListener('scroll', this.handleWindowScroll);
+      window.onscroll = undefined;
     });
 
     _defineProperty(_assertThisInitialized(_this), "render", function () {
       var _this$props = _this.props,
           searchText = _this$props.searchText,
-          pageNumber = _this$props.pageNumber;
+          pageNumber = _this$props.pageNumber,
+          lastTimestamp = _this$props.lastTimestamp;
       var pageTitle = _this.state.pageTitle;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchProduct__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "text-center pt-3 pb-3"
@@ -58436,7 +58425,7 @@ var App = /*#__PURE__*/function (_React$Component) {
         className: "badge badge-warning bg-pink text-light"
       }, searchText)) : pageTitle)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Items_Items__WEBPACK_IMPORTED_MODULE_7__["default"], {
         products: _this.props.products
-      }), pageNumber != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), lastTimestamp != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-12 offset-sm-4 col-sm-4 text-center mt-4"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         role: "status",
@@ -58461,6 +58450,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     products: state.items.items,
     pageNumber: state.items.pageNumber,
+    lastTimestamp: state.items.lastTimestamp,
     searchText: state.filters.searchText,
     loading: state.items.loading
   };
@@ -58470,7 +58460,7 @@ var mapStateToProps = function mapStateToProps(state) {
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
   getItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["getItems"],
   clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["clearItems"],
-  addPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["addPageNumber"],
+  clearTimestamp: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["clearTimestamp"],
   resetPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["resetPageNumber"],
   allFetched: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["allFetched"],
   clearSearchText: _redux_actions_filterActions__WEBPACK_IMPORTED_MODULE_5__["clearSearchText"]
@@ -58992,7 +58982,7 @@ var clearSearchText = function clearSearchText() {
 /*!******************************************!*\
   !*** ./src/redux/actions/itemActions.js ***!
   \******************************************/
-/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, removeItem, allFetched, addPageNumber, resetPageNumber, clearItems, clearItem, itemsLoading */
+/*! exports provided: getItem, getItems, getItemsByName, postItem, putItem, removeItem, allFetched, addPageNumber, resetPageNumber, clearTimestamp, clearItems, clearItem, itemsLoading */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59006,6 +58996,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allFetched", function() { return allFetched; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addPageNumber", function() { return addPageNumber; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetPageNumber", function() { return resetPageNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearTimestamp", function() { return clearTimestamp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItems", function() { return clearItems; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearItem", function() { return clearItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "itemsLoading", function() { return itemsLoading; });
@@ -59031,19 +59022,24 @@ var getItem = function getItem(title, id) {
     });
   };
 };
-var getItems = function getItems(skip) {
+var getItems = function getItems(timestamp) {
   return function (dispatch) {
-    skip *= 6;
+    if (timestamp == undefined) {
+      return dispatch(clearTimestamp());
+    }
+
     dispatch(itemsLoading(true));
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products/all/").concat(skip, "/6")).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("".concat(url, "/products/all/").concat(timestamp, "/6")).then(function (res) {
       if (res.data.length == 0) {
         return dispatch(allFetched());
       }
 
+      var lastTimestamp = res.data[res.data.length - 1].dateIssued;
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"],
         loading: false,
-        items: res.data
+        items: res.data,
+        lastTimestamp: lastTimestamp
       });
     });
   };
@@ -59064,6 +59060,7 @@ var getItemsByName = function getItemsByName(text) {
       });
     } else {
       dispatch(clearItems());
+      dispatch(clearTimestamp());
       dispatch(resetPageNumber()); // dispatch(getItems());
     }
   };
@@ -59174,6 +59171,11 @@ var addPageNumber = function addPageNumber() {
 var resetPageNumber = function resetPageNumber() {
   return {
     type: _types_types__WEBPACK_IMPORTED_MODULE_0__["RESET_PAGE_NUMBER"]
+  };
+};
+var clearTimestamp = function clearTimestamp() {
+  return {
+    type: 'CLEAR_TIMESTAMP'
   };
 };
 var clearItems = function clearItems() {
@@ -59635,6 +59637,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var defaultItemState = {
   items: [],
   pageNumber: 0,
+  lastTimestamp: 0,
   loading: undefined
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -59645,7 +59648,8 @@ var defaultItemState = {
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         items: [].concat(_toConsumableArray(state.items), _toConsumableArray(action.items)),
-        loading: action.loading
+        loading: action.loading,
+        lastTimestamp: action.lastTimestamp
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEM"]:
@@ -59675,7 +59679,8 @@ var defaultItemState = {
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEMS"]:
       return _objectSpread(_objectSpread({}, state), {}, {
-        items: []
+        items: [],
+        lastTimestamp: 0
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEM"]:
@@ -59689,6 +59694,11 @@ var defaultItemState = {
         pageNumber: state.pageNumber + 1
       });
 
+    case 'CLEAR_TIMESTAMP':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        lastTimestamp: undefined
+      });
+
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["RESET_PAGE_NUMBER"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         pageNumber: 0
@@ -59697,6 +59707,7 @@ var defaultItemState = {
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ALL_FETCHED"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         pageNumber: undefined,
+        lastTimestamp: undefined,
         loading: false
       });
 

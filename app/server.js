@@ -46,8 +46,8 @@ app.use('/users', userRouter);
 // app.use('/items', productRouter);
 app.use('/comments', commentRouter);
 
-app.all('/*', (req, res) => {
-    // res.status(404).send('The page you are looking for didn\'t exist');
+// let the react handle the miscellaneous urls
+app.use((req, res, next) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
 

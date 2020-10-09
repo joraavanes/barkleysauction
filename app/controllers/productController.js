@@ -1,19 +1,16 @@
 const express = require('express');
 const { v4 } = require('uuid');
 const _ = require('lodash');
-const {ObjectID} = require('mongodb');
-const {Product} = require('../models/Product');
-const multer = require('../middleware/productFileUpload');
-const authenticate = require('../middleware/authenticate');
+const { ObjectID } = require('mongodb');
+const { Product } = require('../models/Product');
 const { removeFile } = require('../util/fileHelper');
 
-// GET: /products
+// GET: /products/all/:timestamp/:quantity
 exports.getItems = (req,res) =>{
-    const {skip, quantity} = req.params;
+    const {timestamp, quantity} = req.params;
 
-    Product.find()
+    Product.find({dateIssued: { $lt: timestamp }})
         .sort({dateIssued: -1})
-        .skip(parseInt(skip))
         .limit(parseInt(quantity))
         .then(products => {
             res.send(products);

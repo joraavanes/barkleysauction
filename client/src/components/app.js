@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Container, Button, Row, Col} from 'reactstrap'
 import debounce from 'lodash.debounce'
-import {getItems,clearItems,addPageNumber,resetPageNumber,allFetched} from '../redux/actions/itemActions'
+import {getItems,clearItems,clearTimestamp,resetPageNumber,allFetched} from '../redux/actions/itemActions'
 import { clearSearchText } from '../redux/actions/filterActions'
 import SearchProduct from './SearchProduct'
 import Items from './Items/Items'
@@ -21,22 +21,19 @@ class App extends React.Component{
     handleWindowScroll = () => {
         const threshold = window.innerHeight + document.documentElement.scrollTop >= (document.documentElement.offsetHeight - 48);
 
-        if(threshold && this.props.pageNumber != undefined){
-            this.props.getItems(this.props.pageNumber);
-            this.props.addPageNumber();
+        if(threshold && this.props.lastTimestamp != 0){
+            this.props.getItems(this.props.lastTimestamp);
         }
     }
     
-    // Calls for new items from remote server then increments pageNumber
+    // Calls remote server for new items, then udpates lastTimestamp for further items later
     componentDidMount = () => {
         this.props.clearItems();
-        this.props.resetPageNumber();
 
-        this.props.getItems(this.props.pageNumber);
-        this.props.addPageNumber();
+        const timestamp = new Date().valueOf();
+        this.props.getItems(timestamp);
 
-        // debounce on page scroll every 1 second
-        window.onscroll = debounce(this.handleWindowScroll, 1500);
+        window.onscroll = debounce(this.handleWindowScroll, 800);
     }
 
     getSnapshotBeforeUpdate = (prevProps, prevState) => {
@@ -56,14 +53,12 @@ class App extends React.Component{
     componentDidUpdate = (prevProps, prevState, snapshot) =>{
         // if(prevProps.products.length < this.props.products.length){
         //     console.log('NEW PRODUCTS');
-        //     window.onscroll = debounce(this.handleWindowScroll, 1500);
         // }
 
-        // Checks if user removes search text to fetch items normally
-        if(this.props.pageNumber == 0 && this.props.searchText == '' && this.props.products.length == 0){
-            this.props.resetPageNumber();
-            this.props.getItems(this.props.pageNumber);
-            this.props.addPageNumber();
+        // Checks if user puts no text for search to refetch items again
+        if(this.props.lastTimestamp == undefined && this.props.searchText == '' && this.props.products.length == 0){
+            const timestamp = new Date().valueOf();
+            this.props.getItems(timestamp);
         }
     }
 
@@ -71,15 +66,12 @@ class App extends React.Component{
     componentWillUnmount = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
         this.props.clearItems();
-        this.props.resetPageNumber();
-        this.props.clearSearchText();
 
         window.onscroll = undefined;
-        // window.removeEventListener('scroll', this.handleWindowScroll);
     }
 
     render = () => {
-        const {searchText, pageNumber} = this.props;
+        const {searchText, pageNumber, lastTimestamp} = this.props;
         const {pageTitle} = this.state;
 
         return(
@@ -95,7 +87,7 @@ class App extends React.Component{
                     </Row>
                 </Container>
                 <Items products={this.props.products}/>
-                {pageNumber != undefined && (
+                {lastTimestamp != undefined && (
                     <Container>
                         <Row>
                             <div className="col-12 offset-sm-4 col-sm-4 text-center mt-4">
@@ -115,10 +107,11 @@ const mapStateToProps = state => {
     return{
         products: state.items.items,
         pageNumber: state.items.pageNumber,
+        lastTimestamp: state.items.lastTimestamp,
         searchText: state.filters.searchText,
         loading: state.items.loading
     }
 };
 
 // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
-export default connect(mapStateToProps,{getItems, clearItems, addPageNumber, resetPageNumber, allFetched, clearSearchText})(App);
+export default connect(mapStateToProps,{getItems, clearItems, clearTimestamp, resetPageNumber, allFetched, clearSearchText})(App);

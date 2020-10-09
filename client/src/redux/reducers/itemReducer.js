@@ -3,6 +3,7 @@ import {GET_ITEMS,GET_ITEM,POST_ITEM,EDIT_ITEM,REMOVE_ITEM,ADD_PAGE_NUMBER,RESET
 const defaultItemState = {
     items:[],
     pageNumber: 0,
+    lastTimestamp: 0,
     loading: undefined
 }
 
@@ -12,7 +13,8 @@ export default (state = defaultItemState, action) =>{
             return {
                 ...state,
                 items: [...state.items, ...action.items],
-                loading: action.loading
+                loading: action.loading,
+                lastTimestamp: action.lastTimestamp
             };
         case GET_ITEM:
             return{
@@ -42,7 +44,8 @@ export default (state = defaultItemState, action) =>{
         case CLEAR_ITEMS:
             return{
                 ...state,
-                items:[]
+                items:[],
+                lastTimestamp: 0
             };
         case CLEAR_ITEM:
             return{
@@ -55,6 +58,11 @@ export default (state = defaultItemState, action) =>{
                 ...state,
                 pageNumber: state.pageNumber + 1
             }
+        case 'CLEAR_TIMESTAMP':
+            return {
+                ...state,
+                lastTimestamp: undefined
+            }
         case RESET_PAGE_NUMBER:
             return {
                 ...state,
@@ -64,6 +72,7 @@ export default (state = defaultItemState, action) =>{
             return {
                 ...state,
                 pageNumber: undefined,
+                lastTimestamp: undefined,
                 loading: false
             }
         case ITEMS_LOADING:

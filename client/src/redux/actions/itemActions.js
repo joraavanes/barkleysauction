@@ -17,21 +17,26 @@ export const getItem = (title,id) => dispatch => {
         });
 };
 
-export const getItems = skip => dispatch => {
-    skip *= 6;
+export const getItems = timestamp => dispatch => {
+    if(timestamp == undefined){
+        return dispatch(clearTimestamp());
+    }
 
     dispatch(itemsLoading(true));
-    axios.get(`${url}/products/all/${skip}/6`)
+    axios.get(`${url}/products/all/${timestamp}/6`)
         .then(res=>{
 
             if(res.data.length==0){
                 return dispatch(allFetched());
             }
 
+            const lastTimestamp = res.data[res.data.length -1].dateIssued;
+
             dispatch({
                 type:GET_ITEMS,
                 loading:false,
-                items: res.data
+                items: res.data,
+                lastTimestamp
             });
         });
 };
@@ -52,6 +57,7 @@ export const getItemsByName = text => dispatch => {
             });
     } else {
         dispatch(clearItems());
+        dispatch(clearTimestamp());
         dispatch(resetPageNumber());
         // dispatch(getItems());
     }
@@ -147,6 +153,10 @@ export const addPageNumber = () => ({
 
 export const resetPageNumber = () => ({
     type: RESET_PAGE_NUMBER
+});
+
+export const clearTimestamp = () => ({
+    type: 'CLEAR_TIMESTAMP'
 });
 
 export const clearItems = () => ({
