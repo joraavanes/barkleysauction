@@ -8,9 +8,12 @@ export const CLEAR_ITEMS = 'CLEAR_ITEMS';
 export const CLEAR_ITEM = 'CLEAR_ITEM';
 export const ADD_PAGE_NUMBER = 'ADD_PAGE_NUMBER';
 export const RESET_PAGE_NUMBER = 'RESET_PAGE_NUMBER';
+export const CLEAR_TIMESTAMP = 'CLEAR_TIMESTAMP';
 export const SORT_BY = 'SORT_BY';
 export const SEARCH_TEXT = 'SEARCH_TEXT';
 export const CLEAR_SEARCH_TEXT = 'CLEAR_SEARCH_TEXT';
+export const DEFAULT_SEARCH_STATE = 'DEFAULT_SEARCH_STATE';
+export const SEARCH_END = 'SEARCH_END';
 export const ALL_FETCHED = 'ALL_FETCHED';
 
 // pageStateLoader action types

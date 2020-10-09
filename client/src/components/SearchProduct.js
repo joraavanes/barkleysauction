@@ -12,17 +12,16 @@ class SearchProduct extends Component {
     searchText = React.createRef();
 
     searchItems = value => {
-        console.log(this.searchText.current.value);
-        this.props.getItemsByName(this.searchText.current.value);
+        const searchText = this.searchText.current.value;
+        this.props.getItemsByName(searchText);
     }
 
-    handleHeader = e => {
-        let target = e.target;
-        let value = target.value;
-        console.log(value);
-        // this.props.getItemsByName(value);
-        const search = debounce(this.searchItems, 1000);
-    }
+    // handleHeader = e => {
+    //     let target = e.target;
+    //     let value = target.value;
+
+    //     const search = debounce(this.searchItems, 1000);
+    // }
 
     handleCopyText = e => {
         alert('text copied');

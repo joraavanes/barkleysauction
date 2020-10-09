@@ -1,4 +1,4 @@
-import {SEARCH_TEXT, CLEAR_SEARCH_TEXT} from './types/types'
+import {SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END} from './types/types'
 
 export const setSearchText = text => ({
     type: SEARCH_TEXT,
@@ -10,9 +10,9 @@ export const clearSearchText = () => ({
 });
 
 export const defaultSearchState = () => ({
-    type: 'DEFAULT_SEARCH_STATE'
+    type: DEFAULT_SEARCH_STATE
 });
 
 export const searchEnd = () => ({
-    type: 'SEARCH_END'
+    type: SEARCH_END
 });

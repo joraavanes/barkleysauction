@@ -57688,17 +57688,9 @@ var SearchProduct = /*#__PURE__*/function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "searchText", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef());
 
     _defineProperty(_assertThisInitialized(_this), "searchItems", function (value) {
-      console.log(_this.searchText.current.value);
+      var searchText = _this.searchText.current.value;
 
-      _this.props.getItemsByName(_this.searchText.current.value);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleHeader", function (e) {
-      var target = e.target;
-      var value = target.value;
-      console.log(value); // this.props.getItemsByName(value);
-
-      var search = lodash_debounce__WEBPACK_IMPORTED_MODULE_4___default()(_this.searchItems, 1000);
+      _this.props.getItemsByName(searchText);
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleCopyText", function (e) {
@@ -58400,6 +58392,8 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       _this.props.clearTimestamp();
 
+      _this.props.clearSearchText();
+
       window.onscroll = undefined;
     });
 
@@ -58451,7 +58445,6 @@ var mapStateToProps = function mapStateToProps(state) {
   getItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["getItems"],
   clearItems: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["clearItems"],
   clearTimestamp: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["clearTimestamp"],
-  resetPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["resetPageNumber"],
   allFetched: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["allFetched"],
   clearSearchText: _redux_actions_filterActions__WEBPACK_IMPORTED_MODULE_5__["clearSearchText"],
   defaultSearchState: _redux_actions_filterActions__WEBPACK_IMPORTED_MODULE_5__["defaultSearchState"]
@@ -58970,12 +58963,12 @@ var clearSearchText = function clearSearchText() {
 };
 var defaultSearchState = function defaultSearchState() {
   return {
-    type: 'DEFAULT_SEARCH_STATE'
+    type: _types_types__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_SEARCH_STATE"]
   };
 };
 var searchEnd = function searchEnd() {
   return {
-    type: 'SEARCH_END'
+    type: _types_types__WEBPACK_IMPORTED_MODULE_0__["SEARCH_END"]
   };
 };
 
@@ -59062,10 +59055,8 @@ var getItemsByName = function getItemsByName(text) {
         });
       });
     } else {
-      // dispatch(clearTimestamp());
       dispatch(clearItems());
-      dispatch(Object(_filterActions__WEBPACK_IMPORTED_MODULE_1__["searchEnd"])()); // dispatch(resetPageNumber());
-      // dispatch(getItems());
+      dispatch(Object(_filterActions__WEBPACK_IMPORTED_MODULE_1__["searchEnd"])());
     }
   };
 };
@@ -59179,7 +59170,7 @@ var resetPageNumber = function resetPageNumber() {
 };
 var clearTimestamp = function clearTimestamp() {
   return {
-    type: 'CLEAR_TIMESTAMP'
+    type: _types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_TIMESTAMP"]
   };
 };
 var clearItems = function clearItems() {
@@ -59233,7 +59224,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59248,9 +59239,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ITEM", function() { return CLEAR_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_PAGE_NUMBER", function() { return ADD_PAGE_NUMBER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RESET_PAGE_NUMBER", function() { return RESET_PAGE_NUMBER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_TIMESTAMP", function() { return CLEAR_TIMESTAMP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SORT_BY", function() { return SORT_BY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEARCH_TEXT", function() { return SEARCH_TEXT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SEARCH_TEXT", function() { return CLEAR_SEARCH_TEXT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_SEARCH_STATE", function() { return DEFAULT_SEARCH_STATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEARCH_END", function() { return SEARCH_END; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ALL_FETCHED", function() { return ALL_FETCHED; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGIN_MODAL_STATE", function() { return LOGIN_MODAL_STATE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_LOADER", function() { return TOGGLE_LOADER; });
@@ -59281,9 +59275,12 @@ var CLEAR_ITEMS = 'CLEAR_ITEMS';
 var CLEAR_ITEM = 'CLEAR_ITEM';
 var ADD_PAGE_NUMBER = 'ADD_PAGE_NUMBER';
 var RESET_PAGE_NUMBER = 'RESET_PAGE_NUMBER';
+var CLEAR_TIMESTAMP = 'CLEAR_TIMESTAMP';
 var SORT_BY = 'SORT_BY';
 var SEARCH_TEXT = 'SEARCH_TEXT';
 var CLEAR_SEARCH_TEXT = 'CLEAR_SEARCH_TEXT';
+var DEFAULT_SEARCH_STATE = 'DEFAULT_SEARCH_STATE';
+var SEARCH_END = 'SEARCH_END';
 var ALL_FETCHED = 'ALL_FETCHED'; // pageStateLoader action types
 
 var LOGIN_MODAL_STATE = 'LOGIN_MODAL_STATE';
@@ -59567,12 +59564,12 @@ var filterReducer = function filterReducer() {
         searchText: ''
       });
 
-    case 'DEFAULT_SEARCH_STATE':
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["DEFAULT_SEARCH_STATE"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         isSearchingEnd: false
       });
 
-    case 'SEARCH_END':
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["SEARCH_END"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         isSearchingEnd: true
       });
@@ -59708,7 +59705,7 @@ var defaultItemState = {
         pageNumber: state.pageNumber + 1
       });
 
-    case 'CLEAR_TIMESTAMP':
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_TIMESTAMP"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         lastTimestamp: undefined
       });

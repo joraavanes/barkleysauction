@@ -1,4 +1,4 @@
-import {GET_ITEMS,GET_ITEM,POST_ITEM,EDIT_ITEM,REMOVE_ITEM,ADD_PAGE_NUMBER,RESET_PAGE_NUMBER,ITEMS_LOADING,CLEAR_ITEMS,CLEAR_ITEM,ALL_FETCHED} from '../actions/types/types'
+import {GET_ITEMS,GET_ITEM,POST_ITEM,EDIT_ITEM,REMOVE_ITEM,ADD_PAGE_NUMBER,RESET_PAGE_NUMBER,ITEMS_LOADING,CLEAR_ITEMS,CLEAR_ITEM,ALL_FETCHED, CLEAR_TIMESTAMP} from '../actions/types/types'
 
 const defaultItemState = {
     items:[],
@@ -57,7 +57,7 @@ export default (state = defaultItemState, action) =>{
                 ...state,
                 pageNumber: state.pageNumber + 1
             }
-        case 'CLEAR_TIMESTAMP':
+        case CLEAR_TIMESTAMP:
             return {
                 ...state,
                 lastTimestamp: undefined

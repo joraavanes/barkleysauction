@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Container, Button, Row, Col} from 'reactstrap'
+import {Container, Row, Col} from 'reactstrap'
 import debounce from 'lodash.debounce'
-import {getItems,clearItems,clearTimestamp,resetPageNumber,allFetched} from '../redux/actions/itemActions'
+import { getItems, clearItems, clearTimestamp, allFetched} from '../redux/actions/itemActions'
 import { clearSearchText, defaultSearchState } from '../redux/actions/filterActions'
 import SearchProduct from './SearchProduct'
 import Items from './Items/Items'
@@ -55,6 +55,7 @@ class App extends React.Component{
         window.scrollTo({top: 0, behavior: 'smooth'});
         this.props.clearItems();
         this.props.clearTimestamp();
+        this.props.clearSearchText();
 
         window.onscroll = undefined;
     }
@@ -104,4 +105,4 @@ const mapStateToProps = state => {
 };
 
 // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
-export default connect(mapStateToProps,{getItems, clearItems, clearTimestamp, resetPageNumber, allFetched, clearSearchText, defaultSearchState})(App);
+export default connect(mapStateToProps,{getItems, clearItems, clearTimestamp, allFetched, clearSearchText, defaultSearchState})(App);
