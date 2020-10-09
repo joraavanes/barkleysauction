@@ -44,8 +44,7 @@ export default (state = defaultItemState, action) =>{
         case CLEAR_ITEMS:
             return{
                 ...state,
-                items:[],
-                lastTimestamp: 0
+                items:[]
             };
         case CLEAR_ITEM:
             return{

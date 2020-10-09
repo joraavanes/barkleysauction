@@ -58376,26 +58376,14 @@ var App = /*#__PURE__*/function (_React$Component) {
       window.onscroll = lodash_debounce__WEBPACK_IMPORTED_MODULE_3___default()(_this.handleWindowScroll, 800);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "getSnapshotBeforeUpdate", function (prevProps, prevState) {
-      // console.log('getSnapshotBeforeUpdate', this.props.products);
-      // if(prevProps.products.length < this.props.products.length){
-      //     console.log('debounced');
-      //     // window.addEventListener('scroll', this.handleWindowScroll);
-      //     // window.onscroll = debounce(this.handleWindowScroll, 1000);
-      //     window.addEventListener('scroll', debounce(this.handleWindowScroll, 1000));
-      // }else{
-      //     console.log('debounce stopped');
-      //     window.removeEventListener('scroll', debounce(this.handleWindowScroll, 1000));
-      // }
-      return _this.props.products.length;
-    });
-
     _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState, snapshot) {
       // if(prevProps.products.length < this.props.products.length){
-      //     console.log('NEW PRODUCTS');
+      //     console.log('New Products');
       // }
-      // Checks if user puts no text for search to refetch items again
-      if (_this.props.lastTimestamp == undefined && _this.props.searchText == '' && _this.props.products.length == 0) {
+      // Checks if searching is end then fetch items again
+      if (_this.props.isSearchingEnd && _this.props.searchText == '' && _this.props.products.length == 0) {
+        _this.props.defaultSearchState();
+
         var timestamp = new Date().valueOf();
 
         _this.props.getItems(timestamp);
@@ -58410,13 +58398,14 @@ var App = /*#__PURE__*/function (_React$Component) {
 
       _this.props.clearItems();
 
+      _this.props.clearTimestamp();
+
       window.onscroll = undefined;
     });
 
     _defineProperty(_assertThisInitialized(_this), "render", function () {
       var _this$props = _this.props,
           searchText = _this$props.searchText,
-          pageNumber = _this$props.pageNumber,
           lastTimestamp = _this$props.lastTimestamp;
       var pageTitle = _this.state.pageTitle;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchProduct__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Col"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -58451,6 +58440,7 @@ var mapStateToProps = function mapStateToProps(state) {
     products: state.items.items,
     pageNumber: state.items.pageNumber,
     lastTimestamp: state.items.lastTimestamp,
+    isSearchingEnd: state.filters.isSearchingEnd,
     searchText: state.filters.searchText,
     loading: state.items.loading
   };
@@ -58463,7 +58453,8 @@ var mapStateToProps = function mapStateToProps(state) {
   clearTimestamp: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["clearTimestamp"],
   resetPageNumber: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["resetPageNumber"],
   allFetched: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_4__["allFetched"],
-  clearSearchText: _redux_actions_filterActions__WEBPACK_IMPORTED_MODULE_5__["clearSearchText"]
+  clearSearchText: _redux_actions_filterActions__WEBPACK_IMPORTED_MODULE_5__["clearSearchText"],
+  defaultSearchState: _redux_actions_filterActions__WEBPACK_IMPORTED_MODULE_5__["defaultSearchState"]
 })(App));
 
 /***/ }),
@@ -58955,13 +58946,15 @@ var clearErrors = function clearErrors() {
 /*!********************************************!*\
   !*** ./src/redux/actions/filterActions.js ***!
   \********************************************/
-/*! exports provided: setSearchText, clearSearchText */
+/*! exports provided: setSearchText, clearSearchText, defaultSearchState, searchEnd */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSearchText", function() { return setSearchText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearSearchText", function() { return clearSearchText; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultSearchState", function() { return defaultSearchState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchEnd", function() { return searchEnd; });
 /* harmony import */ var _types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types/types */ "./src/redux/actions/types/types.js");
 
 var setSearchText = function setSearchText(text) {
@@ -58973,6 +58966,16 @@ var setSearchText = function setSearchText(text) {
 var clearSearchText = function clearSearchText() {
   return {
     type: _types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SEARCH_TEXT"]
+  };
+};
+var defaultSearchState = function defaultSearchState() {
+  return {
+    type: 'DEFAULT_SEARCH_STATE'
+  };
+};
+var searchEnd = function searchEnd() {
+  return {
+    type: 'SEARCH_END'
   };
 };
 
@@ -59059,9 +59062,10 @@ var getItemsByName = function getItemsByName(text) {
         });
       });
     } else {
+      // dispatch(clearTimestamp());
       dispatch(clearItems());
-      dispatch(clearTimestamp());
-      dispatch(resetPageNumber()); // dispatch(getItems());
+      dispatch(Object(_filterActions__WEBPACK_IMPORTED_MODULE_1__["searchEnd"])()); // dispatch(resetPageNumber());
+      // dispatch(getItems());
     }
   };
 };
@@ -59539,7 +59543,8 @@ var defaultFilterReducer = {
   startDate: undefined,
   endDate: undefined,
   sortBy: '',
-  searchText: ''
+  searchText: '',
+  isSearchingEnd: false
 };
 
 var filterReducer = function filterReducer() {
@@ -59560,6 +59565,16 @@ var filterReducer = function filterReducer() {
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SEARCH_TEXT"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         searchText: ''
+      });
+
+    case 'DEFAULT_SEARCH_STATE':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isSearchingEnd: false
+      });
+
+    case 'SEARCH_END':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isSearchingEnd: true
       });
 
     default:
@@ -59679,8 +59694,7 @@ var defaultItemState = {
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEMS"]:
       return _objectSpread(_objectSpread({}, state), {}, {
-        items: [],
-        lastTimestamp: 0
+        items: []
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ITEM"]:

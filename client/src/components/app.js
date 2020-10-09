@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Container, Button, Row, Col} from 'reactstrap'
 import debounce from 'lodash.debounce'
 import {getItems,clearItems,clearTimestamp,resetPageNumber,allFetched} from '../redux/actions/itemActions'
-import { clearSearchText } from '../redux/actions/filterActions'
+import { clearSearchText, defaultSearchState } from '../redux/actions/filterActions'
 import SearchProduct from './SearchProduct'
 import Items from './Items/Items'
 
@@ -36,27 +36,15 @@ class App extends React.Component{
         window.onscroll = debounce(this.handleWindowScroll, 800);
     }
 
-    getSnapshotBeforeUpdate = (prevProps, prevState) => {
-        // console.log('getSnapshotBeforeUpdate', this.props.products);
-        // if(prevProps.products.length < this.props.products.length){
-        //     console.log('debounced');
-        //     // window.addEventListener('scroll', this.handleWindowScroll);
-        //     // window.onscroll = debounce(this.handleWindowScroll, 1000);
-        //     window.addEventListener('scroll', debounce(this.handleWindowScroll, 1000));
-        // }else{
-        //     console.log('debounce stopped');
-        //     window.removeEventListener('scroll', debounce(this.handleWindowScroll, 1000));
-        // }
-        return this.props.products.length;
-    }
-
     componentDidUpdate = (prevProps, prevState, snapshot) =>{
         // if(prevProps.products.length < this.props.products.length){
-        //     console.log('NEW PRODUCTS');
+        //     console.log('New Products');
         // }
 
-        // Checks if user puts no text for search to refetch items again
-        if(this.props.lastTimestamp == undefined && this.props.searchText == '' && this.props.products.length == 0){
+        // Checks if searching is end then fetch items again
+        if(this.props.isSearchingEnd && this.props.searchText == '' && this.props.products.length == 0){
+            this.props.defaultSearchState();
+
             const timestamp = new Date().valueOf();
             this.props.getItems(timestamp);
         }
@@ -66,12 +54,13 @@ class App extends React.Component{
     componentWillUnmount = () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
         this.props.clearItems();
+        this.props.clearTimestamp();
 
         window.onscroll = undefined;
     }
 
     render = () => {
-        const {searchText, pageNumber, lastTimestamp} = this.props;
+        const {searchText, lastTimestamp} = this.props;
         const {pageTitle} = this.state;
 
         return(
@@ -108,10 +97,11 @@ const mapStateToProps = state => {
         products: state.items.items,
         pageNumber: state.items.pageNumber,
         lastTimestamp: state.items.lastTimestamp,
+        isSearchingEnd: state.filters.isSearchingEnd,
         searchText: state.filters.searchText,
         loading: state.items.loading
     }
 };
 
 // ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
-export default connect(mapStateToProps,{getItems, clearItems, clearTimestamp, resetPageNumber, allFetched, clearSearchText})(App);
+export default connect(mapStateToProps,{getItems, clearItems, clearTimestamp, resetPageNumber, allFetched, clearSearchText, defaultSearchState})(App);

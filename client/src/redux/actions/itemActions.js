@@ -1,5 +1,5 @@
 import {POST_ITEM,EDIT_ITEM,GET_ITEM,GET_ITEMS,ITEMS_LOADING,ADD_PAGE_NUMBER,RESET_PAGE_NUMBER,CLEAR_ITEMS,CLEAR_ITEM, ADD_ERROR, REMOVE_ITEM, ALL_FETCHED} from './types/types'
-import {setSearchText} from './filterActions'
+import {setSearchText, searchEnd} from './filterActions'
 import { clearErrors } from './errorActions';
 import axios from 'axios'
 
@@ -56,9 +56,10 @@ export const getItemsByName = text => dispatch => {
                 });
             });
     } else {
+        // dispatch(clearTimestamp());
         dispatch(clearItems());
-        dispatch(clearTimestamp());
-        dispatch(resetPageNumber());
+        dispatch(searchEnd());
+        // dispatch(resetPageNumber());
         // dispatch(getItems());
     }
 };

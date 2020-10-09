@@ -8,3 +8,11 @@ export const setSearchText = text => ({
 export const clearSearchText = () => ({
     type: CLEAR_SEARCH_TEXT
 });
+
+export const defaultSearchState = () => ({
+    type: 'DEFAULT_SEARCH_STATE'
+});
+
+export const searchEnd = () => ({
+    type: 'SEARCH_END'
+});

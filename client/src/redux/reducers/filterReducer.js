@@ -4,7 +4,8 @@ const defaultFilterReducer = {
     startDate: undefined,
     endDate: undefined,
     sortBy: '',
-    searchText: ''
+    searchText: '',
+    isSearchingEnd: false,
 };
 
 const filterReducer = ((state = defaultFilterReducer, action)=>{
@@ -23,6 +24,16 @@ const filterReducer = ((state = defaultFilterReducer, action)=>{
             return{
                 ...state,
                 searchText: ''
+            }        
+        case 'DEFAULT_SEARCH_STATE':
+            return {
+                ...state,
+                isSearchingEnd: false
+            }
+        case 'SEARCH_END':
+            return{
+                ...state,
+                isSearchingEnd: true
             }
         default:
             return state;
