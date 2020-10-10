@@ -109,6 +109,7 @@ input[type=text].auto-complete-off,input[type=password].auto-complete-off{backgr
     &:hover,&:focus{
         box-shadow: 0 10px 28px -16px;
         border-color:$base-pink;
+        transform: scale(1.007);
     }
 }
 

@@ -23,7 +23,7 @@ export const getItems = timestamp => dispatch => {
     }
 
     dispatch(itemsLoading(true));
-    axios.get(`${url}/products/all/${timestamp}/6`)
+    axios.get(`${url}/products/all/${timestamp}/12`)
         .then(res=>{
 
             if(res.data.length==0){

@@ -19,7 +19,7 @@ class App extends React.Component{
 
     // Checks if user sees the loading spinner, if so then again calls for new items from server
     handleWindowScroll = () => {
-        const threshold = window.innerHeight + document.documentElement.scrollTop >= (document.documentElement.offsetHeight - 48);
+        const threshold = window.innerHeight + document.documentElement.scrollTop >= (document.documentElement.offsetHeight - 58);
 
         if(threshold && this.props.lastTimestamp != 0){
             this.props.getItems(this.props.lastTimestamp);
@@ -80,7 +80,7 @@ class App extends React.Component{
                 {lastTimestamp != undefined && (
                     <Container>
                         <Row>
-                            <div className="col-12 offset-sm-4 col-sm-4 text-center mt-4">
+                            <div className="col-12 offset-sm-4 col-sm-4 text-center mt-4 mb-3">
                                 <div role="status" style={{width: '3rem', height: '3rem', borderWidth: '.35em'}} className="spinner-border text-danger">
                                     <span className="sr-only">Loading...</span>
                                 </div>
