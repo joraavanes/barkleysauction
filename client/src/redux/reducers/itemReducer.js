@@ -4,6 +4,7 @@ const defaultItemState = {
     items:[],
     pageNumber: 0,
     lastTimestamp: 0,
+    allItemsFetched: false,
     loading: undefined
 }
 
@@ -14,7 +15,8 @@ export default (state = defaultItemState, action) =>{
                 ...state,
                 items: [...state.items, ...action.items],
                 loading: action.loading,
-                lastTimestamp: action.lastTimestamp
+                lastTimestamp: action.lastTimestamp,
+                allItemsFetched: false
             };
         case GET_ITEM:
             return{
@@ -72,7 +74,8 @@ export default (state = defaultItemState, action) =>{
                 ...state,
                 pageNumber: undefined,
                 lastTimestamp: undefined,
-                loading: false
+                loading: false,
+                allItemsFetched: action.allFetched
             }
         case ITEMS_LOADING:
             return{

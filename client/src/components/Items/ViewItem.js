@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Container,Row,} from 'reactstrap'
 import { connect } from 'react-redux';
-import {getItem,clearItem} from '../../redux/actions/itemActions'
+import {getItem,clearItem, allFetched} from '../../redux/actions/itemActions'
 import { clearComments, getComments } from '../../redux/actions/commentActions'
 import Comments from '../Comment/Comments'
 import avatar1 from '../../media/avatar-1.png'
@@ -17,16 +17,17 @@ class ViewItem extends Component {
     componentDidMount(){
         this.props.getItem(this.props.match.params.title, this.props.match.params.uuid);
     }
-
+    
     componentDidUpdate(){
         if(this.props.item && !this.props.comments){
             this.props.getComments(this.props.item.comments);
         }
     }
-
+    
     componentWillUnmount(){
         this.props.clearItem();
         this.props.clearComments();
+        this.props.allFetched(false);
     }
 
     render() {
@@ -142,4 +143,4 @@ const mapStateToProps = store => ({
     comments: store.comments.comments
 });
 
-export default connect(mapStateToProps,{getItem, clearItem, clearComments, getComments})(ViewItem);
+export default connect(mapStateToProps,{getItem, allFetched, clearItem, clearComments, getComments})(ViewItem);

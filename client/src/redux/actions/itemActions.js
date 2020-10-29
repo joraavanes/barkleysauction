@@ -27,7 +27,7 @@ export const getItems = timestamp => dispatch => {
         .then(res=>{
 
             if(res.data.length==0){
-                return dispatch(allFetched());
+                return dispatch(allFetched(true));
             }
 
             const lastTimestamp = res.data[res.data.length -1].dateIssued;
@@ -47,16 +47,25 @@ export const getItemsByName = text => dispatch => {
     
     if(text !== ''){
         dispatch(itemsLoading(true));
+        dispatch(allFetched(false));
+
         dispatch(clearItems());
         axios.get(`${url}/products/${text}`)
             .then(res => {
+
+                if(res.data.length==0){
+                    return dispatch(allFetched(true));
+                }
+                
                 dispatch({
                     type: GET_ITEMS,
                     items: res.data
                 });
+                dispatch(allFetched(true));
             });
     } else {
         dispatch(clearItems());
+        dispatch(allFetched(false));
         dispatch(searchEnd());
     }
 };
@@ -141,8 +150,9 @@ export const removeItem = (_id, token) => dispatch => {
         });
 } 
 
-export const allFetched = () => ({
-    type: ALL_FETCHED
+export const allFetched = allFetched => ({
+    type: ALL_FETCHED,
+    allFetched
 });
 
 export const addPageNumber = () => ({

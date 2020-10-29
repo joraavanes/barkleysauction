@@ -56,12 +56,13 @@ class App extends React.Component{
         this.props.clearItems();
         this.props.clearTimestamp();
         this.props.clearSearchText();
+        this.props.allFetched(false);
 
         window.onscroll = undefined;
     }
 
     render = () => {
-        const {searchText, lastTimestamp} = this.props;
+        const {searchText, lastTimestamp, allItemsFetched} = this.props;
         const {pageTitle} = this.state;
 
         return(
@@ -77,7 +78,7 @@ class App extends React.Component{
                     </Row>
                 </Container>
                 <Items products={this.props.products}/>
-                {lastTimestamp != undefined && (
+                {allItemsFetched == false && (
                     <Container>
                         <Row>
                             <div className="col-12 offset-sm-4 col-sm-4 text-center mt-4 mb-3">
@@ -98,11 +99,11 @@ const mapStateToProps = state => {
         products: state.items.items,
         pageNumber: state.items.pageNumber,
         lastTimestamp: state.items.lastTimestamp,
+        allItemsFetched: state.items.allItemsFetched,
         isSearchingEnd: state.filters.isSearchingEnd,
         searchText: state.filters.searchText,
         loading: state.items.loading
     }
 };
 
-// ReactDOM.render(<App products={products}/>, document.querySelector('#app'));
 export default connect(mapStateToProps,{getItems, clearItems, clearTimestamp, allFetched, clearSearchText, defaultSearchState})(App);
