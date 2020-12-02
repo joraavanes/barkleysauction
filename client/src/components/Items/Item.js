@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import {NavLink} from 'react-router-dom'
 import bag from '../../media/backpack.jpg'
 import toaster from '../../media/toasterWide.jpg'
+import Image from '../shared/Image'
 
 const Item = (props) => {
     return (
         <div className="col-12 col-sm-6 col-md-3 col-lg-2">
             <div className="card">
                 <NavLink to={`/items/${props.title}/${props.uuid}`}>
-                    <img src={props.imageUrl || bag} className="img-fluid item-img"/>
+                    <Image source={props.imageUrl} cssClass="img-fluid item-img"/>
+                    {/* <img src={props.imageUrl || bag} className="img-fluid item-img"/> */}
                     {/* <img src={props.name=='toaster'?toaster:bag} className="img-fluid App__Items_Item-img"/> */}
                     {/* <img src={props.img} className="img-fluid App__Items_Item-img"/> */}
                 </NavLink>

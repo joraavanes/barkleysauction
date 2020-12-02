@@ -15,6 +15,7 @@ $base-pink: #F91890;
 
 .row{margin-left:0;margin-right:0;}
 .container-fluid,.col{padding-left:0;padding-right:0;}
+.block{display: block;}
 
 input[type=text],input[type=password],input[type=number],textarea{border-radius:20px !important;}
 input[type=text].auto-complete-off,input[type=password].auto-complete-off{background-color:white;}

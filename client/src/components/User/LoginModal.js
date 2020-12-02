@@ -33,7 +33,7 @@ class LoginModal extends Component {
 
     componentDidUpdate = (prevProps, prevState) => {
         
-        if(this.props.emailError){
+        if(this.props.loginState && this.props.emailError){
             this.submitBtn.current.removeAttribute('disabled');
             this.cancelBtn.current.removeAttribute('disabled');
             // e.target.elements.submitBtn.disabled = false;

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {getItem,clearItem, allFetched} from '../../redux/actions/itemActions'
 import { clearComments, getComments } from '../../redux/actions/commentActions'
 import Comments from '../Comment/Comments'
+import Image from './../shared/Image'
 import avatar1 from '../../media/avatar-1.png'
 import avatar3 from '../../media/avatar-5.png'
 import avatar4 from '../../media/avatar-4.png'
@@ -42,7 +43,10 @@ class ViewItem extends Component {
                                         <span className="sr-only">Loading...</span>
                                     </div>
                                 )}
-                                <img src={this.props.item && this.props.item.imageUrl} className="img-fluid mx-auto d-block" alt={this.props.item && this.props.item.title}/>
+                                {this.props.item && 
+                                    <Image source={this.props.item.imageUrl} cssClass="img-fluid mx-auto block"/>
+                                }
+                                {/* <img src={this.props.item && this.props.item.imageUrl} className="img-fluid mx-auto d-block" alt={this.props.item && this.props.item.title}/> */}
                                 {/* {this.props.item != null ? (
                                     <img src={`/media/${this.props.item.title}.jpg`} className="img-fluid mx-auto d-block" alt={this.props.item ? this.props.item.title:'Product is not here!'}/>
                                 ): (
