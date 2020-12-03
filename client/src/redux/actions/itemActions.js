@@ -17,13 +17,13 @@ export const getItem = (title,id) => dispatch => {
         });
 };
 
-export const getItems = timestamp => dispatch => {
+export const getItems = (timestamp, quantity = 12) => dispatch => {
     if(timestamp == undefined){
         return dispatch(clearTimestamp());
     }
 
     dispatch(itemsLoading(true));
-    axios.get(`${url}/products/all/${timestamp}/12`)
+    axios.get(`${url}/products/all/${timestamp}/${quantity}`)
         .then(res=>{
 
             if(res.data.length==0){

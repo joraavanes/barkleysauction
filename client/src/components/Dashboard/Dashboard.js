@@ -15,7 +15,8 @@ class Dashboard extends React.Component{
     }
 
     componentDidMount = () => {
-        this.props.getItems();
+        const timestamp = new Date().valueOf();
+        this.props.getItems(timestamp, 100);
     }
 
     componentWillUnmount = () => {
