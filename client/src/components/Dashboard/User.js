@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Container, Row } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 import { getAllUsers } from '../../redux/actions/userActions'
 
 const User = props => {
@@ -15,20 +16,44 @@ const User = props => {
     }, []);
 
     return (
-        <Container>
+        <Container fluid={true}>
             <Row>
-                <h2>Users</h2>
-                {props.users.length == 0 ? (
-                    <div className="spinner-border text-danger" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                ) : (
-                    <div>
-                        {props.users.map(user => (
-                            <li key={user._id}>{user.email} - {user.name} - {user.surname}</li>
-                        ))}
-                    </div>
-                )}
+                <div className="col-12">
+                    <h2>Users</h2>
+                    {props.users.length == 0 && loader}
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" className="bg-pink">Email</th>
+                                <th scope="col" className="bg-pink">Name</th>
+                                <th scope="col" className="bg-pink">Surname</th>
+                                <th scope="col" className="bg-pink">Edit/Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {props.users.length != 0 &&
+                                props.users.map(user => (
+                                    <tr key={user._id}>
+                                        <td>{user.email}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.surname}</td>
+                                        <td>
+                                            <NavLink className="btn btn-warning btn-sm" to={`/dashboard/items/edit-item/${user._id}`}>Edit</NavLink>
+                                            <button
+                                                style={{marginLeft: 5}}
+                                                className="btn btn-danger btn-sm" 
+                                                data-uuid={user.uuid}
+                                                data-title={user.title}>
+                                                    Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    // <li key={user._id}>{user.email} - {user.name} - {user.surname}</li>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </Row>
         </Container>
     );

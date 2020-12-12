@@ -55,7 +55,7 @@ class LoginModal extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 {/* <Button className="btn-sm" color="danger" onClick={this.toggle}>Open Modal</Button> */}
                 <Modal isOpen={this.props.loginState} toggle={this.toggle} unmountOnClose={false}>
                     <ModalHeader toggle={this.toggle}>Login</ModalHeader>
@@ -80,7 +80,7 @@ class LoginModal extends Component {
                         </ModalFooter>
                     </form>
                 </Modal>
-            </div>
+            </>
         )
     }
 }

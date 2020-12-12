@@ -62,7 +62,7 @@ class Dashboard extends React.Component{
             <Container fluid={true}>
                 <ItemDeleteModal uuid={this.state.deleteModal.uuid} title={this.state.deleteModal.title} modalState={this.state.deleteModal.modalState} handleModalState={this.toggleDeleteModal}/>                
                 <Row>
-                    <div className="col">
+                    <div className="col-12">
                         <h2>Management Dashboard</h2>
                     </div>
                 </Row>
