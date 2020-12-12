@@ -1,5 +1,12 @@
 const User = require('../models/User');
 
+// GET: /users/all
+exports.getAllUsers = (req, res, next) => {
+    User.find()
+        .then(users => res.send(users))
+        .catch(err => res.state(400).send());
+};
+
 // POST: /users/register
 exports.register = (req, res) => {
     const {name, surname, email, password } = req.body;

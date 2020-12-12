@@ -63,7 +63,7 @@ class Dashboard extends React.Component{
                 <ItemDeleteModal uuid={this.state.deleteModal.uuid} title={this.state.deleteModal.title} modalState={this.state.deleteModal.modalState} handleModalState={this.toggleDeleteModal}/>                
                 <Row>
                     <div className="col">
-                        <h2>Here you can control the stuff!</h2>
+                        <h2>Management Dashboard</h2>
                     </div>
                 </Row>
                 <Row>
@@ -72,6 +72,7 @@ class Dashboard extends React.Component{
                     </div>
                     <div className="col-12 col-sm-8">
                         <h3>Products {this.props.items.length}</h3>
+                        <NavLink to="/dashboard/user">User</NavLink>
                         <table className="table">
                             <thead>
                                 <tr>

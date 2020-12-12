@@ -17,6 +17,7 @@ import Register from './components/User/register'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from './styles/custom.scss'
 import register from './components/User/register'
+import User from './components/Dashboard/User'
 
 // store.dispatch({
 //     type: 'ADD_ERROR',
@@ -57,6 +58,9 @@ const router = (
                     </PrivateRoute>
                     <PrivateRoute path="/dashboard/items/remove/:uuid" exact={true}>
                         <Route component={Dashboard} path="/dashboard/items/remove/:uuid"/>
+                    </PrivateRoute>
+                    <PrivateRoute path="/dashboard/user">
+                        <Route component={User} exact={true}/>
                     </PrivateRoute>
                     <Route path="/Auction" component={Auction}/>
                     <Route path="/Login" component={Login}/>

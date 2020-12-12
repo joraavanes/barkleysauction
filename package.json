@@ -14,7 +14,7 @@
     "dev": "concurrently -n \"react,node,Browser\" -c \"bgCyan,bgGreen,bgMagenta\" \"npm run client\" \"npm run server:watch\" \"npm run server:open\""
   },
   "engines": {
-    "node": "12.18.0"
+    "node": "14.15.1"
   },
   "author": "Joraav",
   "license": "ISC",

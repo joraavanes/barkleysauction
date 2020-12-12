@@ -14,7 +14,7 @@ class ItemDeleteModal extends Component {
     }
 
     static getDerivedStateFromProps = (nextProps, prevState) => {
-        console.log('Next Props: ', nextProps);
+        // console.log('Next Props: ', nextProps);
         const {uuid, title} = nextProps;
         if(uuid && title)
             return {uuid, title};
@@ -23,7 +23,7 @@ class ItemDeleteModal extends Component {
     }
 
     componentDidUpdate = () => {
-        console.log('new state: ', this.state);
+        // console.log('new state: ', this.state);
         if(this.state.uuid && this.state.title && !this.props.itemToDelete){
             this.props.getItem(this.state.title, this.state.uuid);
         }

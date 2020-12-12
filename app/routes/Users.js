@@ -4,6 +4,8 @@ const router = express.Router();
 const authenticate = require('../middleware/authenticate');
 const userController = require('../controllers/userController');
 
+router.get('/all', authenticate, userController.getAllUsers);
+
 router.post('/register', userController.register);
 
 router.post('/login', userController.login);
