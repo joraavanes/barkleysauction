@@ -90,7 +90,7 @@ class ViewItem extends Component {
                             </div>
                         </Row>
                     </main>
-                    <div className={styles.lastBidsContainer}>
+                    <div className={styles.lastBidsContainer} id="bids-list-group">
                         <h2 className="bid-title">Last bids
                             <span>for {this.props.item && this.props.item.title}</span>
                         </h2>

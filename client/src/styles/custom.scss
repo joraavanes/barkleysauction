@@ -126,11 +126,11 @@ h1{
     i.fas{font-size:22px;}
 }
 
-.list-group-flush:last-child .list-group-item{
+#bids-list-group .list-group-flush:last-child .list-group-item{
     &:last-child{border-bottom:1px solid rgba(0, 0, 0, 0.125);}
 }
-.list-group-flush:last-child .list-group-item:last-child,
-.list-group-item{
+#bids-list-group .list-group-flush:last-child .list-group-item:last-child,
+#bids-list-group .list-group-item{
     margin-bottom: 0;
     padding-top:0;
     margin-bottom: .75rem;

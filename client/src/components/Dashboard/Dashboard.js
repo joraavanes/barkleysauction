@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getItems, clearItems } from '../../redux/actions/itemActions';
 import ItemDeleteModal from '../../components/Items/itemDeleteModal'
+import DashboardNav from './DashboardNav';
 
 class Dashboard extends React.Component{
     state = {
@@ -61,16 +62,18 @@ class Dashboard extends React.Component{
         return (
             <Container fluid={true}>
                 <ItemDeleteModal uuid={this.state.deleteModal.uuid} title={this.state.deleteModal.title} modalState={this.state.deleteModal.modalState} handleModalState={this.toggleDeleteModal}/>                
-                <Row>
+                {/* <Row>
                     <div className="col-12">
                         <h2>Management Dashboard</h2>
                     </div>
-                </Row>
+                </Row> */}
                 <Row>
-                    <div className="col-12 col-sm-4">
-                        <NavLink to="/dashboard/Items/list-an-item" className="btn btn-primary">Sell your object</NavLink>
+                    <div className="col-12 col-sm-2" style={{marginLeft: 0, paddingLeft: 0}}>
+                        {/* <NavLink to="/dashboard/Items/list-an-item" className="btn btn-primary">Sell your object</NavLink> */}
+                        <DashboardNav/>
                     </div>
-                    <div className="col-12 col-sm-8">
+                    <div className="col-12 col-sm-10">
+                        <h2>Management Dashboard</h2>
                         <h3>Products {this.props.items.length}</h3>
                         <NavLink to="/dashboard/user">User</NavLink>
                         <table className="table">

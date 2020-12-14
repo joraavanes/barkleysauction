@@ -5,6 +5,12 @@ import { logout } from '../redux/actions/authActions'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 
+const style = {
+    position: 'relative',
+    boxShadow: '0 6px 8px 1px #ddd',
+    zIndex: 200
+};
+
 class Navigation extends React.Component{
     state = {
         isOpen: false
@@ -28,7 +34,7 @@ class Navigation extends React.Component{
 
     render(){
         return (
-            <Container fluid={true} id="navigation">
+            <Container fluid={true} id="navigation" style={style}>
                 <Row>
                     <Col>
                         <Navbar expand="md" className="bg-pink">

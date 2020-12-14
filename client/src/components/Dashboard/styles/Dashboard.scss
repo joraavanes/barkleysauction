@@ -1,0 +1,17 @@
+.dashboardContainer{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    height: 100vh;
+    overflow-y: auto;
+    margin-top: -30px;
+}
+
+.dashboardContainer::-webkit-scrollbar{
+    display: none;
+}
+
+.listGroupItem{
+    color: #fff;
+    composes: list-group-item list-group-item-dark from global;
+}
