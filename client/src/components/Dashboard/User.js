@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Container, Row } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import { getAllUsers } from '../../redux/actions/userActions'
+import DashboardNav from './DashboardNav'
 
 const User = props => {
 
@@ -18,7 +19,10 @@ const User = props => {
     return (
         <Container fluid={true}>
             <Row>
-                <div className="col-12">
+                <div className="col-12 col-sm-2" style={{marginLeft: 0, paddingLeft: 0}}>
+                    <DashboardNav/>
+                </div>
+                <div className="col-10">
                     <h2>Users</h2>
                     {props.users.length == 0 ? loader : (
 

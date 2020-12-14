@@ -17,15 +17,6 @@ const DashboardNav = () => {
                 <li className={styles.listGroupItem}>
                     <NavLink to="/dashboard/users" className={styles.listLink}>Users</NavLink>
                 </li>
-                <li className={styles.listGroupItem}>
-                    <NavLink to="/dashboard/list-an-item" className={styles.listLink}>New Item</NavLink>
-                </li>
-                <li className={styles.listGroupItem}>
-                    <NavLink to="/dashboard/list-an-item" className={styles.listLink}>New Item</NavLink>
-                </li>
-                <li className={styles.listGroupItem}>
-                    <NavLink to="/dashboard/list-an-item" className={styles.listLink}>New Item</NavLink>
-                </li>
             </ul>
         </div>
     );

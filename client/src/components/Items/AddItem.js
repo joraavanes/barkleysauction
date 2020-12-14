@@ -3,6 +3,7 @@ import { Container, Row, Card, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { postItem, getItem, putItem, clearItem } from '../../redux/actions/itemActions'
 import { clearErrors } from '../../redux/actions/errorActions';
+import DashboardNav from '../Dashboard/DashboardNav';
 
 const spanStyle = {
     fontSize: 18
@@ -82,9 +83,12 @@ class AddItem extends Component {
 
     render() {
         return (
-            <Container>
+            <Container fluid={true}>
                 <Row>
-                    <div className="col-12 col-md-12">
+                    <div className="col-12 col-sm-2" style={{marginLeft: 0, paddingLeft: 0}}>
+                        <DashboardNav/>
+                    </div>
+                    <div className="col-12 col-md-10">
                         {!this.props.match.params.uuid && <h2>Listing a New Item <span style={spanStyle}>on Barkley's</span></h2>}
 
                         {this.props.item && <h2>Editing {this.props.item.title} <span style={spanStyle}>on the Barkley's</span></h2>}
