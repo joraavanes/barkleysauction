@@ -59,7 +59,7 @@ const router = (
                     <PrivateRoute path="/dashboard/items/remove/:uuid" exact={true}>
                         <Route component={Dashboard} path="/dashboard/items/remove/:uuid"/>
                     </PrivateRoute>
-                    <PrivateRoute path="/dashboard/user">
+                    <PrivateRoute path="/dashboard/users">
                         <Route component={User} exact={true}/>
                     </PrivateRoute>
                     <Route path="/Auction" component={Auction}/>
