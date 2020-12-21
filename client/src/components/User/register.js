@@ -23,7 +23,10 @@ class Register extends React.Component{
     handleFieldBlur = e => e.target.setAttribute('readonly','readonly');
     handleFieldFocus = e => e.target.removeAttribute('readonly');
 
-    componentDidMount = () => this.props.clearErrors();
+    componentDidMount = () => {
+        document.title = 'Barkley\'s Store | Register';
+        this.props.clearErrors();
+    }
 
     componentDidUpdate = () => {
         if(this.props.isAuthenticated)

@@ -28,6 +28,8 @@ class App extends React.Component{
     
     // Calls remote server for new items, then udpates lastTimestamp for further items later
     componentDidMount = () => {
+        document.title = 'Barkley\'s Store | Where you feel like shopping';
+        
         this.props.clearItems();
 
         const timestamp = new Date().valueOf();

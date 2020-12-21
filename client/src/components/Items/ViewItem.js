@@ -22,6 +22,7 @@ class ViewItem extends Component {
     componentDidUpdate(){
         if(this.props.item && !this.props.comments){
             this.props.getComments(this.props.item.comments);
+            document.title = `Barkley's Store | ${this.props.item.title}`;
         }
     }
     

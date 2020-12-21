@@ -23,7 +23,10 @@ class Login extends React.Component{
         this.props.login(email, password);
     }
 
-    componentDidMount = () => this.props.clearErrors();
+    componentDidMount = () => {
+        document.title = 'Barkley\'s Store | Login';
+        this.props.clearErrors();
+    }
 
     componentDidUpdate(){
         if(this.props.isAuthenticated)
