@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom'
 import { getAllUsers } from '../../redux/actions/userActions'
 import DashboardNav from './DashboardNav'
 
+import styles from './styles/Dashboard.scss'
+
 const User = props => {
 
     const loader = (<div className="spinner-border text-danger" role="status">
@@ -17,7 +19,7 @@ const User = props => {
     }, []);
 
     return (
-        <Container fluid={true}>
+        <Container fluid={true} className={styles.containerFluid}>
             <Row>
                 <div className="col-12 col-sm-2" style={{marginLeft: 0, paddingLeft: 0}}>
                     <DashboardNav/>

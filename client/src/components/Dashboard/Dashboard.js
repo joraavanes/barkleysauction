@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getItems, clearItems } from '../../redux/actions/itemActions';
 import ItemDeleteModal from '../../components/Items/itemDeleteModal'
 import DashboardNav from './DashboardNav';
+import styles from './styles/Dashboard.scss'
 
 class Dashboard extends React.Component{
     state = {
@@ -60,7 +61,7 @@ class Dashboard extends React.Component{
 
     render(){
         return (
-            <Container fluid={true}>
+            <Container fluid={true} className={styles.containerFluid}>
                 <ItemDeleteModal uuid={this.state.deleteModal.uuid} title={this.state.deleteModal.title} modalState={this.state.deleteModal.modalState} handleModalState={this.toggleDeleteModal}/>                
                 {/* <Row>
                     <div className="col-12">

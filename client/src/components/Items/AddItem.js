@@ -5,6 +5,8 @@ import { postItem, getItem, putItem, clearItem } from '../../redux/actions/itemA
 import { clearErrors } from '../../redux/actions/errorActions';
 import DashboardNav from '../Dashboard/DashboardNav';
 
+import styles from '../Dashboard/styles/Dashboard.scss'
+
 const spanStyle = {
     fontSize: 18
 };
@@ -83,7 +85,7 @@ class AddItem extends Component {
 
     render() {
         return (
-            <Container fluid={true}>
+            <Container fluid={true} className={styles.containerFluid}>
                 <Row>
                     <div className="col-12 col-sm-2" style={{marginLeft: 0, paddingLeft: 0}}>
                         <DashboardNav/>
