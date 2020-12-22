@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Mongoose} = require('mongoose');
 const {ObjectID} = require('mongodb');
 
 const ProductSchema = new Schema({
@@ -51,6 +51,25 @@ const ProductSchema = new Schema({
         type: Number,
         default: 0
     },
+    bids: [{
+        uuid:{
+            type: String,
+            required: true
+        },
+        bidDate: {
+            type: Number,
+            required: true,
+            default: new Date().valueOf()
+        },
+        bid:{
+            type: Number,
+            required: true
+        },
+        user:{
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }],
     comments: [{
         uuid:{
             required: true,
