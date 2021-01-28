@@ -57291,7 +57291,8 @@ var Bid = /*#__PURE__*/function (_Component) {
         onSubmit: this.handleBidSubmit,
         className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidForm
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+        type: "number",
+        step: "0.01",
         className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidPrice,
         name: "BidPrice",
         id: "BidPrice"
