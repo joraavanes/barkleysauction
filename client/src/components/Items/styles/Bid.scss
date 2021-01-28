@@ -1,0 +1,31 @@
+$fav-color: #f91890;
+
+.BidForm{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.BidPrice{
+    composes: form-control from global;
+    width: 65% !important;
+    transition: all .5s ease-in-out !important;
+    
+    &:hover,
+    &:focus,
+    &:active{
+        outline: none;
+        border-color: $fav-color !important;
+        box-shadow: 0 10px 28px -16px !important;
+    }
+}
+
+.BidSubmitBtn{
+    composes: btn btn-primary from global;
+    border-radius: 20px !important;
+    width: 30%;
+    &:active{
+        transform: translateY(1px) !important;
+        transition: none !important;
+    }
+}

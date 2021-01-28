@@ -12,6 +12,7 @@ import avatar4 from '../../media/avatar-4.png'
 
 // styles
 import styles from './styles/LastBids.scss'
+import Bid from './Bid';
 
 class ViewItem extends Component {
 
@@ -92,6 +93,7 @@ class ViewItem extends Component {
                         </Row>
                     </main>
                     <div className={styles.lastBidsContainer} id="bids-list-group">
+                        <Bid/>
                         <h2 className="bid-title">Last bids
                             <span>for {this.props.item && this.props.item.title}</span>
                         </h2>

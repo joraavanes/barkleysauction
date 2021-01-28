@@ -4154,6 +4154,29 @@ module.exports = exports;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js!./src/components/Items/styles/Bid.scss":
+/*!*************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/sass-loader/dist/cjs.js!./src/components/Items/styles/Bid.scss ***!
+  \*************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(true);
+// Module
+exports.push([module.i, ".Bid_BidForm___3Og7Khm-b5a53yY4galD2z {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 20px; }\n\n.Bid_BidPrice___11QBQGOfjyOi2vv6rGKzda {\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .Bid_BidPrice___11QBQGOfjyOi2vv6rGKzda:hover, .Bid_BidPrice___11QBQGOfjyOi2vv6rGKzda:focus, .Bid_BidPrice___11QBQGOfjyOi2vv6rGKzda:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.Bid_BidSubmitBtn___3xkUWU-N1lJdjBi0scxyo4 {\n  border-radius: 20px !important;\n  width: 30%; }\n  .Bid_BidSubmitBtn___3xkUWU-N1lJdjBi0scxyo4:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n", "",{"version":3,"sources":["Bid.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB,EAAE;;AAEvB;EAEE,qBAAqB;EACrB,0CAA0C,EAAE;EAC5C;IACE,aAAa;IACb,gCAAgC;IAChC,wCAAwC,EAAE;;AAE9C;EAEE,8BAA8B;EAC9B,UAAU,EAAE;EACZ;IACE,qCAAqC;IACrC,2BAA2B,EAAE","file":"Bid.scss","sourcesContent":[".BidForm {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 20px; }\n\n.BidPrice {\n  composes: form-control from global;\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .BidPrice:hover, .BidPrice:focus, .BidPrice:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.BidSubmitBtn {\n  composes: btn btn-primary from global;\n  border-radius: 20px !important;\n  width: 30%; }\n  .BidSubmitBtn:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n"]}]);
+// Exports
+exports.locals = {
+	"BidForm": "Bid_BidForm___3Og7Khm-b5a53yY4galD2z",
+	"BidPrice": "Bid_BidPrice___11QBQGOfjyOi2vv6rGKzda form-control",
+	"BidSubmitBtn": "Bid_BidSubmitBtn___3xkUWU-N1lJdjBi0scxyo4 btn btn-primary"
+};
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js!./src/components/Items/styles/LastBids.scss":
 /*!******************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/sass-loader/dist/cjs.js!./src/components/Items/styles/LastBids.scss ***!
@@ -57198,6 +57221,101 @@ var mapStateToProps = function mapStateToProps(store) {
 
 /***/ }),
 
+/***/ "./src/components/Items/Bid.js":
+/*!*************************************!*\
+  !*** ./src/components/Items/Bid.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/Bid.scss */ "./src/components/Items/styles/Bid.scss");
+/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var Bid = /*#__PURE__*/function (_Component) {
+  _inherits(Bid, _Component);
+
+  var _super = _createSuper(Bid);
+
+  function Bid() {
+    var _this;
+
+    _classCallCheck(this, Bid);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "handleBidSubmit", function (e) {
+      e.preventDefault();
+    });
+
+    return _this;
+  }
+
+  _createClass(Bid, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your Bid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleBidSubmit,
+        className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidForm
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidPrice,
+        name: "BidPrice",
+        id: "BidPrice"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        value: "Add Bid",
+        className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidSubmitBtn,
+        id: "bid-submit-btn"
+      }, "Add Bid", this.props.loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "spinner-border spinner-border-sm",
+        role: "status",
+        "aria-hidden": "true"
+      }))));
+    }
+  }]);
+
+  return Bid;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Bid);
+
+/***/ }),
+
 /***/ "./src/components/Items/Item.js":
 /*!**************************************!*\
   !*** ./src/components/Items/Item.js ***!
@@ -57305,6 +57423,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _media_avatar_4_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../media/avatar-4.png */ "./src/media/avatar-4.png");
 /* harmony import */ var _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/LastBids.scss */ "./src/components/Items/styles/LastBids.scss");
 /* harmony import */ var _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _Bid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Bid */ "./src/components/Items/Bid.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57338,6 +57457,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
  // import bag from '../../media/bag.jpg'
 // styles
+
 
 
 
@@ -57406,7 +57526,7 @@ var ViewItem = /*#__PURE__*/function (_Component) {
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10___default.a.lastBidsContainer,
         id: "bids-list-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bid__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "bid-title"
       }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.item && this.props.item.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group list-group-flush"
@@ -57632,6 +57752,37 @@ var mapStateToProps = function mapStateToProps(store) {
   removeItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["removeItem"],
   clearItem: _redux_actions_itemActions__WEBPACK_IMPORTED_MODULE_3__["clearItem"]
 })(ItemDeleteModal));
+
+/***/ }),
+
+/***/ "./src/components/Items/styles/Bid.scss":
+/*!**********************************************!*\
+  !*** ./src/components/Items/styles/Bid.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../../node_modules/sass-loader/dist/cjs.js!./Bid.scss */ "./node_modules/css-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js!./src/components/Items/styles/Bid.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+var exported = content.locals ? content.locals : {};
+
+
+
+module.exports = exported;
 
 /***/ }),
 
