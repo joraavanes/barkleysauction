@@ -13,6 +13,7 @@ const {mongoose} = require('./db/db');
 
 // Routes
 const mockRouter = require('./routes/mock');
+const bidRouter = require('./routes/bids');
 const userRouter = require('./routes/Users');
 const productRouter = require('./routes/Products');
 const commentRouter = require('./routes/Comments');
@@ -42,6 +43,7 @@ app.get('/', (req,res)=>{
 
 // Server routes
 app.use('/products', productRouter);
+app.use('/bids', bidRouter);
 app.use('/users', userRouter);
 // app.use('/items', productRouter);
 app.use('/comments', commentRouter);
