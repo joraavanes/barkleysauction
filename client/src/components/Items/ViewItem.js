@@ -12,7 +12,7 @@ import avatar4 from '../../media/avatar-4.png'
 
 // styles
 import styles from './styles/LastBids.scss'
-import Bid from './Bid';
+import Bid from '../Bid/Bid';
 
 class ViewItem extends Component {
 

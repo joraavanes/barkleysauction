@@ -6,7 +6,7 @@ exports.getBids = async (req, res, next) => {
     const {uuid} = req.params;
 
     const {bids} = await Product.findOne({uuid});
-    res.send(bids)
+    res.send(bids);
 };
 
 exports.postBid = async (req, res, next) => {
