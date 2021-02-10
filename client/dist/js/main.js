@@ -59722,7 +59722,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_BID, GET_BIDS, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59760,6 +59760,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_TOKEN", function() { return REMOVE_TOKEN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_TOKENS", function() { return CLEAR_TOKENS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_MESSAGE", function() { return USER_MESSAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_BID", function() { return ADD_BID; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BIDS", function() { return GET_BIDS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ERROR", function() { return ADD_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ERROR", function() { return REMOVE_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
@@ -59797,6 +59799,8 @@ var ADD_TOKEN = 'ADD_TOKEN';
 var REMOVE_TOKEN = 'REMOVE_TOKEN';
 var CLEAR_TOKENS = 'CLEAR_TOKENS';
 var USER_MESSAGE = 'USER_MESSAGE';
+var ADD_BID = 'NEW_BID';
+var GET_BIDS = 'GET_BIDS';
 var ADD_ERROR = 'ADD_ERROR';
 var REMOVE_ERROR = 'REMOVE_ERROR';
 var CLEAR_ERRORS = 'CLEAR_ERRORS';

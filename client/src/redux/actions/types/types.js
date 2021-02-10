@@ -36,6 +36,9 @@ export const REMOVE_TOKEN = 'REMOVE_TOKEN';
 export const CLEAR_TOKENS = 'CLEAR_TOKENS';
 export const USER_MESSAGE = 'USER_MESSAGE';
 
+export const ADD_BID = 'NEW_BID';
+export const GET_BIDS = 'GET_BIDS';
+
 export const ADD_ERROR = 'ADD_ERROR';
 export const REMOVE_ERROR = 'REMOVE_ERROR';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
