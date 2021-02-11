@@ -1,6 +1,10 @@
 import { ADD_BID, GET_BIDS } from '../actions/types/types'
 
-export default function BidReducer(state, action){
+const defaultBidState = {
+    loading: false
+};
+
+export default function BidReducer(state = defaultBidState, action){
     switch (action.type) {
         case GET_BIDS:
             return {

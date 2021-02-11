@@ -55822,86 +55822,61 @@ var Auction = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/Bid.scss */ "./src/components/Bid/styles/Bid.scss");
-/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/actions/bidActions */ "./src/redux/actions/bidActions.js");
+/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/Bid.scss */ "./src/components/Bid/styles/Bid.scss");
+/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
-var Bid = /*#__PURE__*/function (_Component) {
-  _inherits(Bid, _Component);
 
-  var _super = _createSuper(Bid);
+var Bid = function Bid(_ref) {
+  var item = _ref.item,
+      auth = _ref.auth,
+      addBid = _ref.addBid,
+      loading = _ref.loading;
 
-  function Bid() {
-    var _this;
+  var handleBidSubmit = function handleBidSubmit(e) {
+    e.preventDefault();
+    var bidPrice = e.target.elements.BidPrice.value;
+    console.log(item.uuid, bidPrice, auth.token);
+    console.log(addBid); // addBid(item.uuid, bidPrice, auth.token);
+  };
 
-    _classCallCheck(this, Bid);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    return function () {};
+  }, [loading]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your Bid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleBidSubmit,
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidForm
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    step: "0.01",
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidPrice,
+    name: "BidPrice",
+    id: "BidPrice",
+    placeholder: "e.g. 29.99",
+    autoComplete: "off"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    value: "Add Bid",
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidSubmitBtn,
+    id: "bid-submit-btn"
+  }, "Add Bid")));
+};
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    auth: state.auth[0],
+    item: state.items.item,
+    loading: state.bids.loading
+  };
+};
 
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "handleBidSubmit", function (e) {
-      e.preventDefault();
-    });
-
-    return _this;
-  }
-
-  _createClass(Bid, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your Bid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleBidSubmit,
-        className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidForm
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        step: "0.01",
-        className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidPrice,
-        name: "BidPrice",
-        id: "BidPrice",
-        placeholder: "e.g. 29.99",
-        autoComplete: "off"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        value: "Add Bid",
-        className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_1___default.a.BidSubmitBtn,
-        id: "bid-submit-btn"
-      }, "Add Bid")));
-    }
-  }]);
-
-  return Bid;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-;
-/* harmony default export */ __webpack_exports__["default"] = (Bid);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  addBid: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__["addBid"]
+})(Bid));
 
 /***/ }),
 
@@ -59204,6 +59179,62 @@ var register = function register(_ref) {
 
 /***/ }),
 
+/***/ "./src/redux/actions/bidActions.js":
+/*!*****************************************!*\
+  !*** ./src/redux/actions/bidActions.js ***!
+  \*****************************************/
+/*! exports provided: addBid, toggleLoader */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addBid", function() { return addBid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleLoader", function() { return toggleLoader; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _types_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types/types */ "./src/redux/actions/types/types.js");
+/* harmony import */ var _itemActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./itemActions */ "./src/redux/actions/itemActions.js");
+/* harmony import */ var _errorActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errorActions */ "./src/redux/actions/errorActions.js");
+
+
+
+
+var url =  false ? undefined : 'http://localhost:3000';
+var addBid = function addBid(dispatch) {
+  return function (uuid, bidPrice, token) {
+    dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
+    dispatch(toggleLoader(true));
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("url/".concat(uuid), {
+      bidPrice: bidPrice
+    }, {
+      headers: {
+        'x-auth': token
+      }
+    }).then(function (res) {
+      dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch(toggleLoader(false));
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_1__["ADD_BID"],
+        bid: {
+          user: res.email
+        }
+      });
+    })["catch"](function (err) {
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])(err.message));
+      dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch(toggleLoader(false));
+    });
+  };
+};
+var toggleLoader = function toggleLoader(loading) {
+  return {
+    type: 'TOGGLE_LOADER',
+    loading: loading
+  };
+};
+
+/***/ }),
+
 /***/ "./src/redux/actions/commentActions.js":
 /*!*********************************************!*\
   !*** ./src/redux/actions/commentActions.js ***!
@@ -59895,6 +59926,61 @@ var authReducer = function authReducer() {
 
 /***/ }),
 
+/***/ "./src/redux/reducers/bidReducer.js":
+/*!******************************************!*\
+  !*** ./src/redux/reducers/bidReducer.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BidReducer; });
+/* harmony import */ var _actions_types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types/types */ "./src/redux/actions/types/types.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var defaultBidState = {
+  loading: false
+};
+function BidReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultBidState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["GET_BIDS"]:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        bids: action.bids
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ADD_BID"]:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        bids: [action.bid].concat(_toConsumableArray(state.bids))
+      });
+
+    default:
+      return state;
+  }
+}
+
+/***/ }),
+
 /***/ "./src/redux/reducers/commentReducer.js":
 /*!**********************************************!*\
   !*** ./src/redux/reducers/commentReducer.js ***!
@@ -60135,12 +60221,14 @@ var filterReducer = function filterReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _itemReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./itemReducer */ "./src/redux/reducers/itemReducer.js");
-/* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./userReducer */ "./src/redux/reducers/userReducer.js");
-/* harmony import */ var _filterReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./filterReducer */ "./src/redux/reducers/filterReducer.js");
-/* harmony import */ var _commentReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./commentReducer */ "./src/redux/reducers/commentReducer.js");
-/* harmony import */ var _pageStateReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pageStateReducer */ "./src/redux/reducers/pageStateReducer.js");
-/* harmony import */ var _authReducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./authReducer */ "./src/redux/reducers/authReducer.js");
-/* harmony import */ var _errorReducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./errorReducer */ "./src/redux/reducers/errorReducer.js");
+/* harmony import */ var _bidReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bidReducer */ "./src/redux/reducers/bidReducer.js");
+/* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./userReducer */ "./src/redux/reducers/userReducer.js");
+/* harmony import */ var _filterReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filterReducer */ "./src/redux/reducers/filterReducer.js");
+/* harmony import */ var _commentReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./commentReducer */ "./src/redux/reducers/commentReducer.js");
+/* harmony import */ var _pageStateReducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pageStateReducer */ "./src/redux/reducers/pageStateReducer.js");
+/* harmony import */ var _authReducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./authReducer */ "./src/redux/reducers/authReducer.js");
+/* harmony import */ var _errorReducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./errorReducer */ "./src/redux/reducers/errorReducer.js");
+
 
 
 
@@ -60151,12 +60239,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   items: _itemReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  users: _userReducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  filters: _filterReducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  comments: _commentReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  pageState: _pageStateReducer__WEBPACK_IMPORTED_MODULE_5__["default"],
-  auth: _authReducer__WEBPACK_IMPORTED_MODULE_6__["default"],
-  error: _errorReducer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  users: _userReducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  bids: _bidReducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  filters: _filterReducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  comments: _commentReducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  pageState: _pageStateReducer__WEBPACK_IMPORTED_MODULE_6__["default"],
+  auth: _authReducer__WEBPACK_IMPORTED_MODULE_7__["default"],
+  error: _errorReducer__WEBPACK_IMPORTED_MODULE_8__["default"]
 }));
 
 /***/ }),
