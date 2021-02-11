@@ -55851,20 +55851,20 @@ var Bid = function Bid(_ref) {
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
-      bid = _useState2[0],
-      setBid = _useState2[1];
+      bidPrice = _useState2[0],
+      setBidPrice = _useState2[1];
 
   var bidButton = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
   var handleBidSubmit = function handleBidSubmit(e) {
     e.preventDefault();
 
-    if (bid == '') {
+    if (bidPrice == '') {
       return;
     }
 
     bidButton.current.setAttribute('disabled', 'disabled');
-    addBid(item.uuid, bid, auth.token);
+    addBid(item.uuid, bidPrice, auth.token);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -55882,9 +55882,9 @@ var Bid = function Bid(_ref) {
     name: "BidPrice",
     id: "BidPrice",
     onChange: function onChange(e) {
-      return setBid(e.target.value);
+      return setBidPrice(e.target.value);
     },
-    value: bid,
+    value: bidPrice,
     placeholder: "e.g. 29.99",
     autoComplete: "off"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
