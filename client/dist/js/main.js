@@ -4089,7 +4089,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".Bid_BidForm___3oSlia6Op3VxszT2OESqRL {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 20px; }\n\n.Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv {\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:hover, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:focus, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc {\n  border-radius: 20px !important;\n  width: 30%; }\n  .Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n", "",{"version":3,"sources":["Bid.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB,EAAE;;AAEvB;EAEE,qBAAqB;EACrB,0CAA0C,EAAE;EAC5C;IACE,aAAa;IACb,gCAAgC;IAChC,wCAAwC,EAAE;;AAE9C;EAEE,8BAA8B;EAC9B,UAAU,EAAE;EACZ;IACE,qCAAqC;IACrC,2BAA2B,EAAE","file":"Bid.scss","sourcesContent":[".BidForm {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 20px; }\n\n.BidPrice {\n  composes: form-control from global;\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .BidPrice:hover, .BidPrice:focus, .BidPrice:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.BidSubmitBtn {\n  composes: btn btn-primary from global;\n  border-radius: 20px !important;\n  width: 30%; }\n  .BidSubmitBtn:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n"]}]);
+exports.push([module.i, ".Bid_BidForm___3oSlia6Op3VxszT2OESqRL {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 40px; }\n\n.Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv {\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:hover, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:focus, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc {\n  border-radius: 20px !important;\n  width: 30%; }\n  .Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n", "",{"version":3,"sources":["Bid.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB,EAAE;;AAEvB;EAEE,qBAAqB;EACrB,0CAA0C,EAAE;EAC5C;IACE,aAAa;IACb,gCAAgC;IAChC,wCAAwC,EAAE;;AAE9C;EAEE,8BAA8B;EAC9B,UAAU,EAAE;EACZ;IACE,qCAAqC;IACrC,2BAA2B,EAAE","file":"Bid.scss","sourcesContent":[".BidForm {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 40px; }\n\n.BidPrice {\n  composes: form-control from global;\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .BidPrice:hover, .BidPrice:focus, .BidPrice:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.BidSubmitBtn {\n  composes: btn btn-primary from global;\n  border-radius: 20px !important;\n  width: 30%; }\n  .BidSubmitBtn:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n"]}]);
 // Exports
 exports.locals = {
 	"BidForm": "Bid_BidForm___3oSlia6Op3VxszT2OESqRL",
@@ -55826,6 +55826,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/actions/bidActions */ "./src/redux/actions/bidActions.js");
 /* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/Bid.scss */ "./src/components/Bid/styles/Bid.scss");
 /* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -55837,15 +55849,28 @@ var Bid = function Bid(_ref) {
       addBid = _ref.addBid,
       loading = _ref.loading;
 
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      bid = _useState2[0],
+      setBid = _useState2[1];
+
+  var bidButton = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+
   var handleBidSubmit = function handleBidSubmit(e) {
     e.preventDefault();
-    var bidPrice = e.target.elements.BidPrice.value;
-    console.log(item.uuid, bidPrice, auth.token);
-    console.log(addBid); // addBid(item.uuid, bidPrice, auth.token);
+
+    if (bid == '') {
+      return;
+    }
+
+    bidButton.current.setAttribute('disabled', 'disabled');
+    addBid(item.uuid, bid, auth.token);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    return function () {};
+    if (!loading) {
+      bidButton.current.removeAttribute('disabled');
+    }
   }, [loading]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your Bid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleBidSubmit,
@@ -55856,14 +55881,23 @@ var Bid = function Bid(_ref) {
     className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidPrice,
     name: "BidPrice",
     id: "BidPrice",
+    onChange: function onChange(e) {
+      return setBid(e.target.value);
+    },
+    value: bid,
     placeholder: "e.g. 29.99",
     autoComplete: "off"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     value: "Add Bid",
     className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidSubmitBtn,
-    id: "bid-submit-btn"
-  }, "Add Bid")));
+    id: "bid-submit-btn",
+    ref: bidButton
+  }, "Add Bid", loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "spinner-border spinner-border-sm",
+    role: "status",
+    "aria-hidden": "true"
+  }))));
 };
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -59200,11 +59234,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var url =  false ? undefined : 'http://localhost:3000';
-var addBid = function addBid(dispatch) {
-  return function (uuid, bidPrice, token) {
+var addBid = function addBid(uuid, bidPrice, token) {
+  return function (dispatch) {
     dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
     dispatch(toggleLoader(true));
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("url/".concat(uuid), {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(url, "/bids/").concat(uuid), {
       bidPrice: bidPrice
     }, {
       headers: {
@@ -59213,14 +59247,16 @@ var addBid = function addBid(dispatch) {
     }).then(function (res) {
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch(toggleLoader(false));
+      console.log(res);
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_1__["ADD_BID"],
         bid: {
-          user: res.email
+          uuid: res.data.uuid
         }
       });
     })["catch"](function (err) {
-      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])(err.message));
+      // dispatch(addError(err.message));
+      console.log(err.response.data);
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch(toggleLoader(false));
     });
@@ -59228,7 +59264,7 @@ var addBid = function addBid(dispatch) {
 };
 var toggleLoader = function toggleLoader(loading) {
   return {
-    type: 'TOGGLE_LOADER',
+    type: _types_types__WEBPACK_IMPORTED_MODULE_1__["TOGGLE_BID_LOADER"],
     loading: loading
   };
 };
@@ -59753,7 +59789,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_BID, GET_BIDS, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_BID, GET_BIDS, TOGGLE_BID_LOADER, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59793,6 +59829,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_MESSAGE", function() { return USER_MESSAGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_BID", function() { return ADD_BID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BIDS", function() { return GET_BIDS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_BID_LOADER", function() { return TOGGLE_BID_LOADER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ERROR", function() { return ADD_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ERROR", function() { return REMOVE_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
@@ -59832,6 +59869,7 @@ var CLEAR_TOKENS = 'CLEAR_TOKENS';
 var USER_MESSAGE = 'USER_MESSAGE';
 var ADD_BID = 'NEW_BID';
 var GET_BIDS = 'GET_BIDS';
+var TOGGLE_BID_LOADER = 'TOGGLE_BID_LOADER';
 var ADD_ERROR = 'ADD_ERROR';
 var REMOVE_ERROR = 'REMOVE_ERROR';
 var CLEAR_ERRORS = 'CLEAR_ERRORS';
@@ -59937,18 +59975,6 @@ var authReducer = function authReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BidReducer; });
 /* harmony import */ var _actions_types_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types/types */ "./src/redux/actions/types/types.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -59971,7 +59997,12 @@ function BidReducer() {
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ADD_BID"]:
       return _objectSpread(_objectSpread({}, state), {}, {
-        bids: [action.bid].concat(_toConsumableArray(state.bids))
+        bid: action.bid
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_BID_LOADER"]:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: action.loading
       });
 
     default:

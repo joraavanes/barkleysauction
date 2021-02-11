@@ -1,4 +1,4 @@
-import { ADD_BID, GET_BIDS } from '../actions/types/types'
+import { ADD_BID, GET_BIDS, TOGGLE_BID_LOADER } from '../actions/types/types'
 
 const defaultBidState = {
     loading: false
@@ -15,10 +15,12 @@ export default function BidReducer(state = defaultBidState, action){
         case ADD_BID:
             return {
                 ...state,
-                bids: [
-                    action.bid,
-                    ...state.bids
-                ]
+                bid: action.bid
+            };
+        case TOGGLE_BID_LOADER:
+            return {
+                ...state,
+                loading: action.loading
             };
         default:
             return state;

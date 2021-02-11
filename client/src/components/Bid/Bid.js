@@ -1,34 +1,38 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { connect } from 'react-redux'
 import { addBid } from '../../redux/actions/bidActions'
 import styles from './styles/Bid.scss'
 
 const Bid = ({item, auth, addBid, loading}) => {
-
+    const [bid, setBid] = useState('');
+    const bidButton = useRef();
+    
     const handleBidSubmit = e => {
         e.preventDefault();
-        const bidPrice = e.target.elements.BidPrice.value;
         
-        console.log(item.uuid, bidPrice, auth.token);
-        console.log(addBid);
-        // addBid(item.uuid, bidPrice, auth.token);
-    }
-
-    useEffect(() => {
-        
-        return () => {
-            
+        if(bid==''){
+            return;
         }
-    }, [loading])
+
+        bidButton.current.setAttribute('disabled','disabled');
+        addBid(item.uuid, bid, auth.token);
+    }
+    
+    useEffect(() => {
+        if(!loading){
+            bidButton.current.removeAttribute('disabled');
+        }
+         
+    }, [loading]);
 
     return (
         <>
             <h2>Your Bid</h2>
             <form onSubmit={handleBidSubmit} className={styles.BidForm}>
-                <input type="number" step="0.01" className={styles.BidPrice} name="BidPrice" id="BidPrice" placeholder="e.g. 29.99" autoComplete="off"/>
-                <button type="submit" value="Add Bid" className={styles.BidSubmitBtn} id="bid-submit-btn">
+                <input type="number" step="0.01" className={styles.BidPrice} name="BidPrice" id="BidPrice" onChange={e => setBid(e.target.value)} value={bid} placeholder="e.g. 29.99" autoComplete="off"/>
+                <button type="submit" value="Add Bid" className={styles.BidSubmitBtn} id="bid-submit-btn" ref={bidButton}>
                     Add Bid
-                    {/* <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> */}
+                    {loading && <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
                 </button>
             </form>
             
