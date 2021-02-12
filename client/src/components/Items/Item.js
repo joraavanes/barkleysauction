@@ -28,7 +28,7 @@ const Item = (props) => {
                             </p>
                         )}
                     <p>
-                        <span>Offering: </span>
+                        <span>Starting: </span>
                         <i className="fas fa-pound-sign xs-margin"></i>
                         {props.startingBid.toLocaleString()}
                     </p>

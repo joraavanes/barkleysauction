@@ -74,7 +74,7 @@ class ViewItem extends Component {
                                             :
                                             (<span className="text-danger avail-status">Sold for <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.startingBid.toLocaleString()}</span>)}
                                         </h1>
-                                        <h4>Last bid was <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.startingBid.toLocaleString()}</h4>
+                                        <h4>Starting bid is <i className="fas fa-pound-sign xs-margin"></i>{this.props.item.startingBid.toLocaleString()}</h4>
                                     </>
                                 ):(
                                     <div>Loading ...</div>
