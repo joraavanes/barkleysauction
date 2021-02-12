@@ -16,6 +16,11 @@ exports.postBid = async (req, res, next) => {
     let product;
     try {
         product = await Product.findOne({uuid});
+
+        if(product.startingBid >= bidPrice){
+            throw new Error('You must bid higher than starting bid');
+        }
+
         const prevBids = product.bids.map(bid => bid.bidPrice);
         if(Math.max(...prevBids) >= bidPrice){
             throw new Error('You must bid higher than current one');
