@@ -23,8 +23,7 @@ export const addBid = (uuid, bidPrice, token) => dispatch => {
         })
     })
     .catch(err => {
-        // dispatch(addError(err.message));
-        console.log(err.response.data);
+        dispatch(addError('bid', err?.response?.data));
 
         dispatch(itemsLoading(false));
         dispatch(toggleLoader(false));

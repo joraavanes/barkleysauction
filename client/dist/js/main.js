@@ -4089,10 +4089,11 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, ".Bid_BidForm___3oSlia6Op3VxszT2OESqRL {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 40px; }\n\n.Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv {\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:hover, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:focus, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc {\n  border-radius: 20px !important;\n  width: 30%; }\n  .Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n", "",{"version":3,"sources":["Bid.scss"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB,EAAE;;AAEvB;EAEE,qBAAqB;EACrB,0CAA0C,EAAE;EAC5C;IACE,aAAa;IACb,gCAAgC;IAChC,wCAAwC,EAAE;;AAE9C;EAEE,8BAA8B;EAC9B,UAAU,EAAE;EACZ;IACE,qCAAqC;IACrC,2BAA2B,EAAE","file":"Bid.scss","sourcesContent":[".BidForm {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 40px; }\n\n.BidPrice {\n  composes: form-control from global;\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .BidPrice:hover, .BidPrice:focus, .BidPrice:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.BidSubmitBtn {\n  composes: btn btn-primary from global;\n  border-radius: 20px !important;\n  width: 30%; }\n  .BidSubmitBtn:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n"]}]);
+exports.push([module.i, ".Bid_BidForm___3oSlia6Op3VxszT2OESqRL {\n  margin-bottom: 30px; }\n\n.Bid_bidFormGroup___2lIiUwPQ87IhG8yoz6irTl {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 20px; }\n\n.Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv {\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:hover, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:focus, .Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc {\n  border-radius: 20px !important;\n  width: 30%; }\n  .Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n", "",{"version":3,"sources":["Bid.scss"],"names":[],"mappings":"AAAA;EACE,mBAAmB,EAAE;;AAEvB;EACE,aAAa;EACb,6BAA6B;EAC7B,mBAAmB,EAAE;;AAEvB;EAEE,qBAAqB;EACrB,0CAA0C,EAAE;EAC5C;IACE,aAAa;IACb,gCAAgC;IAChC,wCAAwC,EAAE;;AAE9C;EAEE,8BAA8B;EAC9B,UAAU,EAAE;EACZ;IACE,qCAAqC;IACrC,2BAA2B,EAAE","file":"Bid.scss","sourcesContent":[".BidForm {\n  margin-bottom: 30px; }\n\n.bidFormGroup {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 20px; }\n\n.BidPrice {\n  composes: form-control from global;\n  width: 65% !important;\n  transition: all .5s ease-in-out !important; }\n  .BidPrice:hover, .BidPrice:focus, .BidPrice:active {\n    outline: none;\n    border-color: #f91890 !important;\n    box-shadow: 0 10px 28px -16px !important; }\n\n.BidSubmitBtn {\n  composes: btn btn-primary from global;\n  border-radius: 20px !important;\n  width: 30%; }\n  .BidSubmitBtn:active {\n    transform: translateY(1px) !important;\n    transition: none !important; }\n"]}]);
 // Exports
 exports.locals = {
 	"BidForm": "Bid_BidForm___3oSlia6Op3VxszT2OESqRL",
+	"bidFormGroup": "Bid_bidFormGroup___2lIiUwPQ87IhG8yoz6irTl",
 	"BidPrice": "Bid_BidPrice___2OOTtbgkuV-UWOGBNRxxgv form-control",
 	"BidSubmitBtn": "Bid_BidSubmitBtn___3wMaYBHaov-Br_YgSYw8Tc btn btn-primary"
 };
@@ -55824,8 +55825,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../redux/actions/bidActions */ "./src/redux/actions/bidActions.js");
-/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/Bid.scss */ "./src/components/Bid/styles/Bid.scss");
-/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/errorActions */ "./src/redux/actions/errorActions.js");
+/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/Bid.scss */ "./src/components/Bid/styles/Bid.scss");
+/* harmony import */ var _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -55843,10 +55845,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Bid = function Bid(_ref) {
   var item = _ref.item,
       auth = _ref.auth,
       addBid = _ref.addBid,
+      bidError = _ref.bidError,
+      clearErrors = _ref.clearErrors,
       loading = _ref.loading;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
@@ -55855,6 +55860,7 @@ var Bid = function Bid(_ref) {
       setBidPrice = _useState2[1];
 
   var bidButton = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var bidPriceInput = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
 
   var handleBidSubmit = function handleBidSubmit(e) {
     e.preventDefault();
@@ -55864,52 +55870,68 @@ var Bid = function Bid(_ref) {
     }
 
     bidButton.current.setAttribute('disabled', 'disabled');
+    bidPriceInput.current.setAttribute('disabled', 'disabled');
     addBid(item.uuid, bidPrice, auth.token);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (!loading) {
       bidButton.current.removeAttribute('disabled');
+      bidPriceInput.current.removeAttribute('disabled');
+      setBidPrice('');
     }
   }, [loading]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    return function () {
+      return clearErrors();
+    };
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Your Bid"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleBidSubmit,
-    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidForm
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4___default.a.BidForm
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4___default.a.bidFormGroup
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     step: "0.01",
-    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidPrice,
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4___default.a.BidPrice,
     name: "BidPrice",
     id: "BidPrice",
     onChange: function onChange(e) {
       return setBidPrice(e.target.value);
     },
     value: bidPrice,
+    ref: bidPriceInput,
     placeholder: "e.g. 29.99",
     autoComplete: "off"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     value: "Add Bid",
-    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_3___default.a.BidSubmitBtn,
+    className: _styles_Bid_scss__WEBPACK_IMPORTED_MODULE_4___default.a.BidSubmitBtn,
     id: "bid-submit-btn",
     ref: bidButton
   }, "Add Bid", loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "spinner-border spinner-border-sm",
     role: "status",
     "aria-hidden": "true"
-  }))));
+  }))), bidError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "text-danger"
+  }, bidError)));
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
     auth: state.auth[0],
     item: state.items.item,
+    bidError: state.error.bid,
     loading: state.bids.loading
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  addBid: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__["addBid"]
+  addBid: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__["addBid"],
+  addError: _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"],
+  clearErrors: _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"]
 })(Bid));
 
 /***/ }),
@@ -59255,8 +59277,9 @@ var addBid = function addBid(uuid, bidPrice, token) {
         }
       });
     })["catch"](function (err) {
-      // dispatch(addError(err.message));
-      console.log(err.response.data);
+      var _err$response;
+
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])('bid', err === null || err === void 0 ? void 0 : (_err$response = err.response) === null || _err$response === void 0 ? void 0 : _err$response.data));
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch(toggleLoader(false));
     });
