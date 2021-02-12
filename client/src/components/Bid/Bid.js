@@ -11,14 +11,7 @@ const Bid = ({item, auth, addBid, bidError, clearErrors, loading}) => {
     
     const handleBidSubmit = e => {
         e.preventDefault();
-        
-        if(bidPrice==''){
-            return;
-        }
-
-        bidButton.current.setAttribute('disabled','disabled');
-        bidPriceInput.current.setAttribute('disabled','disabled');
-        addBid(item.uuid, bidPrice, auth.token);
+        addBid(item.uuid, bidPrice, auth);
     }
 
     useEffect(() => {
@@ -26,6 +19,9 @@ const Bid = ({item, auth, addBid, bidError, clearErrors, loading}) => {
             bidButton.current.removeAttribute('disabled');
             bidPriceInput.current.removeAttribute('disabled');
             setBidPrice('');
+        }else{
+            bidButton.current.setAttribute('disabled','disabled');
+            bidPriceInput.current.setAttribute('disabled','disabled');
         }
         
     }, [loading]);
@@ -49,7 +45,7 @@ const Bid = ({item, auth, addBid, bidError, clearErrors, loading}) => {
                         onChange={e => setBidPrice(e.target.value)} 
                         value={bidPrice} 
                         ref={bidPriceInput}
-                        placeholder="e.g. 29.99" 
+                        placeholder={`e.g. ${item?.startingBid + 5}`} 
                         autoComplete="off"
                     />
                     <button 

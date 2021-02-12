@@ -55864,14 +55864,7 @@ var Bid = function Bid(_ref) {
 
   var handleBidSubmit = function handleBidSubmit(e) {
     e.preventDefault();
-
-    if (bidPrice == '') {
-      return;
-    }
-
-    bidButton.current.setAttribute('disabled', 'disabled');
-    bidPriceInput.current.setAttribute('disabled', 'disabled');
-    addBid(item.uuid, bidPrice, auth.token);
+    addBid(item.uuid, bidPrice, auth);
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -55879,6 +55872,9 @@ var Bid = function Bid(_ref) {
       bidButton.current.removeAttribute('disabled');
       bidPriceInput.current.removeAttribute('disabled');
       setBidPrice('');
+    } else {
+      bidButton.current.setAttribute('disabled', 'disabled');
+      bidPriceInput.current.setAttribute('disabled', 'disabled');
     }
   }, [loading]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
@@ -55902,7 +55898,7 @@ var Bid = function Bid(_ref) {
     },
     value: bidPrice,
     ref: bidPriceInput,
-    placeholder: "e.g. 29.99",
+    placeholder: "e.g. ".concat((item === null || item === void 0 ? void 0 : item.startingBid) + 5),
     autoComplete: "off"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
@@ -59256,20 +59252,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var url =  false ? undefined : 'http://localhost:3000';
-var addBid = function addBid(uuid, bidPrice, token) {
+var addBid = function addBid(uuid, bidPrice, auth) {
   return function (dispatch) {
+    if (!auth) {
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])('bid', 'Please login to bid'));
+      return;
+    }
+
+    if (!bidPrice) {
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])('bid', 'Please insert your bid'));
+      return;
+    }
+
     dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
     dispatch(toggleLoader(true));
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(url, "/bids/").concat(uuid), {
       bidPrice: bidPrice
     }, {
       headers: {
-        'x-auth': token
+        'x-auth': auth.token
       }
     }).then(function (res) {
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch(toggleLoader(false));
-      console.log(res);
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_1__["ADD_BID"],
         bid: {
