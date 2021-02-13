@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const multer = require('multer');
+const {bgGreen, black} = require('colors');
 
 // Adding Middlewares
 const printIp = require('./middleware/printIp');
@@ -53,6 +54,4 @@ app.use((req, res, next) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`)
-});
+app.listen(port, () => console.log(bgGreen(black(`Server is running on port: ${port}`))));
