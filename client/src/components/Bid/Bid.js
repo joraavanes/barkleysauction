@@ -45,7 +45,7 @@ const Bid = ({item, auth, addBid, bidError, clearErrors, loading}) => {
                         onChange={e => setBidPrice(e.target.value)} 
                         value={bidPrice} 
                         ref={bidPriceInput}
-                        placeholder={`e.g. ${item?.startingBid + 5}`} 
+                        placeholder={`e.g. ${Math.round((item?.startingBid + 5) * 100) / 100}`} 
                         autoComplete="off"
                     />
                     <button 
