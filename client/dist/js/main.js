@@ -56178,6 +56178,39 @@ var mapStateToProps = function mapStateToProps(state) {
 
 /***/ }),
 
+/***/ "./src/components/Bid/Bids.js":
+/*!************************************!*\
+  !*** ./src/components/Bid/Bids.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+var Bids = function Bids() {
+  var params = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])();
+  console.log(params);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Bids");
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    bids: state.bid.bids
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(Bids));
+
+/***/ }),
+
 /***/ "./src/components/Bid/styles/Bid.scss":
 /*!********************************************!*\
   !*** ./src/components/Bid/styles/Bid.scss ***!
@@ -57728,6 +57761,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/LastBids.scss */ "./src/components/Items/styles/LastBids.scss");
 /* harmony import */ var _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _Bid_BidForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Bid/BidForm */ "./src/components/Bid/BidForm.js");
+/* harmony import */ var _Bid_Bids__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Bid/Bids */ "./src/components/Bid/Bids.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57761,6 +57795,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
  // import bag from '../../media/bag.jpg'
 // styles
+
 
 
 
@@ -57830,7 +57865,7 @@ var ViewItem = /*#__PURE__*/function (_Component) {
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10___default.a.lastBidsContainer,
         id: "bids-list-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bid_BidForm__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bid_BidForm__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bid_Bids__WEBPACK_IMPORTED_MODULE_12__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "bid-title"
       }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.item && this.props.item.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group list-group-flush"
@@ -59481,11 +59516,12 @@ var register = function register(_ref) {
 /*!*****************************************!*\
   !*** ./src/redux/actions/bidActions.js ***!
   \*****************************************/
-/*! exports provided: addBid, toggleLoader */
+/*! exports provided: getBids, addBid, toggleLoader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBids", function() { return getBids; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addBid", function() { return addBid; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleLoader", function() { return toggleLoader; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -59498,6 +59534,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var url =  false ? undefined : 'http://localhost:3000';
+var getBids = function getBids(uuid) {
+  return function (dispatch) {
+    dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(url, "/bids/").concat(uuid)).then(function (bids) {
+      dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch({
+        type: _types_types__WEBPACK_IMPORTED_MODULE_1__["GET_BIDS"],
+        bids: bids
+      });
+    })["catch"](function (err) {
+      dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])('Bid', 'Failed to get bids'));
+      dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+    });
+  };
+};
 var addBid = function addBid(uuid, bidPrice, auth) {
   return function (dispatch) {
     if (!auth) {

@@ -13,6 +13,7 @@ import avatar4 from '../../media/avatar-4.png'
 // styles
 import styles from './styles/LastBids.scss'
 import BidForm from '../Bid/BidForm';
+import Bids from '../Bid/Bids';
 
 class ViewItem extends Component {
 
@@ -94,6 +95,7 @@ class ViewItem extends Component {
                     </main>
                     <div className={styles.lastBidsContainer} id="bids-list-group">
                         <BidForm/>
+                        <Bids/>
                         <h2 className="bid-title">Last bids
                             <span>for {this.props.item && this.props.item.title}</span>
                         </h2>

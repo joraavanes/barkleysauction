@@ -5,6 +5,21 @@ import { addError, clearErrors } from './errorActions'
 
 const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000';
 
+export const getBids = uuid => dispatch => {
+    dispatch(itemsLoading(true));
+
+    axios.get(`${url}/bids/${uuid}`)
+        .then(bids => {
+            dispatch(itemsLoading(false));
+            dispatch({
+                type: GET_BIDS,
+                bids
+            });
+        }).catch((err) => {
+            dispatch(addError('Bid', 'Failed to get bids'));
+            dispatch(itemsLoading(false));
+        });
+};
 
 export const addBid = (uuid, bidPrice, auth) => dispatch => {
     if(!auth){
