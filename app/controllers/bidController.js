@@ -2,10 +2,11 @@ const lodash = require('lodash');
 const {v4} = require('uuid');
 const {Product} = require('../models/Product');
 
+// GET: /bids/:uuid
 exports.getBids = async (req, res, next) => {
     const {uuid} = req.params;
 
-    const {bids} = await Product.findOne({uuid});
+    const {bids} = await Product.findOne({uuid}).populate('bids.user');
     res.send(bids);
 };
 

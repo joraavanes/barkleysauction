@@ -109,4 +109,8 @@ const ProductSchema = new Schema({
 
 const Product = model('Product', ProductSchema);
 
+Product.watch().on('change', (doc)=>{
+    console.log(doc, ' has been changed');
+});
+
 module.exports = {Product};

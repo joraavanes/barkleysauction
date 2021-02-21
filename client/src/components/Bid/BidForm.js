@@ -4,7 +4,7 @@ import { addBid } from '../../redux/actions/bidActions'
 import { addError, clearErrors } from '../../redux/actions/errorActions'
 import styles from './styles/Bid.scss'
 
-const Bid = ({item, auth, addBid, bidError, clearErrors, loading}) => {
+const BidForm = ({item, auth, addBid, bidError, clearErrors, loading}) => {
     const [bidPrice, setBidPrice] = useState('');
     const bidButton = useRef();
     const bidPriceInput = useRef();
@@ -18,6 +18,7 @@ const Bid = ({item, auth, addBid, bidError, clearErrors, loading}) => {
         if(!loading){
             bidButton.current.removeAttribute('disabled');
             bidPriceInput.current.removeAttribute('disabled');
+            bidPriceInput.current.focus();
             setBidPrice('');
         }else{
             bidButton.current.setAttribute('disabled','disabled');
@@ -73,4 +74,4 @@ const mapStateToProps = state => ({
     loading: state.bids.loading
 });
 
-export default connect(mapStateToProps, {addBid, addError, clearErrors})(Bid);
+export default connect(mapStateToProps, {addBid, addError, clearErrors})(BidForm);

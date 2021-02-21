@@ -35,6 +35,7 @@ exports.getItem = (req,res)=>{
     const {uuid,title} = req.params;
 
     Product.findOne({uuid,title})
+        // .populate('bids.user')
         .then(item => {
             // if(!item){
             //     return res.status(404).send({err: 'The product was not found'});

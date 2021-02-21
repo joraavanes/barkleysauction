@@ -56057,10 +56057,10 @@ var Auction = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./src/components/Bid/Bid.js":
-/*!***********************************!*\
-  !*** ./src/components/Bid/Bid.js ***!
-  \***********************************/
+/***/ "./src/components/Bid/BidForm.js":
+/*!***************************************!*\
+  !*** ./src/components/Bid/BidForm.js ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56091,7 +56091,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Bid = function Bid(_ref) {
+var BidForm = function BidForm(_ref) {
   var item = _ref.item,
       auth = _ref.auth,
       addBid = _ref.addBid,
@@ -56116,6 +56116,7 @@ var Bid = function Bid(_ref) {
     if (!loading) {
       bidButton.current.removeAttribute('disabled');
       bidPriceInput.current.removeAttribute('disabled');
+      bidPriceInput.current.focus();
       setBidPrice('');
     } else {
       bidButton.current.setAttribute('disabled', 'disabled');
@@ -56173,7 +56174,7 @@ var mapStateToProps = function mapStateToProps(state) {
   addBid: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_2__["addBid"],
   addError: _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"],
   clearErrors: _redux_actions_errorActions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"]
-})(Bid));
+})(BidForm));
 
 /***/ }),
 
@@ -57726,7 +57727,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _media_avatar_4_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../media/avatar-4.png */ "./src/media/avatar-4.png");
 /* harmony import */ var _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/LastBids.scss */ "./src/components/Items/styles/LastBids.scss");
 /* harmony import */ var _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _Bid_Bid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Bid/Bid */ "./src/components/Bid/Bid.js");
+/* harmony import */ var _Bid_BidForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Bid/BidForm */ "./src/components/Bid/BidForm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57829,7 +57830,7 @@ var ViewItem = /*#__PURE__*/function (_Component) {
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: _styles_LastBids_scss__WEBPACK_IMPORTED_MODULE_10___default.a.lastBidsContainer,
         id: "bids-list-group"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bid_Bid__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bid_BidForm__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "bid-title"
       }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", this.props.item && this.props.item.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-group list-group-flush"
