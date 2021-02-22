@@ -80564,6 +80564,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/bidActions */ "./src/redux/actions/bidActions.js");
 /* harmony import */ var _shared_RandomAvatar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/RandomAvatar */ "./src/components/shared/RandomAvatar.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 
 
 
@@ -80572,20 +80574,40 @@ __webpack_require__.r(__webpack_exports__);
 
 var Bids = function Bids(_ref) {
   var getBids = _ref.getBids,
+      clearBids = _ref.clearBids,
       bids = _ref.bids,
-      item = _ref.item;
+      item = _ref.item,
+      addedBid = _ref.addedBid,
+      loading = _ref.loading;
 
   var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
       uuid = _useParams.uuid;
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     getBids(uuid);
+    return function () {
+      return clearBids();
+    };
   }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    return getBids(uuid);
+  }, [addedBid]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "bid-title"
-  }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", item && item.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", item && item.title)), loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bids-loader"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    role: "status",
+    className: "spinner-border text-danger"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "sr-only"
+  }, "Loading..."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", _extends({
     className: "list-group list-group-flush"
-  }, bids && bids.slice(0, 3).map(function (bid) {
+  }, loading ? {
+    style: {
+      filter: 'blur(1.5px)'
+    }
+  } : {}), bids && bids.slice(0, 3).map(function (bid) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-group-item",
       key: bid._id
@@ -80615,12 +80637,15 @@ var Bids = function Bids(_ref) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     bids: state.bids.bids,
+    addedBid: state.bids.bid,
+    loading: state.bids.loading,
     item: state.items.item
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  getBids: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_3__["getBids"]
+  getBids: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_3__["getBids"],
+  clearBids: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_3__["clearBids"]
 })(Bids));
 
 /***/ }),
