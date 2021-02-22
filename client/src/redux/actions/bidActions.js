@@ -9,11 +9,11 @@ export const getBids = uuid => dispatch => {
     dispatch(itemsLoading(true));
 
     axios.get(`${url}/bids/${uuid}`)
-        .then(bids => {
+        .then(res => {
             dispatch(itemsLoading(false));
             dispatch({
                 type: GET_BIDS,
-                bids
+                bids: res.data
             });
         }).catch((err) => {
             dispatch(addError('Bid', 'Failed to get bids'));

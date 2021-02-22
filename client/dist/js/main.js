@@ -56191,23 +56191,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/actions/bidActions */ "./src/redux/actions/bidActions.js");
 
 
 
 
-var Bids = function Bids() {
-  var params = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])();
-  console.log(params);
+
+var Bids = function Bids(_ref) {
+  var getBids = _ref.getBids;
+
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
+      uuid = _useParams.uuid;
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    getBids(uuid);
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Bids");
 };
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    bids: state.bid.bids
+    bids: state.bids.bids
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(Bids));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  getBids: _redux_actions_bidActions__WEBPACK_IMPORTED_MODULE_3__["getBids"]
+})(Bids));
 
 /***/ }),
 
@@ -59537,11 +59547,11 @@ var url =  false ? undefined : 'http://localhost:3000';
 var getBids = function getBids(uuid) {
   return function (dispatch) {
     dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(url, "/bids/").concat(uuid)).then(function (bids) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(url, "/bids/").concat(uuid)).then(function (res) {
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_1__["GET_BIDS"],
-        bids: bids
+        bids: res.data
       });
     })["catch"](function (err) {
       dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])('Bid', 'Failed to get bids'));
@@ -60309,7 +60319,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var defaultBidState = {
-  loading: false
+  loading: false,
+  bids: []
 };
 function BidReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultBidState;
