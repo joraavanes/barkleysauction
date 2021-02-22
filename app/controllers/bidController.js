@@ -6,7 +6,8 @@ const {Product} = require('../models/Product');
 exports.getBids = async (req, res, next) => {
     const {uuid} = req.params;
 
-    const {bids} = await Product.findOne({uuid}).populate('bids.user');
+    let {bids} = await Product.findOne({uuid}).populate('bids.user');
+    bids = bids.sort((a, b) => b.bidPrice - a.bidPrice);
     res.send(bids);
 };
 

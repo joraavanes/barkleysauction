@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { getBids } from '../../redux/actions/bidActions'
 import RandomAvatar from '../shared/RandomAvatar'
 
-const Bids = ({getBids, item}) => {
+const Bids = ({getBids, bids, item}) => {
     const {uuid} = useParams();
     
     useEffect(() => {
@@ -24,20 +24,21 @@ const Bids = ({getBids, item}) => {
             </div> */}
 
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                    <div className="media">
-                        {/* <img src={avatar1.substr(2,avatar1.length+1)} className="mr-3 avatar-img"/>                                     */}
-                        <RandomAvatar width="40px" height="40px"/>
-                        <div className="media-body ml-3">
-                            <h5 className="mt-0">rosa_55r</h5>
-                            bids <i className="fas fa-pound-sign xs-margin"></i> 235 - a few minutes ago
+                {bids && bids.slice(0,3).map(bid => (
+                    <li className="list-group-item" key={bid._id}>
+                        <div className="media">
+                            {/* <img src={avatar1.substr(2,avatar1.length+1)} className="mr-3 avatar-img"/>                                     */}
+                            <RandomAvatar width="40px" height="40px"/>
+                            <div className="media-body ml-3">
+                                <h5 className="mt-0">{bid.user.name}</h5>
+                                bids <i className="fas fa-pound-sign xs-margin"></i> {bid.bidPrice} - a few minutes ago
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li className="list-group-item">
+                    </li>
+                ))}
+                {/* <li className="list-group-item">
                     <div className="media">
-                        {/* <img src={avatar3.substr(2,avatar3.length+1)} className="mr-3 avatar-img" alt="..."/> */}
-                        <RandomAvatar width="40px" height="40px"/>
+                        <img src={avatar3.substr(2,avatar3.length+1)} className="mr-3 avatar-img" alt="..."/>
                         <div className="media-body ml-3">
                             <h5 className="mt-0">rip_slayer</h5>
                             Bids <i className="fas fa-pound-sign xs-margin"></i> 225 - a few minutes ago
@@ -46,14 +47,13 @@ const Bids = ({getBids, item}) => {
                 </li>
                 <li className="list-group-item">
                     <div className="media">
-                        {/* <img src={avatar4.substr(2,avatar4.length+1)} className="mr-3 avatar-img" alt="..."/> */}
-                        <RandomAvatar width="40px" height="40px"/>
+                        <img src={avatar4.substr(2,avatar4.length+1)} className="mr-3 avatar-img" alt="..."/>
                         <div className="media-body">
                             <h5 className="mt-0">merry_eli_992</h5>
                             Bids <i className="fas fa-pound-sign xs-margin"></i> 217 - a few minutes ago
                         </div>
                     </div>
-                </li>
+                </li> */}
                 <li className="list-group-item">Dapibus ac facilisis in</li>
                 <li className="list-group-item">Morbi leo risus</li>
                 <li className="list-group-item">Porta ac consectetur ac</li>
