@@ -38,6 +38,7 @@ export const USER_MESSAGE = 'USER_MESSAGE';
 
 export const ADD_BID = 'NEW_BID';
 export const GET_BIDS = 'GET_BIDS';
+export const CLEAR_BIDS = 'CLEAR_BIDS';
 export const TOGGLE_BID_LOADER = 'TOGGLE_BID_LOADER';
 
 export const ADD_ERROR = 'ADD_ERROR';

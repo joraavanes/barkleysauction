@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ADD_BID, GET_BIDS, TOGGLE_BID_LOADER } from './types/types'
+import { ADD_BID, CLEAR_BIDS, GET_BIDS, TOGGLE_BID_LOADER } from './types/types'
 import { itemsLoading } from './itemActions'
 import { addError, clearErrors } from './errorActions'
 
@@ -7,10 +7,12 @@ const url = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000'
 
 export const getBids = uuid => dispatch => {
     dispatch(itemsLoading(true));
+    dispatch(toggleLoader(true));
 
     axios.get(`${url}/bids/${uuid}`)
         .then(res => {
             dispatch(itemsLoading(false));
+            dispatch(toggleLoader(false));
             dispatch({
                 type: GET_BIDS,
                 bids: res.data
@@ -18,6 +20,7 @@ export const getBids = uuid => dispatch => {
         }).catch((err) => {
             dispatch(addError('Bid', 'Failed to get bids'));
             dispatch(itemsLoading(false));
+            dispatch(toggleLoader(false));
         });
 };
 
@@ -55,6 +58,18 @@ export const addBid = (uuid, bidPrice, auth) => dispatch => {
             dispatch(itemsLoading(false));
             dispatch(toggleLoader(false));
         });
+};
+
+export const clearBids = () => dispatch => {
+    dispatch(itemsLoading(true));
+    dispatch(toggleLoader(true));
+    
+    dispatch({
+        type: CLEAR_BIDS
+    });
+    
+    dispatch(itemsLoading(false));
+    dispatch(toggleLoader(false));
 };
 
 export const toggleLoader = loading => ({

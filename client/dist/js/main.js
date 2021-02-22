@@ -83976,13 +83976,14 @@ var register = function register(_ref) {
 /*!*****************************************!*\
   !*** ./src/redux/actions/bidActions.js ***!
   \*****************************************/
-/*! exports provided: getBids, addBid, toggleLoader */
+/*! exports provided: getBids, addBid, clearBids, toggleLoader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBids", function() { return getBids; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addBid", function() { return addBid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearBids", function() { return clearBids; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleLoader", function() { return toggleLoader; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -83997,8 +83998,10 @@ var url =  false ? undefined : 'http://localhost:3000';
 var getBids = function getBids(uuid) {
   return function (dispatch) {
     dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
+    dispatch(toggleLoader(true));
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(url, "/bids/").concat(uuid)).then(function (res) {
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch(toggleLoader(false));
       dispatch({
         type: _types_types__WEBPACK_IMPORTED_MODULE_1__["GET_BIDS"],
         bids: res.data
@@ -84006,6 +84009,7 @@ var getBids = function getBids(uuid) {
     })["catch"](function (err) {
       dispatch(Object(_errorActions__WEBPACK_IMPORTED_MODULE_3__["addError"])('Bid', 'Failed to get bids'));
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+      dispatch(toggleLoader(false));
     });
   };
 };
@@ -84046,6 +84050,17 @@ var addBid = function addBid(uuid, bidPrice, auth) {
       dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
       dispatch(toggleLoader(false));
     });
+  };
+};
+var clearBids = function clearBids() {
+  return function (dispatch) {
+    dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(true));
+    dispatch(toggleLoader(true));
+    dispatch({
+      type: _types_types__WEBPACK_IMPORTED_MODULE_1__["CLEAR_BIDS"]
+    });
+    dispatch(Object(_itemActions__WEBPACK_IMPORTED_MODULE_2__["itemsLoading"])(false));
+    dispatch(toggleLoader(false));
   };
 };
 var toggleLoader = function toggleLoader(loading) {
@@ -84575,7 +84590,7 @@ var toggleLoader = function toggleLoader() {
 /*!******************************************!*\
   !*** ./src/redux/actions/types/types.js ***!
   \******************************************/
-/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_BID, GET_BIDS, TOGGLE_BID_LOADER, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
+/*! exports provided: GET_ITEMS, GET_ITEM, POST_ITEM, EDIT_ITEM, REMOVE_ITEM, ITEMS_LOADING, CLEAR_ITEMS, CLEAR_ITEM, ADD_PAGE_NUMBER, RESET_PAGE_NUMBER, CLEAR_TIMESTAMP, SORT_BY, SEARCH_TEXT, CLEAR_SEARCH_TEXT, DEFAULT_SEARCH_STATE, SEARCH_END, ALL_FETCHED, LOGIN_MODAL_STATE, TOGGLE_LOADER, GET_COMMENTS, CLEAR_COMMENTS, TOGGLE_COMMENT_FORM, POST_COMMENT, TOGGLE_EDIT_COMMENT_MODAL, EDIT_COMMENT, EDIT_COMMENT_COMEPLETED, TOGGLE_REMOVE_COMMENT_MODAL, REMOVE_COMMENT, REMOVE_COMMENT_COMEPLETED, ADD_TOKEN, REMOVE_TOKEN, CLEAR_TOKENS, USER_MESSAGE, ADD_BID, GET_BIDS, CLEAR_BIDS, TOGGLE_BID_LOADER, ADD_ERROR, REMOVE_ERROR, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84615,6 +84630,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER_MESSAGE", function() { return USER_MESSAGE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_BID", function() { return ADD_BID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BIDS", function() { return GET_BIDS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_BIDS", function() { return CLEAR_BIDS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_BID_LOADER", function() { return TOGGLE_BID_LOADER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ERROR", function() { return ADD_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ERROR", function() { return REMOVE_ERROR; });
@@ -84655,6 +84671,7 @@ var CLEAR_TOKENS = 'CLEAR_TOKENS';
 var USER_MESSAGE = 'USER_MESSAGE';
 var ADD_BID = 'NEW_BID';
 var GET_BIDS = 'GET_BIDS';
+var CLEAR_BIDS = 'CLEAR_BIDS';
 var TOGGLE_BID_LOADER = 'TOGGLE_BID_LOADER';
 var ADD_ERROR = 'ADD_ERROR';
 var REMOVE_ERROR = 'REMOVE_ERROR';
@@ -84785,6 +84802,11 @@ function BidReducer() {
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["ADD_BID"]:
       return _objectSpread(_objectSpread({}, state), {}, {
         bid: action.bid
+      });
+
+    case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_BIDS"]:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        bids: []
       });
 
     case _actions_types_types__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_BID_LOADER"]:
