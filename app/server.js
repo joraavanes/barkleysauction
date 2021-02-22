@@ -49,7 +49,7 @@ app.use('/users', userRouter);
 // app.use('/items', productRouter);
 app.use('/comments', commentRouter);
 
-// let the react handle the miscellaneous urls
+// let the react handle the root url
 app.use((req, res, next) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
