@@ -80594,20 +80594,25 @@ var Bids = function Bids(_ref) {
   }, [addedBid]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "bid-title"
-  }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", item && item.title)), loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Last bids", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "for ", item && item.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-block",
+    style: {
+      minHeight: 300
+    }
+  }, loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bids-loader"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     role: "status",
     className: "spinner-border text-danger"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "sr-only"
-  }, "Loading..."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", _extends({
+  }, "Loading..."))), !loading && bids.length == 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No bids has received yet!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", _extends({
     className: "list-group list-group-flush"
   }, loading ? {
     style: {
       filter: 'blur(1.5px)'
     }
-  } : {}), bids && bids.slice(0, 3).map(function (bid) {
+  } : {}), bids && bids.slice(0, 4).map(function (bid) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-group-item",
       key: bid._id
@@ -80622,16 +80627,15 @@ var Bids = function Bids(_ref) {
       className: "mt-0"
     }, bid.user.name), "bids ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-pound-sign xs-margin"
-    }), " ", bid.bidPrice, " - a few minutes ago")));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Dapibus ac facilisis in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Morbi leo risus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Porta ac consectetur ac"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Vestibulum at eros")));
+    }), bid.bidPrice.toLocaleString(), " - a few minutes ago")));
+  }), bids.slice(4, 9) && bids.slice(4, 9).map(function (bid) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-group-item",
+      key: bid._id
+    }, bid.user.name, " bids ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-pound-sign xs-margin"
+    }), bid.bidPrice);
+  }))));
 };
 
 var mapStateToProps = function mapStateToProps(state) {
