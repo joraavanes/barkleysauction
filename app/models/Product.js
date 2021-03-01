@@ -59,7 +59,7 @@ const ProductSchema = new Schema({
         bidDate: {
             type: Number,
             required: true,
-            default: new Date().valueOf()
+            // default: new Date().valueOf()
         },
         bidPrice:{
             type: Number,

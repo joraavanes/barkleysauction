@@ -28,9 +28,9 @@ const Bids = ({getBids, clearBids, bids, item, addedBid, loading}) => {
         if(weeks) return  weeks == 1 ? `a week ago` : `${weeks} weeks ago`;
         if(days) return days == 1 ? `a day ago` : `${days} days ago`;
         if(hours) return hours == 1 ? `an hour ago` : `${hours} hours ago`;
-        if(minutes) return `${minutes} minutes ago`;
+        if(minutes) return minutes == 1 ? `a minute ago` : `${minutes} minutes ago`;
         
-        return 'few moments ago';
+        return 'a few moments ago';
     }
 
     return(
@@ -67,9 +67,6 @@ const Bids = ({getBids, clearBids, bids, item, addedBid, loading}) => {
                     {bids.slice(4,9) && bids.slice(4,9).map(bid => (
                         <li className="list-group-item" key={bid._id}>{bid.user.name} has bid <i className="fas fa-pound-sign xs-margin"></i>{bid.bidPrice} - {bidDate(bid.bidDate)}</li>
                     ))}
-                    {/* <li className="list-group-item">Morbi leo risus</li>
-                    <li className="list-group-item">Porta ac consectetur ac</li>
-                    <li className="list-group-item">Vestibulum at eros</li> */}
                 </ul>
             </div>
         </>

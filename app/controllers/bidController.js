@@ -1,4 +1,5 @@
 const lodash = require('lodash');
+const moment = require('moment');
 const {v4} = require('uuid');
 const {Product} = require('../models/Product');
 
@@ -14,6 +15,7 @@ exports.getBids = async (req, res, next) => {
 exports.postBid = async (req, res, next) => {
     const {uuid} = req.params;
     const {bidPrice} = req.body;
+    const bidDate = moment().valueOf();
 
     let product;
     try {
@@ -30,7 +32,8 @@ exports.postBid = async (req, res, next) => {
         product.bids.push({
             uuid:  v4(),
             user: req.user,
-            bidPrice
+            bidPrice,
+            bidDate
         });
         await product.save();
         res.send(product);
