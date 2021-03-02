@@ -6,12 +6,30 @@ import { addError, clearErrors } from './errorActions'
 
 const url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000';
 
+export const verifyToken = token => dispatch => {
+    dispatch(toggleLoader());
+
+    axios.post(`${url}/users/verify`, {token})
+        .then(res => {
+            
+            dispatch({
+                type: ADD_TOKEN,
+                token: res.data
+            });
+            dispatch(toggleLoader());
+        }).catch(err => {
+            
+            dispatch(toggleLoader());
+        });
+};
+
 export const login = (email, password) => dispatch => {
     dispatch(toggleLoader());
 
     axios.post(`${url}/users/login`, {email, password})
         .then(token => {
             
+            document.cookie = `busr=${token.data.token}`;
             dispatch({
                 type: ADD_TOKEN,
                 token: token.data

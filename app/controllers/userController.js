@@ -7,6 +7,17 @@ exports.getAllUsers = (req, res, next) => {
         .catch(err => res.state(400).send());
 };
 
+// GET: /users/verify
+exports.verify = (req, res, next) => {
+    const {token} = req.body;
+    
+    res.send({
+        email: req.user.email,
+        name: req.user.name,
+        token
+    });
+};
+
 // POST: /users/register
 exports.register = (req, res) => {
     const {name, surname, email, password } = req.body;

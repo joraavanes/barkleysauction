@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'
 import { connect } from 'react-redux';
 import { toggleLoginModal } from '../../redux/actions/pageStateActions'
-import { login } from '../../redux/actions/authActions'
+import { login, verifyToken} from '../../redux/actions/authActions'
 import { clearErrors } from '../../redux/actions/errorActions'
 
 class LoginModal extends Component {
@@ -29,6 +29,13 @@ class LoginModal extends Component {
         const password = e.target.elements.password.value;
 
         this.props.login(email, password);
+    }
+
+    componentDidMount = () => {
+        const cookies = Object.fromEntries(document.cookie.split(';').map(cookie => cookie.split('=')));
+        if(cookies[" busr"]){
+            this.props.verifyToken(cookies[' busr']);
+        }
     }
 
     componentDidUpdate = (prevProps, prevState) => {
@@ -92,4 +99,4 @@ const mapStateToProps = store => ({
     loading: store.pageState.loading,
 });
 
-export default connect(mapStateToProps,{ toggleLoginModal, login, clearErrors })(LoginModal);
+export default connect(mapStateToProps,{ toggleLoginModal, login, verifyToken, clearErrors })(LoginModal);
