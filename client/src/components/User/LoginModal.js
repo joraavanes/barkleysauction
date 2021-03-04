@@ -32,9 +32,9 @@ class LoginModal extends Component {
     }
 
     componentDidMount = () => {
-        const cookies = Object.fromEntries(document.cookie.split(';').map(cookie => cookie.split('=')));
-        if(cookies[" busr"]){
-            this.props.verifyToken(cookies[' busr']);
+        const cookies = Object.fromEntries(document.cookie.split(';').map(x=>x.trim()).map(cookie => cookie.split('=')));
+        if(cookies["busr"]){
+            this.props.verifyToken(cookies['busr']);
         }
     }
 

@@ -29,7 +29,8 @@ export const login = (email, password) => dispatch => {
     axios.post(`${url}/users/login`, {email, password})
         .then(token => {
             
-            document.cookie = `busr=${token.data.token}`;
+            // Set cookie to store JWT, by 3 days long
+            document.cookie = `busr=${token.data.token}; Max-age=259200`;
             dispatch({
                 type: ADD_TOKEN,
                 token: token.data
