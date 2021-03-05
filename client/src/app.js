@@ -4,8 +4,7 @@ import { BrowserRouter as Router,Switch, Route, Link } from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from './redux/store/store'
 import App from './components/app'
-import Auction from './components/Auction'
-import Navigation from './components/Navigation'
+import Navigation from './components/shared/Navigation'
 import ViewItem from './components/Items/ViewItem'
 import AddItem from './components/Items/AddItem'
 import LoginModal from './components/User/LoginModal'
@@ -62,7 +61,6 @@ const router = (
                     <PrivateRoute path="/dashboard/users">
                         <Route component={User} exact={true}/>
                     </PrivateRoute>
-                    <Route path="/Auction" component={Auction}/>
                     <Route path="/Login" component={Login}/>
                     <Route path="/Register" component={Register}/>
                     
