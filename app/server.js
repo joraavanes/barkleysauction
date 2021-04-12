@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
-const multer = require('multer');
+require('dotenv').config({path: 'app/.env'});
 const {bgGreen, black} = require('colors');
 
 // Adding Middlewares

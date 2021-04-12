@@ -3,7 +3,7 @@ const {bgGreen, bgRed, black} = require('colors');
 
 mongoose.Promise = global.Promise;
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/barkelysstore', {
-mongoose.connect('mongodb+srv://jora:OjoEHwrKqsLhimdo@cluster0-8jnyu.mongodb.net/barkleys?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGO_DB_URI, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true,
