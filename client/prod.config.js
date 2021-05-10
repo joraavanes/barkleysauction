@@ -1,14 +1,14 @@
 const path = require('path');
-const webpackMerge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const common = require('./common.config');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const TerserWebpackPlugin = require('terser-webpack-plugin');
+// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-module.exports = webpackMerge(common, {
+module.exports = merge(common, {
     output:{
         path: path.join(__dirname, 'dist/js'),
-        filename: '[name].[contentHash].js'
+        filename: '[name].[fullhash].js'
     },
     module:{
         rules:[
@@ -44,8 +44,8 @@ module.exports = webpackMerge(common, {
     },
     optimization:{
         minimizer:[
-            new TerserWebpackPlugin(),
-            new OptimizeCssAssetsPlugin()
+            // new TerserWebpackPlugin(),
+            // new OptimizeCssAssetsPlugin()
         ]
     },
     plugins:[

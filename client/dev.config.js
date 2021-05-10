@@ -1,13 +1,13 @@
 const path = require('path');
-const webpackMerge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const common = require('./common.config');
 
-module.exports = webpackMerge(common, {
+module.exports = merge(common, {
     output:{
         path: path.join(__dirname, 'dist/js'),
         filename: '[name].js'
     },
-    devtool:'none',
+    // devtool:'none',
     module:{
         rules:[
             {
