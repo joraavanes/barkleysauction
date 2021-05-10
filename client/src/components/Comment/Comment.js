@@ -22,7 +22,7 @@ class Comment extends React.Component{
             <div className={styles.commentContainer}>
                 <div className={styles.commentAvatarContainer}>
                     <span className={styles.userAvatarContainer}>
-                        <img src={avatar.substr(2, avatar.length + 1)} className=""/>
+                        <img src={avatar} className=""/>
                         {userName}
                     </span>
                     <p className={styles.commentText}>{comment}</p>

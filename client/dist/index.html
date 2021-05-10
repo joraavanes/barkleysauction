@@ -1,40 +1,67 @@
-<!doctype html><html><head><style>.loader-container{
-          font-family: Georgia, 'Times New Roman', Times, serif;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          min-height:90vh;
-      }
-      .loader{
-          height: 50px;
-          transform-origin: bottom center;
-          animation: rotate 3s linear infinite;
-      }
+<!doctype html>
+<html>
 
-      .circle{
-          background-color: #F91890;
-          height: 40px;
-          width: 40px;
-          border-radius: 50%;
-          transform: scale(0);
-          animation: flash 3s linear infinite;
-          animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
+<head>
+    <style>
+        .loader-container {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 90vh;
+        }
 
-      .circle:nth-child(2){
-          background-color: #ccc;
-          animation-delay: 1.5s;
-      }
+        .loader {
+            height: 50px;
+            transform-origin: bottom center;
+            animation: rotate 3s linear infinite;
+        }
 
-      @keyframes rotate{
-          to{
-              transform: rotate(360deg);
-          }
-      }
+        .circle {
+            background-color: #F91890;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: flash 3s linear infinite;
+            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
 
-      @keyframes flash{
-          50%{
-              transform: scale(1.3);
-          }
-      }</style><meta charset="UTF-8"><title>Barkley's Store | Where you feel like shopping</title><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no"><link rel="icon" href="js/../media/icon.962a70f7177521aee0e28ec6a9b8b0ca.png"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"><script defer="defer" src="js/main.7bf7836a3195d755500f.js"></script></head><body><main id="app"><div class="loader-container"><div class="loader"><div class="circle"></div><div class="circle"></div></div></div></main></body></html>
+        .circle:nth-child(2) {
+            background-color: #ccc;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes flash {
+            50% {
+                transform: scale(1.3);
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Barkley's Store | Where you feel like shopping</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
+    <link rel="icon" href="js/../media/icon.962a70f7177521aee0e28ec6a9b8b0ca.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <script defer="defer" src="/js/main.03f1c9ad87665343e4d4.js"></script>
+</head>
+
+<body>
+    <main id="app">
+        <div class="loader-container">
+            <div class="loader">
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
