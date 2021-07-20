@@ -36,5 +36,6 @@ module.exports = merge(common, {
             }
         ]
     },
-    mode: 'development'
+    mode: 'development',
+    devtool: 'cheap-module-source-map'
 });
