@@ -18,7 +18,7 @@ const BidForm = ({item, auth, addBid, bidError, clearErrors, loading}) => {
         if(!loading){
             bidButton.current.removeAttribute('disabled');
             bidPriceInput.current.removeAttribute('disabled');
-            bidPriceInput.current.focus();
+            // bidPriceInput.current.focus();
             setBidPrice('');
         }else{
             bidButton.current.setAttribute('disabled','disabled');

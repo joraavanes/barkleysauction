@@ -65977,8 +65977,8 @@ var BidForm = function BidForm(_ref) {
   (0,react.useEffect)(function () {
     if (!loading) {
       bidButton.current.removeAttribute('disabled');
-      bidPriceInput.current.removeAttribute('disabled');
-      bidPriceInput.current.focus();
+      bidPriceInput.current.removeAttribute('disabled'); // bidPriceInput.current.focus();
+
       setBidPrice('');
     } else {
       bidButton.current.setAttribute('disabled', 'disabled');
