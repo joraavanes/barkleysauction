@@ -6,3 +6,4 @@ client/yarn-error.log
 app/.env
 
 api/dist
+client/dist
