@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
 import { Model, Query } from 'mongoose';
+import { genSalt, hash } from 'bcryptjs'
 import { CreateUserDTo } from './dtos/create-user.dto';
 import { SignInUserDto } from './dtos/signin-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
@@ -13,7 +14,20 @@ export class UsersService {
     ) { }
 
     async signUp(createUserDto: CreateUserDTo) {
-        const model = new this.userModel(createUserDto);
+        const existingUser = await this.findByEmail(createUserDto.email);
+
+        if (existingUser) {
+            throw new BadRequestException('Email is in use');
+        }
+
+        const salt = await genSalt(12);
+
+        const password = await hash(createUserDto.password, salt);
+
+        const model = new this.userModel({
+            ...createUserDto,
+            password
+        });
         return await model.save();
     }
 
@@ -27,7 +41,7 @@ export class UsersService {
         }).exec();
     }
 
-    findById(id: string): Promise<User> { 
+    findById(id: string): Promise<User> {
         return this.userModel.findOne({
             _id: new ObjectId(id)
         }).exec();
