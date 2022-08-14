@@ -13,12 +13,15 @@ export class UsersController {
     @Post('/')
     async signUp(@Body() body: CreateUserDto) {
         const user = await this.userService.signUp(body);
-        return user;
+        const token = this.userService.generateToken(user.email, user.name);
+        return { token };
     }
 
     @Post('/signIn')
     async signIn(@Body() body: SignInUserDto) {
-        return await this.userService.signIn(body);
+        const user = await this.userService.signIn(body);
+        const token = this.userService.generateToken(user.email, user.name);
+        return { token };
     }
 
     @Get('/:id')
