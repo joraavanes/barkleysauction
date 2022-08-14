@@ -10,7 +10,7 @@ export class UsersController {
         private userService: UsersService
     ) { }
 
-    @Post('/')
+    @Post('/signUp')
     async signUp(@Body() body: CreateUserDto) {
         const user = await this.userService.signUp(body);
         const token = this.userService.generateToken(user.email, user.name);
