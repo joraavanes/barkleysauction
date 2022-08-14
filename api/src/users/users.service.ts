@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
 import { Model } from 'mongoose';
 import { genSalt, hash, compare } from 'bcryptjs'
+import { sign, verify } from 'jsonwebtoken';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { SignInUserDto } from './dtos/signin-user.dto';
 import { User } from './schemas/user.schema';
@@ -17,6 +18,14 @@ export class UsersService {
         const salt = await genSalt(12);
 
         return await hash(str, salt);
+    }
+
+    generateToken(email: string, name: string) {
+        return sign({ email, name }, 'SECRET_KEY');
+    }
+
+    verifyToken(token: string) {
+        return verify(token, 'SECRET_KEY');
     }
 
     async signUp(createUserDto: CreateUserDto) {
