@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
 import { Model, Query } from 'mongoose';
 import { genSalt, hash } from 'bcryptjs'
-import { CreateUserDTo } from './dtos/create-user.dto';
+import { CreateUserDto } from './dtos/create-user.dto';
 import { SignInUserDto } from './dtos/signin-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
 
@@ -19,7 +19,7 @@ export class UsersService {
         return await hash(str, salt);
     }
 
-    async signUp(createUserDto: CreateUserDTo) {
+    async signUp(createUserDto: CreateUserDto) {
         const existingUser = await this.findByEmail(createUserDto.email);
 
         if (existingUser) {

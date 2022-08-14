@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HostParam, Inject, Param, Patch, Post, Query } from '@nestjs/common';
-import { CreateUserDTo } from './dtos/create-user.dto';
+import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 
@@ -10,7 +10,7 @@ export class UsersController {
     ) { }
 
     @Post('/')
-    async signUp(@Body() body: CreateUserDTo) {
+    async signUp(@Body() body: CreateUserDto) {
         const user = await this.userService.signUp(body);
         return user;
     }
