@@ -1,11 +1,11 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, ExceptionFilter, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
-import { Model, Query } from 'mongoose';
-import { genSalt, hash } from 'bcryptjs'
+import { Model } from 'mongoose';
+import { genSalt, hash, compare } from 'bcryptjs'
 import { CreateUserDto } from './dtos/create-user.dto';
 import { SignInUserDto } from './dtos/signin-user.dto';
-import { User, UserDocument } from './schemas/user.schema';
+import { User } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {
@@ -35,8 +35,16 @@ export class UsersService {
         return await model.save();
     }
 
-    signIn(signInUserDto: SignInUserDto) {
+    async signIn(signInUserDto: SignInUserDto): Promise<User> {
+        const user = await this.findByEmail(signInUserDto.email);
 
+        if (!user) throw new BadRequestException('Username or password is incorrect');
+
+        const result = await compare(signInUserDto.password, user.password);
+
+        if (!result) throw new BadRequestException('Username or password is incorrect');
+
+        return user;
     }
 
     findByEmail(email: string): Promise<User> {

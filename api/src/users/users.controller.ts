@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, HostParam, Inject, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { SignInUserDto } from './dtos/signin-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 
@@ -14,7 +15,12 @@ export class UsersController {
         const user = await this.userService.signUp(body);
         return user;
     }
-    
+
+    @Post('/signIn')
+    async signIn(@Body() body: SignInUserDto) {
+        return await this.userService.signIn(body);
+    }
+
     @Get('/:id')
     getUsers(@Param('id') id: string) {
         return this.userService.findById(id);
@@ -22,7 +28,7 @@ export class UsersController {
 
     @Get('/')
     getUser(@Query('email') email: string) {
-        if(email)
+        if (email)
             return this.userService.findByEmail(email);
 
         return this.userService.getAll();
