@@ -13,6 +13,12 @@ export class UsersService {
         @InjectModel(User.name) private userModel: Model<User>
     ) { }
 
+    async generateHash(str: string) {
+        const salt = await genSalt(12);
+
+        return await hash(str, salt);
+    }
+
     async signUp(createUserDto: CreateUserDTo) {
         const existingUser = await this.findByEmail(createUserDto.email);
 
@@ -20,9 +26,7 @@ export class UsersService {
             throw new BadRequestException('Email is in use');
         }
 
-        const salt = await genSalt(12);
-
-        const password = await hash(createUserDto.password, salt);
+        const password = await this.generateHash(createUserDto.password);
 
         const model = new this.userModel({
             ...createUserDto,
