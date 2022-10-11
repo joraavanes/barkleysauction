@@ -14,6 +14,10 @@ export class ItemsService {
         return this.respository.findAll();
     }
 
+    findById(id: string) {
+        return this.respository.findById(id);
+    }
+
     async createItem(model: Item) {
         return this.respository.createOne(model);
     }

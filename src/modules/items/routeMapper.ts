@@ -12,6 +12,9 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
         case method === 'POST' && route === 'index':
             itemsController.create(req, res);
             break;
+        case method === 'GET':
+            itemsController.findById(req, res);
+            break;
         default:
             break;
     }
