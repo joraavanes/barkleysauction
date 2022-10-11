@@ -1,18 +1,20 @@
 import { Service } from "typedi";
+import { MongoDbClient } from "../../db";
+import { Item } from "./item.model";
+import { ItemsRepository } from "./items.repository";
 
 @Service()
 export class ItemsService {
-    constructor() { }
+    constructor(
+        private mongo: MongoDbClient,
+        private respository: ItemsRepository
+    ) { }
 
     getItems() {
-        return [{
-            id: 1,
-            title: 'Product 1',
-            price: 19.99
-        }, {
-            id: 2,
-            title: 'Product 2',
-            price: 29.99
-        }];
+        return this.respository.findAll();
+    }
+
+    async createItem(model: Item) {
+        return this.respository.createOne(model);
     }
 }

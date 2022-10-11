@@ -1,6 +1,8 @@
+import { ObjectId } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Service } from "typedi";
 import { ItemsService } from "./items.service";
+import { Item } from './item.model';
 
 @Service()
 export class ItemsController {
@@ -8,12 +10,27 @@ export class ItemsController {
         private itemsService: ItemsService
     ) { }
 
-    index(req: NextApiRequest, res: NextApiResponse){
-        const items = this.itemsService.getItems();
+    async index(req: NextApiRequest, res: NextApiResponse) {
+        const items = await this.itemsService.getItems();
         res.status(200).json(items);
     }
 
-    create(req: NextApiRequest, res: NextApiResponse){
-        res.status(200).send('create route');
+    async create(req: NextApiRequest, res: NextApiResponse) {
+        const {
+            title,
+            description,
+            imageUrl
+        }  = req.body;
+
+        const result = await this.itemsService.createItem({
+            _id: new ObjectId(),
+            title,
+            description,
+            bids: [],
+            imageUrl
+        } as Item);
+        
+        res.status(200)
+            .send(result);
     }
 }
