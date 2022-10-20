@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Service } from "typedi";
 import { ItemsService } from "./items.service";
 import { Item } from './item.model';
+import { CreateItem } from "./dtos/createItem.dto";
 
 @Service()
 export class ItemsController {
@@ -28,19 +29,9 @@ export class ItemsController {
     }
 
     async create(req: NextApiRequest, res: NextApiResponse) {
-        const {
-            title,
-            description,
-            imageUrl
-        } = req.body;
+        const body: CreateItem = req.body;
 
-        const result = await this.itemsService.createItem({
-            _id: new ObjectId(),
-            title,
-            description,
-            bids: [],
-            imageUrl
-        } as Item);
+        const result = await this.itemsService.createItem(body);
 
         res.status(200)
             .send(result);

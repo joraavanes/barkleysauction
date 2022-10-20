@@ -8,5 +8,5 @@ export interface User {
     userConfirmed: boolean;
     name: string;
     surname: string;
-    items: Array<Item>;
+    items?: Array<ObjectId>;
 }

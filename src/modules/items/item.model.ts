@@ -7,5 +7,5 @@ export interface Item {
     description: string;
     bids: Array<number>;
     imageUrl?: string;
-    owner?: User;
+    owner: ObjectId;
 }
