@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const item = {
     ..._item,
     _id: _item?._id.toString(),
+    owner: _item?.owner?.toString() ?? ''
   };
 
   return {

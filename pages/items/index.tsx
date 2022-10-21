@@ -11,7 +11,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const _items = await itemsService.getItems();
   const items = _items.map((item) => ({
     ...item,
-    _id: item._id.toString()
+    _id: item._id.toString(),
+    owner: item.owner?.toString() ?? ''
   }));
 
   return {
@@ -32,7 +33,7 @@ const Index: React.FC<IndexProps> = ({ items }) => {
         {/* {JSON.stringify(items)} */}
         {items.map((item) => (
           <div key={item._id.toString()}>
-            <h2>{item.title}</h2>
+            <h2>{item.title} - {item._id}</h2>
             <p>{item.description}</p>
             <p>{item.imageUrl}</p>
           </div>
