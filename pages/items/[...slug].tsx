@@ -12,7 +12,7 @@ interface ItemSlugPageProps {
   };
 }
 
-const ItemSlugPage: React.FC<ItemSlugPageProps> = () => {
+const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item = {title: null, description: null, imageUrl: null}}) => {
   const router = useRouter();
   const slug = router.query?.slug ?? [];
 
@@ -21,8 +21,11 @@ const ItemSlugPage: React.FC<ItemSlugPageProps> = () => {
 
   return (
     <>
-      <h1>{itemTitle}</h1>
+      <h1>{itemTitle} - (slug page)</h1>
       <p>{id}</p>
+      <p>{item.title}</p>
+      <p>{item.description}</p>
+      <p>{item.imageUrl}</p>
     </>
   );
 };
