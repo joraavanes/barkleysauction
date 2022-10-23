@@ -39,6 +39,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const _item = await itemsService.findById(id);
 
+  if(!_item) {
+    return {
+      notFound: true
+    }
+  }
+
   const item = {
     ..._item,
     _id: _item?._id.toString(),
