@@ -57,13 +57,13 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   const paths = items.map((item) => ({
     params: {
       id: item._id.toString(),
-      slug: [item._id.toString(), item.title],
+      slug: [item._id.toString(), item.title.replaceAll(' ', '-')],
     },
   }));
 
   return {
     paths,
-    fallback: true
+    fallback: false
   };
 };
 
