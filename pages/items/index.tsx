@@ -2,6 +2,7 @@ import React from "react";
 import { GetStaticProps } from "next";
 import { itemsService } from "../../src/modules/items";
 import Head from "next/head";
+import Link from "next/link";
 
 interface IndexProps {
   items: Array<{
@@ -44,6 +45,7 @@ const Index: React.FC<IndexProps> = ({ items }) => {
             </h2>
             <p>{item.description}</p>
             <p>{item.imageUrl}</p>
+            <Link href={`/items/${item._id}/${item.title.replaceAll(' ', '-')}`}><a>Check out</a></Link>
           </div>
         ))}
       </pre>
