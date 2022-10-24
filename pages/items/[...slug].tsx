@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import { itemsService } from "../../src/modules/items";
@@ -12,7 +13,7 @@ interface ItemSlugPageProps {
   };
 }
 
-const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item = {title: null, description: null, imageUrl: null}}) => {
+const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item = {title: null, description: 'null', imageUrl: null}}) => {
   const router = useRouter();
   const slug = router.query?.slug ?? [];
 
@@ -21,6 +22,10 @@ const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item = {title: null, descrip
 
   return (
     <>
+      <Head>
+        <title>{item.title}</title>
+        <meta name="description" content={item.description} />
+      </Head>
       <h1>{itemTitle} - (slug page)</h1>
       <p>{id}</p>
       <p>{item.title}</p>
