@@ -29,7 +29,7 @@ export class UsersRepository {
   async findAll(): Promise<WithId<User>[]> {
     return await (await this.mongo.getClient())
       .db()
-      .collection<User>('user')
+      .collection<User>('users')
       .find()
       .toArray();
   }
