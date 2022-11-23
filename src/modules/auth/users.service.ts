@@ -8,6 +8,10 @@ export class UsersService {
     private usersRepository: UsersRepository
   ) { }
 
+  async getAll(){
+    return this.usersRepository.findAll();
+  }
+
   async createUser(model: User){
     return this.usersRepository.createOne(model);
   }

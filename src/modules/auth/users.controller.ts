@@ -9,6 +9,11 @@ export class UsersController {
     private usersService: UsersService
   ) { }
 
+  async getUsers(req: NextApiRequest, res: NextApiResponse){
+    const model = await this.usersService.getAll();
+    res.status(200).send(model);
+  }
+
   async create(req: NextApiRequest, res: NextApiResponse) {
     const model: User  = req.body;
 
