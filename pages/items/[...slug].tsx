@@ -1,19 +1,21 @@
-import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { itemsService } from "../../src/modules/items";
+import { NextPageWithLayout } from "../_app";
 
 interface ItemSlugPageProps {
   item: {
     _id: string;
     title: string;
     description: string;
+    bids: Array<number>;
     imageUrl: number;
+    owner: string;
   };
 }
 
-const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item = {title: null, description: 'null', imageUrl: null}}) => {
+const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
   const router = useRouter();
   const slug = router.query?.slug ?? [];
 
@@ -26,11 +28,27 @@ const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item = {title: null, descrip
         <title>{item.title}</title>
         <meta name="description" content={item.description} />
       </Head>
-      <h1>{itemTitle} - (slug page)</h1>
+      <h1>
+        {itemTitle} -
+        {item.bids?.length ? (
+          <>Last bid for &#36;{Math.max(...item.bids)} -</>
+        ) : null}
+        (slug page)
+      </h1>
       <p>{id}</p>
       <p>{item.title}</p>
       <p>{item.description}</p>
       <p>{item.imageUrl}</p>
+      <h3>Bids: {item.bids ? item.bids.length : null}</h3>
+      {item.bids?.length ? (
+        <ul>
+          {item.bids
+            .sort((a, b) => b - a)
+            .map((bid) => (
+              <li>{bid}</li>
+            ))}
+        </ul>
+      ) : null}
     </>
   );
 };
@@ -43,23 +61,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const _item = await itemsService.findById(id);
 
-  if(!_item){
+  if (!_item) {
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
 
   const item = {
     ..._item,
     _id: _item?._id.toString(),
-    owner: _item?.owner?.toString() ?? ''
+    owner: _item?.owner?.toString() ?? "",
   };
 
   return {
     props: {
       item,
     },
-    revalidate: 120
+    revalidate: 120,
   };
 };
 
@@ -68,13 +86,13 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   const paths = items.map((item) => ({
     params: {
       id: item._id.toString(),
-      slug: [item._id.toString(), item.title.replaceAll(' ', '-')],
+      slug: [item._id.toString(), item.title.replaceAll(" ", "-")],
     },
   }));
 
   return {
     paths,
-    fallback: 'blocking'
+    fallback: "blocking",
   };
 };
 
