@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { itemsService } from "../../src/modules/items";
 import { NextPageWithLayout } from "../_app";
+import { Bid, BidInput, LatestBids } from "../../components/item";
 
 interface ItemSlugPageProps {
   item: {
@@ -39,16 +40,10 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
       <p>{item.title}</p>
       <p>{item.description}</p>
       <p>{item.imageUrl}</p>
-      <h3>Bids: {item.bids ? item.bids.length : null}</h3>
-      {item.bids?.length ? (
-        <ul>
-          {item.bids
-            .sort((a, b) => b - a)
-            .map((bid) => (
-              <li>{bid}</li>
-            ))}
-        </ul>
-      ) : null}
+      <Bid>
+        <BidInput />
+        <LatestBids />
+      </Bid>
     </>
   );
 };
