@@ -40,7 +40,7 @@ export const BidInput: React.FC = () => {
           value={bid}
           onChange={(e) => setBid(e.target.valueAsNumber)}
         />
-        <Button state="success">Add bid</Button>
+        <Button>Add bid</Button>
       </form>
     </>
   );
