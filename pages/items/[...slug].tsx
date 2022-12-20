@@ -3,7 +3,18 @@ import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { itemsService } from "../../src/modules/items";
 import { NextPageWithLayout } from "../_app";
-import { Bid, BidInput, LatestBids, BidStatus } from "../../components/item/Bid";
+import {
+  Bid,
+  BidInput,
+  LatestBids,
+  BidStatus,
+} from "../../components/item/Bid";
+import {
+  Comment,
+  CommentForm,
+  CommentList,
+  CommentStatus,
+} from "../../components/item/Comment";
 
 interface ItemSlugPageProps {
   item: {
@@ -40,11 +51,20 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
       <p>{item.title}</p>
       <p>{item.description}</p>
       <p>{item.imageUrl}</p>
-      <Bid>
-        <BidInput />
-        <BidStatus />
-        <LatestBids />
-      </Bid>
+      <div>
+        <Bid>
+          <BidInput />
+          <BidStatus />
+          <LatestBids />
+        </Bid>
+      </div>
+      <div>
+        <Comment>
+          <CommentForm />
+          <CommentStatus status="pending" />
+          <CommentList />
+        </Comment>
+      </div>
     </>
   );
 };
