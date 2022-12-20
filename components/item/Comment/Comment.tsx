@@ -6,7 +6,7 @@ interface CommentProps {
 }
 
 interface CommentState {
-  comments: CommentType[];
+  comments?: CommentType[];
   status: string;
   error?: string;
 }
