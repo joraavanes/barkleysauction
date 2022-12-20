@@ -1,46 +1,32 @@
-interface Comment {
+import { useEffect } from "react";
+import { getComments } from "../getComments";
+import { useComment } from "./Comment";
+
+export interface CommentType {
   username: string;
   content: string;
   date: Date;
 }
 
-interface CommentListProps {
+export interface CommentListProps {
   comments?: Comment[];
   children?: JSX.Element | JSX.Element[];
 }
 
-const DUMMY_COMMENTS: Comment[] = [
-  {
-    username: "Fred",
-    content: "Hey there! This is cool",
-    date: new Date(),
-  },
-  {
-    username: "Fred",
-    content: "Hey there! This is cool",
-    date: new Date(),
-  },
-  {
-    username: "Fred",
-    content: "Hey there! This is cool",
-    date: new Date(),
-  },
-  {
-    username: "Fred",
-    content: "Hey there! This is cool",
-    date: new Date(),
-  },
-  {
-    username: "Fred",
-    content: "Hey there! This is cool",
-    date: new Date(),
-  },
-];
+export const CommentList: React.FC<CommentListProps> = () => {
+  const { state, setState } = useComment();
+  const { comments } = state;
 
-export const CommentList: React.FC<CommentListProps> = ({
-  comments = DUMMY_COMMENTS,
-}) => {
   if (!comments) return <>No comments</>;
+
+  useEffect(() => {
+    getComments().then(
+      (comments) => setState({ comments, status: "success" }),
+      (error) => setState({ comments: [], status: "fail", error })
+    );
+
+    return () => {};
+  });
 
   return (
     <>
