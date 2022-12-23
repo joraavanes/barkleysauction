@@ -17,20 +17,21 @@ export const CommentList: React.FC<CommentListProps> = () => {
   const { state, setState } = useComment();
   const { comments } = state;
 
-  if (!comments) return <>No comments</>;
-
   useEffect(() => {
+    setState({ status: "pending" });
     getComments().then(
       (comments) => setState({ comments, status: "success" }),
-      (error) => setState({ comments: [], status: "fail", error })
+      (error) => setState({ status: "fail", error })
     );
 
     return () => {};
-  });
+  }, []);
+
+  if (!comments || !comments.length) return null;
 
   return (
     <>
-      {comments.length
+      {comments && comments.length
         ? comments.map((comment) => {
             return (
               <li key={Math.round(Math.random() * 1000)}>
