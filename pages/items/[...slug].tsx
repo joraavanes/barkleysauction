@@ -61,7 +61,7 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
       <div>
         <Comment>
           <CommentForm />
-          <CommentStatus/>
+          <CommentStatus />
           <CommentList />
         </Comment>
       </div>
