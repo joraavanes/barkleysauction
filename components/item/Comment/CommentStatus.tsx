@@ -1,14 +1,11 @@
-import { useComment } from "./Comment";
+import { Status, useComment } from "./Comment";
 
 export const CommentStatus: React.FC = () => {
-  const { state } = useComment();
+  const [state] = useComment();
   const { status } = state;
 
-  const isPending = status === "pending";
-  const isError = status === "fail";
+  if (status === Status.pending) return <>loading</>;
+  if (status === Status.error) return <>Error</>;
 
-  if (isPending) return <>loading</>;
-  if (isError) return <>Error</>;
-
-  return <>{status}</>;
+  return <>{Status[status]}</>;
 };

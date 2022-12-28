@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getComments } from "../getComments";
-import { useComment } from "./Comment";
+import { Status, useComment } from "./Comment";
 
 export interface CommentType {
   username: string;
@@ -14,14 +14,14 @@ export interface CommentListProps {
 }
 
 export const CommentList: React.FC<CommentListProps> = () => {
-  const { state, setState } = useComment();
+  const [state, dispatch] = useComment();
   const { comments } = state;
 
   useEffect(() => {
-    setState({ status: "pending" });
+    dispatch({ type: Status.pending });
     getComments().then(
-      (comments) => setState({ comments, status: "success" }),
-      (error) => setState({ status: "fail", error })
+      (comments) => dispatch({ comments, type: Status.success }),
+      (error) => dispatch({ error, type: Status.error })
     );
 
     return () => {};
