@@ -9,7 +9,7 @@ const MainLayout: React.FC<Layout> = ({ children }) => {
   return (
     <main>
       <Head>
-        <title>Barkely's Auction</title>
+        <title>Barkely&apos;s Auction</title>
       </Head>
       <Navigation />
       {children}
