@@ -1,37 +1,38 @@
 import { CommentType } from "./Comment";
+import { faker } from '@faker-js/faker'
 
-let DUMMY_COMMENTS: CommentType[] = [
+export let DUMMY_COMMENTS: CommentType[] = [
     {
-        username: "Fred",
-        content: "This is really cool!",
-        date: new Date(),
+        username: faker.internet.userName(),
+        content: faker.lorem.paragraph(1),
+        date: faker.date.recent(),
     },
     {
-        username: "Fred",
-        content: "This is really cool!",
-        date: new Date(),
+        username: faker.internet.userName(),
+        content: faker.lorem.paragraph(1),
+        date: faker.date.recent(),
     },
     {
-        username: "Fred",
-        content: "This is really cool!",
-        date: new Date(),
+        username: faker.internet.userName(),
+        content: faker.lorem.paragraph(1),
+        date: faker.date.recent(),
     },
     {
-        username: "Fred",
-        content: "This is really cool!",
-        date: new Date(),
+        username: faker.internet.userName(),
+        content: faker.lorem.paragraph(1),
+        date: faker.date.recent(),
     },
 ];
 
 const sleep = (timeout: number) => new Promise(resolve => setTimeout(resolve, timeout));
 
 async function getComments() {
-    await sleep(1500);
+    await sleep(500);
     return DUMMY_COMMENTS;
 }
 
 async function postComment(content: string) {
-    await sleep(1700);
+    await sleep(500);
     DUMMY_COMMENTS.unshift({
         username: 'Patrick',
         content,
