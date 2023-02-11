@@ -5,7 +5,7 @@ export const CommentStatus: React.FC = () => {
   const { status } = state;
 
   if (status === Status.pending) return <>loading</>;
-  if (status === Status.error) return <>Error</>;
+  if (status === Status.error) return <div role="alert">Error</div>;
 
   return <>{Status[status]}</>;
 };
