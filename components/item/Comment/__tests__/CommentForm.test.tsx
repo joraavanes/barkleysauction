@@ -5,11 +5,7 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
-import {
-  Comment,
-  CommentForm,
-  CommentStatus,
-} from "@/components/item/Comment";
+import { Comment, CommentForm, CommentStatus } from "@/components/item/Comment";
 import * as commentFuncs from "@/components/item/getComments";
 
 jest.mock("../../getComments", () => {
@@ -75,4 +71,17 @@ test("should display error while comment is failed to post", async () => {
 
   expect(commentFuncs.postComment).toHaveBeenCalledWith(commentText);
   expect(screen.getByRole("alert")).toBeInTheDocument();
+});
+
+test("should give error if comment is empty", async () => {
+  render(<CommentFormWithProvider />);
+
+  const submitBtn = screen.getByRole("button", {
+    name: /post/i,
+  });
+
+  await userEvent.click(submitBtn);
+
+  expect(screen.getByRole('alert')).toBeInTheDocument();
+  expect(screen.getByRole('alert')).toHaveTextContent(/Comment is empty. Please enter some!/i);
 });
