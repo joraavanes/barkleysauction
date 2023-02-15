@@ -9,6 +9,11 @@ export const CommentForm: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if (!comment) {
+      dispatch({type: Status.error, error: 'Comment is empty. Please enter some!'})
+      return;
+    }
+
     dispatch({ type: Status.pending });
     postComment(comment).then(
       (comments) => {
@@ -21,12 +26,14 @@ export const CommentForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <textarea
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        disabled={status === Status.pending}
-      ></textarea>
-      <button disabled={status === Status.pending}>Post</button>
+      <div>
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          disabled={status === Status.pending}
+        ></textarea>
+        <button disabled={status === Status.pending}>Post</button>
+      </div>
     </form>
   );
 };
