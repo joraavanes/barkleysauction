@@ -4,8 +4,15 @@ interface BidProps {
   children?: JSX.Element | JSX.Element[];
 }
 
+export enum Status {
+  idle,
+  pending,
+  success,
+  error
+}
+
 interface BidState {
-  status: string;
+  status: Status;
   bids: number[];
   newBid?: number;
 }
@@ -20,7 +27,7 @@ const BidContext = createContext<BidContextType | null>(null);
 export const Bid: React.FC<BidProps> = ({ children }) => {
   const [state, setState] = useState<BidState>({
     bids: [53, 39, 23, 5, 91, 16, 6],
-    status: 'idle'
+    status: Status.idle
   });
 
   return (

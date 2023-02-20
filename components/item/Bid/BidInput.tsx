@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react";
-import { useBid } from "./Bid";
+import { Status, useBid } from "./Bid";
 import { Button } from "./Button";
 
 const sleep = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
 
 async function updateBid(newBid: number, lastBids: number[]) {
-  await sleep(1500);
+  await sleep(800);
   if (newBid <= Math.max(...lastBids)) {
     return Promise.reject({ message: "Bid must be higher than previous ones" });
   }
@@ -23,10 +23,10 @@ export const BidInput: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    setState({ status: "pending", newBid: bid, bids });
+    setState({ status: Status.pending, newBid: bid, bids });
     updateBid(bid, bids).then(
-      (state) => setState({ status: "success", bids: state }),
-      (error) => setState({ status: "fail", bids })
+      (state) => setState({ status: Status.success, bids: state }),
+      (error) => setState({ status: Status.error, bids })
     );
   };
 
