@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "reflect-metadata";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
+import NextProgress from 'nextjs-progressbar';
 import { ReactElement, ReactNode } from "react";
 import MainLayout from "../components/layout/Layout";
 import { ErrorBoundary } from "../components/shared/";
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <ErrorBoundary>
+      <NextProgress color="#F91890"/>
       <Component {...pageProps} />
     </ErrorBoundary>
   );
