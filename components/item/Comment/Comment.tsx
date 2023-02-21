@@ -51,8 +51,9 @@ function commentReducer(state: CommentState, action: Action): CommentState {
       };
     case Status.error:
       return {
+        ...state,
         status: Status.error,
-        error: action.error,
+        error: action.error ? action.error : 'Error',
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
