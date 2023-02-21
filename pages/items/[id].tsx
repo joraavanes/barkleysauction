@@ -1,19 +1,23 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import { Bid, BidInput, BidStatus, LatestBids } from "@/components/item/Bid";
 import { itemsService } from "../../src/modules/items";
+import { Comment, CommentForm, CommentList, CommentStatus } from "@/components/item/Comment";
 
 interface ItemSlugPageProps {
   item: {
     _id: string;
     title: string;
     description: string;
+    bids: Array<number>;
     imageUrl: number;
+    owner: string;
   };
 }
 
-const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item}) => {
+const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
   const router = useRouter();
   const slug = router.query?.slug ?? [];
 
@@ -26,9 +30,30 @@ const ItemSlugPage: React.FC<ItemSlugPageProps> = ({item}) => {
         <title>{item.title}</title>
         <meta name="description" content={item.description} />
       </Head>
-      <h1>{item.title}</h1>
+      <h1>
+        {item.title}
+        {item.bids?.length ? (
+          <>Last bid for &#36;{Math.max(...item.bids)}</>
+        ) : null}
+      </h1>
+      <p>{id}</p>
+      <p>{item.title}</p>
       <p>{item.description}</p>
       <p>{item.imageUrl}</p>
+      <div>
+        <Bid>
+          <BidInput />
+          <BidStatus />
+          <LatestBids />
+        </Bid>
+      </div>
+      <div>
+        <Comment>
+          <CommentForm />
+          <CommentStatus />
+          <CommentList />
+        </Comment>
+      </div>
     </>
   );
 };
@@ -47,17 +72,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const _item = await itemsService.findById(id);
 
   // returns notFound if no item found
-  if(!_item) {
+  if (!_item) {
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
 
   //Serialize ObjectId props to strings
   const item = {
     ..._item,
     _id: _item?._id.toString(),
-    owner: _item?.owner?.toString() ?? ''
+    owner: _item?.owner?.toString() ?? "",
   };
 
   // return the item as props to the component
@@ -65,7 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       item,
     },
-    revalidate: 120
+    revalidate: 120,
   };
 };
 
@@ -78,7 +103,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   return {
     // paths: [{ params: { id: "123" } }, { params: { id: "511" } }],
     paths,
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 };
 
