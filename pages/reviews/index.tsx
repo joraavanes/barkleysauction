@@ -56,7 +56,7 @@ const ReviewsIndexPage: NextPage<Props> = ({ reviews }) => {
     <>
       <h1>Reviews</h1>
       {reviews.map((review) => (
-        <li style={{ padding: "2em" }}>
+        <li key={review.id}>
           <h3>{review.title}</h3>
           <div>
             <p>
