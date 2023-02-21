@@ -9,6 +9,10 @@ const Navigation: React.FC = ({}) => {
         <Link href={'/items'}>
             Items
         </Link>
+        /
+        <Link href={'/reviews'}>
+            Reviews
+        </Link>
     </div>
 };
 
