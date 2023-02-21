@@ -41,7 +41,7 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
         <meta name="description" content={item.description} />
       </Head>
       <h1>
-        {itemTitle} -
+        {item.title} -
         {item.bids?.length ? (
           <>Last bid for &#36;{Math.max(...item.bids)} -</>
         ) : null}
