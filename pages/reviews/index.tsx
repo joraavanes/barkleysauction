@@ -7,29 +7,37 @@ const reviews = [
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: "63453023667f61c23a284354",
-    productName: faker.lorem.words(2),
+    productId: {
+      id: '63453023667f61c23a284354',
+      name: faker.commerce.product(),
+    }
   },
   {
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: "63453023667f61c23a284354",
-    productName: faker.lorem.words(2),
+    productId: {
+      id: '63453023667f61c23a284354',
+      name: faker.commerce.product(),
+    }
   },
   {
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: "6353bd5f1056350c27c548b7",
-    productName: faker.lorem.words(2),
+    productId: {
+      id: '6353bd5f1056350c27c548b7',
+      name: faker.commerce.product(),
+    }
   },
   {
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: "63553ba4c2e3d68b364242b6",
-    productName: faker.lorem.words(2),
+    productId: {
+      id: '63553ba4c2e3d68b364242b6',
+      name: faker.commerce.product(),
+    }
   },
 ];
 
@@ -46,8 +54,10 @@ interface Props {
     id: number;
     title: string;
     content: string;
-    productId: number;
-    productName: string;
+    productId: {
+      id: number;
+      name: string;
+    }
   }>;
 }
 
@@ -60,30 +70,18 @@ const ReviewsIndexPage: NextPage<Props> = ({ reviews }) => {
           <h3>{review.title}</h3>
           <div>
             <p>
-              {review.id} - {review.productId}
+              {review.id} - {review.productId.name}
             </p>
             <p>{review.content}</p>
+            <Link href={`/reviews/${review.id}/${review.title.replaceAll(" ", "-")}`}>Read Review</Link>
             <div>
+              <b>Product Info: </b>
               <Link
-                href={`/reviews/${review.id}/${review.title.replaceAll(
-                  " ",
-                  "-"
-                )}`}
+                href={`/items/${review.productId.id}/${review.productId.name.replaceAll(" ", "-")}`}
               >
-                Read review
+                <a>{review.productId.name}</a>
               </Link>
             </div>
-            <Link
-              href={`/items/${review.productId}/${review.productName.replaceAll(
-                " ",
-                "-"
-              )}`}
-            >
-              <a>
-                <b>Product page: </b>
-                {review.productName}
-              </a>
-            </Link>
           </div>
         </li>
       ))}

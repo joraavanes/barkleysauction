@@ -11,8 +11,6 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
-    "@types/mongodb": "^4.0.7",
-    "@types/mongoose": "^5.11.97",
     "mongodb": "^4.10.0",
     "mongoose": "^6.6.5",
     "next": "12.3.1",
@@ -28,6 +26,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.4.0",
+    "@types/mongodb": "^4.0.7",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "18.8.0",
     "@types/nprogress": "^0.2.0",
     "@types/react": "18.0.21",
