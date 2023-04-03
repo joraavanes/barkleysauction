@@ -7,28 +7,28 @@ const reviews = [
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: '63453023667f61c23a284354',
+    productId: "63453023667f61c23a284354",
     productName: faker.lorem.words(2),
   },
   {
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: '63453023667f61c23a284354',
+    productId: "63453023667f61c23a284354",
     productName: faker.lorem.words(2),
   },
   {
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: '6353bd5f1056350c27c548b7',
+    productId: "6353bd5f1056350c27c548b7",
     productName: faker.lorem.words(2),
   },
   {
     id: faker.datatype.uuid(),
     title: faker.lorem.words(4),
     content: faker.lorem.sentences(4),
-    productId: '63553ba4c2e3d68b364242b6',
+    productId: "63553ba4c2e3d68b364242b6",
     productName: faker.lorem.words(2),
   },
 ];
@@ -63,10 +63,26 @@ const ReviewsIndexPage: NextPage<Props> = ({ reviews }) => {
               {review.id} - {review.productId}
             </p>
             <p>{review.content}</p>
+            <div>
+              <Link
+                href={`/reviews/${review.id}/${review.title.replaceAll(
+                  " ",
+                  "-"
+                )}`}
+              >
+                Read review
+              </Link>
+            </div>
             <Link
-              href={`/items/${review.productId}/${review.productName.replaceAll(" ", "-")}`}
+              href={`/items/${review.productId}/${review.productName.replaceAll(
+                " ",
+                "-"
+              )}`}
             >
-              <a>{review.productName}</a>
+              <a>
+                <b>Product page: </b>
+                {review.productName}
+              </a>
             </Link>
           </div>
         </li>
