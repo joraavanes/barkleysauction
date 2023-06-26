@@ -1,8 +1,6 @@
-import { ObjectId } from "mongodb";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Service } from "typedi";
 import { ItemsService } from "./items.service";
-import { Item } from './item.model';
 import { CreateItem } from "./dtos/createItem.dto";
 
 @Service()
@@ -18,12 +16,12 @@ export class ItemsController {
 
     async findById(req: NextApiRequest, res: NextApiResponse) {
         const id = req.query.id?.toString();
-        if(!id) {
+        if (!id) {
             return res.status(400).json({
                 err: 'id is not found'
             });
         }
-        
+
         const result = await this.itemsService.findById(id);
         res.status(200).json(result);
     }
@@ -33,7 +31,7 @@ export class ItemsController {
 
         const result = await this.itemsService.createItem(body);
 
-        res.status(200)
+        res.status(201)
             .send(result);
     }
 }
