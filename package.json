@@ -11,6 +11,7 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.17",
     "mongodb": "^4.10.0",
     "mongoose": "^6.6.5",
     "next": "12.3.1",
