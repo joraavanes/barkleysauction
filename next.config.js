@@ -2,11 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  env: {
-    MONGO_USER_ID: 'jora',
-    MONGO_USER_PASSWORD: 'emPvJbvkwZU8mdbg',
-    MONGO_DB_NAME: 'barkleys'
-  }
-}
+  env: {},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
