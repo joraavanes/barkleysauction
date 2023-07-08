@@ -1,42 +1,37 @@
-import { useMutation } from "@tanstack/react-query";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import useMutate from "../../hooks/useMutate";
 
-type newItem = {
+type Item = {
   title: string;
   description: string;
+  UserId: string;
 };
 
 const CreateItem: React.FC = () => {
-  const [state, setstate] = useState({
+  const [item, setItem] = useState({
     title: "",
     description: "",
-    UserId: "5dff47919cbd8418e424c33e",
+    UserId: "6350f85dc6f3a606c53f8e66",
   });
 
-  const mutation = useMutation({
-    mutationFn: (newItem: newItem) => {
-      return fetch("/api/items/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newItem),
-      });
-    },
-    onSuccess: (data, variables, context) => {
-      setstate((prev) => ({
-        ...prev,
-        title: "",
-        description: "",
-        startingBid: 0,
-      }));
-    },
+  const {
+    state: { status, isError, isSuccess, isLoading, errorMessage, body },
+    mutate,
+  } = useMutate<Item>("/api/items", {
+    method: "POST",
+    body: item,
+    timeout: 5000,
   });
+
+  useEffect(() => {
+    if (status === "success")
+      setItem((prev) => ({ ...prev, title: "", description: "" }));
+  }, [status]);
 
   const handleCreateSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    mutation.mutate(state);
+    mutate(item);
   };
 
   return (
@@ -47,9 +42,9 @@ const CreateItem: React.FC = () => {
           type="text"
           name="title"
           id="title"
-          value={state.title}
+          value={item.title}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setstate((prev) => ({ ...prev, title: e.target.value }))
+            setItem((prev) => ({ ...prev, title: e.target.value }))
           }
         />
       </div>
@@ -59,14 +54,23 @@ const CreateItem: React.FC = () => {
           type="text"
           name="description"
           id="description"
-          value={state.description}
+          value={item.description}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setstate((prev) => ({ ...prev, description: e.target.value }))
+            setItem((prev) => ({ ...prev, description: e.target.value }))
           }
         />
       </div>
       <div>
-        <button type="submit">Add Item</button>
+        <button type="submit" disabled={status === "loading"}>
+          {status === "loading"
+            ? "Loading ..."
+            : isError
+            ? "Failed!"
+            : "Add Item"}
+        </button>
+        {isLoading ? <p>Loading...</p> : null}
+        {errorMessage ? <p>{errorMessage}</p> : null}
+        {JSON.stringify(body, undefined, 3)}
       </div>
     </form>
   );
