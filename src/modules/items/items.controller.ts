@@ -27,11 +27,16 @@ export class ItemsController {
     }
 
     async create(req: NextApiRequest, res: NextApiResponse) {
-        const body: CreateItem = req.body;
+        try {
+            const body: CreateItem = req.body;
 
-        const result = await this.itemsService.createItem(body);
+            const result = await this.itemsService.createItem(body);
 
-        res.status(201)
-            .send(result);
+            res.status(201)
+                .send(result);
+        }
+        catch (err) {
+            return res.status(400).send(err);
+        }
     }
 }
