@@ -4,13 +4,15 @@ import useMutate from "../../hooks/useMutate";
 type Item = {
   title: string;
   description: string;
+  startingBid: number;
   UserId: string;
 };
 
 const CreateItem: React.FC = () => {
-  const [item, setItem] = useState({
+  const [item, setItem] = useState<Item>({
     title: "",
     description: "",
+    startingBid: 0,
     UserId: "6350f85dc6f3a606c53f8e66",
   });
 
@@ -25,7 +27,7 @@ const CreateItem: React.FC = () => {
 
   useEffect(() => {
     if (status === "success")
-      setItem((prev) => ({ ...prev, title: "", description: "" }));
+      setItem((prev) => ({ ...prev, title: "", description: "", startingBid: 0 }));
   }, [status]);
 
   const handleCreateSubmit = (e: FormEvent) => {
@@ -57,6 +59,22 @@ const CreateItem: React.FC = () => {
           value={item.description}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setItem((prev) => ({ ...prev, description: e.target.value }))
+          }
+        />
+      </div>
+      <div>
+        <label htmlFor="startingBid">Starting bid</label>
+        <input
+          type="number"
+          name="startingBid"
+          id="startingBid"
+          step={0.01}
+          value={item.startingBid}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setItem((prev) => ({
+              ...prev,
+              startingBid: e.target.valueAsNumber,
+            }))
           }
         />
       </div>
