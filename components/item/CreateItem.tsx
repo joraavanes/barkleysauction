@@ -69,7 +69,8 @@ const CreateItem: React.FC = () => {
             : "Add Item"}
         </button>
         {isLoading ? <p>Loading...</p> : null}
-        {errorMessage ? <p>{errorMessage}</p> : null}
+        {isSuccess ? <p>Item saved</p> : null}
+        {errorMessage ? <p role="alert">{errorMessage}</p> : null}
         {JSON.stringify(body, undefined, 3)}
       </div>
     </form>
