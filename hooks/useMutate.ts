@@ -34,16 +34,22 @@ function useMutate<T extends object>(url: string, options: MutateOptions<T>) {
         status: 'loading',
         isLoading: true
       }));
-      await new Promise((resolve) => setTimeout(resolve, 3000))
 
-      const response = await fetch(url, {
+      const controller = new AbortController()
+      const abortId = setTimeout(() => {
+        controller.abort()
+      }, options.timeout);
+
+      const response = await window.fetch(url, {
         method: options.method,
         headers: {
           "Content-Type": options.ContentType ?? "application/json"
         },
         body: JSON.stringify(options.body),
-        signal: AbortSignal.timeout(options.timeout)
+        signal: controller.signal
       });
+
+      clearTimeout(abortId);
 
       return response;
     },
