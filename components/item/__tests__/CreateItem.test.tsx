@@ -9,10 +9,15 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { rest } from "msw";
 import CreateItem from "../CreateItem";
 import createMockServer from "../../../mocks/server";
+import { Item } from "../Item";
+import ItemStatus from "../ItemStatus";
 
 const QueryProviderWrapper = () => (
   <QueryClientProvider client={new QueryClient()}>
-    <CreateItem />
+    <Item>
+      <CreateItem />
+      <ItemStatus />
+    </Item>
   </QueryClientProvider>
 );
 
@@ -59,9 +64,11 @@ test("should create an item successfully", async () => {
   await userEvent.type(descriptionInput, "Broom");
   await userEvent.click(submitBtn);
 
-  await waitForElementToBeRemoved(() => screen.getByText(/loading\.\.\./i));
+  await waitForElementToBeRemoved(() => screen.getByText(/Loading\.\.\./i));
 
-  expect(await screen.getByText(/Item saved/i)).toBeInTheDocument();
+  expect(
+    await screen.getByText(/Changes successfuly done!/i)
+  ).toBeInTheDocument();
 });
 
 test("should fail creating an item", async () => {
@@ -77,7 +84,7 @@ test("should fail creating an item", async () => {
   await userEvent.click(submitBtn);
 
   await waitForElementToBeRemoved(() => screen.getByText(/loading\.\.\./i), {
-    timeout: 1000
+    timeout: 1000,
   });
 
   expect(await screen.getByRole("alert")).toBeInTheDocument();
