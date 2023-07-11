@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+import Head from "next/head";
 import CreateItem from "@/components/item/CreateItem";
 import { Item } from "@/components/item/Item";
 import { NextPageWithLayout } from "../_app";
@@ -12,6 +14,17 @@ const CreateItemPage: NextPageWithLayout = () => {
         <ItemStatus />
       </Item>
     </>
+  );
+};
+
+CreateItemPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <main>
+      <Head>
+        <title>New Item</title>
+      </Head>
+      {page}
+    </main>
   );
 };
 
