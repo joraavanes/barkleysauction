@@ -4,7 +4,7 @@ const ItemStatus: React.FC = () => {
   const { state } = useItem();
 
   if (state.status == Status.loading) {
-    return <span role="alert">Loading...</span>;
+    return <span>Loading...</span>;
   }
 
   if (state.status == Status.error) {
@@ -12,7 +12,7 @@ const ItemStatus: React.FC = () => {
   }
 
   if (state.status == Status.success) {
-    return <span role="alert">Changes successfuly done!</span>;
+    return <span>Changes successfuly done!</span>;
   }
 
   return null;
