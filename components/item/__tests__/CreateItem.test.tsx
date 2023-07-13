@@ -83,9 +83,7 @@ test("should fail creating an item", async () => {
   await userEvent.type(titleInput, "Broom");
   await userEvent.click(submitBtn);
 
-  await waitForElementToBeRemoved(() => screen.getByText(/loading\.\.\./i), {
-    timeout: 1000,
-  });
+  await waitForElementToBeRemoved(() => screen.getByText(/loading\.\.\./i));
 
   expect(await screen.getByRole("alert")).toBeInTheDocument();
 });
