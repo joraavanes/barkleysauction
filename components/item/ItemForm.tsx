@@ -1,17 +1,8 @@
 import { ChangeEvent, FormEvent } from "react";
-import { ItemState, Status, useItem } from "./Item";
-
-type Item = {
-  title: string;
-  description: string;
-  startingBid: number;
-  UserId: string;
-  itemId?: string;
-};
+import { Item, ItemState, Status, useItem } from "./Item";
 
 type Props = {
   mutate: (item: Item) => void;
-  item?: Item;
 };
 
 const ItemForm: React.FC<Props> = (props) => {
