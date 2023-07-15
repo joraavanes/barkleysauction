@@ -31,15 +31,13 @@ const MyItemsPage: NextPageWithLayout<{ items: Item[] }> = ({ items }) => {
         </thead>
         <tbody>
           {items.map((item) => (
-            <>
-              <tr>
-                <td>{item.title}</td>
-                <td>{item.description}</td>
-                <td>
-                  <Link href={`/items/edit/${item._id}`}>Edit</Link>
-                </td>
-              </tr>
-            </>
+            <tr key={item._id.toString()}>
+              <td>{item.title}</td>
+              <td>{item.description}</td>
+              <td>
+                <Link href={`/items/edit/${item._id}`}>Edit</Link>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>
