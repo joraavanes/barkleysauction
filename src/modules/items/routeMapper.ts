@@ -15,6 +15,11 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
         case method === 'GET':
             itemsController.findById(req, res);
             break;
+        case method === 'PATCH':
+            itemsController.edit(req, res);
+            break;
+        case method === 'DELETE':
+            itemsController.delete(req, res);
         default:
             break;
     }

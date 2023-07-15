@@ -1,4 +1,4 @@
-import { FindCursor, InsertOneResult, ObjectId, WithId } from "mongodb";
+import { InsertOneResult, ObjectId, WithId, ObjectID, ModifyResult } from "mongodb";
 import { Service } from "typedi";
 import { MongoDbClient } from "../../db";
 import { Item } from "./item.model";
@@ -26,7 +26,7 @@ export class ItemsRepository {
       });
   }
 
-  async findById(id: string): Promise<WithId<Item>|null> {
+  async findById(id: string): Promise<WithId<Item> | null> {
     return (await this.mongo.getClient())
       .db()
       .collection<Item>('items')
@@ -44,4 +44,17 @@ export class ItemsRepository {
       });
   }
 
+  async editOne(id: string, attrs: Partial<Item>): Promise<ModifyResult<Item>> {
+    return (await this.mongo.getClient())
+      .db()
+      .collection<Item>('items')
+      .findOneAndUpdate({ _id: new ObjectID(id) }, { $set: attrs });
+  }
+
+  async deleteOne(id: string) {
+    return (await this.mongo.getClient())
+      .db()
+      .collection<Item>('items')
+      .findOneAndDelete({ _id: new ObjectID(id) });
+  }
 }
