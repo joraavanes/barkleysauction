@@ -34,10 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const EditItemPage: NextPageWithLayout<{ item: any }> = (props) => {
   const router = useRouter();
 
-  const id =
-    typeof router.query.id === "string"
-      ? parseInt(router?.query?.id)
-      : undefined;
+  const id = router.query?.id as string;
 
   return (
     <>
