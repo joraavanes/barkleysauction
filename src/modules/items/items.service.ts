@@ -29,7 +29,8 @@ export class ItemsService {
         return this.itemsRespository.createOne({
             title: model.title,
             description: model.description,
-            bids: Array<number>(1).fill(model.startingBid),
+            bids: Array<number>(),
+            startingBid: model.startingBid,
             imageUrl: model.imageUrl,
             owner: user._id
         } as Item);

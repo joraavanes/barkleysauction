@@ -6,6 +6,7 @@ export interface Item {
     title: string;
     description: string;
     bids: Array<number>;
+    startingBid: number;
     imageUrl?: string;
     owner: ObjectId;
 }

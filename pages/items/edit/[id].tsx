@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           title: item?.title,
           description: item?.description,
           imageUrl: item?.imageUrl,
-          startingBid: item?.bids.length ? item.bids[0] : 0
+          startingBid: item?.startingBid
         },
       },
     };
