@@ -50,7 +50,7 @@ export class ItemsController {
 
             return res.send(result);
 
-        } catch (error) {
+        } catch (error: any) { //todo: error type safety
             return res.status(400).send({ error: error.message });
         }
     }
@@ -62,7 +62,7 @@ export class ItemsController {
             const result = await this.itemsService.deleteItem(id);
             return res.send(result);
 
-        } catch (error) {
+        } catch (error: any) { //todo: error type safety
             return res.status(400).send({ error: error.message });
         }
     }
