@@ -8,7 +8,7 @@ interface Grid<T> {
 }
 
 interface GridState<T> {
-  state: string;
+  status: "idle" | "pending" | "success" | "error";
   rows?: Array<T>;
   error?: any;
 }
@@ -16,24 +16,41 @@ interface GridState<T> {
 const Grid = <T extends object>({ url, renderItem, keyExtractor }: Grid<T>) => {
   const [state, setState] = useState<GridState<T>>({
     rows: [],
-    state: "idle",
+    status: "idle",
     error: null,
   });
+  const { rows, status, error } = state;
 
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
       .then(
-        (data: Array<T>) => setState({ rows: data, state: "" }),
-        (error: Error) => setState({ state: "rejected", error })
+        (data: Array<T>) => setState({ rows: data, status: "success" }),
+        (error: Error) => setState({ status: "error", error })
       );
 
     return () => {};
-  }, []);
+  }, [url]);
+
+  if (status === "idle" || status === "pending") {
+    return <span>Loading ...</span>;
+  }
+
+  if (status === "error") {
+    return <span>Failed to get data: {error}</span>;
+  }
 
   return (
     <table>
-      <thead></thead>
+      <thead>
+        {rows?.length ? (
+          Object.keys(rows[0]).map((key) => (
+            <th key={self.crypto.randomUUID()}>{key}</th>
+          ))
+        ) : (
+          <th>Loading ...</th>
+        )}
+      </thead>
       <tbody>
         {/* {state.rows?.map((item) => (
         <div key={keyExtractor(item)}>
@@ -41,7 +58,7 @@ const Grid = <T extends object>({ url, renderItem, keyExtractor }: Grid<T>) => {
           <GridRow data={item}/>
         </div>
       ))} */}
-        {state.rows?.map((item) => (
+        {rows?.map((item) => (
           <GridRow key={keyExtractor(item)} data={item} />
         ))}
       </tbody>
