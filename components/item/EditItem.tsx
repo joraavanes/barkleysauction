@@ -3,10 +3,12 @@ import ItemForm from "./ItemForm";
 import { Item, useItem } from "./Item";
 import useMutate from "../../hooks/useMutate";
 
-const EditItem: React.FC<{ id?: string; item: Partial<Item> }> = ({
-  id,
-  item,
-}) => {
+type Props = {
+  id?: string;
+  item: Item;
+};
+
+const EditItem: React.FC<Props> = ({ id, item }) => {
   const { state, setstate } = useItem();
 
   const { mutate } = useMutate(`/api/items/${id}`, {
