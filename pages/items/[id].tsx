@@ -27,7 +27,7 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
   return (
     <>
       <Head>
-        <title>{item.title}</title>
+        <title>{item.title} | Barkley&apos;s Auction</title>
         <meta name="description" content={item.description} />
       </Head>
       <h1>
