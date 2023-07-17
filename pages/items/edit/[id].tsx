@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement } from "react";
 import Head from "next/head";
 import EditItem from "@/components/item/EditItem";
 import { Item } from "@/components/item/Item";
@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const EditItemPage: NextPageWithLayout<{ item: any }> = (props) => {
+const EditItemPage: NextPageWithLayout<{ item: Item }> = (props) => {
   const router = useRouter();
 
   const id = router.query?.id as string;
