@@ -4,6 +4,7 @@ export type Item = {
   title: string;
   description: string;
   startingBid: number;
+  imageUrl?: string;
   UserId: string;
   itemId?: string;
 };
