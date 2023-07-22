@@ -5,4 +5,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   routeMapper(req, res);
 }
 
+export const config = {
+  api: {
+    bodyParser: false
+  }
+};
+
 export default handler;
