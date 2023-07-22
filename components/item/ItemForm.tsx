@@ -57,9 +57,28 @@ const ItemForm: React.FC<Props> = (props) => {
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setstate((prev) => ({
               ...prev,
-              item: { ...prev.item, startingBid: e.target.valueAsNumber },
+              item: { ...prev.item, startingBid: e.target.value },
             }))
           }
+        />
+      </div>
+      <div>
+        <label htmlFor="image">Image</label>
+        <input
+          type="file"
+          name="file"
+          id="file"
+          onChange={({ target }) => {
+            const file =
+              target.files && target.files.item(0)
+                ? target.files.item(0)
+                : null;
+
+            setstate((prev) => ({
+              ...prev,
+              item: { ...prev.item, image: file },
+            }));
+          }}
         />
       </div>
       <div>

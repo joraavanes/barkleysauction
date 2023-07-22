@@ -11,8 +11,7 @@ const CreateItem: React.FC = () => {
     mutate,
   } = useMutate<Item>("/api/items", {
     method: "POST",
-    body: state.item,
-    timeout: 10000,
+    timeout: 5000,
   });
 
   useEffect(() => {
@@ -27,8 +26,9 @@ const CreateItem: React.FC = () => {
         item: {
           title: "",
           description: "",
-          startingBid: 0,
-          UserId: "",
+          startingBid: "0",
+          image: null,
+          UserId: "63510298c6f3a606c53f8e69",
         },
       }));
     }

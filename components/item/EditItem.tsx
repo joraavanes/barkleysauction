@@ -13,7 +13,6 @@ const EditItem: React.FC<Props> = ({ id, item }) => {
 
   const { mutate } = useMutate(`/api/items/${id}`, {
     method: "PATCH",
-    body: state.item,
     timeout: 5000,
   });
 
