@@ -19,7 +19,7 @@ const EditItem: React.FC<Props> = ({ id, item }) => {
   useEffect(() => {
     setstate((prev) => ({
       ...prev,
-      item: item ? { ...prev.item, ...item } : prev.item,
+      item: item ? { ...item } : prev.item,
     }));
   }, [item]);
 
