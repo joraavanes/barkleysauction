@@ -36,14 +36,19 @@ export class ItemsService {
         } as Item);
     }
 
-    // todo: // dto must be mapped to item model
     async editItem(id: string, model: EditItem) {
         const item = await this.itemsRespository.findById(id);
 
         if (!item)
             throw new Error('Item does not exist');
 
-        return this.itemsRespository.editOne(id, model);
+        return this.itemsRespository.editOne(id, {
+            title: model.title,
+            description: model.description,
+            bids: Array<number>(),
+            startingBid: model.startingBid,
+            imageUrl: model.imageUrl,
+        });
     }
 
     async deleteItem(id: string) {
