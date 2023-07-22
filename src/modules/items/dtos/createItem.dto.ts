@@ -1,8 +1,14 @@
+import { Type } from "class-transformer";
 
-export type CreateItem = {
+export class CreateItem {
   title: string;
+  
   description: string;
+
+  @Type(() => Number)
   startingBid: number;
-  imageUrl?: string;
+
+  imageUrl: string;
+
   UserId: string;
 }
