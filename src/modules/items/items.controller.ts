@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Service } from "typedi";
+import { plainToClass } from "class-transformer";
 import { ItemsService } from "./items.service";
+import { parseBody } from "../../utils/bodyParser";
 import { CreateItem } from "./dtos/createItem.dto";
-import { EditItem } from "./dtos/editItem.dto";
 
 @Service()
 export class ItemsController {
@@ -29,7 +30,8 @@ export class ItemsController {
 
     async create(req: NextApiRequest, res: NextApiResponse) {
         try {
-            const body: CreateItem = req.body;
+            const { fields, files } = await parseBody(req);
+            const body = plainToClass(CreateItem, fields);
 
             const result = await this.itemsService.createItem(body);
 
@@ -37,14 +39,17 @@ export class ItemsController {
                 .send(result);
         }
         catch (err) {
+            console.log(err);
             return res.status(400).send(err);
         }
     }
 
     async edit(req: NextApiRequest, res: NextApiResponse) {
         try {
+            const { fields, files } = await parseBody(req);
+
             const id = req.query?.id as string;
-            const body: EditItem = req.body;
+            const body = plainToClass(CreateItem, fields);
 
             const result = await this.itemsService.editItem(id, body);
 

@@ -36,6 +36,7 @@ export class ItemsService {
         } as Item);
     }
 
+    // todo: // dto must be mapped to item model
     async editItem(id: string, model: EditItem) {
         const item = await this.itemsRespository.findById(id);
 
