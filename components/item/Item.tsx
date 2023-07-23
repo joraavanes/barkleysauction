@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { Status } from "@/shared/types";
 
 export type Item = {
   title: string;
@@ -8,13 +9,6 @@ export type Item = {
   UserId: string;
   itemId?: string;
 };
-
-export enum Status {
-  idle,
-  loading,
-  success,
-  error,
-}
 
 export interface ItemState {
   item: Item;

@@ -1,4 +1,5 @@
-import { Status, useItem } from "./Item";
+import { Status } from "@/shared/types";
+import { useItem } from "./Item";
 
 const ItemStatus: React.FC = () => {
   const { state } = useItem();

@@ -20,7 +20,8 @@
     "paths": {
       "@/components/*": ["./components/*"],
       "@/pages/*": ["./pages/*"],
-      "@/hooks/*": ["./hooks/*"]
+      "@/hooks/*": ["./hooks/*"],
+      "@/shared/*": ["./shared/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

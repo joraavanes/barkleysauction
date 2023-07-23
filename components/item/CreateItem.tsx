@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import { Item, Status, useItem } from "./Item";
+import { Item, useItem } from "./Item";
 import ItemForm from "./ItemForm";
-import useMutate from "../../hooks/useMutate";
+import useMutate from "@/hooks/useMutate";
+import { Status } from "@/shared/types";
 
 const CreateItem: React.FC = () => {
   const { state, setstate } = useItem();
 
   const {
-    state: { status, isError, isSuccess, isLoading, errorMessage, body },
+    state: { status, errorMessage, responseBody },
     mutate,
   } = useMutate<Item>("/api/items", {
     method: "POST",
