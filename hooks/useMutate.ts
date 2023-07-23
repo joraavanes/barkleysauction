@@ -1,33 +1,32 @@
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 
-type MutateOptions<T> = {
+type MutateOptions = {
   timeout: number;
   method: 'POST' | 'PUT' | 'PATCH',
-  body: T,
   ContentType?: string
 }
 
 type State = {
   status: 'error' | 'idle' | 'loading' | 'success',
-  body?: object,
+  responseBody?: object,
   isError: boolean,
   isSuccess: boolean,
   isLoading: boolean,
   errorMessage?: string,
 }
 
-function useMutate<T extends object>(url: string, options: MutateOptions<T>) {
+function useMutate<T extends { [K: string]: string | Blob | null }>(url: string, options: MutateOptions) { // todo: add an option to choose request body type
   const [state, setState] = useState<State>({
     status: "idle",
-    body: undefined,
+    responseBody: undefined,
     isError: false,
     isSuccess: false,
     isLoading: false,
     errorMessage: undefined
   });
 
-  const { data, status, mutate, isSuccess, isError } = useMutation({
+  const { data, mutate, isSuccess, isError } = useMutation({
     mutationFn: async (payload: T) => {
       setState(prev => ({
         ...prev,
@@ -40,12 +39,20 @@ function useMutate<T extends object>(url: string, options: MutateOptions<T>) {
         controller.abort()
       }, options.timeout);
 
+      const formData = new FormData();
+      for (let key in payload)
+        formData.append(key, payload[key]!);
+
       const response = await window.fetch(url, {
         method: options.method,
+        // headers: {
+        //   "Content-Type": "application/json"
+        // },
+        // body: JSON.stringify(payload),
         headers: {
-          "Content-Type": options.ContentType ?? "application/json"
+          ...(options.ContentType && { "Content-Type": options.ContentType })
         },
-        body: JSON.stringify(options.body),
+        body: formData,
         signal: controller.signal
       });
 
@@ -59,7 +66,7 @@ function useMutate<T extends object>(url: string, options: MutateOptions<T>) {
       setState(prev => ({
         ...prev,
         status: 'success',
-        body: payload,
+        responseBody: payload,
         isSuccess: true,
         isLoading: false,
         errorMessage: undefined
