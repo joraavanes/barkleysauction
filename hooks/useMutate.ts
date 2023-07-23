@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { Status } from '@/shared/types';
 import { useState } from 'react';
 
 type MutateOptions = {
@@ -8,7 +9,7 @@ type MutateOptions = {
 }
 
 type State = {
-  status: 'error' | 'idle' | 'loading' | 'success',
+  status: Status,
   responseBody?: object,
   isError: boolean,
   isSuccess: boolean,
@@ -18,7 +19,7 @@ type State = {
 
 function useMutate<T extends { [K: string]: string | Blob | null }>(url: string, options: MutateOptions) { // todo: add an option to choose request body type
   const [state, setState] = useState<State>({
-    status: "idle",
+    status: Status.idle,
     responseBody: undefined,
     isError: false,
     isSuccess: false,
@@ -30,7 +31,7 @@ function useMutate<T extends { [K: string]: string | Blob | null }>(url: string,
     mutationFn: async (payload: T) => {
       setState(prev => ({
         ...prev,
-        status: 'loading',
+        status: Status.loading,
         isLoading: true
       }));
 
@@ -65,7 +66,7 @@ function useMutate<T extends { [K: string]: string | Blob | null }>(url: string,
 
       setState(prev => ({
         ...prev,
-        status: 'success',
+        status: Status.success,
         responseBody: payload,
         isSuccess: true,
         isLoading: false,
@@ -75,7 +76,7 @@ function useMutate<T extends { [K: string]: string | Blob | null }>(url: string,
     onError(error: any, variables, context) {
       setState(prev => ({
         ...prev,
-        status: 'error',
+        status: Status.error,
         isError: true,
         isLoading: false,
         errorMessage: 'Error communicating with server.'
@@ -86,7 +87,7 @@ function useMutate<T extends { [K: string]: string | Blob | null }>(url: string,
   if ((isSuccess || isError) && (data?.status !== 201 && data?.status !== 200) && !state.errorMessage) {
     setState(prev => ({
       ...prev,
-      status: 'error',
+      status: Status.error,
       isSuccess: false,
       isError: true,
       errorMessage: 'Failed to add data'

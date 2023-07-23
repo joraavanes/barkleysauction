@@ -16,11 +16,11 @@ const CreateItem: React.FC = () => {
   });
 
   useEffect(() => {
-    status === "loading"
+    status === Status.loading
       ? setstate((prev) => ({ ...prev, status: Status.loading }))
       : null;
 
-    if (status === "success") {
+    if (status === Status.success) {
       setstate((prev) => ({
         ...prev,
         status: Status.success,
@@ -33,7 +33,7 @@ const CreateItem: React.FC = () => {
       }));
     }
 
-    if (status === "error") {
+    if (status === Status.error) {
       setstate((prev) => ({
         ...prev,
         status: Status.error,

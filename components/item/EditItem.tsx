@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import useMutate from "@/hooks/useMutate";
 import ItemForm from "./ItemForm";
 import { Item, useItem } from "./Item";
-import useMutate from "../../hooks/useMutate";
 
 type Props = {
   id?: string;
@@ -9,9 +9,12 @@ type Props = {
 };
 
 const EditItem: React.FC<Props> = ({ id, item }) => {
-  const { state, setstate } = useItem();
+  const { setstate } = useItem();
 
-  const { mutate } = useMutate(`/api/items/${id}`, {
+  const {
+    mutate,
+    state: { status },
+  } = useMutate(`/api/items/${id}`, {
     method: "PATCH",
     timeout: 5000,
   });
@@ -22,6 +25,13 @@ const EditItem: React.FC<Props> = ({ id, item }) => {
       item: item ? { ...item } : prev.item,
     }));
   }, [item]);
+
+  useEffect(() => {
+    setstate((prev) => ({
+      ...prev,
+      status,
+    }));
+  }, [status]);
 
   return <ItemForm mutate={mutate} />;
 };
