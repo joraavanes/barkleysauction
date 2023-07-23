@@ -9,7 +9,7 @@ type Props = {
 };
 
 const EditItem: React.FC<Props> = ({ id, item }) => {
-  const { setstate } = useItem();
+  const { setState } = useItem();
 
   const {
     mutate,
@@ -20,14 +20,14 @@ const EditItem: React.FC<Props> = ({ id, item }) => {
   });
 
   useEffect(() => {
-    setstate((prev) => ({
+    setState((prev) => ({
       ...prev,
       item: item ? { ...item } : prev.item,
     }));
   }, [item]);
 
   useEffect(() => {
-    setstate((prev) => ({
+    setState((prev) => ({
       ...prev,
       status,
     }));

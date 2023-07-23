@@ -7,7 +7,7 @@ type Props = {
 };
 
 const ItemForm: React.FC<Props> = (props) => {
-  const { state, setstate } = useItem();
+  const { state, setState } = useItem();
 
   const handleCreateSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ const ItemForm: React.FC<Props> = (props) => {
           id="title"
           value={state.item.title}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setstate((prev: ItemState) => ({
+            setState((prev: ItemState) => ({
               ...prev,
               item: { ...prev.item, title: e.target.value },
             }))
@@ -40,7 +40,7 @@ const ItemForm: React.FC<Props> = (props) => {
           id="description"
           value={state.item.description}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setstate((prev) => ({
+            setState((prev) => ({
               ...prev,
               item: { ...prev.item, description: e.target.value },
             }))
@@ -56,7 +56,7 @@ const ItemForm: React.FC<Props> = (props) => {
           step={0.01}
           value={state.item.startingBid}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setstate((prev) => ({
+            setState((prev) => ({
               ...prev,
               item: { ...prev.item, startingBid: e.target.value },
             }))
@@ -75,7 +75,7 @@ const ItemForm: React.FC<Props> = (props) => {
                 ? target.files.item(0)
                 : null;
 
-            setstate((prev) => ({
+            setState((prev) => ({
               ...prev,
               item: { ...prev.item, image: file },
             }));

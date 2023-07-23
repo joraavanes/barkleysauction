@@ -17,7 +17,7 @@ export interface ItemState {
 }
 
 interface ItemContextType {
-  setstate: React.Dispatch<React.SetStateAction<ItemState>>;
+  setState: React.Dispatch<React.SetStateAction<ItemState>>;
   state: ItemState;
 }
 
@@ -34,10 +34,10 @@ const initialState: ItemState = {
 const ItemContext = createContext<ItemContextType | null>(null);
 
 export const Item: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [state, setstate] = useState<ItemState>(initialState);
+  const [state, setState] = useState<ItemState>(initialState);
 
   return (
-    <ItemContext.Provider value={{ state, setstate }}>
+    <ItemContext.Provider value={{ state, setState }}>
       {children}
     </ItemContext.Provider>
   );

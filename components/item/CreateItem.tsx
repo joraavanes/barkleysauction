@@ -5,7 +5,7 @@ import useMutate from "@/hooks/useMutate";
 import { Status } from "@/shared/types";
 
 const CreateItem: React.FC = () => {
-  const { state, setstate } = useItem();
+  const { state, setState } = useItem();
 
   const {
     state: { status, errorMessage, responseBody },
@@ -17,11 +17,11 @@ const CreateItem: React.FC = () => {
 
   useEffect(() => {
     status === Status.loading
-      ? setstate((prev) => ({ ...prev, status: Status.loading }))
+      ? setState((prev) => ({ ...prev, status: Status.loading }))
       : null;
 
     if (status === Status.success) {
-      setstate((prev) => ({
+      setState((prev) => ({
         ...prev,
         status: Status.success,
         item: {
@@ -34,7 +34,7 @@ const CreateItem: React.FC = () => {
     }
 
     if (status === Status.error) {
-      setstate((prev) => ({
+      setState((prev) => ({
         ...prev,
         status: Status.error,
         error: errorMessage,
