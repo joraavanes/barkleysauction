@@ -1,3 +1,7 @@
+:root{
+  --primary-pink: #f91890;
+}
+
 html,
 body {
   padding: 0;
@@ -13,6 +17,18 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+a.nav-link {
+  color: #ccc;
+}
+a.nav-link.active {
+  color: #fff!important;
 }
 
 @media (prefers-color-scheme: dark) {
