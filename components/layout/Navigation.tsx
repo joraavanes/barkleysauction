@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import styles from "./css/Navigation.module.css";
 
 const Navigation: React.FC = ({}) => {
   const collapseBtnRef = useRef<HTMLButtonElement | null>(null);
+  const { asPath } = useRouter();
 
   const toggleCollapse = () => {
     if (matchMedia("(max-width: 992px)").matches)
@@ -19,9 +21,9 @@ const Navigation: React.FC = ({}) => {
           >
             <div className="container-fluid">
               <Link href="/">
-                <a className="navbar-brand" href="/">
+                <span className="navbar-brand">
                   Barkley&apos;s
-                </a>
+                </span>
               </Link>
               <button
                 ref={collapseBtnRef}
@@ -41,121 +43,119 @@ const Navigation: React.FC = ({}) => {
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <Link href="/" className="nav-item">
-                    <a
-                      className="nav-link active"
+                    <span
+                      className={`nav-link${asPath === "/" ? " active" : ""}`}
                       aria-current="page"
-                      href="/"
                       onClick={toggleCollapse}
                     >
                       Home
-                    </a>
+                    </span>
                   </Link>
                   <Link href="/items" className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="/items"
+                    <span
+                      className={`nav-link${
+                        asPath === "/items" ? " active" : ""
+                      }`}
                       onClick={toggleCollapse}
                     >
                       Items
-                    </a>
+                    </span>
                   </Link>
                   <Link href="/reviews" className="nav-item">
-                    <a
-                      className="nav-link"
-                      href="/reviews"
+                    <span
+                      className={`nav-link${
+                        asPath === "/reviews" ? " active" : ""
+                      }`}
                       onClick={toggleCollapse}
                     >
                       Reviews
-                    </a>
+                    </span>
                   </Link>
                   <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
+                    <span
+                      className={`nav-link dropdown-toggle${
+                        asPath === "/items/my-items" ||
+                        asPath === "/items/create"
+                          ? " active"
+                          : ""
+                      }`}
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Profile
-                    </a>
+                    </span>
                     <ul className="dropdown-menu">
                       <Link href="/items/my-items">
-                        <a
+                        <span
                           className="dropdown-item"
-                          href="/items/my-items"
                           onClick={toggleCollapse}
                         >
                           My Items
-                        </a>
+                        </span>
                       </Link>
                       <Link href="/items/create">
-                        <a
+                        <span
                           className="dropdown-item"
-                          href="/items/create"
                           onClick={toggleCollapse}
                         >
                           Add an item
-                        </a>
+                        </span>
                       </Link>
-                      <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Something else here
-                        </a>
-                      </li>
                     </ul>
                   </li>
 
                   <li className="nav-item dropdown">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
+                    <span
+                      className={`nav-link dropdown-toggle${
+                        asPath === "/admin/items" || asPath === "/admin/users"
+                          ? " active"
+                          : ""
+                      }`}
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
                       Admin
-                    </a>
+                    </span>
                     <ul className="dropdown-menu">
                       <Link href="/admin/users">
-                        <a
+                        <span
                           className="dropdown-item"
-                          href="/admin/users"
                           onClick={toggleCollapse}
                         >
                           Users
-                        </a>
+                        </span>
                       </Link>
                       <Link href="/admin/items">
-                        <a
+                        <span
                           className="dropdown-item"
-                          href="/admin/items"
                           onClick={toggleCollapse}
                         >
                           Items
-                        </a>
+                        </span>
                       </Link>
                     </ul>
                   </li>
                   <Link className="nav-item" href="/users/login">
-                    <a
-                      className="nav-link"
-                      href="/users/login"
+                    <span
+                      className={`nav-link${
+                        asPath === "/users/login" ? " active" : ""
+                      }`}
                       onClick={toggleCollapse}
                     >
                       Login
-                    </a>
+                    </span>
                   </Link>
                   <Link className="nav-item" href="/users/register">
-                    <a
-                      className="nav-link"
-                      href="/users/register"
+                    <span
+                      className={`nav-link${
+                        asPath === "/users/register" ? " active" : ""
+                      }`}
                       onClick={toggleCollapse}
                     >
                       register
-                    </a>
+                    </span>
                   </Link>
                 </ul>
                 <form className="d-flex" role="search">
