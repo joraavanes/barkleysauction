@@ -30,7 +30,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return getLayout(
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <NextProgress color="#101e8e" />
+        <NextProgress
+          color="#101e8e"
+          height={3}
+        />
         <Component {...pageProps} />
       </QueryClientProvider>
     </ErrorBoundary>

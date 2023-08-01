@@ -1,4 +1,4 @@
-:root{
+:root {
   --primary-pink: #f91890;
 }
 
@@ -24,11 +24,22 @@ a {
   padding-right: 0;
 }
 
-a.nav-link {
-  color: #ccc;
+.nav-link:hover,
+.dropdown-item:hover,
+.navbar-brand:hover {
+  cursor: pointer;
 }
-a.nav-link.active {
-  color: #fff!important;
+
+.nav-link {
+  color: #dedede;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.nav-link.active {
+  color: #fff !important;
 }
 
 @media (prefers-color-scheme: dark) {
