@@ -30,6 +30,10 @@ export class ItemsService {
 
             const imageBuffer = await this.fileService.readFile(itemImage.filepath);
 
+            if (this.fileService.getDataSize(imageBuffer) > parseFloat(process.env.MAX_USER_FILE as string)) {
+                throw new Error('File size exceeds maximum limit')
+            }
+
             const pathToStore = await this.fileService.getFilePath({
                 directory: process.env.STATIC_FILES_DIR,
                 mimetype: itemImage.originalFilename?.split('.').at(-1) as string,
