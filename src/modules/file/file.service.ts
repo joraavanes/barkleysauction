@@ -42,8 +42,8 @@ export class FileService {
    * @param path Path to read file data
    * @returns Return Buffer object
    */
-  readFile(path: string) {
-    return readFile(path, { encoding: 'utf-8' });
+  async readFile(path: string): Promise<Buffer> {
+    return readFile(path);
   }
 
   /**
@@ -52,9 +52,7 @@ export class FileService {
    * @param data Binary data
    * @returns Returns the stored path of file
    */
-  async writeFile(path: string, data: Buffer) {
-    return writeFile(path, data, {
-      encoding: 'utf-8'
-    });
+  async writeFile(path: string, data: Buffer): Promise<void> {
+    return writeFile(path, data);
   }
 }
