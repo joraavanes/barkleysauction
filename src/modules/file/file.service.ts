@@ -30,6 +30,18 @@ export class FileService {
 
   /**
    * 
+   * @param absolutePath Absolute path of a directory or a file
+   * @returns Returns relative path
+   */
+  getRelativePathFromAbsolute(absolutePath: string) {
+    return absolutePath.replace(
+      this.getCurrentDir(),
+      ''
+    ).replaceAll('\\', '/');
+  }
+
+  /**
+   * 
    * @param data Binary data
    * @returns Returns size of data in Kb
    */
