@@ -4,11 +4,13 @@ import { plainToClass } from "class-transformer";
 import { ItemsService } from "./items.service";
 import { parseBody } from "../../utils/bodyParser";
 import { CreateItem } from "./dtos/createItem.dto";
+import { FileService } from "../file/file.service";
 
 @Service()
 export class ItemsController {
     constructor(
-        private itemsService: ItemsService
+        private itemsService: ItemsService,
+        private fileService: FileService
     ) { }
 
     async index(req: NextApiRequest, res: NextApiResponse) {
@@ -33,7 +35,7 @@ export class ItemsController {
             const { fields, files } = await parseBody(req);
             const body = plainToClass(CreateItem, fields);
 
-            const result = await this.itemsService.createItem(body);
+            const result = await this.itemsService.createItem(body, files);
 
             return res.status(201)
                 .send(result);
