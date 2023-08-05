@@ -8,13 +8,13 @@ import {
   BidInput,
   LatestBids,
   BidStatus,
-} from "../../components/item/Bid";
+} from "@/components/item/Bid";
 import {
   Comment,
   CommentForm,
   CommentList,
   CommentStatus,
-} from "../../components/item/Comment";
+} from "@/components/item/Comment";
 
 interface ItemSlugPageProps {
   item: {
@@ -37,33 +37,39 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
   return (
     <>
       <Head>
-        <title>{item.title} | Barkley&apos;s Auction</title>
+        <title>{`${item.title} | Barkley&apos;s Auction`}</title>
         <meta name="description" content={item.description} />
       </Head>
-      <h1>
-        {item.title} -
-        {item.bids?.length ? (
-          <>Last bid for &#36;{Math.max(...item.bids)} -</>
-        ) : null}
-        (slug page)
-      </h1>
-      <p>{id}</p>
-      <p>{item.title}</p>
-      <p>{item.description}</p>
-      <p>{item.imageUrl}</p>
-      <div>
-        <Bid>
-          <BidInput />
-          <BidStatus />
-          <LatestBids />
-        </Bid>
-      </div>
-      <div>
-        <Comment>
-          <CommentForm />
-          <CommentStatus />
-          <CommentList />
-        </Comment>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-12 col-sm-6 col-md-8">
+            <h1>
+              {item.title}
+              {item.bids?.length ? (
+                <>Last bid for &#36;{Math.max(...item.bids)}</>
+              ) : null}
+            </h1>
+            <p>{id}</p>
+            <p>{item.title}</p>
+            <p>{item.description}</p>
+            <p>{item.imageUrl}</p>
+            <div>
+              <Comment>
+                <CommentForm />
+                <CommentStatus />
+                <CommentList />
+              </Comment>
+            </div>
+          </div>
+
+          <div className="col-12 col-sm-6 col-md-4">
+            <Bid>
+              <BidInput />
+              <BidStatus />
+              <LatestBids />
+            </Bid>
+          </div>
+        </div>
       </div>
     </>
   );
