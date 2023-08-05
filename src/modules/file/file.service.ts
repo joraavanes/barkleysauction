@@ -20,10 +20,12 @@ export class FileService {
    * @returns Returns the path to store the file
    */
   getFilePath(options: { originalFilename?: string | null, mimetype: string, directory?: string }): string {
-    const filename = options.originalFilename ? options.originalFilename : randomBytes(16).toString('hex');
+    const filename = options.originalFilename
+      ? options.originalFilename :
+      randomBytes(16).toString('hex') + '.' + options.mimetype;
     const appendingDir = options.directory ? options.directory : '';
 
-    return path.join(this.getCurrentDir(), appendingDir, filename, options.mimetype);
+    return path.join(this.getCurrentDir(), appendingDir, filename);
   }
 
   /**
