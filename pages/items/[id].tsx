@@ -17,7 +17,7 @@ interface ItemSlugPageProps {
     title: string;
     description: string;
     bids: Array<number>;
-    imageUrl: number;
+    imageUrl: string;
     owner: string;
   };
 }
@@ -32,31 +32,39 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
   return (
     <>
       <Head>
-        <title>{item.title} | Barkley&apos;s Auction</title>
+        <title>{`${item.title} | Barkley's Auction`}</title>
         <meta name="description" content={item.description} />
       </Head>
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 col-sm-6 col-md-8">
-            <h1>
-              {item.title}
-              {item.bids?.length ? (
-                <>Last bid for &#36;{Math.max(...item.bids)}</>
-              ) : null}
-            </h1>
-            <p>{id}</p>
-            <p>{item.title}</p>
-            <p>{item.description}</p>
-            <p>{item.imageUrl}</p>
-            <div>
-              <Comment>
-                <CommentForm />
-                <CommentStatus />
-                <CommentList />
-              </Comment>
-            </div>
-          </div>
+            <div className="row">
+              <div className="col-12 col-md-4 col-lg-3">
+                <img src={item.imageUrl} className="img-fluid" />
+              </div>
+              <div className="col-12 col-md-8 col-lg-9">
+                <h1>
+                  {item.title}
+                  {item.bids?.length ? (
+                    <>Last bid for &#36;{Math.max(...item.bids)}</>
+                  ) : null}
+                </h1>
+                <p>{id}</p>
+                <p>{item.title}</p>
+                <p>{item.description}</p>
+              </div>
 
+              <div className="col-12 col-sm-6 col-md-8">
+                <div>
+                  <Comment>
+                    <CommentForm />
+                    <CommentStatus />
+                    <CommentList />
+                  </Comment>
+                </div>
+              </div>
+            </div>
+          </ی>
           <div className="col-12 col-sm-6 col-md-4">
             <Bid>
               <BidInput />
