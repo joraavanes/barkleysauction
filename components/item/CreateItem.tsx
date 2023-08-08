@@ -28,6 +28,7 @@ const CreateItem: React.FC = () => {
           title: "",
           description: "",
           startingBid: "0",
+          image: null,
           UserId: "63510298c6f3a606c53f8e69",
         },
       }));
