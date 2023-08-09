@@ -6,6 +6,7 @@ import { Item } from "./item.model";
 import { ItemsRepository } from "./items.repository";
 import formidable, { File } from "formidable";
 import { FileService } from "../file/file.service";
+import { ObjectId } from "mongodb";
 
 @Service()
 export class ItemsService {
@@ -16,11 +17,11 @@ export class ItemsService {
     ) { }
 
     getItems() {
-        return this.itemsRespository.findAll();
+        return this.itemsRespository.find();
     }
 
     findById(id: string) {
-        return this.itemsRespository.findById(id);
+        return this.itemsRespository.findOne({ _id: new ObjectId(id) });
     }
 
     private async storeItemImage(files: formidable.Files): Promise<string> {
@@ -55,7 +56,7 @@ export class ItemsService {
 
         const imageUrl = await this.storeItemImage(files);
 
-        return this.itemsRespository.createOne({
+        return this.itemsRespository.create({
             title: model.title,
             description: model.description,
             bids: Array<number>(),
@@ -66,26 +67,25 @@ export class ItemsService {
     }
 
     async editItem(id: string, model: EditItem) {
-        const item = await this.itemsRespository.findById(id);
+        const item = await this.itemsRespository.findOne({ _id: new ObjectId(id) });
 
         if (!item)
             throw new Error('Item does not exist');
 
-        return this.itemsRespository.editOne(id, {
-            title: model.title,
-            description: model.description,
-            bids: Array<number>(),
-            startingBid: model.startingBid,
-            imageUrl: model.imageUrl,
-        });
+        const updatedModel = {
+            ...item,
+            ...model
+        };
+
+        return this.itemsRespository.update({ _id: new ObjectId(id) }, updatedModel);
     }
 
     async deleteItem(id: string) {
-        const item = await this.itemsRespository.findById(id);
+        const item = await this.itemsRespository.findOne({ _id: new ObjectId(id) });
 
         if (!item)
             throw new Error('Item does not exist');
 
-        return this.itemsRespository.deleteOne(id);
+        return this.itemsRespository.delete({ _id: new ObjectId(id) });
     }
 }
