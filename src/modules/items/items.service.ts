@@ -37,7 +37,7 @@ export class ItemsService {
             }
 
             const pathToStore = await this.fileService.getFilePath({
-                directory: process.env.STATIC_FILES_DIR,
+                directory: path.join(process.env.STATIC_FILES_DIR!, 'userdata'),
                 mimetype: itemImage.originalFilename?.split('.').at(-1) as string,
             });
 
