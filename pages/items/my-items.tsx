@@ -37,11 +37,23 @@ const MyItemsPage: NextPageWithLayout<{ items: Item[] }> = ({ items }) => {
               <td>
                 <Link href={`/items/edit/${item._id}`}>Edit</Link>
               </td>
+              <td>
+                |{" "}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    fetch(`/api/items/${item._id.toString()}`, {
+                      method: "DELETE",
+                    }).then(console.log);
+                  }}
+                >
+                  Remove
+                </a>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Link href={"/items/edit/64aa78b4939ebe2422cf1ad4"}>Edit item</Link>
     </>
   );
 };
