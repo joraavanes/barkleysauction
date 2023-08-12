@@ -79,4 +79,13 @@ export class FileService {
   async writeFile(path: string, data: Buffer): Promise<void> {
     return writeFile(path, data);
   }
+  
+  /**
+   * 
+   * @param path Path of file to remove
+   * @returns void
+   */
+  async removeFile(path: string) {
+    return unlink(path);
+  }
 }
