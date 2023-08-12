@@ -1,3 +1,4 @@
+import path from "path";
 import { Service } from "typedi";
 import { UsersRepository } from "../auth/users.respository";
 import { CreateItem } from "./dtos/createItem.dto";
@@ -66,11 +67,21 @@ export class ItemsService {
         } as Item);
     }
 
-    async editItem(id: string, model: EditItem) {
+    async editItem(id: string, model: EditItem, files: formidable.Files) {
         const item = await this.itemsRespository.findOne({ _id: new ObjectId(id) });
 
         if (!item)
             throw new Error('Item does not exist');
+
+        if (files.image) {
+
+            if (item.imageUrl) {
+                const pathToRemove = this.fileService.getAbsolutePathFromRelative(path.join('public', item.imageUrl));
+                await this.fileService.removeFile(pathToRemove);
+            }
+
+            model.imageUrl = await this.storeItemImage(files);
+        }
 
         const updatedModel = {
             ...item,

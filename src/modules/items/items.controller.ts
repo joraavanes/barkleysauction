@@ -53,7 +53,7 @@ export class ItemsController {
             const id = req.query?.id as string;
             const body = plainToClass(CreateItem, fields);
 
-            const result = await this.itemsService.editItem(id, body);
+            const result = await this.itemsService.editItem(id, body, files);
 
             return res.send(result);
 
