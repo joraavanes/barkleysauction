@@ -1,6 +1,6 @@
 import path from "path";
 import { randomBytes } from "crypto";
-import { readFile, writeFile } from "fs/promises";
+import { readFile, writeFile, unlink } from "fs/promises";
 import { Service } from "typedi";
 
 @Service()
@@ -38,6 +38,18 @@ export class FileService {
       this.getCurrentDir(),
       ''
     ).replaceAll('\\', '/');
+  }
+
+  /**
+   * 
+   * @param relativePath Relative path to remove a file
+   * @returns void
+   */
+  getAbsolutePathFromRelative(relativePath: string) {
+    return path.join(
+      this.getCurrentDir(),
+      relativePath
+    );
   }
 
   /**
