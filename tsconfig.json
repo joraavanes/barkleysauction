@@ -18,6 +18,7 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
     "paths": {
+      "@/src/*": ["./src/*"],
       "@/components/*": ["./components/*"],
       "@/pages/*": ["./pages/*"],
       "@/hooks/*": ["./hooks/*"],
