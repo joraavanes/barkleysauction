@@ -6,7 +6,11 @@ type GridRow<T> = {
   api: string;
 };
 
-const GridRow = <T extends {}>({ data, columns, api }: GridRow<T>) => {
+const GridRow = <T extends { _id: any }>({
+  data,
+  columns,
+  api,
+}: GridRow<T>) => {
   return (
     <tr>
       {columns.map((column: keyof T, index: number) => (

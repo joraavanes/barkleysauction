@@ -15,7 +15,11 @@ type GridState<T> = {
   error?: any;
 };
 
-const Grid = <T extends {}>({ url, keyExtractor, columns }: Grid<T>) => {
+const Grid = <T extends { _id: any }>({
+  url,
+  keyExtractor,
+  columns,
+}: Grid<T>) => {
   const { data: rows, status } = useQuery<Array<T>>(url, url, {
     timeout: 5000,
   });
