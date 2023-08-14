@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-interface GridRow<T> {
+type GridRow<T> = {
   data: T;
   columns: Array<keyof T>;
   api: string;
-}
+};
 
 const GridRow = <T extends {}>({ data, columns, api }: GridRow<T>) => {
   return (
@@ -18,8 +18,8 @@ const GridRow = <T extends {}>({ data, columns, api }: GridRow<T>) => {
         >
           <a className="btn btn-primary m-1 m-1">Edit</a>
         </Link>
-        
-        <Link href={`${api}/${data['_id']}`}>
+
+        <Link href={`${api}/${data["_id"]}`}>
           <span className="btn btn-secondary m-1 m-1">Delete</span>
         </Link>
       </td>

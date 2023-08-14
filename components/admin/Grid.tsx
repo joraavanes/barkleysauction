@@ -2,18 +2,18 @@ import React from "react";
 import GridRow from "./GridRow";
 import useQuery from "@/hooks/useQuery";
 
-interface Grid<T> {
+type Grid<T> = {
   url: string;
   renderItem?: (item: T) => React.ReactNode;
   keyExtractor: (item: T) => string;
   columns: Array<keyof T>;
-}
+};
 
-interface GridState<T> {
+type GridState<T> = {
   status: "idle" | "pending" | "success" | "error";
   rows?: Array<T>;
   error?: any;
-}
+};
 
 const Grid = <T extends {}>({ url, keyExtractor, columns }: Grid<T>) => {
   const { data: rows, status } = useQuery<Array<T>>(url, url, {
