@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GridRow from "./GridRow";
+import useQuery from "@/hooks/useQuery";
 
 interface Grid<T> {
   url: string;
   renderItem?: (item: T) => React.ReactNode;
   keyExtractor: (item: T) => string;
+  columns: Array<keyof T>;
 }
 
 interface GridState<T> {
@@ -13,56 +15,38 @@ interface GridState<T> {
   error?: any;
 }
 
-const Grid = <T extends object>({ url, renderItem, keyExtractor }: Grid<T>) => {
-  const [state, setState] = useState<GridState<T>>({
-    rows: [],
-    status: "idle",
-    error: null,
+const Grid = <T extends {}>({ url, keyExtractor, columns }: Grid<T>) => {
+  const { data: rows, status } = useQuery<Array<T>>(url, url, {
+    timeout: 5000,
   });
-  const { rows, status, error } = state;
 
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then(
-        (data: Array<T>) => setState({ rows: data, status: "success" }),
-        (error: Error) => setState({ status: "error", error })
-      );
-
-    return () => {};
-  }, [url]);
-
-  if (status === "idle" || status === "pending") {
+  if (status === "loading") {
     return <span>Loading ...</span>;
   }
 
   if (status === "error") {
-    return <span>Failed to get data: {error}</span>;
+    return <span>Failed to get data</span>;
   }
 
   return (
-    <table>
-      <thead>
-        {rows?.length ? (
-          Object.keys(rows[0]).map((key) => (
-            <th key={self.crypto.randomUUID()}>{key}</th>
-          ))
-        ) : (
-          <th>Loading ...</th>
-        )}
-      </thead>
-      <tbody>
-        {/* {state.rows?.map((item) => (
-        <div key={keyExtractor(item)}>
-          {renderItem && renderItem(item)}
-          <GridRow data={item}/>
-        </div>
-      ))} */}
-        {rows?.map((item) => (
-          <GridRow key={keyExtractor(item)} data={item} />
-        ))}
-      </tbody>
-    </table>
+    rows && (
+      <table>
+        <thead>
+          {columns.map((column) => (
+            <th key={self.crypto.randomUUID()}>{column.toString()}</th>
+          ))}
+        </thead>
+        <tbody>
+          {rows.map((item) => (
+            <GridRow<T>
+              key={keyExtractor(item)}
+              data={item}
+              columns={columns}
+            />
+          ))}
+        </tbody>
+      </table>
+    )
   );
 };
 
