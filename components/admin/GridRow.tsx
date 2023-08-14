@@ -1,17 +1,27 @@
+import Link from "next/link";
+
 interface GridRow<T> {
   data: T;
   columns: Array<keyof T>;
+  api: string;
 }
 
-const GridRow = <T extends {}>({ data, columns }: GridRow<T>) => {
+const GridRow = <T extends {}>({ data, columns, api }: GridRow<T>) => {
   return (
     <tr>
       {columns.map((column: keyof T, index: number) => (
         <td key={`${data[column]}${index}`}>{`${data[column]}`}</td>
       ))}
       <td>
-        <button>Edit</button>
-        <button>Delete</button>
+        <Link
+          href={`${api.replace("/api", "")}/edit/${data["_id"].toString()}`}
+        >
+          <a className="btn btn-primary m-1 m-1">Edit</a>
+        </Link>
+        
+        <Link href={`${api}/${data['_id']}`}>
+          <span className="btn btn-secondary m-1 m-1">Delete</span>
+        </Link>
       </td>
     </tr>
   );

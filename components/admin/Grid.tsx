@@ -32,13 +32,16 @@ const Grid = <T extends {}>({ url, keyExtractor, columns }: Grid<T>) => {
     rows && (
       <table>
         <thead>
-          {columns.map((column) => (
-            <th key={self.crypto.randomUUID()}>{column.toString()}</th>
-          ))}
+          <tr>
+            {columns.map((column) => (
+              <th key={self.crypto.randomUUID()}>{column.toString()}</th>
+            ))}
+          </tr>
         </thead>
         <tbody>
           {rows.map((item) => (
             <GridRow<T>
+              api={url}
               key={keyExtractor(item)}
               data={item}
               columns={columns}
