@@ -19,6 +19,7 @@ const Users = () => {
       </Head>
       <h1>Users</h1>
       <Grid<User>
+        columns={["email", "name", "surname", "userConfirmed"]}
         url="/api/auth"
         keyExtractor={(item) => item._id.toString()}
       />
