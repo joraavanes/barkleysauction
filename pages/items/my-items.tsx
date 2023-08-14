@@ -1,8 +1,9 @@
 import { GetServerSideProps } from "next";
-import Link from "next/link";
-import { itemsService } from "../../src/modules/items";
 import { NextPageWithLayout } from "../_app";
-import { Item } from "../../src/modules/items/item.model";
+import { itemsService } from "@/src/modules/items";
+import { Item as ItemModel } from "@/src/modules/items/item.model";
+import { Item } from "@/components/item/Item";
+import MyItems from "@/components/item/my-items";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const items = await itemsService.getItems();
@@ -18,42 +19,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 };
 
-const MyItemsPage: NextPageWithLayout<{ items: Item[] }> = ({ items }) => {
+const MyItemsPage: NextPageWithLayout<{ items: ItemModel[] }> = ({ items }) => {
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>title</th>
-            <th>Description</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item) => (
-            <tr key={item._id.toString()}>
-              <td>{item.title}</td>
-              <td>{item.description}</td>
-              <td>
-                <Link href={`/items/edit/${item._id}`}>Edit</Link>
-              </td>
-              <td>
-                |{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    fetch(`/api/items/${item._id.toString()}`, {
-                      method: "DELETE",
-                    }).then(console.log);
-                  }}
-                >
-                  Remove
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Item>
+        <MyItems items={items} />
+      </Item>
     </>
   );
 };
