@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
@@ -39,10 +40,22 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
         <div className="row">
           <div className="col-12 col-sm-6 col-md-8">
             <div className="row">
-              <div className="col-12 col-md-4 col-lg-3">
-                <img src={item.imageUrl} className="img-fluid" />
+              <div className="col-12 col-md-5 col-lg-4">
+                <div className="position-relative w-100">
+                  <Image
+                    src={item.imageUrl}
+                    className="img-fluid"
+                    alt={item.title}
+                    layout="responsive"
+                    width={500}
+                    height={500}
+                    objectFit="contain"
+                    placeholder="blur"
+                    blurDataURL="/icon.png"
+                  />
+                </div>
               </div>
-              <div className="col-12 col-md-8 col-lg-9">
+              <div className="col-12 col-md-7 col-lg-8">
                 <h1>
                   {item.title}
                   {item.bids?.length ? (
