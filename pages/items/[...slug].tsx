@@ -41,10 +41,10 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
           <div className="col-12 col-sm-6 col-md-8">
             <div className="row">
               <div className="col-12 col-md-5 col-lg-4">
-                <div className="position-relative w-100">
+                <div className="position-relative w-100 mt-3 mb-3">
                   <Image
                     src={item.imageUrl}
-                    className="img-fluid"
+                    className="img-fluid rounded"
                     alt={item.title}
                     layout="responsive"
                     width={500}
@@ -56,15 +56,17 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
                 </div>
               </div>
               <div className="col-12 col-md-7 col-lg-8">
-                <h1>
-                  {item.title}
-                  {item.bids?.length ? (
-                    <>Last bid for &#36;{Math.max(...item.bids)}</>
-                  ) : null}
-                </h1>
-                <p>{id}</p>
-                <p>{item.title}</p>
-                <p>{item.description}</p>
+                <div className="d-block mt-4 mb-3">
+                  <h1>
+                    {item.title}
+                    {item.bids?.length ? (
+                      <>Last bid for &#36;{Math.max(...item.bids)}</>
+                    ) : null}
+                  </h1>
+                  <p>{id}</p>
+                  <p>{item.title}</p>
+                  <p>{item.description}</p>
+                </div>
               </div>
 
               <div className="col-12 col-sm-6 col-md-8">
