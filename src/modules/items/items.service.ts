@@ -74,13 +74,12 @@ export class ItemsService {
             throw new Error('Item does not exist');
 
         if (files.image) {
+            model.imageUrl = await this.storeItemImage(files);
 
             if (item.imageUrl) {
                 const pathToRemove = this.fileService.getAbsolutePathFromRelative(path.join('public', item.imageUrl));
                 await this.fileService.removeFile(pathToRemove);
             }
-
-            model.imageUrl = await this.storeItemImage(files);
         }
 
         const updatedModel = {
