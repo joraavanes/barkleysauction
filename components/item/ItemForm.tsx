@@ -17,13 +17,14 @@ const ItemForm: React.FC<Props> = (props) => {
 
   return (
     <form onSubmit={handleCreateSubmit}>
-      <div>
+      <div className="form-group">
         <label htmlFor="title">Title</label>
         <input
           type="text"
           name="title"
           id="title"
           value={state.item.title}
+          className="form-control"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setState((prev: ItemState) => ({
               ...prev,
@@ -32,22 +33,24 @@ const ItemForm: React.FC<Props> = (props) => {
           }
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="description">Description</label>
-        <input
-          type="text"
+        <textarea
           name="description"
           id="description"
           value={state.item.description}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          className="form-control"
+          cols={10}
+          rows={5}
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
             setState((prev) => ({
               ...prev,
               item: { ...prev.item, description: e.target.value },
             }))
           }
-        />
+        ></textarea>
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="startingBid">Starting bid</label>
         <input
           type="number"
@@ -55,6 +58,7 @@ const ItemForm: React.FC<Props> = (props) => {
           id="startingBid"
           step={0.01}
           value={state.item.startingBid}
+          className="form-control"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setState((prev) => ({
               ...prev,
@@ -63,7 +67,7 @@ const ItemForm: React.FC<Props> = (props) => {
           }
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="image">Image</label>
         <input
           type="file"
@@ -82,8 +86,12 @@ const ItemForm: React.FC<Props> = (props) => {
           }}
         />
       </div>
-      <div>
-        <button type="submit" disabled={state.status === Status.loading}>
+      <div className="form-group">
+        <button
+          type="submit"
+          disabled={state.status === Status.loading}
+          className="btn btn-primary"
+        >
           {state.status === Status.loading ? "Loading ..." : "Add item"}
         </button>
       </div>
