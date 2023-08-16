@@ -10,7 +10,7 @@ import { itemsService } from "../../../src/modules/items";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.query?.id as string;
-  
+
   if (id) {
     const item = await itemsService.findById(id);
 
@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           title: item?.title,
           description: item?.description,
           imageUrl: item?.imageUrl,
-          startingBid: item?.startingBid
+          startingBid: item?.startingBid,
         },
       },
     };
@@ -38,24 +38,33 @@ const EditItemPage: NextPageWithLayout<{ item: Item }> = (props) => {
 
   return (
     <>
-      <h1>Edit an item with id: {router?.query?.id}</h1>
-      <Item>
-        <EditItem id={id} item={props.item} />
-        <ItemStatus />
-      </Item>
+      <Head>
+        <title>Edit {props.item.title}</title>
+      </Head>
+      <div className="container">
+        <div className="row">
+          <div className="col mt-5">
+            <h1>Edit an item with id: {router?.query?.id}</h1>
+            <Item>
+              <EditItem id={id} item={props.item} />
+              <ItemStatus />
+            </Item>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
-EditItemPage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <main>
-      <Head>
-        <title>edit Item</title>
-      </Head>
-      {page}
-    </main>
-  );
-};
+// EditItemPage.getLayout = function getLayout(page: ReactElement) {
+//   return (
+//     <main>
+//       <Head>
+//         <title>edit Item</title>
+//       </Head>
+//       {page}
+//     </main>
+//   );
+// };
 
 export default EditItemPage;

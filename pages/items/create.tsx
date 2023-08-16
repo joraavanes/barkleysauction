@@ -8,24 +8,33 @@ import ItemStatus from "@/components/item/ItemStatus";
 const CreateItemPage: NextPageWithLayout = () => {
   return (
     <>
-      <h1>Create new item</h1>
-      <Item>
-        <CreateItem />
-        <ItemStatus />
-      </Item>
+      <Head>
+        <title>New Item | Barkleys Auction</title>
+      </Head>
+      <div className="container">
+        <div className="row">
+          <div className="col mt-5">
+            <h1>Create new item</h1>
+            <Item>
+              <CreateItem />
+              <ItemStatus />
+            </Item>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
 
-CreateItemPage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <main>
-      <Head>
-        <title>New Item</title>
-      </Head>
-      {page}
-    </main>
-  );
-};
+// CreateItemPage.getLayout = function getLayout(page: ReactElement) {
+//   return (
+//     <main>
+//       <Head>
+//         <title>New Item</title>
+//       </Head>
+//       {page}
+//     </main>
+//   );
+// };
 
 export default CreateItemPage;
