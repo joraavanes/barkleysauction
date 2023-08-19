@@ -7,19 +7,19 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
 
     switch (true) {
         case method === 'GET' && route === 'index':
-            itemsController.index(req, res);
+            return itemsController.index(req, res);
             break;
         case method === 'POST' && route === 'index':
-            itemsController.create(req, res);
+            return itemsController.create(req, res);
             break;
         case method === 'GET':
-            itemsController.findById(req, res);
+            return itemsController.findById(req, res);
             break;
         case method === 'PATCH':
-            itemsController.edit(req, res);
+            return itemsController.edit(req, res);
             break;
         case method === 'DELETE':
-            itemsController.delete(req, res);
+            return itemsController.delete(req, res);
         default:
             break;
     }

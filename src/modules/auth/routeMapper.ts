@@ -7,10 +7,10 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
 
   switch (true) {
     case query === 'index' && method === 'GET':
-      usersController.getUsers(req, res);
+      return usersController.getUsers(req, res);
       break;
     case query === 'index' && method === 'POST':
-      usersController.create(req, res);
+      return usersController.create(req, res);
       break;
   }
 }

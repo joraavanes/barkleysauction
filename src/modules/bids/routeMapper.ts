@@ -7,10 +7,10 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
 
   switch (true) {
     case method === 'GET' && route === 'index':
-      bidsController.find(req, res);
+      return bidsController.find(req, res);
       break;
     case method === 'GET':
-      bidsController.findById(req, res);
+      return bidsController.findById(req, res);
       break;
     default:
       break;
