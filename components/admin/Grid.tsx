@@ -33,26 +33,33 @@ const Grid = <T extends { _id: any }>({
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={self.crypto.randomUUID()}>{column.toString()}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows &&
-          rows.map((item) => (
-            <GridRow<T>
-              api={url}
-              key={keyExtractor(item)}
-              data={item}
-              columns={columns}
-            />
-          ))}
-      </tbody>
-    </table>
+    <div className="table-responsive">
+      <table className="table">
+        <thead>
+          <tr>
+            {columns.map((column) => (
+              <th key={self.crypto.randomUUID()} scope="col">
+                {column.toString()}
+              </th>
+            ))}
+            <th scope="col" style={{ width: 200 }}>
+              &nbsp;
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows &&
+            rows.map((item) => (
+              <GridRow<T>
+                api={url}
+                key={keyExtractor(item)}
+                data={item}
+                columns={columns}
+              />
+            ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

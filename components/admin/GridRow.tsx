@@ -14,7 +14,9 @@ const GridRow = <T extends { _id: any }>({
   return (
     <tr>
       {columns.map((column: keyof T, index: number) => (
-        <td key={`${data[column]}${index}`}>{`${data[column]}`}</td>
+        <td key={`${data[column]}${index}`}>
+          <p title={String(data[column])}>{`${data[column]}`}</p>
+        </td>
       ))}
       <td>
         <Link
