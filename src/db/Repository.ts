@@ -6,15 +6,16 @@ import {
   WithId,
   OptionalUnlessRequiredId
 } from "mongodb";
+import { Inject } from "typedi";
 import { MongoDbClient } from "../db";
 import { IRead, IWrite } from "./types";
 
 export abstract class BaseRepository<T extends Document> implements IRead<T>, IWrite<T>{
-  private collectionName: string;
+  @Inject()
   private mongoClient: MongoDbClient;
+  private collectionName: string;
 
-  constructor(mongoClient: MongoDbClient, collectionName: string) {
-    this.mongoClient = mongoClient;
+  constructor(collectionName: string) {
     this.collectionName = collectionName;
   }
 
