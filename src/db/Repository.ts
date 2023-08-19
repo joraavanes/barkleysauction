@@ -37,6 +37,11 @@ export abstract class BaseRepository<T extends Document> implements IRead<T>, IW
     return collection.findOne(filter);
   }
 
+  async filter(filter: Filter<T>) {
+    const collection = await this.getCollection();
+    return collection.find(filter).toArray();
+  }
+
   async create(item: OptionalUnlessRequiredId<T>): Promise<InsertOneResult> {
     const collection = await this.getCollection();
     return collection.insertOne(item);
