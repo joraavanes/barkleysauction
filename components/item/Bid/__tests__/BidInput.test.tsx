@@ -25,7 +25,7 @@ test("should display the new bid on the screen", async () => {
   await userEvent.type(bidInput, "100");
   await userEvent.click(submitBtn);
 
-  await waitForElementToBeRemoved(() => screen.getByText(/loading/i), {
+  await waitForElementToBeRemoved(() => screen.getByRole(/pending/i), {
     timeout: 1000,
   });
 
@@ -44,7 +44,7 @@ test("should display error on the screen if bid is not greater than existing bid
   await userEvent.type(bidInput, "90");
   await userEvent.click(submitBtn);
 
-  await waitForElementToBeRemoved(() => screen.getByText(/loading/i), {
+  await waitForElementToBeRemoved(() => screen.getByRole(/pending/i), {
     timeout: 1000,
   });
 
