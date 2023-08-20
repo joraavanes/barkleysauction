@@ -73,4 +73,8 @@ export class ItemsController {
             return res.status(400).send({ error: error.message });
         }
     }
+
+    notFound(req: NextApiRequest, res: NextApiResponse) {
+        return res.status(404).send({});
+    }
 }

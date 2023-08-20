@@ -21,6 +21,7 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
         case method === 'DELETE':
             return itemsController.delete(req, res);
         default:
+            return itemsController.notFound(req, res);
             break;
     }
 }

@@ -20,4 +20,8 @@ export class UsersController {
     const result = await this.usersService.createUser(model);
     res.status(200).send(result);
   }
+
+  notFound(req: NextApiRequest, res: NextApiResponse) {
+    return res.status(404).send({});
+  }
 }
