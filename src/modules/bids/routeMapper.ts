@@ -12,7 +12,14 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
     case method === 'GET':
       return bidsController.findById(req, res);
       break;
+    case method === 'POST':
+      return bidsController.create(req, res);
+      break;
+    case method === 'DELETE':
+      return bidsController.delete(req, res);
+      break;
     default:
+      return bidsController.notfound(req, res);
       break;
   }
 }
