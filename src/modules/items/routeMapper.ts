@@ -3,13 +3,13 @@ import { itemsController } from ".";
 
 async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
-    const route = req.url?.split('/').slice(3)[0] ?? 'index';
+    const route = req.url?.split('/').slice(3).join('/') || 'index';
 
     switch (true) {
         case method === 'GET' && route === 'index':
             return itemsController.index(req, res);
             break;
-        case method === 'POST' && route === 'index':
+        case method === 'POST':
             return itemsController.create(req, res);
             break;
         case method === 'GET':

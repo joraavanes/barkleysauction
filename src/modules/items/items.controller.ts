@@ -4,13 +4,13 @@ import { plainToClass } from "class-transformer";
 import { ItemsService } from "./items.service";
 import { parseBody } from "../../utils/bodyParser";
 import { CreateItem } from "./dtos/createItem.dto";
-import { FileService } from "../file/file.service";
+import { BidsService } from "../bids/bids.service";
 
 @Service()
 export class ItemsController {
     constructor(
         private itemsService: ItemsService,
-        private fileService: FileService
+        private bidsService: BidsService,
     ) { }
 
     async index(req: NextApiRequest, res: NextApiResponse) {
@@ -19,7 +19,7 @@ export class ItemsController {
     }
 
     async findById(req: NextApiRequest, res: NextApiResponse) {
-        const id = req.query.id?.toString();
+        const id = req.query.slug && req.query.slug[0];
         if (!id) {
             return res.status(400).json({
                 err: 'id is not found'
@@ -41,8 +41,8 @@ export class ItemsController {
                 .send(result);
         }
         catch (err) {
-            console.log(err);
-            return res.status(400).send(err);
+            // @ts-ignore
+            return res.status(400).send({ error: err.message });
         }
     }
 
@@ -50,26 +50,31 @@ export class ItemsController {
         try {
             const { fields, files } = await parseBody(req);
 
-            const id = req.query?.id as string;
+            const itemId = req.query.slug && req.query.slug[0] as string;
+            if (!itemId) return res.status(400).send({ error: 'Item id is required.' });
+
             const body = plainToClass(CreateItem, fields);
 
-            const result = await this.itemsService.editItem(id, body, files);
+            const result = await this.itemsService.editItem(itemId, body, files);
 
             return res.send(result);
 
-        } catch (error: any) { //todo: error type safety
+        } catch (error) {
+            // @ts-ignore
             return res.status(400).send({ error: error.message });
         }
     }
 
     async delete(req: NextApiRequest, res: NextApiResponse) {
         try {
-            const id = req.query?.id as string;
+            const itemId = req.query.slug && req.query.slug[0] as string;
+            if (!itemId) return res.status(400).send({ error: 'Item id is required.' });
 
-            const result = await this.itemsService.deleteItem(id);
+            const result = await this.itemsService.deleteItem(itemId);
             return res.send(result);
 
-        } catch (error: any) { //todo: error type safety
+        } catch (error: any) {
+            // @ts-ignore
             return res.status(400).send({ error: error.message });
         }
     }
