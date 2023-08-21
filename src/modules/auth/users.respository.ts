@@ -17,7 +17,6 @@ export class UsersRepository {
   }
 
   async findById(id: string) {
-    console.log(id);
     return (await this.mongo.getClient())
       .db()
       .collection('users')
