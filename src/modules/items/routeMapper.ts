@@ -12,6 +12,9 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
         case method === 'POST':
             return itemsController.create(req, res);
             break;
+        case method === 'GET' && /^\w{24}\/bids$/gm.test(route):
+            return itemsController.findBidsOfItem(req, res);
+            break;
         case method === 'GET':
             return itemsController.findById(req, res);
             break;

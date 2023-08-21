@@ -29,6 +29,15 @@ export class ItemsController {
         const result = await this.itemsService.findById(id);
         return res.status(200).json(result);
     }
+    
+    async findBidsOfItem(req: NextApiRequest, res: NextApiResponse) {
+        const itemId = req.query.slug && req.query.slug[0] as string;
+
+        if (!itemId) return res.status(400).send({ error: 'Item id is required' });
+
+        const bids = await this.bidsService.getBidsOfItem(itemId);
+        return res.send(bids);
+    }
 
     async create(req: NextApiRequest, res: NextApiResponse) {
         try {
