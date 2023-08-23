@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ViewItem } from "@/shared/types/Item";
-import styles from './styles/ItemCard.module.css'
+import { ItemCardStyled } from "./styles/ItemCard.styled";
 
 type Props = {
   item: ViewItem;
@@ -10,7 +10,7 @@ type Props = {
 const ItemCard: React.FC<Props> = ({ item }) => {
   return (
     <div className="col-12 col-sm-6 col-md-3 col-lg-2">
-      <div className={`card ${styles.itemCard}`} key={item._id.toString()}>
+      <ItemCardStyled>
         <div className="card-body">
           <Link href={`/items/${item._id}/${item.title.replaceAll(" ", "-")}`}>
             <Image
@@ -31,7 +31,7 @@ const ItemCard: React.FC<Props> = ({ item }) => {
             <a className="btn btn-primary">Check out</a>
           </Link>
         </div>
-      </div>
+      </ItemCardStyled>
     </div>
   );
 };
