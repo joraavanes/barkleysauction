@@ -1,17 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 import { Status } from "@/shared/types";
-
-export type Item = {
-  title: string;
-  description: string;
-  startingBid: string;
-  image?: File | null;
-  UserId: string;
-  itemId?: string;
-};
+import { Item as ItemModel } from "@/shared/types/Item";
 
 export interface ItemState {
-  item: Item;
+  item: ItemModel;
   status: Status;
   error?: string;
 }

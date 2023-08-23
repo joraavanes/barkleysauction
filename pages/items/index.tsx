@@ -1,16 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import { GetStaticProps } from "next";
 import { itemsService } from "../../src/modules/items";
 import type { NextPageWithLayout } from "../_app";
+import { ViewItem } from "@/shared/types/Item";
 
 interface IndexProps {
-  items: Array<{
-    _id: string;
-    title: string;
-    description: string;
-    imageUrl: number;
-  }>;
+  items: Array<ViewItem>;
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -35,24 +32,38 @@ const Index: NextPageWithLayout<IndexProps> = ({ items }) => {
       <Head>
         <title>Current Listed Items</title>
       </Head>
-      <h2>Index</h2>
-      <pre>
-        {/* {JSON.stringify(items)} */}
-        {items.map((item) => (
-          <div key={item._id.toString()}>
-            <h2>
-              {item.title} - {item._id}
-            </h2>
-            <p>{item.description}</p>
-            <p>{item.imageUrl}</p>
-            <Link
-              href={`/items/${item._id}/${item.title.replaceAll(" ", "-")}`}
-            >
-              <a>Check out</a>
-            </Link>
-          </div>
-        ))}
-      </pre>
+      <div className="container-fluid">
+        <div className="row mt-3 ms-2 me-2">
+          {items.map((item) => (
+            <div className="col-12 col-sm-6 col-md-3 col-lg-2">
+              <div className="card" key={item._id.toString()}>
+                <div className="card-body">
+                  <Image
+                    src={item.imageUrl}
+                    className="img-fluid rounded"
+                    width={200}
+                    height={200}
+                    objectFit="contain"
+                    title={item.title}
+                  />
+                  <h5 className="one-line-ellipsis" title={item.title}>
+                    {item.title} - {item._id}
+                  </h5>
+                  <p className="line-clamp-3">{item.description}</p>
+                  <Link
+                    href={`/items/${item._id}/${item.title.replaceAll(
+                      " ",
+                      "-"
+                    )}`}
+                  >
+                    <a className="btn btn-primary">Check out</a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

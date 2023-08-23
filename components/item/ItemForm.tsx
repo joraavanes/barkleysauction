@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent } from "react";
-import { Item, ItemState, useItem } from "./Item";
+import { ItemState, useItem } from "./Item";
+import { Item } from "@/shared/types/Item";
 import { Status } from "@/shared/types";
 
 type Props = {
