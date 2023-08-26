@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import useQuery from "@/hooks/useQuery";
 import { BidState, Status, useBid } from "./Bid";
-import { useEffect } from "react";
 import { ViewBid } from "@/shared/types/bid";
+import { BidGroupStyled, BidItemStyled } from "./styles";
 
 export const LatestBids: React.FC = () => {
   const {
@@ -26,13 +27,20 @@ export const LatestBids: React.FC = () => {
     <>
       <h3>Bids: {bids ? bids.length : null}</h3>
       {bids?.length ? (
-        <ul>
+        <BidGroupStyled>
           {bids
             .sort((a, b) => b.price - a.price)
             .map((bid) => (
-              <li key={bid._id}>{bid.price}</li>
+              <BidItemStyled key={bid._id}>
+                <div className="media-body ml-3">
+                  <h5 className="mt-0">{bid.bidder}</h5>
+                  has bid <i className="fas fa-pound-sign xs-margin"></i>
+                  {bid.price.toLocaleString()} -{" "}
+                  {bid.createdAt.toLocaleString()}
+                </div>
+              </BidItemStyled>
             ))}
-        </ul>
+        </BidGroupStyled>
       ) : (
         <p>No bids has received yet!</p>
       )}
