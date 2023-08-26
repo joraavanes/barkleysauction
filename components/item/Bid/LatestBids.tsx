@@ -1,20 +1,41 @@
-import { useBid } from "./Bid";
+import useQuery from "@/hooks/useQuery";
+import { BidState, Status, useBid } from "./Bid";
+import { useEffect } from "react";
+import { ViewBid } from "@/shared/types/bid";
 
 export const LatestBids: React.FC = () => {
-  const { state } = useBid();
-  const { bids } = state;
+  const {
+    state: { bids, itemId },
+    setState,
+  } = useBid();
+
+  const { data } = useQuery(`/api/items/${itemId}/bids`, `bids/${itemId}`, {
+    timeout: 5000,
+    ContentType: "application/json",
+  });
+
+  useEffect(() => {
+    setState((prev: BidState) => ({
+      ...prev,
+      bids: data as Array<ViewBid>,
+      status: Status.success,
+    }));
+  }, [data]);
+
   return (
     <>
       <h3>Bids: {bids ? bids.length : null}</h3>
-      {/* {bids?.length ? (
+      {bids?.length ? (
         <ul>
           {bids
-            .sort((a, b) => b - a)
+            .sort((a, b) => b.price - a.price)
             .map((bid) => (
-              <li key={Math.round(Math.random() * 10000)}>{bid}</li>
+              <li key={bid._id}>{bid.price}</li>
             ))}
         </ul>
-      ) : null} */}
+      ) : (
+        <p>No bids has received yet!</p>
+      )}
     </>
   );
 };
