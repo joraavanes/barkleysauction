@@ -1,4 +1,6 @@
+import { useRouter } from "next/router";
 import React, { createContext, useContext, useState } from "react";
+import { ViewBid } from "@/shared/types/bid";
 
 interface BidProps {
   children?: JSX.Element | JSX.Element[];
@@ -8,26 +10,30 @@ export enum Status {
   idle,
   pending,
   success,
-  error
+  error,
 }
 
-interface BidState {
+export type BidState = {
+  itemId?: string;
   status: Status;
-  bids: number[];
+  bids: Array<ViewBid>;
   newBid?: number;
-}
+};
 
 interface BidContextType {
   state: BidState;
-  setState(state: BidState): void;
+  setState: React.Dispatch<React.SetStateAction<BidState>>;
 }
 
 const BidContext = createContext<BidContextType | null>(null);
 
 export const Bid: React.FC<BidProps> = ({ children }) => {
+  const itemId = useRouter().asPath.split("/").at(2) || undefined;
+
   const [state, setState] = useState<BidState>({
-    bids: [53, 39, 23, 5, 91, 16, 6],
-    status: Status.idle
+    itemId,
+    bids: [],
+    status: Status.idle,
   });
 
   return (
@@ -39,7 +45,7 @@ export const Bid: React.FC<BidProps> = ({ children }) => {
 
 export const useBid = () => {
   const state = useContext(BidContext) as BidContextType;
-  if(!state)
-    throw new Error('Component must be within the BidContext.Provider');
+  if (!state)
+    throw new Error("Component must be within the BidContext.Provider");
   return state;
 };

@@ -6,7 +6,7 @@ export const LatestBids: React.FC = () => {
   return (
     <>
       <h3>Bids: {bids ? bids.length : null}</h3>
-      {bids?.length ? (
+      {/* {bids?.length ? (
         <ul>
           {bids
             .sort((a, b) => b - a)
@@ -14,7 +14,7 @@ export const LatestBids: React.FC = () => {
               <li key={Math.round(Math.random() * 10000)}>{bid}</li>
             ))}
         </ul>
-      ) : null}
+      ) : null} */}
     </>
   );
 };

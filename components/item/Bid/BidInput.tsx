@@ -24,10 +24,10 @@ export const BidInput: React.FC = () => {
     e.preventDefault();
 
     setState({ status: Status.pending, newBid: bid, bids });
-    updateBid(bid, bids).then(
-      (state) => setState({ status: Status.success, bids: state }),
-      (error) => setState({ status: Status.error, bids })
-    );
+    // updateBid(bid, bids).then(
+    //   (state) => setState({ status: Status.success, bids: state }),
+    //   (error) => setState({ status: Status.error, bids })
+    // );
   };
 
   return (
