@@ -15,7 +15,10 @@ const GridRow = <T extends { _id: any }>({
     <tr>
       {columns.map((column: keyof T, index: number) => (
         <td key={`${data[column]}${index}`}>
-          <p title={String(data[column])}>{`${data[column]}`}</p>
+          <p
+            title={String(data[column])}
+            className="line-clamp-1"
+          >{`${data[column]}`}</p>
         </td>
       ))}
       <td>
