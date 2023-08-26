@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
 import React, { createContext, useContext, useState } from "react";
 import { ViewBid } from "@/shared/types/bid";
 
 interface BidProps {
+  itemId: string;
   children?: JSX.Element | JSX.Element[];
 }
 
@@ -27,9 +27,7 @@ interface BidContextType {
 
 const BidContext = createContext<BidContextType | null>(null);
 
-export const Bid: React.FC<BidProps> = ({ children }) => {
-  const itemId = useRouter().asPath.split("/").at(2) || undefined;
-
+export const Bid: React.FC<BidProps> = ({ children, itemId }) => {
   const [state, setState] = useState<BidState>({
     itemId,
     bids: [],

@@ -81,7 +81,7 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4">
-            <Bid>
+            <Bid itemId={item._id}>
               <BidInput />
               <BidStatus />
               <LatestBids />
