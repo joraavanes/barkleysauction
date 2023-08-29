@@ -1,16 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
 import { ViewBid } from "@/shared/types/bid";
+import { Status } from "@/shared/types";
 
 interface BidProps {
   itemId: string;
   children?: JSX.Element | JSX.Element[];
-}
-
-export enum Status {
-  idle,
-  pending,
-  success,
-  error,
 }
 
 export type BidState = {

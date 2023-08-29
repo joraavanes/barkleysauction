@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import moment from "moment";
 import useQuery from "@/hooks/useQuery";
-import { BidState, Status, useBid } from "./Bid";
+import { BidState, useBid } from "./Bid";
 import { ViewBid } from "@/shared/types/bid";
+import { Status } from "@/shared/types";
 import { BidGroupStyled, BidItemStyled } from "./styles";
 import Avatar, { genConfig } from "react-nice-avatar";
 

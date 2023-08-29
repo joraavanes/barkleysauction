@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
-import { Status, useBid } from "./Bid";
+import { useBid } from "./Bid";
 import { Button } from "./Button";
+import { Status } from "@/shared/types";
 
 const sleep = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
@@ -23,7 +24,7 @@ export const BidInput: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    setState({ status: Status.pending, newBid: bid, bids });
+    setState({ status: Status.loading, newBid: bid, bids });
     // updateBid(bid, bids).then(
     //   (state) => setState({ status: Status.success, bids: state }),
     //   (error) => setState({ status: Status.error, bids })
