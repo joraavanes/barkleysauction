@@ -4,6 +4,7 @@ import useQuery from "@/hooks/useQuery";
 import { BidState, Status, useBid } from "./Bid";
 import { ViewBid } from "@/shared/types/bid";
 import { BidGroupStyled, BidItemStyled } from "./styles";
+import Avatar, { genConfig } from "react-nice-avatar";
 
 const bidMoment = (timestamp: number) => {
   const currentTime = moment();
@@ -49,11 +50,22 @@ export const LatestBids: React.FC = () => {
             .sort((a, b) => b.price - a.price)
             .map((bid) => (
               <BidItemStyled key={bid._id}>
-                <div className="media-body ml-3">
-                  <h5 className="mt-0">{bid.bidder}</h5>
-                  has bid <i className="fas fa-pound-sign xs-margin"></i>
-                  {bid.price.toLocaleString()} -{" "}
-                  {bidMoment(bid.createdAt.valueOf())}
+                <div className="row">
+                  <div className="col-2">
+                    <Avatar
+                      {...genConfig()}
+                      style={{
+                        width: "3rem",
+                        height: "3rem",
+                      }}
+                    />
+                  </div>
+                  <div className="col-10">
+                    <h5 className="line-clamp-1">{bid.bidder}</h5>
+                    has bid <i className="fas fa-pound-sign xs-margin"></i>
+                    {bid.price.toLocaleString()} -{" "}
+                    {bidMoment(bid.createdAt.valueOf())}
+                  </div>
                 </div>
               </BidItemStyled>
             ))}
