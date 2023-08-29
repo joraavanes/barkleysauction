@@ -46,14 +46,10 @@ function useMutate<T extends { [K: string]: string | Blob | null }>(url: string,
 
       const response = await window.fetch(url, {
         method: options.method,
-        // headers: {
-        //   "Content-Type": "application/json"
-        // },
-        // body: JSON.stringify(payload),
         headers: {
           ...(options.ContentType && { "Content-Type": options.ContentType })
         },
-        body: formData,
+        body: options.ContentType === 'application/json' ? JSON.stringify(payload) : formData,
         signal: controller.signal
       });
 
