@@ -17,7 +17,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout =
