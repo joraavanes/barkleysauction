@@ -1,35 +1,50 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useBid } from "./Bid";
 import { Button } from "./Button";
+import { queryClient } from "@/pages/_app";
+import useMutate from "@/hooks/useMutate";
 import { Status } from "@/shared/types";
 
-const sleep = (timeout: number) =>
-  new Promise((resolve) => setTimeout(resolve, timeout));
-
-async function updateBid(newBid: number, lastBids: number[]) {
-  await sleep(800);
-  if (newBid <= Math.max(...lastBids)) {
-    return Promise.reject({ message: "Bid must be higher than previous ones" });
-  }
-  return [newBid, ...lastBids].slice(0, 10);
-}
-
 export const BidInput: React.FC = () => {
+  const [bid, setBid] = useState(0);
   const {
-    state: { newBid, bids, status },
+    state: { itemId },
     setState,
   } = useBid();
-  const [bid, setBid] = useState(0);
+
+  const {
+    mutate,
+    state: { status: mutationStatus },
+  } = useMutate("/api/bids", {
+    method: "POST",
+    timeout: 5000,
+    ContentType: "application/json",
+  });
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    setState({ status: Status.loading, newBid: bid, bids });
-    // updateBid(bid, bids).then(
-    //   (state) => setState({ status: Status.success, bids: state }),
-    //   (error) => setState({ status: Status.error, bids })
-    // );
+    setState((prev) => ({
+      ...prev,
+      status: Status.loading,
+      newBid: bid,
+    }));
+
+    mutate({
+      price: bid,
+      bidder: "64e10f1a4ae5ba3a51cfaec7",
+      item: itemId!,
+    });
   };
+
+  useEffect(() => {
+    setState((prev) => ({ ...prev, status: mutationStatus }));
+
+    if (mutationStatus === Status.success) {
+      setBid(0);
+      queryClient.invalidateQueries({ queryKey: [`bids/${itemId}`] });
+    }
+  }, [mutationStatus]);
 
   return (
     <>
