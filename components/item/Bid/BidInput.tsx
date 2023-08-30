@@ -31,14 +31,15 @@ export const BidInput: React.FC = () => {
     }));
 
     mutate({
-      price: bid,
+      price: bid.toString(),
       bidder: "64e10f1a4ae5ba3a51cfaec7",
       item: itemId!,
     });
   };
 
   useEffect(() => {
-    setState((prev) => ({ ...prev, status: mutationStatus }));
+    if (mutationStatus !== Status.success)
+      setState((prev) => ({ ...prev, status: mutationStatus }));
 
     if (mutationStatus === Status.success) {
       setBid(0);

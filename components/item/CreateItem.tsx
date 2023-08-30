@@ -10,7 +10,7 @@ const CreateItem: React.FC = () => {
   const {
     state: { status, errorMessage, responseBody },
     mutate,
-  } = useMutate<Item>("/api/items", {
+  } = useMutate("/api/items", {
     method: "POST",
     timeout: 5000,
   });
