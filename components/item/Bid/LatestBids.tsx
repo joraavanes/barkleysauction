@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import moment from "moment";
 import useQuery from "@/hooks/useQuery";
+import Avatar, { genConfig } from "react-nice-avatar";
 import { BidState, useBid } from "./Bid";
 import { ViewBid } from "@/shared/types/bid";
 import { Status } from "@/shared/types";
 import { BidGroupStyled, BidItemStyled } from "./styles";
-import Avatar, { genConfig } from "react-nice-avatar";
+import { BidsSpinnerContainer } from "./styles/BidsSpinnerContainer.styled";
 
 const bidMoment = (timestamp: number) => {
   const currentTime = moment();
@@ -25,7 +26,7 @@ const bidMoment = (timestamp: number) => {
 
 export const LatestBids: React.FC = () => {
   const {
-    state: { bids, itemId },
+    state: { bids, itemId, status },
     setState,
   } = useBid();
 
@@ -46,31 +47,40 @@ export const LatestBids: React.FC = () => {
     <>
       <h3>Bids: {bids ? bids.length : null}</h3>
       {bids?.length ? (
-        <BidGroupStyled>
-          {bids
-            .sort((a, b) => b.price - a.price)
-            .map((bid) => (
-              <BidItemStyled key={bid._id}>
-                <div className="row">
-                  <div className="col-2">
-                    <Avatar
-                      {...genConfig()}
-                      style={{
-                        width: "3rem",
-                        height: "3rem",
-                      }}
-                    />
+        <div className="position-relative">
+          {status === Status.loading && (
+            <BidsSpinnerContainer>
+              <div className="spinner-border text-danger" role="loading">
+                <span className="sr-only"></span>
+              </div>
+            </BidsSpinnerContainer>
+          )}
+          <BidGroupStyled>
+            {bids
+              .sort((a, b) => b.price - a.price)
+              .map((bid) => (
+                <BidItemStyled key={bid._id} role="listitem">
+                  <div className="row">
+                    <div className="col-2 d-flex justify-content-center">
+                      <Avatar
+                        {...genConfig()}
+                        style={{
+                          width: "3rem",
+                          height: "3rem",
+                        }}
+                      />
+                    </div>
+                    <div className="col-10">
+                      <h5 className="line-clamp-1">{bid.bidder}</h5>
+                      has bid <i className="fas fa-pound-sign xs-margin"></i>
+                      {bid.price.toLocaleString()} -{" "}
+                      {bidMoment(bid.createdAt.valueOf())}
+                    </div>
                   </div>
-                  <div className="col-10">
-                    <h5 className="line-clamp-1">{bid.bidder}</h5>
-                    has bid <i className="fas fa-pound-sign xs-margin"></i>
-                    {bid.price.toLocaleString()} -{" "}
-                    {bidMoment(bid.createdAt.valueOf())}
-                  </div>
-                </div>
-              </BidItemStyled>
-            ))}
-        </BidGroupStyled>
+                </BidItemStyled>
+              ))}
+          </BidGroupStyled>
+        </div>
       ) : (
         <p>No bids has received yet!</p>
       )}
