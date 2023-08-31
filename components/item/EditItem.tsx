@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import useMutate from "@/hooks/useMutate";
 import ItemForm from "./ItemForm";
-import { Item, useItem } from "./Item";
+import { useItem } from "./Item";
+import { Item } from "@/shared/types/Item";
 
 type Props = {
   id?: string;

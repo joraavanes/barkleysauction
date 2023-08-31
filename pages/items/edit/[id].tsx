@@ -7,6 +7,7 @@ import ItemStatus from "@/components/item/ItemStatus";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { itemsService } from "../../../src/modules/items";
+import { Item as ItemType } from "@/shared/types/Item";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.query?.id as string;
@@ -31,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const EditItemPage: NextPageWithLayout<{ item: Item }> = (props) => {
+const EditItemPage: NextPageWithLayout<{ item: ItemType }> = (props) => {
   const router = useRouter();
 
   const id = router.query?.id as string;

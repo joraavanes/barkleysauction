@@ -2,7 +2,7 @@ export type ViewItem = {
   _id: string;
   title: string;
   description: string;
-  imageUrl: number;
+  imageUrl: string;
 };
 
 export type Item = {
