@@ -24,31 +24,31 @@ a {
   text-decoration: none;
 }
 
-.btn-primary {
-  background-color: var(--primary-pink);
-}
+/* .btn-primary {
+  background-color: var(--primary-pink) !important;
+} */
 
 .btn-primary {
-  background-color: grey;
-  border-color: grey;
+  background-color: grey !important;
+  border-color: grey !important;
   transition: all 0.3s ease-in-out;
   &:hover,
   &:disabled {
-    background-color: var(--primary-pink);
-    border-color: var(--primary-pink);
+    background-color: var(--primary-pink) !important;
+    border-color: var(--primary-pink) !important;
   }
   &:not(:disabled):not(.disabled):active {
-    background-color: var(--primary-pink);
-    border-color: var(--primary-pink);
+    background-color: var(--primary-pink) !important;
+    border-color: var(--primary-pink) !important;
     box-shadow: 0 0 0 0.2rem var(--primary-pink);
   }
   &:not(:disabled):not(.disabled):active:focus,
   &:focus {
-    box-shadow: 0 0 0 0.2rem var(--primary-pink);
+    box-shadow: 0 0 0 0.2rem var(--primary-pink) !important;
   }
   &:focus {
-    background-color: var(--primary-pink);
-    border-color: var(--primary-pink);
+    background-color: var(--primary-pink) !important;
+    border-color: var(--primary-pink) !important;
   }
 }
 
@@ -96,8 +96,8 @@ td {
 /* End Grid styles */
 
 .col {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .nav-link:hover,
@@ -107,7 +107,7 @@ td {
 }
 
 .nav-link {
-  color: #dedede;
+  color: #dedede !important;
 }
 
 .nav-link:hover {
