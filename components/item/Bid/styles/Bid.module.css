@@ -1,0 +1,31 @@
+.bidInput {
+  width: 65%;
+  transition: all 0.5s ease-in-out;
+
+  border-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.bidInput:hover,
+.bidInput:active,
+.bidInput:focus {
+  outline: none;
+  border-color: #f91890 !important;
+  box-shadow: 0 10px 28px -16px !important;
+}
+
+.bidSubmitBtn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 35%;
+}
+
+.bidSubmitBtn:focus,
+.bidSubmitBtn:active,
+.bidSubmitBtn:not(:disabled):not(.disabled):focus,
+.bidSubmitBtn:not(:disabled):not(.disabled):active {
+  box-shadow: none !important;
+}

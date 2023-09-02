@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { queryClient } from "@/pages/_app";
 import useMutate from "@/hooks/useMutate";
 import { Status } from "@/shared/types";
+import styles from "./styles/Bid.module.css";
 
 export const BidInput: React.FC = () => {
   const [bid, setBid] = useState(0);
@@ -50,14 +51,20 @@ export const BidInput: React.FC = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          name="bid"
-          id="bid"
-          value={bid}
-          onChange={(e) => setBid(e.target.valueAsNumber)}
-        />
-        <Button>Add bid</Button>
+        <div className="">
+          <div className="d-flex justify-content-around mt-3 mb-3">
+            <input
+              className={`${styles.bidInput} form-control`}
+              type="number"
+              step="0.01"
+              name="bid"
+              id="bid"
+              value={bid}
+              onChange={(e) => setBid(e.target.valueAsNumber)}
+            />
+            <Button>Add bid</Button>
+          </div>
+        </div>
       </form>
     </>
   );
