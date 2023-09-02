@@ -24,32 +24,28 @@ a {
   text-decoration: none;
 }
 
-/* .btn-primary {
-  background-color: var(--primary-pink) !important;
-} */
-
 .btn-primary {
   background-color: grey !important;
   border-color: grey !important;
   transition: all 0.3s ease-in-out;
-  &:hover,
-  &:disabled {
-    background-color: var(--primary-pink) !important;
-    border-color: var(--primary-pink) !important;
-  }
-  &:not(:disabled):not(.disabled):active {
-    background-color: var(--primary-pink) !important;
-    border-color: var(--primary-pink) !important;
-    box-shadow: 0 0 0 0.2rem var(--primary-pink);
-  }
-  &:not(:disabled):not(.disabled):active:focus,
-  &:focus {
-    box-shadow: 0 0 0 0.2rem var(--primary-pink) !important;
-  }
-  &:focus {
-    background-color: var(--primary-pink) !important;
-    border-color: var(--primary-pink) !important;
-  }
+}
+.btn-primary:hover,
+.btn-primary:disabled {
+  background-color: var(--primary-pink) !important;
+  border-color: var(--primary-pink) !important;
+}
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--primary-pink) !important;
+  border-color: var(--primary-pink) !important;
+  box-shadow: 0 0 0 0.2rem var(--primary-pink);
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem var(--primary-pink) !important;
+}
+.btn-primary:focus {
+  background-color: var(--primary-pink) !important;
+  border-color: var(--primary-pink) !important;
 }
 
 .one-line-ellipsis {
