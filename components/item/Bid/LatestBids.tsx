@@ -30,16 +30,20 @@ export const LatestBids: React.FC = () => {
     setState,
   } = useBid();
 
-  const { data } = useQuery(`/api/items/${itemId}/bids`, `bids/${itemId}`, {
-    timeout: 5000,
-    ContentType: "application/json",
-  });
+  const { data, status: queryStatus } = useQuery(
+    `/api/items/${itemId}/bids`,
+    `bids/${itemId}`,
+    {
+      timeout: 5000,
+      ContentType: "application/json",
+    }
+  );
 
   useEffect(() => {
     setState((prev: BidState) => ({
       ...prev,
       bids: data as Array<ViewBid>,
-      status: Status.success,
+      status: Status[queryStatus],
     }));
   }, [data]);
 
