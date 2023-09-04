@@ -39,7 +39,7 @@ export const BidInput: React.FC = () => {
   };
 
   useEffect(() => {
-    if (mutationStatus !== Status.success)
+    // if (mutationStatus !== Status.success)
       setState((prev) => ({ ...prev, status: mutationStatus }));
 
     if (mutationStatus === Status.success) {
@@ -60,6 +60,7 @@ export const BidInput: React.FC = () => {
               name="bid"
               id="bid"
               value={bid}
+              role="textbox"
               onChange={(e) => setBid(e.target.valueAsNumber)}
             />
             <Button>Add bid</Button>
