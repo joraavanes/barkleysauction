@@ -32,7 +32,7 @@ export const BidInput: React.FC = () => {
     }));
 
     mutate({
-      price: bid.toString(),
+      price: bid,
       bidder: "64e10f1a4ae5ba3a51cfaec7",
       item: itemId!,
     });

@@ -44,7 +44,7 @@ export class BidsService {
 
     const model: Bid = {
       ...dto,
-      price: +dto.price,
+      price: dto.price,
       createdAt: new Date(),
       item: item._id,
       bidder: user._id
