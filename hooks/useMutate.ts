@@ -2,6 +2,16 @@ import { useMutation } from '@tanstack/react-query';
 import { Status } from '@/shared/types';
 import { useState } from 'react';
 
+type FormDataPayload = {
+  [k: string]: Blob | string | null
+};
+
+type JsonPayload = {
+  [k: string]: any
+};
+
+type Payload<T> = T extends FormDataPayload ? FormDataPayload : JsonPayload;
+
 type MutateOptions = {
   timeout: number;
   method: 'POST' | 'PUT' | 'PATCH',
@@ -17,7 +27,7 @@ type State = {
   errorMessage?: string,
 }
 
-function useMutate<T extends { [K: string]: string | Blob | null }>(url: string, options: MutateOptions) { // todo: add an option to choose request body type
+function useMutate<T>(url: string, options: MutateOptions) { // todo: add an option to choose request body type
   const [state, setState] = useState<State>({
     status: Status.idle,
     responseBody: undefined,
@@ -28,7 +38,7 @@ function useMutate<T extends { [K: string]: string | Blob | null }>(url: string,
   });
 
   const { data, mutate, isSuccess, isError } = useMutation({
-    mutationFn: async (payload: T) => {
+    mutationFn: async (payload: Payload<T>) => {
       setState(prev => ({
         ...prev,
         status: Status.loading,
