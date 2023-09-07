@@ -76,7 +76,7 @@ export const LatestBids: React.FC = () => {
                     </div>
                     <div className="col-10">
                       <h5 className="line-clamp-1">{bid.bidder}</h5>
-                      has bid <i className="fas fa-pound-sign xs-margin"></i>
+                      has bid <i className="bi bi-currency-euro"></i>
                       {bid.price.toLocaleString()} -{" "}
                       {bidMoment(bid.createdAt.valueOf())}
                     </div>

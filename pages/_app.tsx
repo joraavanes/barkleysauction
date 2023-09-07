@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "../styles/globals.css";
 import { NextPage } from "next";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -30,10 +31,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return getLayout(
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <NextProgress
-          color="#101e8e"
-          height={3}
-        />
+        <NextProgress color="#101e8e" height={3} />
         <Component {...pageProps} />
       </QueryClientProvider>
     </ErrorBoundary>
