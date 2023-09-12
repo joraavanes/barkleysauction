@@ -7,5 +7,5 @@ export type Comment = {
   user: ObjectId;
   approved: boolean;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
