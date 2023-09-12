@@ -130,7 +130,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
-  const items = await itemsService.getItems();
+  const items = await itemsService.getItems({
+    limit: Number.MAX_SAFE_INTEGER,
+    offset: 0,
+  });
   const paths = items.map((item) => ({
     params: { id: item._id.toString() },
   }));

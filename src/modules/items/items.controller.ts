@@ -14,7 +14,9 @@ export class ItemsController {
     ) { }
 
     async index(req: NextApiRequest, res: NextApiResponse) {
-        const items = await this.itemsService.getItems();
+        const { page, pagesize } = req.query;
+
+        const items = await this.itemsService.getItems({ limit: 100, offset: 0 });
         return res.status(200).json(items);
     }
 
@@ -29,13 +31,19 @@ export class ItemsController {
         const result = await this.itemsService.findById(id);
         return res.status(200).json(result);
     }
-    
+
     async findBidsOfItem(req: NextApiRequest, res: NextApiResponse) {
         const itemId = req.query.slug && req.query.slug[0] as string;
+        const { page, pagesize } = req.query;
 
         if (!itemId) return res.status(400).send({ error: 'Item id is required' });
 
-        const bids = await this.bidsService.getBidsOfItem(itemId);
+        const bids = await this.bidsService.getBidsOfItem(
+            itemId,
+            {
+                limit: Number(pagesize),
+                offset: Number(pagesize) * Number(page)
+            });
         return res.send(bids);
     }
 

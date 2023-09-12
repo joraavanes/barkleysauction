@@ -13,7 +13,9 @@ export class BidsController {
   ) { }
 
   async find(req: NextApiRequest, res: NextApiResponse) {
-    const bids = await this.bidsRepository.find();
+    const { page, pagesize } = req.query;
+
+    const bids = await this.bidsRepository.find({ limit: Number(pagesize), offset: Number(page) * Number(pagesize) });
     return res.send(bids);
   }
 

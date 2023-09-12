@@ -10,7 +10,10 @@ interface IndexProps {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const _items = await itemsService.getItems();
+  const _items = await itemsService.getItems({
+    limit: 24,
+    offset: 0,
+  });
   const items = _items.map((item) => ({
     ...item,
     _id: item._id.toString(),

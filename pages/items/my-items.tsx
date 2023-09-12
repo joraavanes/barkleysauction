@@ -6,7 +6,10 @@ import { Item } from "@/components/item/Item";
 import MyItems from "@/components/item/my-items";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const items = await itemsService.getItems();
+  const items = await itemsService.getItems({
+    limit: Number.MAX_SAFE_INTEGER,
+    offset: 0,
+  });
 
   return {
     props: {

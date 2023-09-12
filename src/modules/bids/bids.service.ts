@@ -5,6 +5,7 @@ import { UsersRepository } from '../auth/users.respository';
 import { BidsRepository } from "./bids.repository";
 import { CreateBidDto } from './dtos/createBid.dto';
 import { Bid } from './bid.model';
+import { Pagination } from '@/src/db/types';
 
 @Service()
 export class BidsService {
@@ -20,7 +21,10 @@ export class BidsService {
    * @returns Highest bid registered for the item
    */
   async getHighestBid(itemId: string) {
-    const bids = await this.getBidsOfItem(itemId);
+    const bids = await this.getBidsOfItem(itemId, {
+      limit: Number.MAX_SAFE_INTEGER,
+      offset: 0
+    });
     const bidPrices = bids.map(bid => bid.price);
     return Math.max(...bidPrices);
   }
@@ -66,7 +70,7 @@ export class BidsService {
     return this.bidsRepo.delete({ _id: new ObjectId(bidId) })
   }
 
-  async getBidsOfItem(itemId: string) {
-    return this.bidsRepo.filter({ item: new ObjectId(itemId) });
+  async getBidsOfItem(itemId: string, { limit, offset }: Pagination) {
+    return this.bidsRepo.filter({ item: new ObjectId(itemId) }, { limit, offset });
   }
 }

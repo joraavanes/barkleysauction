@@ -31,7 +31,7 @@ export const LatestBids: React.FC = () => {
   } = useBid();
 
   const { data, status: queryStatus } = useQuery(
-    `/api/items/${itemId}/bids`,
+    `/api/items/${itemId}/bids?page=0&pagesize=5`,
     `bids/${itemId}`,
     {
       timeout: 5000,
@@ -48,8 +48,8 @@ export const LatestBids: React.FC = () => {
   }, [data]);
 
   return (
-    <>
-      <h3>Bids: {bids ? bids.length : null}</h3>
+    <div className="mt-3">
+      <h3>Latest Bids</h3>
       {bids?.length ? (
         <div className="position-relative">
           {status === Status.loading && (
@@ -88,6 +88,6 @@ export const LatestBids: React.FC = () => {
       ) : (
         <p>No bids has received yet!</p>
       )}
-    </>
+    </div>
   );
 };

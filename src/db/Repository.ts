@@ -8,7 +8,7 @@ import {
 } from "mongodb";
 import { Inject } from "typedi";
 import { MongoDbClient } from "../db";
-import { IRead, IWrite } from "./types";
+import { IRead, IWrite, Pagination } from "./types";
 
 export abstract class BaseRepository<T extends Document> implements IRead<T>, IWrite<T>{
   @Inject()
@@ -27,9 +27,9 @@ export abstract class BaseRepository<T extends Document> implements IRead<T>, IW
     return (await this.mongoClient.getClient()).db().collection<T>(this.collectionName);
   }
 
-  async find(): Promise<WithId<T>[]> {
+  async find(pagination: Pagination): Promise<WithId<T>[]> {
     const collection = await this.getCollection();
-    return collection.find().toArray();
+    return collection.find().skip(pagination.offset).limit(pagination.limit).sort({ createdAt: -1 }).toArray();
   }
 
   async findOne(filter: Filter<T>): Promise<WithId<T> | null> {
@@ -37,9 +37,9 @@ export abstract class BaseRepository<T extends Document> implements IRead<T>, IW
     return collection.findOne(filter);
   }
 
-  async filter(filter: Filter<T>) {
+  async filter(filter: Filter<T>, pagination: Pagination) {
     const collection = await this.getCollection();
-    return collection.find(filter).toArray();
+    return collection.find(filter).skip(pagination.offset).limit(pagination.limit).sort({ createdAt: -1 }).toArray();
   }
 
   async create(item: OptionalUnlessRequiredId<T>): Promise<InsertOneResult> {

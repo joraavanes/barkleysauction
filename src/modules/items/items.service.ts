@@ -8,6 +8,7 @@ import { ItemsRepository } from "./items.repository";
 import formidable, { File } from "formidable";
 import { FileService } from "../file/file.service";
 import { ObjectId } from "mongodb";
+import { Pagination } from "@/src/db/types";
 
 @Service()
 export class ItemsService {
@@ -17,8 +18,8 @@ export class ItemsService {
         private fileService: FileService
     ) { }
 
-    getItems() {
-        return this.itemsRespository.find();
+    getItems(pagination: Pagination) {
+        return this.itemsRespository.find(pagination);
     }
 
     findById(id: string) {
