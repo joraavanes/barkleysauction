@@ -49,7 +49,7 @@ export abstract class BaseRepository<T extends Document> implements IRead<T>, IW
 
   async update(filter: Filter<T>, attrs: OptionalUnlessRequiredId<T>): Promise<ModifyResult<T>> {
     const collection = await this.getCollection();
-    return collection.findOneAndUpdate(filter, { $set: attrs });
+    return collection.findOneAndUpdate(filter, { $set: attrs }, { returnDocument: "after" });
   }
 
   async delete(filter: Filter<T>): Promise<ModifyResult<T>> {
