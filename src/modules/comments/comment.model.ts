@@ -5,6 +5,7 @@ export type Comment = {
   content: string;
   item: ObjectId;
   user: ObjectId;
+  username: string;
   approved: boolean;
   createdAt: Date;
   updatedAt?: Date;

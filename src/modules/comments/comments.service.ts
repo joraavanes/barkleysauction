@@ -29,6 +29,7 @@ export class CommentsService {
     const model: OptionalId<Comment> = {
       ...dto,
       approved: true,
+      username: user.name,
       createdAt: new Date()
     };
 
