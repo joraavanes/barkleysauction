@@ -5,7 +5,6 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
   const route = req.url?.split('/').slice(3)[0] ?? 'index';
 
-  console.log(route);
   switch (true) {
     case method === 'GET' && route === 'index':
       return commentscontroller.find(req, res);
