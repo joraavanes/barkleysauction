@@ -3,10 +3,9 @@ import { commentscontroller } from ".";
 
 async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
-  const route = req.url?.split('/').slice(3)[0] ?? 'index';
 
   switch (true) {
-    case method === 'GET' && route === 'index':
+    case method === 'GET':
       return commentscontroller.find(req, res);
       break;
     case method === 'POST':

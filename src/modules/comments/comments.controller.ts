@@ -12,7 +12,8 @@ export class CommentsController {
 
   async find(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const dto: FindCommentsDto = plainToClass(FindCommentsDto, req.body);
+      const [item, user] = req.query.query;
+      const dto: FindCommentsDto = plainToClass(FindCommentsDto, { ...(item && { item }), ...(user && { user }) });
       const comments = await this.commentsService.getCommentsOfItem(dto, { limit: 10, offset: 0 });
 
       return res.status(200).json(comments);
