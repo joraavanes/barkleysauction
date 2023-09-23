@@ -1,41 +1,51 @@
 import { useEffect } from "react";
-import { getComments } from "../getComments";
 import { Status, useComment } from "./Comment";
+import useQuery from "@/hooks/useQuery";
 
-export interface CommentType {
+export type CommentType = {
+  user: string;
   username: string;
   content: string;
-  date: Date;
-}
+  createdAt: Date;
+};
 
-export interface CommentListProps {
+export type CommentListProps = {
   comments?: Comment[];
   children?: JSX.Element | JSX.Element[];
-}
+};
 
 export const CommentList: React.FC<CommentListProps> = () => {
   const [state, dispatch] = useComment();
-  const { comments } = state;
+  const { comments, itemId } = state;
+  const { data, isLoading, isError } = useQuery(
+    `/api/comments/${itemId}`,
+    `comments/${itemId}`,
+    {
+      timeout: 5000,
+      ContentType: "application/json",
+    }
+  );
 
   useEffect(() => {
-    dispatch({ type: Status.pending });
-    getComments().then(
-      (comments) => dispatch({ comments, type: Status.success }),
-      (error) => dispatch({ error, type: Status.error })
-    );
+    if (isLoading) dispatch({ type: Status.pending });
 
     return () => {};
   }, []);
 
-  if (!comments || !comments.length) return null;
+  useEffect(() => {
+    dispatch({ type: Status.success, comments: data as CommentType[] });
+  }, [data]);
+
+  useEffect(() => {}, [isError]);
 
   return (
     <>
+      <h2>Comments</h2>
       {comments && comments.length
         ? comments.map((comment) => {
             return (
               <li key={Math.round(Math.random() * 1000)}>
-                {comment.username} - {comment.date.toUTCString()}
+                {comment.username} - {comment.createdAt.toString()}
                 <p>{comment.content}</p>
               </li>
             );
