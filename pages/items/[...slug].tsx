@@ -69,7 +69,7 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
                 </div>
               </div>
 
-              <div className="col-12 col-sm-6 col-md-8">
+              <div className="col-12">
                 <div>
                   <Comment itemId={item._id}>
                     <CommentForm />
@@ -80,7 +80,7 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
               </div>
             </div>
           </div>
-          <div className="col-12 col-sm-6 col-md-4">
+          <div className="col">
             <Bid itemId={item._id}>
               <BidInput />
               <BidStatus />
