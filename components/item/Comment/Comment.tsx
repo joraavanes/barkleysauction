@@ -8,10 +8,12 @@ import {
 import { CommentType } from "./CommentList";
 
 interface CommentProps {
+  itemId: string;
   children?: JSX.Element | JSX.Element[];
 }
 
 interface CommentState {
+  itemId?: string;
   comments?: CommentType[];
   status: Status;
   error?: string;
@@ -53,7 +55,7 @@ function commentReducer(state: CommentState, action: Action): CommentState {
       return {
         ...state,
         status: Status.error,
-        error: action.error ? action.error : 'Error',
+        error: action.error ? action.error : "Error",
       };
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -62,8 +64,9 @@ function commentReducer(state: CommentState, action: Action): CommentState {
 
 const CommentContext = createContext<CommentContextType | null>(null);
 
-export const Comment: React.FC<CommentProps> = ({ children }) => {
+export const Comment: React.FC<CommentProps> = ({ children, itemId }) => {
   const [state, dispatch] = useReducer(commentReducer, {
+    itemId,
     comments: [],
     status: Status.idle,
   });

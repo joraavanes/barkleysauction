@@ -71,7 +71,7 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
 
               <div className="col-12 col-sm-6 col-md-8">
                 <div>
-                  <Comment>
+                  <Comment itemId={item._id}>
                     <CommentForm />
                     <CommentStatus />
                     <CommentList />
@@ -139,7 +139,6 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   }));
 
   return {
-    // paths: [{ params: { id: "123" } }, { params: { id: "511" } }],
     paths,
     fallback: "blocking",
   };
