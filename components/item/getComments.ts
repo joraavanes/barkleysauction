@@ -5,22 +5,26 @@ export let DUMMY_COMMENTS: CommentType[] = [
     {
         username: faker.internet.userName(),
         content: faker.lorem.paragraph(1),
-        date: faker.date.recent(),
+        user: "",
+        createdAt: faker.date.recent(),
     },
     {
         username: faker.internet.userName(),
         content: faker.lorem.paragraph(1),
-        date: faker.date.recent(),
+        user: "",
+        createdAt: faker.date.recent(),
     },
     {
         username: faker.internet.userName(),
         content: faker.lorem.paragraph(1),
-        date: faker.date.recent(),
+        user: "",
+        createdAt: faker.date.recent(),
     },
     {
         username: faker.internet.userName(),
         content: faker.lorem.paragraph(1),
-        date: faker.date.recent(),
+        user: "",
+        createdAt: faker.date.recent(),
     },
 ];
 
@@ -36,7 +40,8 @@ async function postComment(content: string) {
     DUMMY_COMMENTS.unshift({
         username: 'Patrick',
         content,
-        date: new Date(),
+        user: "",
+        createdAt: faker.date.recent(),
     });
     return Promise.resolve(DUMMY_COMMENTS);
 }
