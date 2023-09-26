@@ -29,18 +29,19 @@ export const CommentForm: React.FC = () => {
 
   return (
     <div className="row">
-      <div className="col-12 col-sm-6 col-md-8">
+      <div className="col-12 col-lg-8 mt-3 mb-4">
         <form onSubmit={handleSubmit}>
-          <div className="row gx-1">
-            <div className="col-11">
+          <div className="row gx-1 gy-1">
+            <div className="col-12 col-lg-11">
               <textarea
                 className="form-control"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 disabled={status === Status.pending}
+                placeholder="Post your comment here ..."
               ></textarea>
             </div>
-            <div className="col-1">
+            <div className="col-12 col-lg-1">
               <button
                 className="btn btn-primary"
                 disabled={status === Status.pending || !comment.length}
