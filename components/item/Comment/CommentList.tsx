@@ -27,12 +27,6 @@ export const CommentList: React.FC<CommentListProps> = () => {
   );
 
   useEffect(() => {
-    if (isLoading) dispatch({ type: Status.pending });
-
-    return () => {};
-  }, []);
-
-  useEffect(() => {
     dispatch({ type: Status.success, comments: data as CommentType[] });
   }, [data]);
 
@@ -41,10 +35,17 @@ export const CommentList: React.FC<CommentListProps> = () => {
   return (
     <>
       <h2>Comments</h2>
+      <div>
+        {isLoading && (
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only" role="loading"></span>
+          </div>
+        )}
+      </div>
       {comments && comments.length
         ? comments.map((comment) => {
             return (
-              <li key={Math.round(Math.random() * 1000)}>
+              <li key={Math.round(Math.random() * 1000)} role="listitem">
                 {comment.username} - {comment.createdAt.toString()}
                 <p>{comment.content}</p>
               </li>
