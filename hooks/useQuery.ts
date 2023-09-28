@@ -6,7 +6,7 @@ type QueryOptions = {
 }
 
 function useQuery<T>(url: string, token: string, options: QueryOptions) {
-  const { data, isSuccess, isError, isLoading, status } = _useQuery([token], async () => {
+  const { data, isSuccess, isError, status, isFetching } = _useQuery([token], async () => {
     const controller = new AbortController();
     const abortId = setTimeout(() => controller.abort(), options.timeout);
 
@@ -24,7 +24,7 @@ function useQuery<T>(url: string, token: string, options: QueryOptions) {
   }
   );
 
-  return { status, data, isSuccess, isError, isLoading };
+  return { status, data, isSuccess, isError, isLoading: isFetching };
 }
 
 export default useQuery;
