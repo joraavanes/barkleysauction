@@ -48,6 +48,10 @@ a {
   border-color: var(--primary-pink) !important;
 }
 
+.spinner-border.text-primary {
+  color: var(--primary-pink) !important;
+}
+
 .one-line-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;

@@ -6,7 +6,7 @@ export const CommentStatus: React.FC = () => {
 
   if (status === Status.pending)
     return (
-      <div className="spinner-grow text-primary" role="status">
+      <div className="spinner-border text-primary" role="status">
         <span className="sr-only" role="loading"></span>
       </div>
     );
