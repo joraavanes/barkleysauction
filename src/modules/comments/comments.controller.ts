@@ -3,6 +3,7 @@ import { plainToClass } from "class-transformer";
 import { NextApiRequest, NextApiResponse } from "next";
 import { CommentsService } from "./comments.service";
 import { CreateCommentDto, FindCommentsDto, UpdateCommentDto } from "./dtos";
+import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 @Service()
 export class CommentsController {
@@ -19,8 +20,7 @@ export class CommentsController {
       return res.status(200).json(comments);
 
     } catch (error) {
-      // @ts-ignore
-      return res.status(400).send({ error: error.message });
+      return res.status(400).send({ error: getErrorMessage(error) });
     }
   }
 
@@ -32,8 +32,7 @@ export class CommentsController {
       return res.status(201).json(result);
 
     } catch (error) {
-      // @ts-ignore
-      return res.status(400).send({ error: error.message });
+      return res.status(400).send({ error: getErrorMessage(error) });
     }
   }
 
@@ -48,8 +47,7 @@ export class CommentsController {
       return res.status(200).json(result);
 
     } catch (error) {
-      // @ts-ignore
-      return res.status(400).send({ error: error.message });
+      return res.status(400).send({ error: getErrorMessage(error) });
     }
   }
 
@@ -59,11 +57,10 @@ export class CommentsController {
       if (!commentId) return res.status(400).json({ error: "Comment id is required." });
 
       const result = await this.commentsService.deleteComment(commentId);
-      
+
       return res.status(200).json(result);
     } catch (error) {
-      // @ts-ignore
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ error: getErrorMessage(error) });
     }
   }
 

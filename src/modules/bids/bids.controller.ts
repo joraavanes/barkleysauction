@@ -4,6 +4,7 @@ import { Service } from "typedi";
 import { BidsRepository } from "./bids.repository";
 import { BidsService } from "./bids.service";
 import { CreateBidDto } from "./dtos/createBid.dto";
+import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 @Service()
 export class BidsController {
@@ -47,8 +48,7 @@ export class BidsController {
 
       return res.send(result);
     } catch (error) {
-      // @ts-ignore
-      return res.status(400).send({ error: error.message });
+      return res.status(400).send({ error: getErrorMessage(error) });
     }
   }
 
@@ -61,8 +61,7 @@ export class BidsController {
 
       return res.send(result);
     } catch (error) {
-      // @ts-ignore
-      return res.status(400).send({ error: error.message });
+      return res.status(400).send({ error: getErrorMessage(error) });
     }
   }
 

@@ -5,6 +5,7 @@ import { ItemsService } from "./items.service";
 import { parseBody } from "../../utils/bodyParser";
 import { CreateItem } from "./dtos/createItem.dto";
 import { BidsService } from "../bids/bids.service";
+import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 @Service()
 export class ItemsController {
@@ -57,9 +58,8 @@ export class ItemsController {
             return res.status(201)
                 .send(result);
         }
-        catch (err) {
-            // @ts-ignore
-            return res.status(400).send({ error: err.message });
+        catch (error) {
+            return res.status(400).send({ error: getErrorMessage(error) });
         }
     }
 
@@ -77,8 +77,7 @@ export class ItemsController {
             return res.send(result);
 
         } catch (error) {
-            // @ts-ignore
-            return res.status(400).send({ error: error.message });
+            return res.status(400).send({ error: getErrorMessage(error) });
         }
     }
 
@@ -91,8 +90,7 @@ export class ItemsController {
             return res.send(result);
 
         } catch (error: any) {
-            // @ts-ignore
-            return res.status(400).send({ error: error.message });
+            return res.status(400).send({ error: getErrorMessage(error) });
         }
     }
 
