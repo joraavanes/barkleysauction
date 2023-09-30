@@ -12,7 +12,7 @@ export class CommentsController {
 
   async find(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const [item, user] = req.query.query as string[];
+      const [item, user] = req.query.params as string[];
       const dto: FindCommentsDto = plainToClass(FindCommentsDto, { ...(item && { item }), ...(user && { user }) });
       const comments = await this.commentsService.getCommentsOfItem(dto, { limit: 10, offset: 0 });
 
@@ -39,7 +39,7 @@ export class CommentsController {
 
   async update(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const commentId = req.query.id && req.query.id as string;
+      const [commentId] = req.query.params as Array<string>;
       if (!commentId) return res.status(400).json({ error: "Comment id is required." });
 
       const dto: UpdateCommentDto = plainToClass(UpdateCommentDto, req.body);
@@ -55,7 +55,7 @@ export class CommentsController {
 
   async delete(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const commentId = req.query.id && req.query.id as string;
+      const [commentId] = req.query.params as Array<string>;
       if (!commentId) return res.status(400).json({ error: "Comment id is required." });
 
       return this.commentsService.deleteComment(commentId);
