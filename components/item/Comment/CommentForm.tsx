@@ -2,6 +2,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { Status, useComment } from "./Comment";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/pages/_app";
+import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 export const CommentForm: React.FC = () => {
   const [{ status, itemId }, dispatch] = useComment();
@@ -20,6 +21,10 @@ export const CommentForm: React.FC = () => {
           "Content-Type": "application/json",
         },
       });
+
+      if (response.status !== 201)
+        throw new Error("Failed to post the comment");
+
       return response.json();
     },
   });
@@ -51,7 +56,7 @@ export const CommentForm: React.FC = () => {
     }
 
     if (mutationStatus === "error") {
-      dispatch({ type: Status.error, error: error.message });
+      dispatch({ type: Status.error, error: getErrorMessage(error) });
     }
   }, [mutationStatus]);
 
