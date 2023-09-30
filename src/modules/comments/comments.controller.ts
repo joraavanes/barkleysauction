@@ -58,7 +58,9 @@ export class CommentsController {
       const [commentId] = req.query.params as Array<string>;
       if (!commentId) return res.status(400).json({ error: "Comment id is required." });
 
-      return this.commentsService.deleteComment(commentId);
+      const result = await this.commentsService.deleteComment(commentId);
+      
+      return res.status(200).json(result);
     } catch (error) {
       // @ts-ignore
       return res.status(400).json({ error: error.message });
