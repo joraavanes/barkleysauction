@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Status, useComment } from "./Comment";
 import useQuery from "@/hooks/useQuery";
+import Spinner from "@/components/shared/Spinner";
 
 export type CommentType = {
   user: string;
@@ -36,11 +37,7 @@ export const CommentList: React.FC<CommentListProps> = () => {
     <>
       <h2>Comments</h2>
       <div>
-        {isLoading && (
-          <div className="spinner-border text-primary" role="status">
-            <span className="sr-only" role="loading"></span>
-          </div>
-        )}
+        {isLoading && <Spinner/>}
       </div>
       {comments && comments.length
         ? comments.map((comment) => {
