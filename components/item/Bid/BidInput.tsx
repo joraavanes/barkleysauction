@@ -7,7 +7,7 @@ import { Status } from "@/shared/types";
 import styles from "./styles/Bid.module.css";
 
 export const BidInput: React.FC = () => {
-  const [bid, setBid] = useState(0);
+  const [bid, setBid] = useState<number | undefined>(undefined);
   const {
     state: { itemId },
     setState,
@@ -40,7 +40,7 @@ export const BidInput: React.FC = () => {
 
   useEffect(() => {
     // if (mutationStatus !== Status.success)
-      setState((prev) => ({ ...prev, status: mutationStatus }));
+    setState((prev) => ({ ...prev, status: mutationStatus }));
 
     if (mutationStatus === Status.success) {
       setBid(0);
@@ -61,6 +61,7 @@ export const BidInput: React.FC = () => {
               id="bid"
               value={bid}
               role="textbox"
+              placeholder="Enter your bid"
               onChange={(e) => setBid(e.target.valueAsNumber)}
             />
             <Button>Add bid</Button>
