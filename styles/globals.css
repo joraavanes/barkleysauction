@@ -48,6 +48,10 @@ a {
   border-color: var(--primary-pink) !important;
 }
 
+ul{
+  padding-left: 0;
+}
+
 .spinner-border.text-primary {
   color: var(--primary-pink) !important;
 }
