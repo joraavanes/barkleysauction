@@ -37,7 +37,7 @@ export const CommentList: React.FC<CommentListProps> = () => {
   return (
     <>
       <h2>Comments</h2>
-      <div>{isLoading && <Spinner />}</div>
+      {isLoading && <Spinner />}
       {comments && comments.length ? (
         <ul>
           {comments.map((comment) => (
