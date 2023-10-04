@@ -5,6 +5,7 @@ import Spinner from "@/components/shared/Spinner";
 import CommentView from "./CommentView";
 
 export type CommentType = {
+  _id: string;
   user: string;
   username: string;
   content: string;
@@ -41,7 +42,7 @@ export const CommentList: React.FC<CommentListProps> = () => {
       {comments && comments.length ? (
         <ul>
           {comments.map((comment) => (
-            <CommentView comment={comment} />
+            <CommentView key={comment._id} comment={comment} />
           ))}
         </ul>
       ) : null}
