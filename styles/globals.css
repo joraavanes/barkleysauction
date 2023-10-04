@@ -28,6 +28,7 @@ a {
   background-color: grey !important;
   border-color: grey !important;
   transition: all 0.3s ease-in-out;
+  border-radius: 1.25rem;
 }
 .btn-primary:hover,
 .btn-primary:disabled {
@@ -48,8 +49,34 @@ a {
   border-color: var(--primary-pink) !important;
 }
 
-ul{
+ul {
   padding-left: 0;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"],
+textarea.form-control {
+  border-radius: 1.25rem;
+  transition: border-color,box-shadow 0.3s ease-in-out;
+  outline: none;
+}
+
+input[type="email"]:hover,
+input[type="email"]:active,
+input[type="email"]:focus,
+input[type="text"]:hover,
+input[type="text"]:active,
+input[type="text"]:focus,
+input[type="password"]:hover,
+input[type="password"]:active,
+input[type="password"]:focus,
+textarea.form-control:hover,
+textarea.form-control:active,
+textarea.form-control:focus {
+  outline: none;
+  border-color: #f91890;
+  box-shadow: 0 10px 18px -16px;
 }
 
 .spinner-border.text-primary {
