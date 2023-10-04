@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Status, useComment } from "./Comment";
 import useQuery from "@/hooks/useQuery";
 import Spinner from "@/components/shared/Spinner";
+import CommentView from "./CommentView";
 
 export type CommentType = {
   user: string;
@@ -36,19 +37,14 @@ export const CommentList: React.FC<CommentListProps> = () => {
   return (
     <>
       <h2>Comments</h2>
-      <div>
-        {isLoading && <Spinner/>}
-      </div>
-      {comments && comments.length
-        ? comments.map((comment) => {
-            return (
-              <li key={Math.round(Math.random() * 1000)} role="listitem">
-                {comment.username} - {comment.createdAt.toString()}
-                <p>{comment.content}</p>
-              </li>
-            );
-          })
-        : null}
+      <div>{isLoading && <Spinner />}</div>
+      {comments && comments.length ? (
+        <ul>
+          {comments.map((comment) => (
+            <CommentView comment={comment} />
+          ))}
+        </ul>
+      ) : null}
     </>
   );
 };
