@@ -70,6 +70,12 @@ export class BidsService {
     return this.bidsRepo.delete({ _id: new ObjectId(bidId) })
   }
 
+  /**
+   * 
+   * @param itemId Item id
+   * @param pagination pagination data to specify the data length
+   * @returns List of bids for specific item
+   */
   async getBidsOfItem(itemId: string, { limit, offset }: Pagination) {
     return this.bidsRepo.filter({ item: new ObjectId(itemId) }, { limit, offset });
   }
