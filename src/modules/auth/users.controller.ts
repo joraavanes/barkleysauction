@@ -9,13 +9,28 @@ export class UsersController {
     private usersService: UsersService
   ) { }
 
-  async getUsers(req: NextApiRequest, res: NextApiResponse){
+  async findUser(req: NextApiRequest, res: NextApiResponse) {
+    const userId = req.query.slug && req.query.slug[0];
+    if (!userId) {
+      return res.status(400).send({ error: 'User id is required.' })
+    }
+
+    const user = await this.usersService.findUser(userId);
+
+    if (!user) {
+      return res.status(400).send({ error: 'User not found' });
+    }
+
+    return res.status(200).send(user);
+  }
+
+  async getUsers(req: NextApiRequest, res: NextApiResponse) {
     const model = await this.usersService.getAll();
     res.status(200).send(model);
   }
 
   async create(req: NextApiRequest, res: NextApiResponse) {
-    const model: User  = req.body;
+    const model: User = req.body;
 
     const result = await this.usersService.createUser(model);
     res.status(200).send(result);
