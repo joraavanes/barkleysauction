@@ -77,6 +77,19 @@ export class BidsService {
    * @returns List of bids for specific item
    */
   async getBidsOfItem(itemId: string, { limit, offset }: Pagination) {
-    return this.bidsRepo.filter({ item: new ObjectId(itemId) }, { limit, offset });
+    const bids = await this.bidsRepo.filter({ item: new ObjectId(itemId) }, { limit, offset });
+
+    const bidsPayload = bids.length ? await Promise.all(bids.map(async bid => {
+      const user = await this.usersRepo.findOne({ _id: new ObjectId(bid.bidder) });
+
+      if (!user) return bid;
+
+      return {
+        ...bid,
+        bidder: user?.name
+      };
+    })) : bids;
+
+    return bidsPayload;
   }
 }

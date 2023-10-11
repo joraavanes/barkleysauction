@@ -49,18 +49,7 @@ export class ItemsController {
                 offset: Number(pagesize) * Number(page)
             });
 
-        const bidsPayload = bids.length ? await Promise.all(bids.map(async bid => {
-            const user = await this.usersService.findUser(bid.bidder.toString());
-
-            if(!user) return bid;
-
-            return {
-                ...bid,
-                bidder: user?.name
-            };
-        })) : bids;
-
-        return res.send(bidsPayload);
+        return res.send(bids);
     }
 
     async create(req: NextApiRequest, res: NextApiResponse) {
