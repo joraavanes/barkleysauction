@@ -2,9 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Service } from "typedi";
 import { plainToClass } from "class-transformer";
 import { ItemsService } from "./items.service";
+import { BidsService } from "../bids/bids.service";
+import { UsersService } from "../auth/users.service";
 import { parseBody } from "../../utils/bodyParser";
 import { CreateItem } from "./dtos/createItem.dto";
-import { BidsService } from "../bids/bids.service";
 import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 @Service()
@@ -12,6 +13,7 @@ export class ItemsController {
     constructor(
         private itemsService: ItemsService,
         private bidsService: BidsService,
+        private usersService: UsersService
     ) { }
 
     async index(req: NextApiRequest, res: NextApiResponse) {
@@ -33,6 +35,7 @@ export class ItemsController {
         return res.status(200).json(result);
     }
 
+    // GET: /items/{itemId}/bids
     async findBidsOfItem(req: NextApiRequest, res: NextApiResponse) {
         const itemId = req.query.slug && req.query.slug[0] as string;
         const { page, pagesize } = req.query;
@@ -45,7 +48,19 @@ export class ItemsController {
                 limit: Number(pagesize),
                 offset: Number(pagesize) * Number(page)
             });
-        return res.send(bids);
+
+        const bidsPayload = bids.length ? await Promise.all(bids.map(async bid => {
+            const user = await this.usersService.findUser(bid.bidder.toString());
+
+            if(!user) return bid;
+
+            return {
+                ...bid,
+                bidder: user?.name
+            };
+        })) : bids;
+
+        return res.send(bidsPayload);
     }
 
     async create(req: NextApiRequest, res: NextApiResponse) {
