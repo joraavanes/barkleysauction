@@ -1,6 +1,7 @@
 import { Service } from "typedi";
 import { User } from "./models/user.model";
 import { UsersRepository } from "./users.respository";
+import { ObjectId } from "mongodb";
 
 @Service()
 export class UsersService {
@@ -8,11 +9,15 @@ export class UsersService {
     private usersRepository: UsersRepository
   ) { }
 
-  async getAll(){
+  findUser(id: string) {
+    return this.usersRepository.findOne({ _id: new ObjectId(id) })
+  }
+
+  async getAll() {
     return this.usersRepository.findAll();
   }
 
-  async createUser(model: User){
+  async createUser(model: User) {
     return this.usersRepository.createOne(model);
   }
 }
