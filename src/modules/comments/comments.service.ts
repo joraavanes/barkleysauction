@@ -15,8 +15,27 @@ export class CommentsService {
     private commentsRepo: CommentsRepository
   ) { }
 
-  getCommentsOfItem(dto: FindCommentsDto, pagination: Pagination) {
-    return this.commentsRepo.filter(dto, pagination);
+  async getCommentsOfItem(dto: FindCommentsDto, pagination: Pagination) {
+    const comments = await this.commentsRepo.filter(dto, pagination);
+
+    if (!comments.length) {
+      return comments;
+    }
+
+    const commentsWithUserdata = await Promise.all(comments.map(async comment => {
+      const user = await this.usersRepo.findOne({ _id: comment.user });
+
+      if (!user) {
+        return comment;
+      }
+
+      return {
+        ...comment,
+        username: user.name
+      }
+    }));
+
+    return commentsWithUserdata;
   }
 
   async addComment(dto: CreateCommentDto) {
@@ -29,7 +48,6 @@ export class CommentsService {
     const model: OptionalId<Comment> = {
       ...dto,
       approved: true,
-      username: user.name,
       createdAt: new Date()
     };
 
