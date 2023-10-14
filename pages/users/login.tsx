@@ -75,40 +75,45 @@ const UserLoginPage: NextPage = () => {
                   You can login through the form below. You can also login
                   through your facebook or twitter account.
                 </p>
-                <form onSubmit={handleLoginSubmit}>
-                  <p>
-                    <input
-                      type="email"
-                      name="email"
-                      className="form-control"
-                      placeholder="Username or Email"
-                      value={credentials.email}
-                      onChange={handleInputChange}
-                    />
-                  </p>
-                  <p>
-                    <input
-                      type="password"
-                      name="password"
-                      className="form-control"
-                      placeholder="Password"
-                      value={credentials.password}
-                      onChange={handleInputChange}
-                    />
-                  </p>
-                  <p>
-                    <button type="submit" className="btn btn-primary">
-                      Login
-                    </button>
-                  </p>
-                  <h1 className="text-center">Or</h1>
-
-                  <Link href="/users/register" style={{ width: "80%" }}>
-                    <a href="" className="btn btn-primary d-block mx-auto">
-                      You can also register here :)
-                    </a>
-                  </Link>
-                </form>
+                <div className="row">
+                  <div className="col-10 offset-1 mt-5 mb-5">
+                    <form onSubmit={handleLoginSubmit}>
+                      <p>
+                        <input
+                          type="email"
+                          name="email"
+                          className="form-control"
+                          placeholder="Username or Email"
+                          value={credentials.email}
+                          onChange={handleInputChange}
+                        />
+                      </p>
+                      <p>
+                        <input
+                          type="password"
+                          name="password"
+                          className="form-control"
+                          placeholder="Password"
+                          value={credentials.password}
+                          onChange={handleInputChange}
+                        />
+                      </p>
+                      <p className="text-center">
+                        <button type="submit" className="btn btn-primary mt-2" style={{width: "50%"}}>
+                          Login
+                        </button>
+                      </p>
+                    </form>
+                  </div>
+                  <div className="col-10 offset-1 mt-1 mb-5">
+                    <h1 className="text-center">Or</h1>
+                    <Link href="/users/register" style={{ width: "80%" }}>
+                      <a href="" className="btn btn-primary d-block mx-auto">
+                        You can also register here :)
+                      </a>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
