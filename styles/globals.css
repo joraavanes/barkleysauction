@@ -58,7 +58,8 @@ input[type="text"],
 input[type="password"],
 textarea.form-control {
   border-radius: 1.25rem;
-  transition: border-color,box-shadow 0.3s ease-in-out;
+  transition: 0.3s, 0.3s ease-in-out, ease-in-out;
+  transition-property: box-shadow, border-color;
   outline: none;
 }
 
