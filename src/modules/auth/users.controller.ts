@@ -10,6 +10,7 @@ export class UsersController {
     private usersService: UsersService
   ) { }
 
+  // GET /api/users/{userId}
   async findUser(req: NextApiRequest, res: NextApiResponse) {
     const userId = req.query.slug && req.query.slug[0];
     if (!userId) {
@@ -25,11 +26,13 @@ export class UsersController {
     return res.status(200).send(user);
   }
 
+  // GET /api/users
   async getUsers(req: NextApiRequest, res: NextApiResponse) {
     const model = await this.usersService.getAll();
     res.status(200).send(model);
   }
 
+  // POST /api/users/signup
   async signup(req: NextApiRequest, res: NextApiResponse) {
     try {
       const model: User = req.body;
