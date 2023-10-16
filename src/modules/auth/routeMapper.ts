@@ -12,8 +12,8 @@ async function routeMapper(req: NextApiRequest, res: NextApiResponse) {
     case method === 'GET':
       return usersController.findUser(req, res);
       break;
-    case query === 'index' && method === 'POST':
-      return usersController.create(req, res);
+    case query === 'signup' && method === 'POST':
+      return usersController.signup(req, res);
       break;
     default:
       return usersController.notFound(req, res);

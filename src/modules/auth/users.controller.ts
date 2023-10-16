@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Service } from "typedi";
 import { User } from "./models/user.model";
 import { UsersService } from "./users.service";
+import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 @Service()
 export class UsersController {
@@ -29,11 +30,16 @@ export class UsersController {
     res.status(200).send(model);
   }
 
-  async create(req: NextApiRequest, res: NextApiResponse) {
-    const model: User = req.body;
+  async signup(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const model: User = req.body;
 
-    const result = await this.usersService.createUser(model);
-    res.status(200).send(result);
+      const result = await this.usersService.createUser(model);
+      res.status(200).send(result);
+
+    } catch (error) {
+      res.status(400).json({ error: getErrorMessage(error) });
+    }
   }
 
   notFound(req: NextApiRequest, res: NextApiResponse) {
