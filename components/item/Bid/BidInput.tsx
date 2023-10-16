@@ -50,6 +50,7 @@ export const BidInput: React.FC = () => {
 
   return (
     <>
+      <h2 className="mt-sm-3">Your Bid</h2>
       <form onSubmit={handleSubmit}>
         <div className="">
           <div className="d-flex justify-content-around mt-3 mb-3">
