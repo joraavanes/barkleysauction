@@ -1,6 +1,0 @@
-@mixin polka ($base, $color, $line, $size) {
-    background: $base;
-    background-image: linear-gradient($color $line, transparent 0),
-                        linear-gradient(90deg, $color $line, transparent 0);
-    background-size: $size $size;
-}

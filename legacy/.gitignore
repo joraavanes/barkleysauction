@@ -1,9 +1,0 @@
-node_modules
-client/node_modules
-yarn-error.log
-client/yarn-error.log
-.vscode
-app/.env
-
-api/dist
-client/dist
