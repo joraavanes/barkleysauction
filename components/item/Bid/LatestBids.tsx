@@ -45,7 +45,7 @@ export const LatestBids: React.FC = () => {
       bids: data as Array<ViewBid>,
       status: Status[queryStatus],
     }));
-  }, [data]);
+  }, [data, setState, queryStatus]);
 
   return (
     <div className="mt-3">

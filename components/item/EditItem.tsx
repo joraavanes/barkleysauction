@@ -25,14 +25,14 @@ const EditItem: React.FC<Props> = ({ id, item }) => {
       ...prev,
       item: item ? { ...item } : prev.item,
     }));
-  }, [item]);
+  }, [item, setState]);
 
   useEffect(() => {
     setState((prev) => ({
       ...prev,
       status,
     }));
-  }, [status]);
+  }, [status, setState]);
 
   return <ItemForm mutate={mutate} />;
 };

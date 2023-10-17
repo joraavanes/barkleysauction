@@ -58,7 +58,7 @@ export const CommentForm: React.FC = () => {
     if (mutationStatus === "error") {
       dispatch({ type: Status.error, error: getErrorMessage(error) });
     }
-  }, [mutationStatus]);
+  }, [mutationStatus, dispatch, error, itemId]);
 
   return (
     <div className="row">

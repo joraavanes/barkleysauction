@@ -31,7 +31,7 @@ export const CommentList: React.FC<CommentListProps> = () => {
 
   useEffect(() => {
     dispatch({ type: Status.success, comments: data as CommentType[] });
-  }, [data]);
+  }, [data, dispatch]);
 
   useEffect(() => {}, [isError]);
 

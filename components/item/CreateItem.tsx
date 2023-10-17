@@ -41,7 +41,7 @@ const CreateItem: React.FC = () => {
         error: errorMessage,
       }));
     }
-  }, [status]);
+  }, [status, errorMessage, setState]);
 
   return (
     <>

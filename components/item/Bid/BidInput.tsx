@@ -46,7 +46,7 @@ export const BidInput: React.FC = () => {
       setBid(0);
       queryClient.invalidateQueries({ queryKey: [`bids/${itemId}`] });
     }
-  }, [mutationStatus]);
+  }, [mutationStatus, itemId, setState]);
 
   return (
     <>
