@@ -36,7 +36,7 @@ export class BidsService {
    */
   async addBidToItem(dto: CreateBidDto) {
     const item = await this.itemsRepo.findOne({ _id: new ObjectId(dto.item) });
-    const user = await this.usersRepo.findById(dto.bidder);
+    const user = await this.usersRepo.findOne({ _id: new ObjectId(dto.bidder) });
 
     if (!item || !user) throw new Error('Item not found');
 

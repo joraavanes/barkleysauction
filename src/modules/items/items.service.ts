@@ -51,7 +51,7 @@ export class ItemsService {
     }
 
     async createItem(model: CreateItem, files: formidable.Files) {
-        const user = await this.usersRepository.findById(model.UserId);
+        const user = await this.usersRepository.findOne({ _id: new Object(model.UserId) });
 
         if (!user)
             throw new Error('User doesn\'t exist');
