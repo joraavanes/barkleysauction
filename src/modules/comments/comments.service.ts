@@ -40,7 +40,7 @@ export class CommentsService {
 
   async addComment(dto: CreateCommentDto) {
     const item = await this.itemsRepo.findOne({ _id: dto.item });
-    const user = await this.usersRepo.findOne({ _id: new Object(dto.user.toString()) });
+    const user = await this.usersRepo.findOne({ _id: new ObjectId(dto.user.toString()) });
 
     if (!item) throw new Error('Item has not been found.');
     if (!user) throw new Error('User has not been found.');
