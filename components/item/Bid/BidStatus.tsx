@@ -6,8 +6,14 @@ export const BidStatus: React.FC = () => {
   const { state } = useBid();
   const { status } = state;
 
-  if (status === Status.loading) return <span role="pending">Loading...</span>;
-  if(status === Status.error) return <span role="alert">Error</span>
+  if (status === Status.loading)
+    return (
+      <div className="spinner-border spinner-border-sm text-primary" role="status">
+        <span className="sr-only" role="pending"></span>
+      </div>
+    );
 
-  return <div>{Status[status]}</div>;
+  if (status === Status.error) return <span role="alert">Error</span>;
+
+  return null; // <div>{Status[status]}</div>;
 };
