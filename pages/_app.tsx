@@ -3,10 +3,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "../styles/globals.css";
 import { NextPage } from "next";
+import { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactElement, ReactNode, useEffect } from "react";
 import type { AppProps } from "next/app";
 import NextProgress from "nextjs-progressbar";
-import { ReactElement, ReactNode, useEffect } from "react";
 import MainLayout from "@/components/layout/Layout";
 import { ErrorBoundary } from "@/components/shared/";
 
@@ -16,11 +18,12 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
+  session: Session;
 };
 
 export const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp({ Component, pageProps, session }: AppPropsWithLayout) {
   const getLayout =
     Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>);
 
@@ -30,10 +33,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return getLayout(
     <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <NextProgress color="#101e8e" height={3} />
-        <Component {...pageProps} />
-      </QueryClientProvider>
+      <SessionProvider session={session}>
+        <QueryClientProvider client={queryClient}>
+          <NextProgress color="#101e8e" height={3} />
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </SessionProvider>
     </ErrorBoundary>
   );
 }
