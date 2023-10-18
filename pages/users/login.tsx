@@ -1,21 +1,9 @@
-import { randomBytes } from "crypto";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { NextPage } from "next";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
-import { ChangeEvent, FormEvent, useState } from "react";
-
-const sleep = (timeout: number) =>
-  new Promise((resolve) => setTimeout(resolve, timeout));
-
-async function loginUser(email: string, password: string) {
-  await sleep(3000);
-  return Promise.resolve({
-    email,
-    password,
-    token: randomBytes(4).toString("hex"),
-  });
-}
 
 const UserLoginPage: NextPage = () => {
   const [credentials, setCredentials] = useState({
@@ -23,12 +11,18 @@ const UserLoginPage: NextPage = () => {
     password: "",
   });
 
-  const { email, password } = credentials;
-
-  const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    loginUser(email, password);
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: credentials.email,
+      password: credentials.password,
+    });
+
+    if (result?.ok && !result.error) {
+      window.location.href = "/";
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -99,7 +93,11 @@ const UserLoginPage: NextPage = () => {
                         />
                       </p>
                       <p className="text-center">
-                        <button type="submit" className="btn btn-primary mt-2" style={{width: "50%"}}>
+                        <button
+                          type="submit"
+                          className="btn btn-primary mt-2"
+                          style={{ width: "50%" }}
+                        >
                           Login
                         </button>
                       </p>
