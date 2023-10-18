@@ -1,3 +1,4 @@
+import "whatwg-fetch";
 import { faker } from "@faker-js/faker";
 import userEvent from "@testing-library/user-event";
 import {
@@ -5,83 +6,103 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
-import { Comment, CommentForm, CommentStatus } from "@/components/item/Comment";
-import * as commentFuncs from "@/components/item/getComments";
+import {
+  Comment,
+  CommentForm,
+  CommentList,
+  CommentStatus,
+} from "@/components/item/Comment";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/pages/_app";
+import createMockServer from "../../../../mocks/server";
+import { rest } from "msw";
 
-jest.mock("../../getComments", () => {
-  return {
-    ...jest.requireActual("../../getComments"),
-    postComment: jest.fn().mockImplementation(() => {
-      var timeoutPromise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve(commentFuncs.DUMMY_COMMENTS);
-        }, 0);
-      });
-      return timeoutPromise;
+describe("<CommentForm/>", () => {
+  function Wrapper({ children }: { children: JSX.Element }) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Comment itemId="1">
+          {children}
+          <CommentStatus />
+        </Comment>
+      </QueryClientProvider>
+    );
+  }
+
+  let payload: Array<any> = [];
+
+  const handlers = [
+    rest.get("/api/comments/1", async (req, res, ctx) => {
+      // console.log("GET /api/comments/1 CALLED");
+      return res(ctx.json(payload));
     }),
-  };
-});
+    rest.post("/api/comments", async (req, res, ctx) => {
+      // console.log("POST /api/comments CALLED");
+      const body = await req.json();
 
-const CommentFormWithProvider = () => (
-  <Comment>
-    <CommentForm />
-    <CommentStatus />
-  </Comment>
-);
+      body._id = "1";
+      payload.push(body);
 
-test("should display success when a comment is submitted", async () => {
-  render(<CommentFormWithProvider />);
-  const commentText = faker.lorem.paragraph(1);
+      return res(ctx.status(201), ctx.json(payload));
+    }),
+  ];
 
-  const commentInput = screen.getByRole("textbox");
-  const submitBtn = screen.getByRole("button", { name: /post/i });
+  const server = createMockServer(handlers);
 
-  await userEvent.type(commentInput, commentText);
-  await userEvent.click(submitBtn);
+  beforeAll(() => server.listen());
 
-  await waitForElementToBeRemoved(() => screen.queryByText(/loading/i));
-  // await waitForElementToBeRemoved(() => screen.queryByText(/loading/i), {
-  //   timeout: 1000,
-  // });
-
-  expect(commentFuncs.postComment).toHaveBeenCalledWith(commentText);
-  expect(screen.getByText(/success/i)).toBeInTheDocument();
-});
-
-test("should display error while comment is failed to post", async () => {
-  jest
-    .spyOn(commentFuncs, "postComment")
-    .mockImplementation((comment: string) => {
-      var timeoutPromise = new Promise((resolve, reject) =>
-        setTimeout(reject, 0)
-      );
-      return timeoutPromise;
-    });
-
-  render(<CommentFormWithProvider />);
-  const commentText = faker.lorem.paragraph(1);
-
-  const commentInput = screen.getByRole("textbox");
-  const submitBtn = screen.getByRole("button", { name: /post/i });
-
-  await userEvent.type(commentInput, commentText);
-  await userEvent.click(submitBtn);
-
-  await waitForElementToBeRemoved(() => screen.queryByText(/loading/i));
-
-  expect(commentFuncs.postComment).toHaveBeenCalledWith(commentText);
-  expect(screen.getByRole("alert")).toBeInTheDocument();
-});
-
-test("should give error if comment is empty", async () => {
-  render(<CommentFormWithProvider />);
-
-  const submitBtn = screen.getByRole("button", {
-    name: /post/i,
+  afterEach(() => {
+    payload.pop();
+    render(<></>, { wrapper: Wrapper });
   });
 
-  await userEvent.click(submitBtn);
+  beforeEach(() => {
+    render(<></>, { wrapper: Wrapper });
+  });
 
-  expect(screen.getByRole('alert')).toBeInTheDocument();
-  expect(screen.getByRole('alert')).toHaveTextContent(/Comment is empty. Please enter some!/i);
+  test("should display the posted comment if request is done successfully", async () => {
+    render(
+      <>
+        <CommentForm />
+        <CommentList />
+      </>,
+      { wrapper: Wrapper }
+    );
+    const commentText = faker.lorem.paragraph(1);
+
+    const commentInput = screen.getByRole("textbox");
+    const submitBtn = screen.getByRole("button", { name: /post/i });
+
+    await userEvent.type(commentInput, commentText);
+    await userEvent.click(submitBtn);
+
+    await waitForElementToBeRemoved(() => screen.queryByRole(/loading/i));
+
+    const commentList = await screen.findAllByRole("listitem");
+    const listedComment = await screen.findByText(commentText);
+
+    expect(listedComment).toHaveTextContent(commentText);
+    expect(commentList.length).toBe(1);
+  });
+
+  test("should give error if comment is empty", async () => {
+    render(
+      <>
+        <CommentForm />
+        <CommentList />
+      </>,
+      {
+        wrapper: Wrapper,
+      }
+    );
+
+    const submitBtn = screen.getByRole("button", {
+      name: /post/i,
+    });
+    await userEvent.click(submitBtn);
+
+    const commentList = await screen.queryAllByRole("listitem");
+
+    expect(commentList.length).toBe(0);
+  });
 });
