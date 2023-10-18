@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { getSession, signOut } from "next-auth/react";
+import { Session } from "next-auth";
 import styles from "./css/Navigation.module.css";
 
 const Navigation: React.FC = ({}) => {
+  const [session, setSession] = useState<Session | null>(null);
   const collapseBtnRef = useRef<HTMLButtonElement | null>(null);
   const { asPath } = useRouter();
 
@@ -11,6 +14,19 @@ const Navigation: React.FC = ({}) => {
     if (matchMedia("(max-width: 992px)").matches)
       collapseBtnRef.current?.click();
   };
+
+  const handleLogout = () => {
+    signOut({
+      callbackUrl: "/",
+      redirect: true,
+    });
+  };
+
+  useEffect(() => {
+    getSession().then((session) => {
+      setSession(session);
+    });
+  }, []);
 
   return (
     <div id="navigation" className="container-fluid">
@@ -21,9 +37,7 @@ const Navigation: React.FC = ({}) => {
           >
             <div className="container-fluid">
               <Link href="/">
-                <span className="navbar-brand">
-                  Barkley&apos;s
-                </span>
+                <span className="navbar-brand">Barkley&apos;s</span>
               </Link>
               <button
                 ref={collapseBtnRef}
@@ -71,39 +85,49 @@ const Navigation: React.FC = ({}) => {
                       Reviews
                     </span>
                   </Link>
-                  <li className="nav-item dropdown">
-                    <span
-                      className={`nav-link dropdown-toggle${
-                        asPath === "/items/my-items" ||
-                        asPath === "/items/create"
-                          ? " active"
-                          : ""
-                      }`}
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Profile
-                    </span>
-                    <ul className="dropdown-menu">
-                      <Link href="/items/my-items">
-                        <span
-                          className="dropdown-item"
-                          onClick={toggleCollapse}
-                        >
-                          My Items
-                        </span>
-                      </Link>
-                      <Link href="/items/create">
-                        <span
-                          className="dropdown-item"
-                          onClick={toggleCollapse}
-                        >
-                          Add an item
-                        </span>
-                      </Link>
-                    </ul>
-                  </li>
+                  {session ? (
+                    <li className="nav-item dropdown">
+                      <span
+                        className={`nav-link dropdown-toggle${
+                          asPath === "/items/my-items" ||
+                          asPath === "/items/create"
+                            ? " active"
+                            : ""
+                        }`}
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        {`Hi ${session.user?.name} !`}
+                      </span>
+                      <ul className="dropdown-menu">
+                        <Link href="/items/my-items">
+                          <span
+                            className="dropdown-item"
+                            onClick={toggleCollapse}
+                          >
+                            My Items
+                          </span>
+                        </Link>
+                        <Link href="/items/create">
+                          <span
+                            className="dropdown-item"
+                            onClick={toggleCollapse}
+                          >
+                            Add an item
+                          </span>
+                        </Link>
+                        <li className="nav-item">
+                          <span
+                            className="dropdown-item"
+                            onClick={handleLogout}
+                          >
+                            Log out
+                          </span>
+                        </li>
+                      </ul>
+                    </li>
+                  ) : null}
 
                   <li className="nav-item dropdown">
                     <span
@@ -137,26 +161,30 @@ const Navigation: React.FC = ({}) => {
                       </Link>
                     </ul>
                   </li>
-                  <Link className="nav-item" href="/users/login">
-                    <span
-                      className={`nav-link${
-                        asPath === "/users/login" ? " active" : ""
-                      }`}
-                      onClick={toggleCollapse}
-                    >
-                      Login
-                    </span>
-                  </Link>
-                  <Link className="nav-item" href="/users/register">
-                    <span
-                      className={`nav-link${
-                        asPath === "/users/register" ? " active" : ""
-                      }`}
-                      onClick={toggleCollapse}
-                    >
-                      register
-                    </span>
-                  </Link>
+                  {!session ? (
+                    <>
+                      <Link className="nav-item" href="/users/login">
+                        <span
+                          className={`nav-link${
+                            asPath === "/users/login" ? " active" : ""
+                          }`}
+                          onClick={toggleCollapse}
+                        >
+                          Login
+                        </span>
+                      </Link>
+                      <Link className="nav-item" href="/users/register">
+                        <span
+                          className={`nav-link${
+                            asPath === "/users/register" ? " active" : ""
+                          }`}
+                          onClick={toggleCollapse}
+                        >
+                          register
+                        </span>
+                      </Link>
+                    </>
+                  ) : null}
                 </ul>
                 <form className="d-flex" role="search">
                   <input
