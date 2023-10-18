@@ -7,22 +7,7 @@ import { ViewBid } from "@/shared/types/bid";
 import { Status } from "@/shared/types";
 import { BidGroupStyled, BidItemStyled } from "./styles";
 import { BidsSpinnerContainer } from "./styles/BidsSpinnerContainer.styled";
-
-const bidMoment = (timestamp: number) => {
-  const currentTime = moment();
-
-  const minutes = currentTime.diff(timestamp, "minutes");
-  const hours = currentTime.diff(timestamp, "hours");
-  const days = currentTime.diff(timestamp, "days");
-  const weeks = currentTime.diff(timestamp, "weeks");
-
-  if (weeks) return weeks == 1 ? `a week ago` : `${weeks} weeks ago`;
-  if (days) return days == 1 ? `a day ago` : `${days} days ago`;
-  if (hours) return hours == 1 ? `an hour ago` : `${hours} hours ago`;
-  if (minutes) return minutes == 1 ? `a minute ago` : `${minutes} minutes ago`;
-
-  return "a few moments ago";
-};
+import { elapsedTimeCaption } from "@/shared/utility/elapsedTimeCaption";
 
 export const LatestBids: React.FC = () => {
   const {
@@ -30,7 +15,7 @@ export const LatestBids: React.FC = () => {
     setState,
   } = useBid();
 
-  const { data, status: queryStatus } = useQuery(
+  const { data, status: queryStatus, isLoading } = useQuery(
     `/api/items/${itemId}/bids?page=0&pagesize=5`,
     `bids/${itemId}`,
     {
@@ -52,7 +37,7 @@ export const LatestBids: React.FC = () => {
       <h3>Latest Bids</h3>
       {bids?.length ? (
         <div className="position-relative">
-          {status === Status.loading && (
+          {(isLoading || status === Status.loading) && (
             <BidsSpinnerContainer>
               <div className="spinner-border text-danger" role="loading">
                 <span className="sr-only"></span>
@@ -78,7 +63,7 @@ export const LatestBids: React.FC = () => {
                       <h5 className="line-clamp-1">{bid.bidder}</h5>
                       has bid <i className="bi bi-currency-euro"></i>
                       {bid.price.toLocaleString()} -{" "}
-                      {bidMoment(bid.createdAt.valueOf())}
+                      {elapsedTimeCaption(bid.createdAt.valueOf())}
                     </div>
                   </div>
                 </BidItemStyled>
