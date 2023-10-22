@@ -4,8 +4,10 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import { Status } from "@/shared/types";
 
 const UserLoginPage: NextPage = () => {
+  const [signInState, setSignInState] = useState<Status>(Status.idle);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -13,15 +15,22 @@ const UserLoginPage: NextPage = () => {
 
   const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSignInState(Status.loading);
 
-    const result = await signIn("credentials", {
-      redirect: false,
-      email: credentials.email,
-      password: credentials.password,
-    });
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: credentials.email,
+        password: credentials.password,
+      });
 
-    if (result?.ok && !result.error) {
-      window.location.href = "/";
+      if (result?.ok && !result.error) {
+        window.location.href = "/";
+      }
+
+      setSignInState(Status.idle);
+    } catch (error) {
+      setSignInState(Status.error);
     }
   };
 
@@ -97,7 +106,15 @@ const UserLoginPage: NextPage = () => {
                           type="submit"
                           className="btn btn-primary mt-2"
                           style={{ width: "50%" }}
+                          disabled={signInState === Status.loading}
                         >
+                          {signInState === Status.loading ? (
+                            <span
+                              className="spinner-border spinner-border-sm"
+                              aria-hidden="true"
+                            ></span>
+                          ) : null}
+                          {` `}
                           Login
                         </button>
                       </p>
