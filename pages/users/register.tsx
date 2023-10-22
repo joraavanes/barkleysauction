@@ -109,7 +109,7 @@ const UserRegisterPage: NextPage = () => {
                   </p>
                   <p>
                     <button type="submit" className="btn btn-primary">
-                      Login
+                      Register
                     </button>
                   </p>
                   <h1 className="text-center">Or</h1>
