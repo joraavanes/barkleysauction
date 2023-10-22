@@ -180,7 +180,7 @@ const Navigation: React.FC = ({}) => {
                           }`}
                           onClick={toggleCollapse}
                         >
-                          register
+                          Register
                         </span>
                       </Link>
                     </>
