@@ -35,7 +35,7 @@ const Index: NextPageWithLayout<IndexProps> = ({ items }) => {
         <title>Current Listed Items</title>
       </Head>
       <div className="container-fluid">
-        <div className="row mt-3 ms-2 me-2">
+        <div className="row mt-3 ms-2 me-2 gy-3">
           {items.map((item) => (
             <ItemCard item={item} key={item._id} />
           ))}
