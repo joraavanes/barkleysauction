@@ -1,12 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { NextPage } from "next";
-import { signIn } from "next-auth/react";
+import { GetServerSideProps, NextPage } from "next";
+import { getSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import { Status } from "@/shared/types";
 
 const UserLoginPage: NextPage = () => {
+  const router = useRouter();
   const [signInState, setSignInState] = useState<Status>(Status.idle);
   const [credentials, setCredentials] = useState({
     email: "",
@@ -25,7 +27,8 @@ const UserLoginPage: NextPage = () => {
       });
 
       if (result?.ok && !result.error) {
-        window.location.href = "/";
+        // window.location.href = "/";
+        router.replace("/");
       }
 
       setSignInState(Status.idle);
@@ -136,6 +139,25 @@ const UserLoginPage: NextPage = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession({ req: context.req });
+  console.log(session);
+
+  if (session) {
+    return {
+      props: {},
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default UserLoginPage;
