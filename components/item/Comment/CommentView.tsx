@@ -10,7 +10,7 @@ const CommentView: React.FC<{ comment: CommentType }> = ({ comment }) => {
       className="list-item list-unstyled"
     >
       <div className="row mt-3 mb-3">
-        <div className="col-2 col-sm-3 col-md-1 offset-lg-1">
+        <div className="col-2 col-sm-3 col-md-2 col-lg-1 ms-lg-4">
           <Avatar
             {...genConfig()}
             style={{
@@ -19,7 +19,7 @@ const CommentView: React.FC<{ comment: CommentType }> = ({ comment }) => {
             }}
           />
         </div>
-        <div className="col-10 col-sm-9 col-md-11 col-lg-10">
+        <div className="col-10 col-sm-9 col-md-10 col-lg-10 col-lg-10">
           <h6 className="h5">{comment.username} says:</h6>
           <p>{comment.content}</p>
         </div>
