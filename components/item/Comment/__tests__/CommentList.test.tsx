@@ -1,15 +1,8 @@
 import "whatwg-fetch";
 import userEvent from "@testing-library/user-event";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { faker } from "@faker-js/faker";
-import {
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import {
   Comment,
   CommentStatus,
@@ -18,12 +11,20 @@ import {
 } from "@/components/item/Comment";
 import createMockServer from "../../../../mocks/server";
 import { rest } from "msw";
+import { SessionProvider } from "next-auth/react";
 
 function Wrapper({ children }: { children: JSX.Element | JSX.Element[] }) {
   const client = new QueryClient();
   return (
     <QueryClientProvider client={client}>
-      <Comment itemId="10">{children}</Comment>
+      <SessionProvider
+        session={{
+          user: { id: "1", email: "frank@mail.com" },
+          expires: new Date().toISOString(),
+        }}
+      >
+        <Comment itemId="10">{children}</Comment>
+      </SessionProvider>
     </QueryClientProvider>
   );
 }

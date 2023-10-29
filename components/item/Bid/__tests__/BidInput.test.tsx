@@ -6,14 +6,22 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Bid } from "../Bid";
 import { BidInput, BidStatus } from "../";
 import createMockServer from "../../../../mocks/server";
+import { SessionProvider } from "next-auth/react";
 
 function Wrapper({ children }: { children: JSX.Element }) {
   return (
     <QueryClientProvider client={new QueryClient()}>
-      <Bid itemId="64e24d09cadb0233db79daa0">
-        {children}
-        <BidStatus />
-      </Bid>
+      <SessionProvider
+        session={{
+          user: { id: "1", email: "frank@mail.com" },
+          expires: new Date().toISOString(),
+        }}
+      >
+        <Bid itemId="64e24d09cadb0233db79daa0">
+          {children}
+          <BidStatus />
+        </Bid>
+      </SessionProvider>
     </QueryClientProvider>
   );
 }

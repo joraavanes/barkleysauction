@@ -16,15 +16,23 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/pages/_app";
 import createMockServer from "../../../../mocks/server";
 import { rest } from "msw";
+import { SessionProvider } from "next-auth/react";
 
 describe("<CommentForm/>", () => {
   function Wrapper({ children }: { children: JSX.Element }) {
     return (
       <QueryClientProvider client={queryClient}>
-        <Comment itemId="1">
-          {children}
-          <CommentStatus />
-        </Comment>
+        <SessionProvider
+          session={{
+            user: { id: "1", name: "Frank", email: "frank@mail.com" },
+            expires: new Date().toLocaleDateString()
+          }}
+        >
+          <Comment itemId="1">
+            {children}
+            <CommentStatus />
+          </Comment>
+        </SessionProvider>
       </QueryClientProvider>
     );
   }
