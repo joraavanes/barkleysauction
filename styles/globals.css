@@ -19,12 +19,17 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.primary-pink {
+  color: var(--primary-pink);
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-a.btn-primary, button.btn-primary {
+a.btn-primary,
+button.btn-primary {
   background-color: grey !important;
   border-color: grey !important;
   transition: all 0.3s ease-in-out;
