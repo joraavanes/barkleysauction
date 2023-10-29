@@ -14,7 +14,12 @@ export const CommentStatus: React.FC = () => {
       </div>
     );
 
-  if (status === Status.error) return <div role="alert">{error}</div>;
+  if (status === Status.error)
+    return (
+      <div role="alert" className="primary-pink mb-3 ps-2">
+        {error}
+      </div>
+    );
 
   return null;
 };
