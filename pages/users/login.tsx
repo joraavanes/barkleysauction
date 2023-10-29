@@ -143,7 +143,6 @@ const UserLoginPage: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession({ req: context.req });
-  console.log(session);
 
   if (session) {
     return {

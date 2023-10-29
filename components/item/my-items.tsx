@@ -29,7 +29,7 @@ const MyItems: React.FC<{ items: Item[] }> = ({ items }) => {
                   onClick={(e) => {
                     fetch(`/api/items/${item._id.toString()}`, {
                       method: "DELETE",
-                    }).then(console.log);
+                    });
                   }}
                 >
                   Remove

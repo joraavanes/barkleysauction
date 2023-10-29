@@ -41,11 +41,9 @@ describe("<CommentForm/>", () => {
 
   const handlers = [
     rest.get("/api/comments/1", async (req, res, ctx) => {
-      // console.log("GET /api/comments/1 CALLED");
       return res(ctx.json(payload));
     }),
     rest.post("/api/comments", async (req, res, ctx) => {
-      // console.log("POST /api/comments CALLED");
       const body = await req.json();
 
       body._id = "1";
