@@ -34,7 +34,13 @@ export const CommentForm: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    if(!data || !data.user) return;
+    if (!data || !data.user) {
+      dispatch({
+        type: Status.error,
+        error: "We don't know you! Please log in.",
+      });
+      return;
+    }
 
     if (!comment) {
       dispatch({
