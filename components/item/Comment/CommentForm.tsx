@@ -1,10 +1,12 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { Status, useComment } from "./Comment";
+import { useSession } from "next-auth/react";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/pages/_app";
 import getErrorMessage from "@/shared/utility/resolveErrorMessage";
 
 export const CommentForm: React.FC = () => {
+  const { data } = useSession();
   const [{ status, itemId }, dispatch] = useComment();
   const [comment, setComment] = useState("");
 
@@ -32,6 +34,8 @@ export const CommentForm: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if(!data || !data.user) return;
+
     if (!comment) {
       dispatch({
         type: Status.error,
@@ -42,7 +46,7 @@ export const CommentForm: React.FC = () => {
 
     dispatch({ type: Status.pending });
     mutate({
-      user: "63510298c6f3a606c53f8e69",
+      user: data.user?.id,
       item: itemId,
       content: comment,
     });
