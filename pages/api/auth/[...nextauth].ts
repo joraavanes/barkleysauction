@@ -12,6 +12,24 @@ export default NextAuth({
     strategy: 'jwt',
     maxAge: 60 * 60
   },
+  callbacks: {
+    session({ session, token }) {
+      if (session.user) {
+        // @ts-expect-error
+        session.user.id = token.id;
+      }
+
+      return session;
+    },
+    jwt({ account, token, session, user }) {
+      if (account) {
+        // token.accessToken = account.access_token;
+        token.id = user.id;
+      }
+
+      return token;
+    }
+  },
   providers: [
     CredentialsProvider({
       credentials: {
@@ -31,7 +49,7 @@ export default NextAuth({
 
         if (hash.toString('hex') !== storedHash) return null;
 
-        if (user) return { id: `${user.email}/${user.name}`, email: user.email, name: user.name };
+        if (user) return { id: user._id.toString(), email: user.email, name: user.name };
 
         return null;
       }
