@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { useBid } from "./Bid";
 import { Button } from "./Button";
 import { queryClient } from "@/pages/_app";
@@ -7,6 +8,7 @@ import { Status } from "@/shared/types";
 import styles from "./styles/Bid.module.css";
 
 export const BidInput: React.FC = () => {
+  const { data } = useSession();
   const [bid, setBid] = useState<number | undefined>(undefined);
   const {
     state: { itemId },
@@ -25,6 +27,11 @@ export const BidInput: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    if (!data || !data.user) {
+      setState((prev) => ({ ...prev, status: Status.error }));
+      return;
+    }
+
     setState((prev) => ({
       ...prev,
       status: Status.loading,
@@ -33,7 +40,7 @@ export const BidInput: React.FC = () => {
 
     mutate({
       price: bid,
-      bidder: "64e10f1a4ae5ba3a51cfaec7",
+      bidder: data.user?.id,
       item: itemId!,
     });
   };
