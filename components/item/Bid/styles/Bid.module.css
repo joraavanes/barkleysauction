@@ -15,11 +15,13 @@
   box-shadow: 0 10px 28px -16px !important;
 }
 
-.bidSubmitBtn {
+button.bidSubmitBtn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-color: #f91890;
+  background-color: #f91890;
   width: 35%;
 }
 
