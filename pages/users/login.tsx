@@ -6,10 +6,15 @@ import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import { Status } from "@/shared/types";
+import getErrorMessage from "@/shared/utility/resolveErrorMessage";
+
+type SignInState = { state: Status; error?: string };
 
 const UserLoginPage: NextPage = () => {
   const router = useRouter();
-  const [signInState, setSignInState] = useState<Status>(Status.idle);
+  const [signInState, setSignInState] = useState<SignInState>({
+    state: Status.idle,
+  });
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -17,7 +22,7 @@ const UserLoginPage: NextPage = () => {
 
   const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSignInState(Status.loading);
+    setSignInState(() => ({ error: undefined, state: Status.loading }));
 
     try {
       const result = await signIn("credentials", {
@@ -27,13 +32,12 @@ const UserLoginPage: NextPage = () => {
       });
 
       if (result?.ok && !result.error) {
-        // window.location.href = "/";
-        router.replace("/");
+        return router.replace("/");
       }
 
-      setSignInState(Status.idle);
+      throw new Error("Username or password is invalid!");
     } catch (error) {
-      setSignInState(Status.error);
+      setSignInState({ state: Status.error, error: getErrorMessage(error) });
     }
   };
 
@@ -109,9 +113,9 @@ const UserLoginPage: NextPage = () => {
                           type="submit"
                           className="btn btn-primary mt-2"
                           style={{ width: "50%" }}
-                          disabled={signInState === Status.loading}
+                          disabled={signInState.state === Status.loading}
                         >
-                          {signInState === Status.loading ? (
+                          {signInState.state === Status.loading ? (
                             <span
                               className="spinner-border spinner-border-sm"
                               aria-hidden="true"
@@ -121,6 +125,11 @@ const UserLoginPage: NextPage = () => {
                           Login
                         </button>
                       </p>
+                      {signInState.error ? (
+                        <p className="text-center primary-pink">
+                          {signInState.error}
+                        </p>
+                      ) : null}
                     </form>
                   </div>
                   <div className="col-10 offset-1 mt-1 mb-5">
