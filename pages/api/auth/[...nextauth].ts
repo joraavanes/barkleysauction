@@ -49,7 +49,7 @@ export default NextAuth({
 
         if (hash.toString('hex') !== storedHash) return null;
 
-        if (user) return { id: user._id.toString(), email: user.email, name: user.name };
+        if (user) return { id: user._id.toString(), email: user.email, name: user.firstname };
 
         return null;
       }

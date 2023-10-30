@@ -31,7 +31,7 @@ export class CommentsService {
 
       return {
         ...comment,
-        username: user.name
+        username: user.firstname
       }
     }));
 

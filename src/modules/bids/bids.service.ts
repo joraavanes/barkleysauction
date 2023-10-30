@@ -86,7 +86,7 @@ export class BidsService {
 
       return {
         ...bid,
-        bidder: user?.name
+        bidder: user?.firstname
       };
     })) : bids;
 
