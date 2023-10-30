@@ -38,7 +38,7 @@ export class UsersController {
       const model: User = req.body;
 
       const result = await this.usersService.createUser(model);
-      res.status(200).send(result);
+      res.status(201).send(result);
 
     } catch (error) {
       res.status(400).json({ error: getErrorMessage(error) });
