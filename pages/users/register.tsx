@@ -1,9 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { getSession } from "next-auth/react";
+import useMutate from "@/hooks/useMutate";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { ChangeEvent, FormEvent, useState } from "react";
 
 type RegisterData = {
   email: string;
@@ -19,9 +20,17 @@ const UserRegisterPage: NextPage = () => {
     firstname: "",
     lastname: "",
   });
+  const { mutate, state } = useMutate("/api/users/signup", {
+    method: "POST",
+    timeout: 5000,
+    ContentType: "application/json",
+  });
 
-  const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) =>
+  const handleRegisterSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    mutate(registerData);
+  };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
     setRegisterData((prev) => ({
@@ -108,19 +117,24 @@ const UserRegisterPage: NextPage = () => {
                       onChange={handleInputChange}
                     />
                   </p>
-                  <p>
+                  <p className="text-center">
                     <button type="submit" className="btn btn-primary">
                       Register
                     </button>
                   </p>
-                  <h1 className="text-center">Or</h1>
-
-                  <Link href="/users/login" style={{ width: "80%" }} passHref>
-                    <a href="" className="btn btn-primary d-block mx-auto">
-                      You can also log in here :)
-                    </a>
-                  </Link>
+                  {state.isError && state.errorMessage ? (
+                    <p className="primary-pink text-center">
+                      {state.errorMessage}
+                    </p>
+                  ) : null}
                 </form>
+                <h1 className="text-center">Or</h1>
+
+                <Link href="/users/login" style={{ width: "80%" }} passHref>
+                  <a href="" className="btn btn-primary d-block mx-auto">
+                    You can also log in here :)
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
