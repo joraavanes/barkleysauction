@@ -68,6 +68,8 @@ function useMutate<T>(url: string, options: MutateOptions) { // todo: add an opt
       return response;
     },
     onSuccess: async (data: Response) => {
+      if (!data.ok) return;
+
       const payload = await data.json();
 
       setState(prev => ({
@@ -87,6 +89,19 @@ function useMutate<T>(url: string, options: MutateOptions) { // todo: add an opt
         isLoading: false,
         errorMessage: 'Error communicating with server.'
       }));
+    },
+    onSettled: async (data, error, variables, context) => {
+      if (!data?.ok) {
+        const payload = await data?.json();
+
+        setState(prev => ({
+          ...prev,
+          status: Status.error,
+          isError: true,
+          isLoading: false,
+          errorMessage: payload?.error ? payload.error : "Cant make it now"
+        }));
+      }
     },
   });
 
