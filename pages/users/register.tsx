@@ -122,12 +122,19 @@ const UserRegisterPage: NextPage = () => {
                       Register
                     </button>
                   </p>
-                  {state.isError && state.errorMessage ? (
-                    <p className="primary-pink text-center">
-                      {state.errorMessage}
-                    </p>
-                  ) : null}
                 </form>
+                {state.isError && state.errorMessage ? (
+                  <p className="primary-pink text-center">
+                    {state.errorMessage}
+                  </p>
+                ) : state.isSuccess ? (
+                  <p className="text-center text-success">
+                    You've successfully registered at Barley's. Please{" "}
+                    <Link href="/users/login">
+                      <a className="text-decoration-dashed">login now!</a>
+                    </Link>
+                  </p>
+                ) : null}
                 <h1 className="text-center">Or</h1>
 
                 <Link href="/users/login" style={{ width: "80%" }} passHref>
