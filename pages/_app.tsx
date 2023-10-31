@@ -10,10 +10,12 @@ import { ReactElement, ReactNode, useEffect } from "react";
 import type { AppProps } from "next/app";
 import NextProgress from "nextjs-progressbar";
 import MainLayout from "@/components/layout/Layout";
+import Navigation from "@/components/layout/Navigation";
 import { ErrorBoundary } from "@/components/shared/";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
+  navigation?: ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -24,6 +26,7 @@ type AppPropsWithLayout = AppProps & {
 export const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps, session }: AppPropsWithLayout) {
+  const PageNavigation = Component.navigation ?? <Navigation />;
   const getLayout =
     Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>);
 
@@ -36,6 +39,7 @@ function MyApp({ Component, pageProps, session }: AppPropsWithLayout) {
       <SessionProvider session={session}>
         <QueryClientProvider client={queryClient}>
           <NextProgress color="#101e8e" height={3} />
+          {PageNavigation}
           <Component {...pageProps} />
         </QueryClientProvider>
       </SessionProvider>
