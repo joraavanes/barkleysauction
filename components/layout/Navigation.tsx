@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
-import { getSession, signOut } from "next-auth/react";
-import { Session } from "next-auth";
+import { signOut, useSession } from "next-auth/react";
+import { useRef } from "react";
 import styles from "./css/Navigation.module.css";
 
 const Navigation: React.FC = ({}) => {
-  const [session, setSession] = useState<Session | null>(null);
   const collapseBtnRef = useRef<HTMLButtonElement | null>(null);
+  const { data: session } = useSession();
   const { asPath } = useRouter();
 
   const toggleCollapse = () => {
@@ -21,12 +20,6 @@ const Navigation: React.FC = ({}) => {
       redirect: true,
     });
   };
-
-  useEffect(() => {
-    getSession().then((session) => {
-      setSession(session);
-    });
-  }, []);
 
   return (
     <div id="navigation" className="container-fluid">
