@@ -129,7 +129,7 @@ const UserRegisterPage: NextPage = () => {
                   </p>
                 ) : state.isSuccess ? (
                   <p className="text-center text-success">
-                    You've successfully registered at Barley's. Please{" "}
+                    You&apos;ve successfully registered at Barley&apos;s. Please{" "}
                     <Link href="/users/login">
                       <a className="text-decoration-dashed">login now!</a>
                     </Link>
