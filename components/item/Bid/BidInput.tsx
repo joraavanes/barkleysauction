@@ -9,7 +9,7 @@ import styles from "./styles/Bid.module.css";
 
 export const BidInput: React.FC = () => {
   const { data } = useSession();
-  const [bid, setBid] = useState<number | undefined>(undefined);
+  const [bid, setBid] = useState<number>(0);
   const {
     state: { itemId },
     setState,
