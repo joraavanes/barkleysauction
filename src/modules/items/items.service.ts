@@ -9,13 +9,15 @@ import formidable, { File } from "formidable";
 import { FileService } from "../file/file.service";
 import { ObjectId } from "mongodb";
 import { Pagination } from "@/src/db/types";
+import { CloudStorage } from "../cloud/cloud-storage.service";
 
 @Service()
 export class ItemsService {
     constructor(
         private itemsRespository: ItemsRepository,
         private usersRepository: UsersRepository,
-        private fileService: FileService
+        private fileService: FileService,
+        private cloudStorage: CloudStorage
     ) { }
 
     getItems(pagination: Pagination) {
@@ -26,7 +28,7 @@ export class ItemsService {
         return this.itemsRespository.findOne({ _id: new ObjectId(id) });
     }
 
-    private async storeItemImage(files: formidable.Files): Promise<string> {
+    private async storeItemImageLocally(files: formidable.Files): Promise<string> {
         try {
             const images = files.image as Array<formidable.File>;
             const itemImage = images[0] as File;
@@ -50,13 +52,28 @@ export class ItemsService {
         }
     }
 
+    private async storeItemImageOnCloud(files: formidable.Files): Promise<string> {
+        const images = files.image as Array<formidable.File>;
+        const itemImage = images[0] as File;
+
+        const imageBuffer = await this.fileService.readFile(itemImage.filepath);
+
+        if (this.fileService.getDataSize(imageBuffer) > parseFloat(process.env.MAX_USER_FILE as string)) {
+            throw new Error('File size exceeds maximum limit')
+        }
+
+        await this.cloudStorage.putMediaObject(imageBuffer, itemImage.originalFilename ?? 'test-image.png');
+
+        return `${process.env.S3_HOSTNAME}/${itemImage.originalFilename}`;
+    }
+
     async createItem(model: CreateItem, files: formidable.Files) {
         const user = await this.usersRepository.findOne({ _id: new ObjectId(model.UserId) });
 
         if (!user)
             throw new Error('User doesn\'t exist');
 
-        const imageUrl = await this.storeItemImage(files);
+        const imageUrl = await this.storeItemImageOnCloud(files);
 
         return this.itemsRespository.create({
             title: model.title,
@@ -75,11 +92,10 @@ export class ItemsService {
             throw new Error('Item does not exist');
 
         if (files.image) {
-            model.imageUrl = await this.storeItemImage(files);
+            model.imageUrl = await this.storeItemImageOnCloud(files);
 
             if (item.imageUrl) {
-                const pathToRemove = this.fileService.getAbsolutePathFromRelative(path.join('public', item.imageUrl));
-                await this.fileService.removeFile(pathToRemove);
+                await this.cloudStorage.deleteMediaObject(item.imageUrl);
             }
         }
 
@@ -97,6 +113,16 @@ export class ItemsService {
         if (!item)
             throw new Error('Item does not exist');
 
-        return this.itemsRespository.delete({ _id: new ObjectId(id) });
+        const deleteItemResult = await this.itemsRespository.delete({ _id: new ObjectId(id) });
+
+        if (!deleteItemResult.ok) {
+            throw new Error('Failed to remove item');
+        }
+
+        if (item.imageUrl) {
+            await this.cloudStorage.deleteMediaObject(item.imageUrl)
+        }
+
+        return;
     }
 }
