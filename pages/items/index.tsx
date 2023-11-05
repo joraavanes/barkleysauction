@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       items,
     },
-    revalidate: 1800,
+    revalidate: Number(process.env.REVALIDATION),
   };
 };
 
