@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ViewItem } from "@/shared/types/Item";
-import styles from './styles/ItemCard.module.css';
+import styles from "./styles/ItemCard.module.css";
 
 type Props = {
   item: ViewItem;
@@ -13,15 +13,17 @@ const ItemCard: React.FC<Props> = ({ item }) => {
       <div className={`card ${styles.itemCard}`}>
         <div className="card-body">
           <Link href={`/items/${item._id}/${item.title.replaceAll(" ", "-")}`}>
-            <Image
-              src={item.imageUrl}
-              className="img-fluid rounded"
-              width={200}
-              height={200}
-              objectFit="contain"
-              title={item.title}
-              role="button"
-            />
+            <div className="d-flex justify-content-center">
+              <Image
+                src={item.imageUrl}
+                className="img-fluid rounded"
+                width={200}
+                height={200}
+                objectFit="contain"
+                title={item.title}
+                role="button"
+              />
+            </div>
           </Link>
           <h5 className="one-line-ellipsis" title={item.title}>
             {item.title} - {item._id}
