@@ -5,6 +5,7 @@ import useMutate from "@/hooks/useMutate";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { Status } from "@/shared/types";
 
 type RegisterData = {
   email: string;
@@ -118,7 +119,19 @@ const UserRegisterPage: NextPage = () => {
                     />
                   </p>
                   <p className="text-center">
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      style={{ width: "50%" }}
+                      disabled={state.status === Status.loading}
+                    >
+                      {state.status === Status.loading ? (
+                        <span
+                          className="spinner-border spinner-border-sm"
+                          aria-hidden="true"
+                        ></span>
+                      ) : null}
+                      {` `}
                       Register
                     </button>
                   </p>
