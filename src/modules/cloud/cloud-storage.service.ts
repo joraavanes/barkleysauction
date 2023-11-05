@@ -1,4 +1,4 @@
-import { S3Client, PutObjectCommand, PutObjectCommandOutput } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, DeleteObjectCommand, PutObjectCommandOutput } from "@aws-sdk/client-s3";
 import { Service } from "typedi";
 
 @Service()
@@ -30,4 +30,21 @@ export class CloudStorage {
       throw error;
     }
   }
+
+  async deleteMediaObject(filename: string) {
+    try {
+      const Key = filename.replace(`${process.env.S3_HOSTNAME}/`, '').trim();
+
+      const deleteObject = new DeleteObjectCommand({
+        Bucket: String(process.env.S3_BUCKET_NAME),
+        Key
+      });
+
+      return this.client.send(deleteObject);
+      
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }
