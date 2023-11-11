@@ -81,7 +81,8 @@ export class ItemsService {
             bids: Array<number>(),
             startingBid: model.startingBid,
             imageUrl,
-            owner: user._id
+            owner: user._id,
+            createdAt: new Date()
         } as Item);
     }
 
@@ -99,9 +100,10 @@ export class ItemsService {
             }
         }
 
-        const updatedModel = {
+        const updatedModel: Item = {
             ...item,
-            ...model
+            ...model,
+            updatedAt: new Date()
         };
 
         return this.itemsRespository.update({ _id: new ObjectId(id) }, updatedModel);

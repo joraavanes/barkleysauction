@@ -1,7 +1,7 @@
 import { ObjectId } from "mongodb";
 import { User } from "../auth/models/user.model";
 
-export interface Item {
+export type Item = {
     _id: ObjectId;
     title: string;
     description: string;
@@ -9,4 +9,6 @@ export interface Item {
     startingBid: number;
     imageUrl?: string;
     owner: ObjectId;
+    createdAt: Date;
+    updatedAt: Date;
 }
