@@ -39,7 +39,8 @@ export class UsersService {
 
     const user: User = {
       ...model,
-      password: hashWithSalt
+      password: hashWithSalt,
+      createdAt: new Date()
     };
 
     return this.usersRepository.create(user);
