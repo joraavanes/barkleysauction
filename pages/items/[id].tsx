@@ -69,7 +69,7 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
                 </div>
               </div>
 
-              <div className="col-12 col-sm-6 col-md-4">
+              <div className="col-12">
                 <div>
                   <Comment itemId={item._id}>
                     <CommentForm />
