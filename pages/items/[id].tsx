@@ -96,31 +96,20 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id;
 
-  // checks the validity of id
   if (!id || !(typeof id === "string")) {
     return {
       notFound: true,
     };
   }
 
-  // catch the item from the database
-  const _item = await itemsService.findById(id);
+  const item = await itemsService.findById(id);
 
-  // returns notFound if no item found
-  if (!_item) {
+  if (!item) {
     return {
       notFound: true,
     };
   }
 
-  //Serialize ObjectId props to strings
-  const item = {
-    ..._item,
-    _id: _item?._id.toString(),
-    owner: _item?.owner?.toString() ?? "",
-  };
-
-  // return the item as props to the component
   return {
     props: {
       item,

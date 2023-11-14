@@ -99,19 +99,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const id = slug[0];
   const itemTitle = slug[1];
 
-  const _item = await itemsService.findById(id);
+  const item = await itemsService.findById(id);
 
-  if (!_item) {
+  if (!item) {
     return {
       notFound: true,
     };
   }
-
-  const item = {
-    ..._item,
-    _id: _item?._id.toString(),
-    owner: _item?.owner?.toString() ?? "",
-  };
 
   return {
     props: {

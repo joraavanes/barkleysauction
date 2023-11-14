@@ -20,12 +20,28 @@ export class ItemsService {
         private cloudStorage: CloudStorage
     ) { }
 
-    getItems(pagination: Pagination) {
-        return this.itemsRespository.find(pagination);
+    async getItems(pagination: Pagination) {
+        return (await this.itemsRespository.find(pagination)).map(item => ({
+            ...item,
+            _id: item._id.toString(),
+            owner: item.owner?.toString() ?? "",
+            createdAt: item.createdAt?.valueOf() ?? "",
+            updatedAt: item.updatedAt?.valueOf() ?? "",
+        }));
     }
 
-    findById(id: string) {
-        return this.itemsRespository.findOne({ _id: new ObjectId(id) });
+    async findById(id: string) {
+        const item = await this.itemsRespository.findOne({ _id: new ObjectId(id) });
+
+        if (!item) return null;
+
+        return {
+            ...item,
+            _id: item._id.toString(),
+            owner: item.owner?.toString() ?? "",
+            createdAt: item.createdAt?.valueOf() ?? "",
+            updatedAt: item.updatedAt?.valueOf() ?? "",
+        };
     }
 
     private async storeItemImageLocally(files: formidable.Files): Promise<string> {
