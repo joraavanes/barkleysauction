@@ -145,20 +145,22 @@ test("should display error when bid is lower than current highest bid", async ()
   expect(apiRejected).toBeInTheDocument();
 });
 
-// test("should display the new bid on the screen", async () => {
-//   render(<BidInput />, { wrapper: Wrapper });
-//   const bidInput = screen.getByRole("spinbutton");
-//   const submitBtn = screen.getByRole("button", { name: /add bid/i });
+test("Input field should not accept if Alphabet characters is received", async () => {
+  render(<BidInput />, { wrapper: Wrapper });
 
-//   await userEvent.type(bidInput, "100");
-//   await userEvent.click(submitBtn);
+  await waitFor(
+    () => {
+      expect(screen.queryByRole(/pending/i)).not.toBeInTheDocument();
+    },
+    { timeout: 1000 }
+  );
 
-//   await waitForElementToBeRemoved(() => screen.getByRole(/pending/i), {
-//     timeout: 1000,
-//   });
+  const bidInput = screen.getByRole<HTMLInputElement>("textbox");
+  const submitBtn = screen.getByRole("button");
 
-//   const bidItems = await screen.queryAllByRole("listitem");
+  await userEvent.type(bidInput, "a");
+  await userEvent.click(submitBtn);
 
-//   expect(bidItems[0].textContent).toBe("100");
-//   expect(screen.getByText(/100/i)).toBeInTheDocument();
-// });
+  expect(bidInput.value).not.toBe("a");
+  expect(bidInput.value).toBe("");
+});

@@ -6,10 +6,12 @@ import { queryClient } from "@/pages/_app";
 import useMutate from "@/hooks/useMutate";
 import { Status } from "@/shared/types";
 import styles from "./styles/Bid.module.css";
+import priceCommaDivider from "@/shared/utility/priceCommaDivider";
 
 export const BidInput: React.FC = () => {
   const { data } = useSession();
   const [bid, setBid] = useState<number>(0);
+  const [displayBid, setDisplayBid] = useState<string>("");
   const {
     state: { itemId },
     setState,
@@ -63,14 +65,26 @@ export const BidInput: React.FC = () => {
           <div className="d-flex justify-content-around mt-3 mb-3">
             <input
               className={`${styles.bidInput} form-control`}
-              type="number"
-              step="0.01"
+              type="text"
               name="bid"
               id="bid"
-              value={bid}
+              value={displayBid}
               role="textbox"
+              autoComplete="off"
               placeholder="Enter your bid"
-              onChange={(e) => setBid(e.target.valueAsNumber)}
+              onChange={(e) => {
+                const isNumber = /^(\s*|\d+)$/.test(
+                  e.target.value.replaceAll(",", "").replaceAll(".", "")
+                );
+                if (!isNumber) {
+                  setBid((bid) => bid);
+                  setDisplayBid((displayBid) => displayBid);
+                  return;
+                }
+
+                setBid(+e.target.value);
+                setDisplayBid(priceCommaDivider(e.target.value));
+              }}
             />
             <Button>Add bid</Button>
           </div>
