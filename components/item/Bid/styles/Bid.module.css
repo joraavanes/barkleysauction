@@ -1,4 +1,4 @@
-.bidInput {
+.bidInput[type=text] {
   width: 65%;
   transition: all 0.5s ease-in-out;
 
