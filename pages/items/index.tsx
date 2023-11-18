@@ -1,17 +1,19 @@
 import Head from "next/head";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { itemsService } from "@/src/modules/items";
 import type { NextPageWithLayout } from "../_app";
 import { ViewItem } from "@/shared/types/Item";
 import ItemCard from "@/components/item/ItemCard";
+import Spinner from "@/components/shared/Spinner";
 
 interface IndexProps {
   items: Array<ViewItem>;
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetServerSideProps = async (context) => {
   const _items = await itemsService.getItems({
-    limit: 24,
+    limit: 5,
     offset: 0,
   });
   const items = _items.map((item) => ({
@@ -28,7 +30,40 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Index: NextPageWithLayout<IndexProps> = ({ items }) => {
+const Index: NextPageWithLayout<IndexProps> = (serverProps) => {
+  const [items, setItems] = useState(serverProps.items);
+  const [counter, setCounter] = useState<number | undefined>();
+  const loaderRef = useRef<HTMLDivElement | null>(null);
+
+  async function getItems(page: number | undefined) {
+    const res = await fetch(`/api/items?page=${page}&pageSize=5`, {
+      method: "GET",
+    });
+    const data = await res.json();
+    return data;
+  }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      async ([entry]) => {
+        if (entry && entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          setCounter((prev) => (prev ? prev + 1 : 1));
+        }
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+    observer.observe(loaderRef.current as HTMLDivElement);
+  }, []);
+
+  useMemo(() => {
+    if (counter)
+      getItems(counter).then((data) => {
+        setItems((prev) => [...prev, ...data]);
+      });
+  }, [counter]);
+
   return (
     <div>
       <Head>
@@ -39,6 +74,11 @@ const Index: NextPageWithLayout<IndexProps> = ({ items }) => {
           {items.map((item) => (
             <ItemCard item={item} key={item._id} />
           ))}
+        </div>
+        <div className="row mt-3 ms-2 me-2 mb-3 gy-3">
+          <div className="d-flex justify-content-center" ref={loaderRef}>
+            <Spinner />
+          </div>
         </div>
       </div>
     </div>
