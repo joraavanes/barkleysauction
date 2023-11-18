@@ -8,15 +8,15 @@ import ItemCard from "@/components/item/ItemCard";
 import Spinner from "@/components/shared/Spinner";
 
 interface IndexProps {
-  items: Array<ViewItem>;
+  _items: Array<ViewItem>;
 }
 
-export const getStaticProps: GetServerSideProps = async (context) => {
-  const _items = await itemsService.getItems({
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const items = await itemsService.getItems({
     limit: 5,
     offset: 0,
   });
-  const items = _items.map((item) => ({
+  const serializedItems = items.map((item) => ({
     ...item,
     _id: item._id.toString(),
     owner: item.owner?.toString() ?? "",
@@ -24,14 +24,13 @@ export const getStaticProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      items,
+      _items: serializedItems,
     },
-    revalidate: Number(process.env.REVALIDATION),
   };
 };
 
-const Index: NextPageWithLayout<IndexProps> = (serverProps) => {
-  const [items, setItems] = useState(serverProps.items);
+const Index: NextPageWithLayout<IndexProps> = ({ _items }) => {
+  const [items, setItems] = useState(() => _items ?? []);
   const [counter, setCounter] = useState<number | undefined>();
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
