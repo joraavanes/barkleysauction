@@ -3,7 +3,6 @@ import { Service } from "typedi";
 import { plainToClass } from "class-transformer";
 import { ItemsService } from "./items.service";
 import { BidsService } from "../bids/bids.service";
-import { UsersService } from "../auth/users.service";
 import { parseBody } from "../../utils/bodyParser";
 import { CreateItem } from "./dtos/createItem.dto";
 import getErrorMessage from "@/shared/utility/resolveErrorMessage";
@@ -13,7 +12,6 @@ export class ItemsController {
     constructor(
         private itemsService: ItemsService,
         private bidsService: BidsService,
-        private usersService: UsersService
     ) { }
 
     async index(req: NextApiRequest, res: NextApiResponse) {
