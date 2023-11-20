@@ -15,9 +15,13 @@ export const LatestBids: React.FC = () => {
     setState,
   } = useBid();
 
-  const { data, status: queryStatus, isLoading } = useQuery(
+  const {
+    data,
+    status: queryStatus,
+    isLoading,
+  } = useQuery(
     `/api/items/${itemId}/bids?page=0&pagesize=5`,
-    `bids/${itemId}`,
+    [`bids/${itemId}`],
     {
       timeout: 5000,
       ContentType: "application/json",

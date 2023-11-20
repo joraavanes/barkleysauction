@@ -5,8 +5,8 @@ type QueryOptions = {
   ContentType?: string
 }
 
-function useQuery<T>(url: string, token: string, options: QueryOptions) {
-  const { data, isSuccess, isError, status, isFetching } = _useQuery([token], async () => {
+function useQuery<T>(url: string, token: string[], options: QueryOptions) {
+  const { data, isSuccess, isError, status, isFetching, refetch } = _useQuery(token, async () => {
     const controller = new AbortController();
     const abortId = setTimeout(() => controller.abort(), options.timeout);
 

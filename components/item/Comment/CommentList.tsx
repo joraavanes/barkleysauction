@@ -22,7 +22,7 @@ export const CommentList: React.FC<CommentListProps> = () => {
   const { comments, itemId } = state;
   const { data, isLoading, isError } = useQuery(
     `/api/comments/${itemId}`,
-    `comments/${itemId}`,
+    [`comments/${itemId}`],
     {
       timeout: 5000,
       ContentType: "application/json",
