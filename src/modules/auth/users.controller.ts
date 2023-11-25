@@ -28,7 +28,9 @@ export class UsersController {
 
   // GET /api/users
   async getUsers(req: NextApiRequest, res: NextApiResponse) {
-    const model = await this.usersService.getAll();
+    const { page = 0, pageSize = 10, ...filterQueries } = req.query;
+
+    const model = await this.usersService.getAll({ limit: +pageSize, offset: (+page) * (+pageSize) }, filterQueries);
     res.status(200).send(model);
   }
 

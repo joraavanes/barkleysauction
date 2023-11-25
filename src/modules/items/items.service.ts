@@ -7,7 +7,7 @@ import { Item } from "./item.model";
 import { ItemsRepository } from "./items.repository";
 import formidable, { File } from "formidable";
 import { FileService } from "../file/file.service";
-import { ObjectId } from "mongodb";
+import { Filter, ObjectId } from "mongodb";
 import { Pagination } from "@/src/db/types";
 import { CloudStorage } from "../cloud/cloud-storage.service";
 
@@ -20,8 +20,8 @@ export class ItemsService {
         private cloudStorage: CloudStorage
     ) { }
 
-    async getItems(pagination: Pagination) {
-        return (await this.itemsRespository.find(pagination)).map(item => ({
+    async getItems(pagination: Pagination, filter?: Filter<Item>) {
+        return (await this.itemsRespository.filter(filter, pagination)).map(item => ({
             ...item,
             _id: item._id.toString(),
             owner: item.owner?.toString() ?? "",

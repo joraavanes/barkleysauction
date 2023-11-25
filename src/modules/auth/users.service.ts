@@ -2,8 +2,9 @@ import { scrypt as _scrypt, randomBytes } from 'node:crypto';
 import { Service } from "typedi";
 import { User } from "./models/user.model";
 import { UsersRepository } from "./users.respository";
-import { ObjectId } from "mongodb";
+import { Filter, ObjectId } from "mongodb";
 import { promisify } from 'node:util';
+import { Pagination } from '@/src/db/types';
 
 const scrypt = promisify(_scrypt);
 
@@ -21,8 +22,8 @@ export class UsersService {
     return this.usersRepository.findOne({ email });
   }
 
-  async getAll() {
-    return this.usersRepository.find({ limit: 100, offset: 0 });
+  async getAll(pagination: Pagination, filter: Filter<User>) {
+    return this.usersRepository.filter(filter, pagination);
   }
 
   async createUser(model: User) {

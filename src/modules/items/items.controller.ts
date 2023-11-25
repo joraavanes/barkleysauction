@@ -15,9 +15,11 @@ export class ItemsController {
     ) { }
 
     async index(req: NextApiRequest, res: NextApiResponse) {
-        const { page = 0, pageSize = 10 } = req.query;
+        const { page = 0, pageSize = 10, ...filterQueries } = req.query;
 
-        const items = await this.itemsService.getItems({ limit: +pageSize, offset: (+page) * (+pageSize) });
+        const items = await this.itemsService.getItems(
+            { limit: +pageSize, offset: (+page) * (+pageSize) }, filterQueries
+        );
         return res.status(200).json(items);
     }
 
