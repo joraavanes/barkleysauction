@@ -9,7 +9,7 @@ const Users = () => {
       <Head>
         <title>Barkleys Auction | Users</title>
       </Head>
-      <h1 className="px-3 mt-4 mb-3">Users' Management</h1>
+      <h1 className="px-3 mt-4 mb-3">Users&apos; Management</h1>
       <Grid<User>
         columns={["email", "firstname", "lastname", "userConfirmed"]}
         url="http://localhost:3000/api/users"

@@ -13,14 +13,15 @@ const ItemsAdmin = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col p-1">
-            <h1 className="px-3 mt-4 mb-3">Items' Management</h1>
+            <h1 className="px-3 mt-4 mb-3">Items&apos; Management</h1>
             <Grid<Item>
               url={`http://localhost:3000/api/items`}
               keyExtractor={(item) => item._id.toString()}
               columns={["title", "description", "imageUrl", "updatedAt"]}
               renderItem={({ title, description, imageUrl, updatedAt }) => (
                 <li>
-                  {title} - {description} - {imageUrl} - {updatedAt.toUTCString()}
+                  {title} - {description} - {imageUrl} -{" "}
+                  {updatedAt.toUTCString()}
                 </li>
               )}
             />
