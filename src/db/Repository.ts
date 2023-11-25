@@ -37,7 +37,7 @@ export abstract class BaseRepository<T extends Document> implements IRead<T>, IW
     return collection.findOne(filter);
   }
 
-  async filter(filter: Filter<T>, pagination: Pagination) {
+  async filter(filter: Filter<T> = {}, pagination: Pagination) {
     const collection = await this.getCollection();
     return collection.find(filter).skip(pagination.offset).limit(pagination.limit).sort({ createdAt: -1 }).toArray();
   }
