@@ -29,7 +29,7 @@ const GridRow = <T extends { _id: any }>({
         </Link>
 
         <Link href={`${api}/${data["_id"]}`}>
-          <span className="btn btn-secondary m-1 m-1">Delete</span>
+          <span className="btn btn-secondary btn-danger m-1 m-1">Delete</span>
         </Link>
       </td>
     </tr>
