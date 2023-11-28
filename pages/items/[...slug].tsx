@@ -11,16 +11,9 @@ import {
   CommentList,
   CommentStatus,
 } from "@/components/item/Comment";
-
+import { ViewItem } from "@/shared/types/Item";
 interface ItemSlugPageProps {
-  item: {
-    _id: string;
-    title: string;
-    description: string;
-    bids: Array<number>;
-    imageUrl: string;
-    owner: string;
-  };
+  item: ViewItem
 }
 
 const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
@@ -57,14 +50,10 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
               </div>
               <div className="col-12 col-md-7 col-lg-8">
                 <div className="d-block mt-4 mb-3">
-                  <h1>
+                  <h1 className="display-5">
                     {item.title}
-                    {item.bids?.length ? (
-                      <>Last bid for &#36;{Math.max(...item.bids)}</>
-                    ) : null}
                   </h1>
-                  <p>{id}</p>
-                  <p>{item.title}</p>
+                  <p><strong>Starting Bid:</strong> <i className="bi bi-currency-euro"></i> {item.startingBid} </p>
                   <p>{item.description}</p>
                 </div>
               </div>

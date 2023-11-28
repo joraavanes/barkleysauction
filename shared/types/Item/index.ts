@@ -3,6 +3,9 @@ export type ViewItem = {
   title: string;
   description: string;
   imageUrl: string;
+  startingBid: number;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type Item = {

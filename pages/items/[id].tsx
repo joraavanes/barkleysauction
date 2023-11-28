@@ -11,16 +11,10 @@ import {
   CommentList,
   CommentStatus,
 } from "@/components/item/Comment";
+import { ViewItem } from "@/shared/types/Item";
 
 interface ItemSlugPageProps {
-  item: {
-    _id: string;
-    title: string;
-    description: string;
-    bids: Array<number>;
-    imageUrl: string;
-    owner: string;
-  };
+  item: ViewItem;
 }
 
 const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
