@@ -23,9 +23,9 @@ export class ItemsService {
     async getItems(pagination: Pagination, filter?: Filter<Item>) {
         const serializedFilter = {
             ...filter,
-            title: new RegExp(filter?.title, "i"),
-            description: new RegExp(filter?.description, "i"),
-            ...(filter?.startingBid ? { startingBid: Number(filter?.startingBid) } : undefined)
+            title: new RegExp(filter?.title ? filter.title as string : "", "i"),
+            description: new RegExp(filter?.description ? filter.description as string : "", "i"),
+            ...(filter?.startingBid ? { startingBid: Number(filter.startingBid) } : undefined)
         };
         
         return (await this.itemsRespository.filter(serializedFilter, pagination)).map(item => ({
