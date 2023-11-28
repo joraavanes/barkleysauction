@@ -53,9 +53,6 @@ const ItemSlugPage: NextPage<ItemSlugPageProps> = ({ item }) => {
                 <div className="d-block mt-4 mb-3">
                   <h1>
                     {item.title}
-                    {item.bids?.length ? (
-                      <>Last bid for &#36;{Math.max(...item.bids)}</>
-                    ) : null}
                   </h1>
                   <p>{id}</p>
                   <p>{item.title}</p>
