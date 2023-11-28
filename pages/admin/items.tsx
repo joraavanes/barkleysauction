@@ -1,9 +1,18 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
 import Grid from "../../components/admin/Grid";
 import { Item } from "@/src/modules/items/item.model";
 
-const ItemsAdmin = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      urlOrigin: process.env.ORIGIN_URL,
+    },
+  };
+};
+
+const ItemsAdmin = ({ urlOrigin }: { urlOrigin: string }) => {
   return (
     <>
       <Head>
@@ -15,15 +24,15 @@ const ItemsAdmin = () => {
           <div className="col p-1">
             <h1 className="px-3 mt-4 mb-3">Items&apos; Management</h1>
             <Grid<Item>
-              url={`http://localhost:3000/api/items`}
+              url={`${urlOrigin}/api/items`}
               keyExtractor={(item) => item._id.toString()}
-              columns={["title", "description", "imageUrl", "updatedAt"]}
-              renderItem={({ title, description, imageUrl, updatedAt }) => (
-                <li>
-                  {title} - {description} - {imageUrl} -{" "}
-                  {updatedAt.toUTCString()}
-                </li>
-              )}
+              columns={[
+                "title",
+                "description",
+                "startingBid",
+                "createdAt",
+                "updatedAt",
+              ]}
             />
           </div>
         </div>

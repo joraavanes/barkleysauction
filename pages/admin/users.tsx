@@ -1,9 +1,18 @@
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import React from "react";
 import Grid from "../../components/admin/Grid";
 import { User } from "@/src/modules/auth/models/user.model";
 
-const Users = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      urlOrigin: process.env.ORIGIN_URL,
+    },
+  };
+};
+
+const Users = ({ urlOrigin }: { urlOrigin: string }) => {
   return (
     <>
       <Head>
@@ -11,9 +20,9 @@ const Users = () => {
       </Head>
       <h1 className="px-3 mt-4 mb-3">Users&apos; Management</h1>
       <Grid<User>
-        columns={["email", "firstname", "lastname", "userConfirmed"]}
-        url="http://localhost:3000/api/users"
+        url={`${urlOrigin}/api/users`}
         keyExtractor={(item) => item._id.toString()}
+        columns={["email", "firstname", "lastname", "userConfirmed"]}
       />
     </>
   );
