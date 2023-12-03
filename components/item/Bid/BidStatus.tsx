@@ -13,7 +13,7 @@ export const BidStatus: React.FC = () => {
       </div>
     );
 
-  if (status === Status.error) return <span role="alert">Error</span>;
+  if (status === Status.error) return <span role="alert">{state.errorMessage ? state.errorMessage : "Error"}</span>;
 
   return null; // <div>{Status[status]}</div>;
 };
