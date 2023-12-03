@@ -12,6 +12,7 @@ export type BidState = {
   status: Status;
   bids: Array<ViewBid>;
   newBid?: number;
+  errorMessage?: string | React.ReactNode;
 };
 
 interface BidContextType {
