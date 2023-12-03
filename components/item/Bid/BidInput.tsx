@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useBid } from "./Bid";
 import { Button } from "./Button";
@@ -19,7 +20,7 @@ export const BidInput: React.FC = () => {
 
   const {
     mutate,
-    state: { status: mutationStatus },
+    state: { status: mutationStatus, errorMessage },
   } = useMutate("/api/bids", {
     method: "POST",
     timeout: 5000,
@@ -30,7 +31,19 @@ export const BidInput: React.FC = () => {
     e.preventDefault();
 
     if (!data || !data.user) {
-      setState((prev) => ({ ...prev, status: Status.error }));
+      setState((prev) => ({
+        ...prev,
+        status: Status.error,
+        errorMessage: (
+          <>
+            Please{" "}
+            <Link href="/users/login">
+              <a className="text-decoration-dashed primary-pink">Log in</a>
+            </Link>{" "}
+            to bid items
+          </>
+        ),
+      }));
       return;
     }
 
@@ -48,8 +61,13 @@ export const BidInput: React.FC = () => {
   };
 
   useEffect(() => {
-    // if (mutationStatus !== Status.success)
-    setState((prev) => ({ ...prev, status: mutationStatus }));
+    if (mutationStatus === Status.error) {
+      setState((prev) => ({
+        ...prev,
+        status: mutationStatus,
+        errorMessage: <p className="primary-pink">{errorMessage}</p>,
+      }));
+    }
 
     if (mutationStatus === Status.success) {
       setBid(0);
