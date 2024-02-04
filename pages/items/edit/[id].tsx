@@ -8,8 +8,10 @@ import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import { itemsService } from "../../../src/modules/items";
 import { Item as ItemType } from "@/shared/types/Item";
+import { getSession } from "next-auth/react";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session  = await getSession({ req: context.req });
   const id = context.query?.id as string;
 
   if (id) {
@@ -22,6 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           description: item?.description,
           imageUrl: item?.imageUrl,
           startingBid: item?.startingBid,
+          userId: session?.user.id
         },
       },
     };
