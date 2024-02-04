@@ -8,7 +8,7 @@ export type Item = {
     bids: Array<number>;
     startingBid: number;
     imageUrl?: string;
-    owner: ObjectId;
+    userId: ObjectId;
     createdAt: Date;
     updatedAt: Date;
 }

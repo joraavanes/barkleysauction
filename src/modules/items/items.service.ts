@@ -31,7 +31,7 @@ export class ItemsService {
         return (await this.itemsRespository.filter(serializedFilter, pagination)).map(item => ({
             ...item,
             _id: item._id.toString(),
-            owner: item.owner?.toString() ?? "",
+            userId: item.userId?.toString() ?? "",
             createdAt: item.createdAt?.valueOf() ?? "",
             updatedAt: item.updatedAt?.valueOf() ?? "",
         }));
@@ -45,7 +45,7 @@ export class ItemsService {
         return {
             ...item,
             _id: item._id.toString(),
-            owner: item.owner?.toString() ?? "",
+            userId: item.userId?.toString() ?? "",
             createdAt: item.createdAt?.valueOf() ?? "",
             updatedAt: item.updatedAt?.valueOf() ?? "",
         };
@@ -104,7 +104,7 @@ export class ItemsService {
             bids: Array<number>(),
             startingBid: model.startingBid,
             imageUrl,
-            owner: user._id,
+            userId: user._id,
             createdAt: new Date()
         } as Item);
     }
