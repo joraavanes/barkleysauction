@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const serializedItems = items.map((item) => ({
     ...item,
     _id: item._id.toString(),
-    owner: item.owner?.toString() ?? "",
+    userId: item.userId?.toString() ?? "",
   }));
 
   return {
