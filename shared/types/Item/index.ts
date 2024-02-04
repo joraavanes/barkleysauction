@@ -13,6 +13,6 @@ export type Item = {
   description: string;
   startingBid: string;
   image?: File | null;
-  UserId: string;
+  UserId?: string;
   itemId?: string;
 };

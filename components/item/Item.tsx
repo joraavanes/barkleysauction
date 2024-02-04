@@ -18,7 +18,6 @@ const initialState: ItemState = {
     title: "",
     description: "",
     startingBid: "0",
-    UserId: "63510298c6f3a606c53f8e69",
   },
   status: Status.idle,
 };

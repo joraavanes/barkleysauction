@@ -1,14 +1,24 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useEffect } from "react";
 import { ItemState, useItem } from "./Item";
 import { Item } from "@/shared/types/Item";
 import { Status } from "@/shared/types";
+import { useSession } from "next-auth/react";
 
 type Props = {
   mutate: (item: Item) => void;
 };
 
 const ItemForm: React.FC<Props> = (props) => {
+  const { data } = useSession();
   const { state, setState } = useItem();
+
+  useEffect(() => {
+    if (!data?.user.id) return;
+    setState((prev) => ({
+      ...prev,
+      item: { ...prev.item, UserId: data.user.id },
+    }));
+  }, [data?.user.id]);
 
   const handleCreateSubmit = (e: FormEvent) => {
     e.preventDefault();
