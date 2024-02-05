@@ -50,7 +50,7 @@ const ItemSlugPage: NextPageWithLayout<ItemSlugPageProps> = ({ item }) => {
               </div>
               <div className="col-12 col-md-7 col-lg-8">
                 <div className="d-block mt-4 mb-3">
-                  <h1 className="display-5">
+                  <h1 className="display-6">
                     {item.title}
                   </h1>
                   <p><strong>Starting Bid:</strong> <i className="bi bi-currency-euro"></i> {item.startingBid} </p>
